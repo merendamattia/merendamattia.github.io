@@ -17,9 +17,9 @@ if(offset.interval.isSingleton()) {
 	BigDecimal offsetBigDecimal = offset.interval.getHigh().getNumber();
 	BigDecimal thirtyTwo = new BigDecimal(32);
 	BigDecimal current_mu_i = offsetBigDecimal.add(thirtyTwo)
-										  .divide(thirtyTwo)
-										  .setScale(0, RoundingMode.UP); 
-										  // setScale() = Ceiling function 
+					.divide(thirtyTwo)
+					.setScale(0, RoundingMode.UP); 
+					// setScale() = Ceiling function 
 	
 	Interval state = memory.getState(offsetBigDecimal);
 	
@@ -27,7 +27,7 @@ if(offset.interval.isSingleton()) {
 	
 	// We create a new Interval singleton with the newly calculated `current_mu_i`
 	Interval intervalCurrent_mu_i = new Interval(current_mu_i.intValueExact(),
-												 current_mu_i.intValueExact());
+					current_mu_i.intValueExact());
 												 
 	// Then we compare the 2 mu_i and update the new value
 	if(mu_i.compareTo(intervalCurrent_mu_i) == -1)
@@ -60,15 +60,15 @@ if(offset.interval.isSingleton()) {
 	BigDecimal offsetBigDecimal = offset.interval.getHigh().getNumber();
 	BigDecimal thirtyTwo = new BigDecimal(32);
 	BigDecimal current_mu_i = offsetBigDecimal.add(thirtyTwo)
-											  .divide(thirtyTwo)
-											  .setScale(0, RoundingMode.UP); 
-											  // setScale() = Ceiling function 
+					.divide(thirtyTwo)
+					.setScale(0, RoundingMode.UP); 
+					// setScale() = Ceiling function 
 	
 	memoryResult = memory.putState(offsetBigDecimal, value);
 	
 	// We create a new Interval singleton with the newly calculated `current_mu_i`
 	Interval intervalCurrent_mu_i = new Interval(current_mu_i.intValueExact(), 
-												 current_mu_i.intValueExact());
+					current_mu_i.intValueExact());
 
 	// Then we compare the 2 mu_i and update the new value
 	if(mu_i.compareTo(intervalCurrent_mu_i) == -1)
@@ -104,16 +104,16 @@ if(offset.interval.isSingleton()) {
 	
 	BigDecimal offsetBigDecimal = offset.interval.getHigh().getNumber();
 	BigDecimal current_mu_i = offsetBigDecimal.add(one)
-											  .divide(thirtyTwo)
-											  .setScale(0, RoundingMode.UP); 
-											  // setScale() = Ceiling function 
+					.divide(thirtyTwo)
+					.setScale(0, RoundingMode.UP); 
+					// setScale() = Ceiling function 
 	
 	if(value.interval.isSingleton()) {
 		BigDecimal valueBigDecimal = offset.interval.getHigh().getNumber();
 		BigDecimal valueByteBigDecimal = valueBigDecimal.remainder(new BigDecimal(256));
 		
 		Interval valueInByte = new Interval(valueByteBigDecimal.intValueExact(), 
-											valueByteBigDecimal.intValueExact());
+					valueByteBigDecimal.intValueExact());
 		
 		memoryResult = memory.putState(offsetBigDecimal, valueInByte);
 	} else {
@@ -124,7 +124,7 @@ if(offset.interval.isSingleton()) {
 	
 	// We create a new Interval singleton with the newly calculated `current_mu_i`
 	Interval intervalCurrent_mu_i = new Interval(current_mu_i.intValueExact(), 
-												 current_mu_i.intValueExact());
+					current_mu_i.intValueExact());
 	
 	if(mu_i.compareTo(intervalCurrent_mu_i) == -1)
 		new_mu_i = intervalCurrent_mu_i;

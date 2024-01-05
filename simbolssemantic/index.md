@@ -1,8 +1,9 @@
+# Symbols' semantic
 Sources:
 - [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
 - [Medium](https://jeancvllr.medium.com/ethereum-yellow-paper-symbols-summary-112e753960a8)
 
-# Main symbols
+## Main symbols
 
 | Symbol     | Meaning in the yellow paper                                         | Something else                                                                                                                                                                                                               |
 | ---------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -38,8 +39,8 @@ These are contained in the tuple $I$:
 | $I_w$  | The permission to make modifications to the state                                                                                                                  |
 
 ---
-# Opcodes in EVM-LiSA
-## Not handled
+## Opcodes in EVM-LiSA
+### Not handled
 
 | Value | Mnemonic       | $\delta$ | $\alpha$ | $\mu$     | $I$       | Description                                                                                                               |
 | ----- | -------------- | -------- | -------- | --------- | --------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -89,7 +90,7 @@ These are contained in the tuple $I$:
 | 0xfd  | REVERT         | 2        | 0        | s,m,i     |           | Halt execution reverting state changes but returning data and remaining gas                                               |
 | 0xff  | SELFDESTRUCT   | 1        | 0        |           | a         | Halt execution and register account for later deletion                                                                    |
 
-## Implemented
+### Implemented
 
 | Value | Mnemonic   | $\delta$ | $\alpha$ | $\mu$ | Description                                                                                        |
 | ----- | ---------- | -------- | -------- | ----- | -------------------------------------------------------------------------------------------------- |
