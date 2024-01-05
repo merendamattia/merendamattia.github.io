@@ -1,7 +1,7 @@
-## Opcodes
+# Opcodes
 Di seguito tutti gli opcodes implementati.
 
-### MLOAD
+## MLOAD
 ```java
 ArrayDeque<Interval> result = stack.clone();
 Interval new_mu_i = null; 
@@ -47,7 +47,7 @@ return new SymbolicStack(result, memory, new_mu_i);
 
 ---
 
-### MSTORE
+## MSTORE
 ```java
 ArrayDeque<Interval> stackResult = stack.clone();
 Memory memoryResult = null;
@@ -85,11 +85,11 @@ return new SymbolicStack(stackResult, memoryResult, new_mu_i);
 
 Dobbiamo ritornare una nuova `memoryResult` e una nuova `new_mu_i` per evitare problemi di incoerenza (nel CFG viene visualizzata la memoria modificata prima di essere effettivamente modificata).
 
-![[images/1.png]]
+<img src="images/1.png" />
 
 ---
 
-### MSTORE8
+## MSTORE8
 ```java
 ArrayDeque<Interval> result = stack.clone();
 Memory memoryResult = null;

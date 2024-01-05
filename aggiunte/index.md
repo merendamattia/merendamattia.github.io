@@ -1,4 +1,5 @@
-# Classe Memory
+# Aggiunte
+## Classe Memory
 ```java
 package it.unipr.analysis;
 
@@ -54,7 +55,7 @@ public class Memory extends FunctionalLattice<Memory, BigDecimal, Interval> {
 
 ---
 
-# Nuove variabili locali e nuovo costruttore
+## Nuove variabili locali e nuovo costruttore
 ```java
 private Memory memory;
 private Interval mu_i; // TODO Give a better name

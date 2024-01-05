@@ -17,14 +17,14 @@ La build in Gradle è basata su task. Un task rappresenta un'unità di lavoro sp
 ```
 
 ## EVM Codes - Playground
-https://www.evm.codes/playground?fork=shanghai&unit=Wei&codeType=Mnemonic  
+[Online tool](https://www.evm.codes/playground?fork=shanghai&unit=Wei&codeType=Mnemonic)  
 - Spiegazione opcodes: [Medium](https://veridelisi.medium.com/learn-opcodes-7bd28d5f0d1b).
 
 ---
 
 ## Altre info
-- Differenza tra memory e calldata: https://ethereum.stackexchange.com/questions/74442/when-should-i-use-calldata-and-when-should-i-use-memory
-- Keccak-256 online tool: https://emn178.github.io/online-tools/keccak_256.html
+- [Differenza tra memory e calldata](https://ethereum.stackexchange.com/questions/74442/when-should-i-use-calldata-and-when-should-i-use-memory)
+- [Keccak-256 online tool](https://emn178.github.io/online-tools/keccak_256.html)
 
 ### Attacco di rientranza 
 The reentrancy vulnerability is a bit more technical. For instance, suppose you’ve written a smart contract, and inside that smart contract, there’s a line of code in the withdraw function that uses the `call()` function to allow a user to withdraw funds. The user can be an individual or another smart contract. Let's consider the case where the user is another smart contract. When the user triggers the withdraw function, the `call()` function, on the user's side, will invoke the fallback function of the user's smart contract (even if the fallback function hasn't been explicitly created, it runs as empty by default, following a rule). In this scenario, if a malicious user inserts a new withdraw line into the fallback function, they can enter into a loop and drain all the funds within the smart contract, leading to significant losses. Because when the `withdraw` function is executed, it triggers the `call()` function again, which, in turn, invokes the `fallback()` function, resulting in a loop. This allows for the withdrawal of all the coins within the smart contract.
