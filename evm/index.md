@@ -80,7 +80,7 @@ The EVM has its own set of instructions known as opcodes. Opcodes are used to ex
 - Halting opcodes: STOP, RETURN, REVERT, INVALID, SELFDESTRUCT
 
 ## Storage
-The EVM Storage is a non-volatile space and holds key-value pairs of 256 bits –> 256 bits. The total number of storage slots in a contract is $2^{256}$ which is a very huge number of slots. Each smart contract on the blockchain has its own storage space.
+The EVM Storage is a non-volatile space and holds key-value pairs of 256 bits –> 256 bits. The total number of storage slots in a contract is {% raw %} $2^{256}$ {% endraw %} which is a very huge number of slots. Each smart contract on the blockchain has its own storage space.
 
 During function calls storage is used for data that needs to be remembered between function calls. It is used to store variables and data structures that need to be available even after the smart contract execution has ended.
 
