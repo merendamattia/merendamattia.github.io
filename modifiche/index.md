@@ -1,4 +1,8 @@
 # Modifiche
+
+* Table of Content
+{:toc}
+
 ## Tipi di ritorno
 Modificati tutti i tipi di ritorno cambiando il costruttore.
 Prima:

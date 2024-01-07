@@ -1,8 +1,9 @@
+# EVM
+
 * Table of Content
 {:toc}
 
-# EVM
-
+## What is it?
 The Ethereum Virtual Machine (EVM) is the core component of the Ethereum network. The EVM is a piece of software that allows the deployment and execution of smart contracts written in a high level language such as Solidity. After writing the contract, it is compiled into bytecode and deployed to the EVM. The EVM runs on each node in the Ethereum network.
 
 Solidity Assembly refers to a low-level programming language that allows developers to write code at a level closer to the EVM itself. It provides a more granular control over the execution of smart contracts, allowing for optimizations and customization that may not be achievable through higher-level Solidity code alone.
@@ -13,7 +14,7 @@ The EVM is a quasi-Turing-complete state machine. In this scenario, the term "qu
 
 Gas is a concept that measures the computational effort needed to complete a transaction in Ethereum. The cost of a transaction is paid in Ether and is related to the Gas and Gas price. Our goal during this journey is to learn how to minimize the total amount of gas consumed without compromising security.
 
-## Code Optimization Problem
+### Code Optimization Problem
 Inline assembly is a way to access the EVM at a lower level. It bypasses several important safety features and checks of Solidity. The correct use of inline assembly can significantly reduce the execution cost. However, you should only use it for tasks that need it, and only if you know what you are doing. Optimizing the code using inline assembly might introduce new security issues to your code. To master inline assembly we need to understand how the EVM and its components work.
 
 In the EVM, you have to pay every time you access any storage variable for the first time, this is called "cold" access and it costs 2100 gas. The second or consecutive time is known as “warm” access and it costs 100 gas.
@@ -44,7 +45,7 @@ Why is storage so expensive? Remember that we are in a decentralized world and t
 
 ---
 
-# EVM Stack, Storage and Memory
+## EVM Stack, Storage and Memory
 The EVM is a stack-based machine that operates on a data structure called a stack, which holds values and executes actions. The EVM has its own set of instructions known as opcodes that it uses to execute tasks such as reading and writing to storage, calling other contracts, and performing mathematical operations. The stack operates on a last-in, first-out (LIFO) basis, see figure 1, which means that the most recently inserted item is stored at the top of the stack and is the first item to be removed.
 
 <img src="images/stack.jpeg" />
@@ -62,7 +63,7 @@ The EVM has the following components:
 
 <img src="images/evm.jpeg" />
 
-## EVM Stack
+### Stack
 The program’s instructions and data are kept in memory in this architecture, and the program’s execution is controlled by a *stack pointer* that points to the top of the stack. The stack pointer keeps track of where the next value or instruction will be saved or retrieved on the stack. When a program runs, it adds values to the stack and performs operations on the values that are already there. When a code wants to add two numbers, it pushes the numbers onto the stack and then performs the addition operation on the top two values. The result is then returned to the stack.
 
 <img src="images/stack_structure.jpeg" />
@@ -79,7 +80,7 @@ The EVM has its own set of instructions known as opcodes. Opcodes are used to ex
 - Program counter related opcodes: JUMP, JUMPI, PC, JUMPDEST
 - Halting opcodes: STOP, RETURN, REVERT, INVALID, SELFDESTRUCT
 
-## EVM Storage
+### Storage
 The EVM Storage is a non-volatile space and holds key-value pairs of 256 bits –> 256 bits. The total number of storage slots in a contract is $$2^{256}$$ which is a very huge number of slots. Each smart contract on the blockchain has its own storage space.
 
 During function calls storage is used for data that needs to be remembered between function calls. It is used to store variables and data structures that need to be available even after the smart contract execution has ended.
@@ -90,7 +91,7 @@ The opcodes for accessing storage are: SLOAD and SSTORE
 
 The account’s storage is a permanent data store, only used by smart contracts. An External Owned Account (EOA) will always have no code and an empty storage.
 
-## EVM Memory
+### Memory
 Memory is the volatile memory in the architecture whose data is not persistent across the blockchain. Memory is a random-access data structure that stores temporary data during the execution of a smart contract.
 
 <img src="images/memory_structure.jpeg" />

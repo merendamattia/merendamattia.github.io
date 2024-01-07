@@ -1,4 +1,8 @@
 # Aggiunte
+
+* Table of Content
+{:toc}
+
 ## Classe Memory
 ```java
 package it.unipr.analysis;

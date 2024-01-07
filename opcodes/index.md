@@ -1,4 +1,8 @@
 # Opcodes
+
+* Table of Content
+{:toc}
+
 Di seguito tutti gli opcodes implementati.
 
 ## MLOAD
