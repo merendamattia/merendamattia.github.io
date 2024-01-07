@@ -3,6 +3,7 @@ theme: jekyll-theme-cayman
 title: merendamattia
 description: Tirocinio su EVM-LiSA
 
+markdown: kramdown
 show_downloads: false
 google_analytics: 
 exclude:
