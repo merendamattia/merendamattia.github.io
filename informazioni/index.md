@@ -1,5 +1,8 @@
 # Informazioni generali
 
+* Table of Content
+{:toc}
+
 ## Come eseguire tutti i test
 Tasto destro su `src/test/java` ed eseguire come `Junit test`.
 

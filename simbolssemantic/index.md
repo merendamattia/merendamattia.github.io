@@ -1,4 +1,7 @@
 # Symbols' semantic
+* Table of Content
+{:toc}
+
 Sources:
 - [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
 - [Medium](https://jeancvllr.medium.com/ethereum-yellow-paper-symbols-summary-112e753960a8)
