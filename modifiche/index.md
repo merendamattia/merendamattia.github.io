@@ -52,12 +52,12 @@ return memory.equals(other.memory) && mu_i.equals(other.mu_i);
 ```java
 return memory.lessOrEqual(other.memory) && mu_i.lessOrEqual(other.mu_i);
 ```
-In questo modo, se siamo arrivati a questo punto, l'unica condizione che rimane da verificare e' appunto quella della memoria. Andiamo a sfruttare i metodi gia' definiti nella classe Memory.
+In questo modo, se siamo arrivati a questo punto, l'unica condizione che rimane da verificare è appunto quella della memoria. Andiamo a sfruttare i metodi già definiti nella classe `Memory`.
 
 ---
 
-## Dominio SymbolicStack 
-È stato "diviso" in 2 il dominio `SymbolicStack`, da una parte e' stata creata la classe `Stack` mentre dall'altra e' stato creato il dominio `EVMAbsDomain`. 
+## Dominio SymbolicStack (old)
+È stato "diviso" in 2 il dominio `SymbolicStack`, da una parte è stata creata la classe `Stack` mentre dall'altra è stato creato il dominio `EVMAbsDomain`. 
 In questo modo rendiamo l'oggetto `Stack` (proprio come `Memory`) indipendente dal dominio.
 
 ### Classe Stack
@@ -100,7 +100,7 @@ public class Stack implements ValueDomain<Stack> {
 
 ### Dominio EVMAbsDomain
 Dobbiamo fare particolare attenzione a questo dominio: oltre a modificare i vari costruttori, sono stati modificati (forzatamente) alcuni altri metodi per garantire il corretto funzionamento.
-Inoltre, oltre ad aver aggiornato e testato tutti i test gia' esistenti con il nuovo dominio, e' stato creato il test specifico `EVMAbsDomainTest` situato in `test/java/it/unipr/analysis/unit`.
+Inoltre, oltre ad aver aggiornato e testato tutti i test già esistenti con il nuovo dominio, è stato creato il test specifico `EVMAbsDomainTest` situato in `src/test/java/it/unipr/analysis/unit`.
 
 #### Costruttori
 ```java
@@ -158,7 +158,7 @@ public Interval getMu_i() {
 ```
 
 #### Metodo smallStepSemantics
-Il metodo `smallStepSemantics()` e' lo stesso presente nel vecchio dominio `SymbolicStack`. Infatti e' stato riportato così com'e'. Le uniche modifiche che sono state fatte sono in fase clone dell'oggetto Stack, e del tipo di ritorno.
+Il metodo `smallStepSemantics()` è lo stesso presente nel vecchio dominio `SymbolicStack`. Infatti è stato riportato così com'è. Le uniche modifiche che sono state fatte sono in fase di clone dell'oggetto `Stack`, e del tipo di ritorno.
 Prima:
 ```java
 ArrayDeque<Interval> result = stack.clone();
