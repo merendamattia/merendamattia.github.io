@@ -158,7 +158,8 @@ public Interval getMu_i() {
 ```
 
 #### Metodo smallStepSemantics
-Il metodo `smallStepSemantics()` è lo stesso presente nel vecchio dominio `SymbolicStack`. Infatti è stato riportato così com'è. Le uniche modifiche che sono state fatte sono in fase di clone dell'oggetto `Stack`, e del tipo di ritorno.
+Il metodo `smallStepSemantics()` è lo stesso presente nel vecchio dominio `SymbolicStack`. Infatti è stato riportato così com'è. Le uniche modifiche che sono state fatte sono in fase di clone dell'oggetto `Stack`, e del tipo di ritorno.  
+
 Prima:
 ```java
 ArrayDeque<Interval> result = stack.clone();
