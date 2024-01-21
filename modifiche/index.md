@@ -282,3 +282,37 @@ public boolean equals(Object obj) {
 	return this.isBottom() == other.isBottom(); // TODO check if it is correct
 }
 ```
+
+---
+
+## Correzione semantica AND, OR, XOR
+La semantica degli operatori `AND`, `OR` e `XOR` è stata corretta nel seguente modo. Nell'implementazione precedente, i limiti del nuovo intervallo da inserire nello stack venivano calcolati come segue:
+
+```java
+low = new MathNumber(opnd1.interval.getLow().toByte() & opnd2.interval.getLow().toByte());
+high = new MathNumber(opnd1.interval.getHigh().toByte() & opnd2.interval.getHigh().toByte());
+```
+
+Tuttavia, questo approccio comportava la "riduzione" di tutti i valori alla dimensione di un byte, anche quando essi erano rappresentati su più di un byte.
+
+#### Esempio di esecuzione
+Consideriamo la seguente sequenza di istruzioni:
+
+```
+PUSH4 0xFFFFFFFF
+PUSH2 0x0C35
+AND
+```
+
+In questo caso, ci aspettiamo di ottenere il risultato `0x0C35` (rappresentato su 2 byte). Tuttavia, la versione precedente della `smallStepSemantics` restituiva `0x35` (rappresentato su un solo byte).
+
+La soluzione proposta per risolvere questo problema consiste nell'utilizzare il metodo `toLong()` anziché `toByte()` e nell'eseguire l'operazione `&` con due valori di tipo `Long`:
+
+```java
+low = new MathNumber(opnd1.interval.getLow().toLong() & opnd2.interval.getLow().toLong());
+high = new MathNumber(opnd1.interval.getHigh().toLong() & opnd2.interval.getHigh().toLong());
+```
+
+Questa soluzione ([commit Github](https://github.com/lisa-analyzer/evm-lisa/commit/1217879190f51bdc3b654ad201a63d89efbe37e6)) è stata testata e confermata come corretta. Con questa modifica, non si verificano più problemi di riduzione dei valori a un byte.
+
+> L'esempio fornito riguarda l'operatore AND, ma lo stesso principio si applica anche agli altri operatori.
