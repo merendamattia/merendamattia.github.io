@@ -74,9 +74,6 @@ These are contained in the tuple $I$:
 | 0x46  | CHAINID        | 0        | 1        | s         |           | Get the chain ID                                                                                                          |
 | 0x47  | SELFBALANCE    | 0        | 1        | s         | a         | Get balance of currently executing account                                                                                |
 | 0x48  | BASEFEE        | 0        | 1        | s         | H         | Get the current block’s base fee                                                                                          |
-| 0x51  | MLOAD          | 1        | 1        | s,m,i     |           | Load word from memory                                                                                                     |
-| 0x52  | MSTORE         | 2        | 0        | s,m,i     |           | Save word to memory                                                                                                       |
-| 0x53  | MSTORE8        | 2        | 0        | s,m,i     |           | Save byte to memory                                                                                                       |
 | 0x54  | SLOAD          | 1        | 1        | s         | a         | Load word from storage                                                                                                    |
 | 0x55  | SSTORE         | 2        | 0        | s         | a         | Save word to storage                                                                                                      |
 | 0x58  | PC             | 0        | 2        | s,pc      |           | Get the value of the program counter prior to the increment corresponding to this instruction                             |
@@ -123,6 +120,9 @@ These are contained in the tuple $I$:
 | 0x1c  | SHR        | 2        | 1        | s     | Logical right shift operation                                                                      |
 | 0x1d  | SAR        | 2        | 1        | s     | Arithmetic (signed) right shift operation                                                          |
 | 0x50  | POP        | 1        | 0        | s     | Remove item from stack                                                                             |
+| 0x51  | MLOAD          | 1        | 1        | s,m,i     |           Load word from memory                                                                                                     |
+| 0x52  | MSTORE         | 2        | 0        | s,m,i     |           Save word to memory                                                                                                       |
+| 0x53  | MSTORE8        | 2        | 0        | s,m,i     |           Save byte to memory                                                                                                       |
 | 0x56  | JUMP       | 1        | 0        | s,pc  | Alter the program counter                                                                          |
 | 0x57  | JUMPI      | 2        | 0        | s,pc  | Conditionally alter the program counter                                                            |
 | 0x5b  | JUMPDEST   | 0        | 0        |       | Mark a valid destination for jumps. This operation has no effect on machine state during execution |

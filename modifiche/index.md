@@ -514,5 +514,39 @@ public static byte[] shiftArithmeticRight(byte[] byteArray, int shiftBitCount) {
 	}
 	return byteArray;
 }
+```
 
+---
+
+## Refactoring codice
+### smallStepSemantics()
+Gli else-if in sequenza sono stati sostituiti con una struttura switch-case, consentendo una significativa ottimizzazione delle prestazioni.  
+Grazie a questa modifica, il tempo di esecuzione della funzione `smallStepSemantics()` è passato da un costo computazionale lineare $O(n)$ a un costo costante $O(1)$.
+
+Prima:
+```java
+if (op instanceof PushOperator) { // PUSH
+	// ...
+} else if (op instanceof AddressOperator) { // ADDRESS
+	// ...
+} else if (op instanceof OriginOperator) { // ORIGIN
+	// ...
+}
+```
+Dopo:
+```java
+if (op != null) {		
+	switch (op.getClass().getSimpleName()) {
+		case "PushOperator": { // PUSH
+			// ...
+		}
+		case "AddressOperator": { // ADDRESS
+			// ...
+		}
+		case "OriginOperator": { // ORIGIN
+			// ...
+		}
+		// ...
+	}
+}
 ```

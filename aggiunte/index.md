@@ -85,9 +85,18 @@ public SymbolicStack(ArrayDeque<Interval> stack,
 ```
 
 ## visitProgram() di EVMCFGGenerator
+TODO: scrivere il perchè di questa aggiunta.
 ```java
 for (Statement node : cfg.getNodes())
 	for (Entry<Statement, BigInteger> entry : map.entrySet())
 		if (((ProgramCounterLocation) node.getLocation()).getPc() == entry.getValue().intValue())
 			cfg.addEdge(new TrueEdge(entry.getKey(), node));
+```
+
+È stata aggiunta questa istruzione perchè il programma deve terminare quando si incontra un `REVERT`. Prima non veniva gestito correttamente e portava alcune analisi alla non terminazione.
+```java
+// REVERT nodes must be linked to return statement
+for (Statement stmt : cfg.getNodes())
+	if (stmt instanceof Revert)
+		cfg.addEdge(new SequentialEdge(stmt, ret));
 ```
