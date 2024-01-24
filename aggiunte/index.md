@@ -83,3 +83,11 @@ public SymbolicStack(ArrayDeque<Interval> stack,
 	this.mu_i = mu_i;
 }
 ```
+
+## visitProgram() di EVMCFGGenerator
+```java
+for (Statement node : cfg.getNodes())
+	for (Entry<Statement, BigInteger> entry : map.entrySet())
+		if (((ProgramCounterLocation) node.getLocation()).getPc() == entry.getValue().intValue())
+			cfg.addEdge(new TrueEdge(entry.getKey(), node));
+```
