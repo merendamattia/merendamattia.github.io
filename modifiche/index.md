@@ -550,3 +550,70 @@ if (op != null) {
 	}
 }
 ```
+
+---
+
+## Metodi dupX() e swapX()
+Sono state realizzate due nuove versioni dei metodi `dupX()` e `swapX()`, in quanto le versioni precedenti presentavano alcuni bug lanciando eccezioni non controllate.
+
+```java
+/**
+ * Duplicates the x-th element from the top of the stack and returns the
+ * modified stack.
+ *
+ * @param x     The position of the element to duplicate from the top of the
+ *                  stack.
+ * @param stack The original stack.
+ * 
+ * @return A new stack with the specified element duplicated at the top.
+ */
+private AbstractStack dupX(int x, AbstractStack stack) {
+	ArrayDeque<Interval> clone = stack.clone().getStack();
+	
+	if(clone.size() < x || x < 1)
+		return stack.clone();
+	
+	Object[] obj = clone.toArray();
+	
+	Interval tmp = (Interval) obj[x - 1];
+	
+	ArrayDeque<Interval> result = new ArrayDeque<Interval>();
+	
+	result.add(tmp);
+	
+	for(int i = 0; i < clone.size(); i++)
+		result.add((Interval) obj[i]);
+	
+	return new AbstractStack(result);
+}
+
+/**
+ * Swaps the 1st with the (x + 1)-th element from the top of the stack and
+ * returns the modified stack.
+ *
+ * @param x     The position of the element to swap with the top of the
+ *                  stack.
+ * @param stack The original stack.
+ * 
+ * @return A new stack with the specified elements swapped.
+ */
+private AbstractStack swapX(int x, AbstractStack stack) {
+	ArrayDeque<Interval> clone = stack.clone().getStack();
+	
+	if(clone.size() < x + 1 || x < 1)
+		return stack.clone();
+	
+	Object[] obj = clone.toArray();
+	
+	Object tmp = obj[0];
+	obj[0] = obj[x];
+	obj[x] = tmp;
+	
+	ArrayDeque<Interval> result = new ArrayDeque<Interval>();
+	
+	for(int i = 0; i < clone.size(); i++)
+		result.add((Interval) obj[i]);
+	
+	return new AbstractStack(result);
+}
+```
