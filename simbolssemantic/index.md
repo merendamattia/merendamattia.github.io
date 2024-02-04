@@ -47,7 +47,6 @@ These are contained in the tuple $I$:
 
 | Value | Mnemonic                   | $\delta$ | $\alpha$ | $\mu$     | $I$       | Description                                                                                                               |
 | ----- | -------------------------- | -------- | -------- | --------- | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-| 0x00  | STOP                       | 0        | 0        |           |           | Halts execution                                                                                                           |
 | 0x0b  | SIGNEXTEND                 | 2        | 1        | s         |           | Extend length of two’s complement signed integer                                                                          |
 | 0x20  | KECCAK256                  | 2        | 1        | s,i       |           | Compute Keccak-256 hash                                                                                                   |
 | 0x30  | ADDRESS                    | 0        | 1        | s         | a         | Get address of currently executing account                                                                                |
@@ -77,56 +76,58 @@ These are contained in the tuple $I$:
 | 0x48  | BASEFEE                    | 0        | 1        | s         | H         | Get the current block’s base fee                                                                                          |
 | 0x54  | SLOAD                      | 1        | 1        | s         | a         | Load word from storage                                                                                                    |
 | 0x55  | SSTORE                     | 2        | 0        | s         | a         | Save word to storage                                                                                                      |
-| 0x58  | PC                         | 0        | 2        | s,pc      |           | Get the value of the program counter prior to the increment corresponding to this instruction                             |
 | 0x59  | MSIZE                      | 0        | 1        | s,i       |           | Get the size of active memory in bytes                                                                                    |
 | 0x5a  | GAS                        | 0        | 1        | s,g       |           | Get the amount of available gas, including the corresponding reduction for the cost of this instruction                   |
 | 0xa0  | LOG$x$                     | $x + 2$  | 0        | s         |           | Append log record with $x$ topics                                                                                         |
 | 0xf0  | CREATE                     | 3        | 1        | s,g,i,m,o | a,e,w,p,o | Create a new account with associated code                                                                                 |
 | 0xf1  | CALL                       | 7        | 1        | s,g,i,m,o | a,e,w,p,o | Message-call into an account                                                                                              |
 | 0xf2  | CALLCODE                   | 7        | 1        | s         | a,e,w,o   | Message-call into this account with an alternative account’s cod                                                          |
-| 0xf3  | RETURN                     | 2        | 0        | s,m,i     |           | Halt execution returning output data                                                                                      |
 | 0xf4  | DELEGATECALL               | 6        | 1        | s         | a,e,w,o,p | Message-call into this account with an alternative account’s code, but persisting the current values for sender and value |
 | 0xf5  | CREATE2                    | 4        | 1        | s         |           | Create a new account with associated code                                                                                 |
 | 0xfa  | STATICCALL                 | 6        | 1        | s         |           | Static message-call into an account                                                                                       |
-| 0xfd  | REVERT                     | 2        | 0        | s,m,i     |           | Halt execution reverting state changes but returning data and remaining gas                                               |
-| 0xff  | SELFDESTRUCT               | 1        | 0        |           | a         | Halt execution and register account for later deletion                                                                    |
+
 
 ### Implemented
 
-| Value | Mnemonic | $\delta$ | $\alpha$ | $\mu$ | Description                                                                                        |
-| ----- | -------- | -------- | -------- | ----- | -------------------------------------------------------------------------------------------------- |
-| 0x01  | ADD      | 2        | 1        | s     | Addition operation                                                                                 |
-| 0x02  | MUL      | 2        | 1        | s     | Multiplication operation                                                                           |
-| 0x03  | SUB      | 2        | 1        | s     | Subtraction operation                                                                              |
-| 0x04  | DIV      | 2        | 1        | s     | Integer division operation                                                                         |
-| 0x05  | SDIV     | 2        | 1        | s     | Signed integer division operation (truncated)                                                      |
-| 0x06  | MOD      | 2        | 1        | s     | Modulo remainder operation                                                                         |
-| 0x07  | SMOD     | 2        | 1        | s     | Signed modulo remainder operation                                                                  |
-| 0x08  | ADDMOD   | 3        | 1        | s     | Modulo addition operation                                                                          |
-| 0x09  | MULMOD   | 3        | 1        | s     | Modulo multiplication operation                                                                    |
-| 0x0a  | EXP      | 2        | 1        | s     | Exponential operation                                                                              |
-| 0x10  | LT       | 2        | 1        | s     | Less-than comparison                                                                               |
-| 0x11  | GT       | 2        | 1        | s     | Greater-than comparison                                                                            |
-| 0x12  | SLT      | 2        | 1        | s     | Signed less-than comparison                                                                        |
-| 0x13  | SGT      | 2        | 1        | s     | Signed greater-than comparison                                                                     |
-| 0x14  | EQ       | 2        | 1        | s     | Equality comparison                                                                                |
-| 0x15  | ISZERO   | 1        | 1        | s     | Simple not operator                                                                                |
-| 0x16  | AND      | 2        | 1        | s     | Bitwise AND operation                                                                              |
-| 0x17  | OR       | 2        | 1        | s     | Bitwise OR operation                                                                               |
-| 0x18  | XOR      | 2        | 1        | s     | Bitwise XOR operation                                                                              |
-| 0x19  | NOT      | 2        | 1        | s     | Bitwise NOT operation                                                                              |
-| 0x1a  | BYTE     | 2        | 1        | s     | Retrieve single byte from word                                                                     |
-| 0x1b  | SHL      | 2        | 1        | s     | Left shift operation                                                                               |
-| 0x1c  | SHR      | 2        | 1        | s     | Logical right shift operation                                                                      |
-| 0x1d  | SAR      | 2        | 1        | s     | Arithmetic (signed) right shift operation                                                          |
-| 0x50  | POP      | 1        | 0        | s     | Remove item from stack                                                                             |
-| 0x51  | MLOAD    | 1        | 1        | s,m,i | Load word from memory                                                                              |
-| 0x52  | MSTORE   | 2        | 0        | s,m,i | Save word to memory                                                                                |
-| 0x53  | MSTORE8  | 2        | 0        | s,m,i | Save byte to memory                                                                                |
-| 0x56  | JUMP     | 1        | 0        | s,pc  | Alter the program counter                                                                          |
-| 0x57  | JUMPI    | 2        | 0        | s,pc  | Conditionally alter the program counter                                                            |
-| 0x5b  | JUMPDEST | 0        | 0        |       | Mark a valid destination for jumps. This operation has no effect on machine state during execution |
-| 0x60  | PUSH $x$ | 0        | 1        | s,pc  | Place $x$ byte item on stack                                                                       |
-| 0x80  | DUP $x$  | $x$      | $x + 1$  | s     | Duplicate $x$-th stack it                                                                          |
-| 0x90  | SWAP $x$ | $x + 1$  | $x + 1$  | s     | Exchange 1st and $x + 1$ stack item                                                                |
-| 0xfe  | INVALID  |          |          |       | Designated invalid instruction                                                                     |
+| Value | Mnemonic     | $\delta$ | $\alpha$ | $\mu$ | Description                                                                                        |
+| ----- | ------------ | -------- | -------- | ----- | -------------------------------------------------------------------------------------------------- |
+| 0x00  | STOP         | 0        | 0        |       | Halts execution                                                                                    |
+| 0x01  | ADD          | 2        | 1        | s     | Addition operation                                                                                 |
+| 0x02  | MUL          | 2        | 1        | s     | Multiplication operation                                                                           |
+| 0x03  | SUB          | 2        | 1        | s     | Subtraction operation                                                                              |
+| 0x04  | DIV          | 2        | 1        | s     | Integer division operation                                                                         |
+| 0x05  | SDIV         | 2        | 1        | s     | Signed integer division operation (truncated)                                                      |
+| 0x06  | MOD          | 2        | 1        | s     | Modulo remainder operation                                                                         |
+| 0x07  | SMOD         | 2        | 1        | s     | Signed modulo remainder operation                                                                  |
+| 0x08  | ADDMOD       | 3        | 1        | s     | Modulo addition operation                                                                          |
+| 0x09  | MULMOD       | 3        | 1        | s     | Modulo multiplication operation                                                                    |
+| 0x0a  | EXP          | 2        | 1        | s     | Exponential operation                                                                              |
+| 0x10  | LT           | 2        | 1        | s     | Less-than comparison                                                                               |
+| 0x11  | GT           | 2        | 1        | s     | Greater-than comparison                                                                            |
+| 0x12  | SLT          | 2        | 1        | s     | Signed less-than comparison                                                                        |
+| 0x13  | SGT          | 2        | 1        | s     | Signed greater-than comparison                                                                     |
+| 0x14  | EQ           | 2        | 1        | s     | Equality comparison                                                                                |
+| 0x15  | ISZERO       | 1        | 1        | s     | Simple not operator                                                                                |
+| 0x16  | AND          | 2        | 1        | s     | Bitwise AND operation                                                                              |
+| 0x17  | OR           | 2        | 1        | s     | Bitwise OR operation                                                                               |
+| 0x18  | XOR          | 2        | 1        | s     | Bitwise XOR operation                                                                              |
+| 0x19  | NOT          | 2        | 1        | s     | Bitwise NOT operation                                                                              |
+| 0x1a  | BYTE         | 2        | 1        | s     | Retrieve single byte from word                                                                     |
+| 0x1b  | SHL          | 2        | 1        | s     | Left shift operation                                                                               |
+| 0x1c  | SHR          | 2        | 1        | s     | Logical right shift operation                                                                      |
+| 0x1d  | SAR          | 2        | 1        | s     | Arithmetic (signed) right shift operation                                                          |
+| 0x50  | POP          | 1        | 0        | s     | Remove item from stack                                                                             |
+| 0x51  | MLOAD        | 1        | 1        | s,m,i | Load word from memory                                                                              |
+| 0x52  | MSTORE       | 2        | 0        | s,m,i | Save word to memory                                                                                |
+| 0x53  | MSTORE8      | 2        | 0        | s,m,i | Save byte to memory                                                                                |
+| 0x56  | JUMP         | 1        | 0        | s,pc  | Alter the program counter                                                                          |
+| 0x57  | JUMPI        | 2        | 0        | s,pc  | Conditionally alter the program counter                                                            |
+| 0x58  | PC           | 0        | 2        | s,pc  | Get the value of the program counter prior to the increment corresponding to this instruction      |
+| 0x5b  | JUMPDEST     | 0        | 0        |       | Mark a valid destination for jumps. This operation has no effect on machine state during execution |
+| 0x60  | PUSH$x$      | 0        | 1        | s,pc  | Place $x$ byte item on stack                                                                       |
+| 0x80  | DUP$x$       | $x$      | $x + 1$  | s     | Duplicate $x$-th stack it                                                                          |
+| 0x90  | SWAP$x$      | $x + 1$  | $x + 1$  | s     | Exchange 1st and $x + 1$ stack item                                                                |
+| 0xf3  | RETURN       | 2        | 0        | s,m,i | Halt execution returning output data                                                               |
+| 0xfe  | INVALID      |          |          |       | Designated invalid instruction                                                                     |
+| 0xfd  | REVERT       | 2        | 0        | s,m,i | Halt execution reverting state changes but returning data and remaining gas                        |
+| 0xff  | SELFDESTRUCT | 1        | 0        |       | Halt execution and register account for later deletion                                             |
