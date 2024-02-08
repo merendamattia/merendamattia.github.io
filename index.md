@@ -8,6 +8,8 @@ Questa è la pagina web con tutte le informazioni e materiale procurato/usato du
 
 ---
 
+<img src="logo/emv-lisa-logo-no-background.png">
+
 ## Come eseguire tutti i test
 Tasto destro su `src/test/java` ed eseguire come `Junit test`.
 
