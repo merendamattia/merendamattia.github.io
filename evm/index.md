@@ -3,6 +3,7 @@
 * Table of Content
 {:toc}
 
+# Introduction
 The Ethereum Virtual Machine (EVM) is the core component of the Ethereum network. The EVM is a piece of software that allows the deployment and execution of smart contracts written in a high level language such as Solidity. After writing the contract, it is compiled into bytecode and deployed to the EVM. The EVM runs on each node in the Ethereum network.
 
 Solidity Assembly refers to a low-level programming language that allows developers to write code at a level closer to the EVM itself. It provides a more granular control over the execution of smart contracts, allowing for optimizations and customization that may not be achievable through higher-level Solidity code alone.
@@ -12,6 +13,94 @@ The language used for inline assembly in Solidity is known as Yul. This programm
 The EVM is a quasi-Turing-complete state machine. In this scenario, the term "quasi" means that the execution of a process is limited to a finite number of computational steps by the amount of gas available for any given smart contract execution. This is how Ethereum deals with the halting problem and the situation where execution might (maliciously or accidentally) run forever. Then, the scenario where the Ethereum platform halts in its entirety is avoided.
 
 Gas is a concept that measures the computational effort needed to complete a transaction in Ethereum. The cost of a transaction is paid in Ether and is related to the Gas and Gas price. Our goal during this journey is to learn how to minimize the total amount of gas consumed without compromising security.
+
+# Ethereum
+Ethereum is as a decentralized global software platform propelled by blockchain technology, renowned primarily for 
+its native cryptocurrency, ether (ETH). It offers an expansive scope, allowing users to craft a diverse array of 
+secured digital technologies. While its native token, ether, serves as remuneration for supporting the blockchain, 
+participants can also utilize it for transactions involving tangible goods and services, contingent upon acceptance.
+
+Distinguished by its scalability, programmability, security, and decentralization, Ethereum emerges as the preferred 
+blockchain for developers and enterprises seeking to revolutionize various industries and societal norms.
+
+Ethereum operates as a network of computers worldwide adhering to a predefined set of rules encapsulated within the 
+Ethereum protocol. This network serves as the cornerstone for diverse communities, applications, organizations, and 
+digital assets, all open for creation and utilization by anyone. Unlike other blockchain platforms primarily facilitating 
+cryptocurrency exchange, Ethereum's distinctive attribute lies in its capacity to execute smart contracts via the EVM, 
+elevating its utility beyond mere monetary transactions, such as those supported by Bitcoin.
+
+## Smart contracts
+Smart contracts represent the cornerstone of Ethereum's application layer. Essentially, they are computer programs 
+residing on the blockchain, governed by a set of predefined rules encoded within their immutable code. These contracts 
+operate on the *"if this then that"* logic, guaranteeing execution as per their programmed instructions.
+
+Traditional contracts often entail reliance on trusted intermediaries to ensure adherence to agreement terms. 
+Consider a scenario where Alice bets Bob $10 on winning a bicycle race. Despite Alice emerging victorious, Bob disputes 
+the outcome, highlighting the inherent trust issue. Smart contracts, however, eliminate this reliance by automatically 
+executing predetermined actions when specific conditions are met.
+
+An apt analogy for smart contracts is a vending machine. Much like a vending machine dispenses products upon meeting 
+predefined conditions (selecting a product, paying the price), smart contracts execute unambiguous code to yield predictable 
+outcomes when specific criteria are fulfilled.
+
+The hallmark of smart contracts lies in their deterministic execution. They autonomously carry out actions without the need 
+for human intervention, ensuring consistent and predictable outcomes. For instance, a smart contract can hold funds in escrow, 
+releasing them to a person on a specified date or facilitating automatic asset transfers upon receipt of payment.
+
+Smart contracts leverage the transparency of blockchain technology, offering a public record of all transactions and asset 
+transfers. This transparency facilitates audits and enhances accountability. Moreover, the pseudonymous nature of Ethereum 
+ensures privacy protection, shielding users' identities while allowing them to verify transactions effortlessly.
+
+# Ethereum Virtual Machine
+In the realm of blockchain technology, Ethereum introduces a pivotal component known as the Ethereum Virtual Machine, 
+or EVM for short. To grasp the significance of the EVM, let's take a step back and delve into how computers operate. Your 
+everyday device, whether it's a desktop, laptop, smartphone, houses a central processing unit (CPU) responsible for executing 
+predefined operations. These operations are communicated to the CPU using bits, forming what we call machine code.
+
+Assembly language sits closest to machine code, offering direct interaction with essential CPU components like registers and 
+memory. Unlike higher-level languages that abstract memory usage for programmers, Assembly empowers developers to wield greater 
+control but requires meticulous attention to detail.
+
+Now, onto virtual machines. Think of them as simulations of CPUs, equipped with their own predefined operations but tailored 
+to interpret a specific language distinct from machine code. This language, known as bytecode, serves as the intermediary 
+between higher-level programming languages like Solidity or Vyper and the actual machine code understood by CPUs.
+
+When we write smart contracts in Solidity or Vyper, they undergo compilation into bytecode. It's essential to note that EVM 
+bytecode isn't machine language per se; rather, it's a symbolic representation of instructions awaiting interpretation by the 
+Ethereum Virtual Machine.
+
+When we compile Solidity code using the solc compiler, it transforms into bytecode, represented as a hexadecimal number encoded 
+in UTF-8. If you've encountered bytecode generated by solc, it typically starts with `0x` followed by a sequence of hexadecimal 
+digits, such as `0x6080`$\cdots$. Here, `0x` denotes a hexadecimal number, and each digit represents a specific instruction for the 
+Ethereum Virtual Machine (EVM) to execute.
+
+Bytecode, essentially a series of instructions for the EVM, is more straightforward to comprehend than it appears. It consists 
+of a sequence of bytes to execute in a specific order, with each byte serving as an operator, operand, or part of an operand. 
+These operators, termed OPCODES, dictate the actions the EVM performs.
+
+Let's dissect a simple bytecode example: `0x6001600201`. Breaking it down into individual bytes:
+```
+60 01 60 02 01
+```
+Each byte represents either an operator, a complete operand, or a portion of an operand. Operators, depicted by a single byte, 
+initiate specific actions within the EVM.
+
+For instance, the byte `60` corresponds to the `PUSH1` opcode, instructing the EVM to add a byte to the Stack. In this case, 
+`60 01` denotes the complete statement, with `01` serving as the operand, as expected by the `PUSH1` operator.
+
+Translating into human language means putting the value of 01 on the Stack. The following statement is very similar:
+```
+60 02
+```
+This instruction means: place the value of `02` onto the Stack.
+Now, there's only 1 byte remaining, `01`, which acts as an operator.
+It corresponds to the `ADD` opcode, which sums the values in the Stack (1 and 2) and returns the result to the Stack.
+Consequently, the final result of our bytecode will be the number 3 on the Stack.
+
+It's worth noting that byte `01` was employed both as an operand and an operator. However, its representation can be easily 
+deduced in the context of its usage.
+
+We can find the list of all OPCODEs in the [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf).
 
 ## Code Optimization Problem
 Inline assembly is a way to access the EVM at a lower level. It bypasses several important safety features and checks of Solidity. The correct use of inline assembly can significantly reduce the execution cost. However, you should only use it for tasks that need it, and only if you know what you are doing. Optimizing the code using inline assembly might introduce new security issues to your code. To master inline assembly we need to understand how the EVM and its components work.
