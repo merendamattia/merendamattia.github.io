@@ -4,3 +4,16 @@ _site
 .jekyll-metadata
 vendor
 .DS_Store
+
+/*.synctex.gz
+/*.log
+/*.bbl
+/main.pdf
+/*.blg
+/*.aux
+/*.log
+/*.out
+comment.cut
+main.out
+main.fls
+main.fdb_latexmk
