@@ -89,20 +89,79 @@ Tuttavia, in termini più pratici, Ethereum si presenta come un'infrastruttura i
 Attraverso la piattaforma Ethereum, gli sviluppatori hanno la possibilità di creare applicazioni decentralizzate con funzioni economiche integrate, offrendo non solo elevata disponibilità, verificabilità, trasparenza e neutralità, ma anche la riduzione o l'eliminazione della censura e alcuni rischi associati alle controparti tradizionali. [2]
 
 ### Ethereum vs Bitcoin
-Ethereum presenta numerose caratteristiche comuni con altre blockchain aperte: una rete peer-to-peer che collega gli utenti, un algoritmo di consenso per mantenere gli aggiornamenti di stato sincronizzati (inizialmente basato su un consenso proof-of-work, ma con l'avvento dell'aggiornamento "The Merge" [https://ethereum.org/it/roadmap/merge/ TODO footnote], il consenso è passato a proof-of-stake), l'uso di tecniche crittografiche come firme digitali e hash, e una valuta digitale denominata *ether*.
+Ethereum presenta numerose caratteristiche comuni con altre blockchain aperte: una rete peer-to-peer che collega gli utenti, un algoritmo di consenso per mantenere gli aggiornamenti di stato sincronizzati (inizialmente basato su un consenso proof-of-work, ma con l'avvento dell'aggiornamento "The Merge" [https://ethereum.org/it/roadmap/merge/ TODO footnote], il consenso è passato a proof-of-stake), l'uso di tecniche crittografiche come firme digitali e hash, e una valuta digitale denominata *ether* (ETH).
 
 Tuttavia, sia lo scopo che la struttura di Ethereum si differenziano notevolmente da quelle delle blockchain precedenti, come Bitcoin.
 
 Il principale obiettivo di Ethereum non è solo quello di fungere da sistema di pagamento digitale. Anche se l'*ether* è fondamentale per il funzionamento di Ethereum, essa viene considerata una "valuta di utilità" utilizzata per pagare l'utilizzo della piattaforma Ethereum come un computer globale.
 
-A differenza di Bitcoin, che dispone di un linguaggio di scripting limitato, Ethereum è stato progettato per essere una blockchain programmabile per scopi generici, con una macchina virtuale [EVM](#EVM) in grado di eseguire codice di complessità arbitraria e illimitata. Mentre il linguaggio di scripting di Bitcoin si limita principalmente a valutazioni semplici (true/false) delle condizioni di spesa di un utente, il linguaggio di Ethereum (Solidity [11]) è quasi completo in termini di capacità computazionale (*Turing completeness*), consentendo ad Ethereum di funzionare come un computer per scopi generali. [2]
+A differenza di Bitcoin, che dispone di un linguaggio di scripting limitato, Ethereum è stato progettato per essere una blockchain programmabile per scopi generici, con una macchina virtuale [EVM](#ethereum-virtual-machine) in grado di eseguire codice di complessità arbitraria e illimitata. Mentre il linguaggio di scripting di Bitcoin si limita principalmente a valutazioni semplici (true/false) delle condizioni di spesa di un utente, il linguaggio di Ethereum (Solidity [11]) è quasi completo in termini di capacità computazionale (*Turing completeness*), consentendo ad Ethereum di funzionare come un computer per scopi generali. [2]
 
 ### Funzionamento
+Sulla blockchain Ethereum sistono due tipi principali di account utilizzabili per gestire le transazioni e l'interazione sulla rete: gli Externally Owned Account e i Contract Account.
 
+Gli Externally Owned Account (EOA) sono controllati direttamente dagli utenti e sono associati a una coppia di chiavi crittografiche, pubblica e privata. Questi account consentono agli individui di ricevere e inviare *ether* e di partecipare alle transazioni sulla rete. Le transazioni tra due account esterni coinvolgono esclusivamente lo scambio di *ether* e non comportano alcun costo di creazione dell'account. [12]
 
+I Contract Account, invece, sono associati agli smart contract. Questi account contengono il codice dello smart contract e vengono attivati quando ricevono una transazione. Le transazioni con questi account possono coinvolgere l'esecuzione di codice dello smart contract, oltre allo scambio di *ether* e comportano un costo di creazione in quanto richiedono risorse di calcolo e di archiviazione sulla rete Ethereum. [12]
 
-## EVM
+Affinché una transazione venga effettuata su Ethereum, il mittente deve conoscere l'indirizzo del destinatario, detto anche *chiave pubblica dell'account*, e firmare digitalmente la transazione con la propria chiave privata. Questo processo dimostra che il richiedente della transazione è il legittimo proprietario dell'account. 
+
+Le transazioni sono essenzialmente istruzioni crittograficamente firmate da un account che iniziano una modifica dello stato della rete Ethereum. Inoltre, per "transazione" si intende una transazione approvata e inclusa in un blocco della blockchain.
+
+Poiché le transazioni sono atomiche, esse devono essere eseguite completamente prima di apportare cambiamenti allo stato globale della rete. Questo significa che tutte le istruzioni all'interno della transazione devono essere valide. Se una qualsiasi istruzione fallisce, gli effetti della transazione vengono annullati e lo stato viene ripristinato al momento precedente (rollback), come se la transazione non fosse mai avvenuta. Anche se una transazione fallisce, viene comunque registrata come tentata, ma non influenza lo stato complessivo della rete. [13]
+
+Ogni transazione su Ethereum comporta un costo proporzionale alla sua complessità computazionale, misurato in "gas". Possiamo pensare al gas come al carburante necessario per far funzionare le operazioni sulla blockchain, simile al carburante utilizzato da un'auto per percorrere una determinata distanza.
+
+Ogni operazione sulla blockchain ha un costo specifico in gas. Ad esempio, eseguire un hash o fare una somma di due numeri richiede una differente quantità di gas (30 e 3, rispettivamente). Il gas è misurato in "wei" ($1 \text{ wei } = 1^{-18} \text{ ETH}$) ed è strettamente legato alle transazioni. Ogni transazione su Ethereum ha due parametri: il prezzo del gas (gas price) e il limite del gas (gas limit), che rappresentano rispettivamente il prezzo che si è disposti a pagare per unità di gas e la quantità massima di gas utilizzabile.
+
+A differenza di Bitcoin, dove esiste un limite alla dimensione massima di un blocco, su Ethereum si fa riferimento al limite di gas, che determina la massima quantità di calcoli che la Ethereum Virtual Machine deve eseguire per blocco.
+
+Immaginiamo di dover eseguire una transazione che richiede 10 gas e abbiamo deciso di pagare 100 wei per ogni gas: il costo totale della transazione sarà di 1000 wei (`10 * 100`). Se aumentiamo il prezzo del gas a 1000 wei per gas, il costo totale della transazione sarà di 10000 wei (`10 * 1000`). I validatori della rete Ethereum sono liberi di scegliere le transazioni da includere nel nuovo blocco, e generalmente cercano di massimizzare il profitto. Di conseguenza, le transazioni con un prezzo del gas più elevato hanno una priorita' maggiore di essere aggiunte al blocco successivo.
+
+Se una transazione richiede 15 gas ma abbiamo impostato un limite di 10 gas, l'esecuzione si interromperà quando verrà raggiunto il limite, e tutto il gas andrà perso. Se, invece, il limite di gas è superiore a quello utilizzato dalla transazione, il gas in eccesso verrà restituito al mittente.
+
+Quindi, il costo totale di una transazione può essere calcolato con la seguente formula:
+$\text{Costo transazione } = \text{ Limite di gas } \times \text{ Prezzo del gas}$
+
+Oltre a compensare i validatori, il costo delle transazioni su Ethereum serve anche a proteggere la blockchain da attacchi, come il DDoS, e da errori di programmazione negli smart contract che potrebbero sovraccaricare il sistema. Ad esempio, se una computazione finisse in un ciclo infinito, la gestione del gas interromperebbe l'esecuzione una volta che il gas disponibile è esaurito. Questa caratteristica ci consente di definire Ethereum come un linguaggio (quasi) Turing-completo, poiché siamo sicuri che ogni programma in esecuzione terminerà. [5]
+
 ## Smart Contracts
+Uno smart contract e' un agente autonomo che vive sulla blockchain a un indirizzo specifico.
+TODO da fare
+
+## Ethereum Virtual Machine
+Al cuore del protocollo e del funzionamento di Ethereum risiede l'Ethereum Virtual Machine (EVM). Questa componente software gestisce l'implementazione e l'esecuzione degli smart contracts. Quasi ogni azione sulla rete Ethereum comporta un aggiornamento dello stato calcolato dall'EVM, ad eccezione delle semplici transazioni di trasferimento di valore da un EOA ad un altro. A un livello più alto, possiamo concepire l'EVM come un enorme computer decentralizzato, distribuito su scala globale, che contiene milioni di "programmi" eseguibili, ognuno dei quali con il proprio spazio dati permanente. [2]
+
+A livello matematico, possiamo definire la EVM come una funzione matematica: dato un input, essa produce un output deterministico. In particolare, la funzione di transizione e' definita come segue: $Y(S,T) = S'$, dove $S$ e' il vecchio stato macchina valido e $T$ e' un insieme di transazioni valide che, applicate allo stato $S$, producono lo stato $S'$. [14]
+
+Come detto in precedenza, l'EVM è una macchina quasi Turing-completa, il che significa che tutti i processi di esecuzione sono limitati a un numero finito di passaggi computazionali, determinati dalla quantità di gas disponibile per ogni esecuzione di uno smart contract. Questo limite assicura che ogni programma abbia una fine definita, evitando situazioni in cui l'esecuzione potrebbe protrarsi all'infinito, portando alla congestione dell'intera piattaforma Ethereum. [2]
+
+Dal punto di vista architetturale, l'EVM utilizza uno stack, ovvero una coda volatile di tipo LIFO (Last In First Out), per memorizzare tutti i valori in memoria, con una profondita' massima di 1024 elementi. Opera su parole (words) di 256 bit, principalmente per agevolare le operazioni di hashing, e include diverse componenti di dati indirizzabili:
+1. una ROM contenente il codice del programma, immutabile una volta caricato il bytecode dello smart contract da eseguire;
+2. una memoria volatile (Memory), in cui ogni posizione è inizializzata a zero e può essere utilizzata temporaneamente durante l'esecuzione;
+3. uno spazio di archiviazione permanente (Storage), parte dello stato di Ethereum, anch'esso inizializzato a zero, che conserva informazioni a lungo termine.
+
+<figure>
+    <img src="img/evm.jpeg" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" />
+    <figcaption align="center">Fig. 2: Componenti della Ethereum Virtual Machine.</figcaption>
+</figure>
+
+Il ruolo principale dell'EVM consiste nell'aggiornare lo stato di Ethereum attraverso il calcolo di transizioni di stato valide derivanti dall'esecuzione del codice degli smart contracts. Questo concetto rende Ethereum una macchina a stati basata sulle transazioni, poiché gli attori esterni, come gli utenti della rete, iniziano le transizioni di stato creando, accettando e ordinando le transazioni. 
+
+Per comprendere meglio cosa costituisca lo stato di Ethereum, possiamo suddividerlo in due livelli. Al livello superiore troviamo lo stato globale di Ethereum, che è essenzialmente una mappatura degli indirizzi Ethereum (160 bit) agli account della rete. [2]
+
+Scendendo al livello inferiore, ogni indirizzo Ethereum rappresenta un account, che include diverse informazioni:
+- il saldo in ether, espresso come il numero di wei posseduti dall'account;
+- il nonce, che tiene traccia del numero di transazioni inviate con successo da quell'account, se si tratta di un account controllato dall'utente (EOA), o il numero di contratti creati, se è un contract account;
+- lo storage dell'account, che funge da archivio dati permanente utilizzato esclusivamente dagli smart contracts;
+- il codice del programma dell'account, presente solo se l'account è uno smart contract. Da notare che un account esterno controllato dall'utente avrà sempre codice nullo e uno storage vuoto.
+
+Quando una transazione coinvolge l'esecuzione del codice di uno smart contract, viene creato un'istanza dell'EVM (Ethereum Virtual Machine) con tutte le informazioni necessarie relative al blocco corrente in fase di creazione e alla transazione specifica in elaborazione. In questo processo, il codice dello smart contract viene caricato nell'EVM, il program counter è impostato a zero, lo storage del contract account viene recuperato, la memoria viene inizializzata e le variabili di blocco e di ambiente vengono configurate. [2]
+
+Un aspetto fondamentale è la quantità di gas disponibile per questa esecuzione, determinata dalla quantità di gas pagata dal mittente all'inizio della transazione. Durante l'esecuzione del codice, la quantità di gas disponibile diminuisce in base al costo delle operazioni eseguite. Se il gas disponibile si esaurisce, viene lanciata un'eccezione "Out of Gas (OOG)" e l'esecuzione viene interrotta, annullando la transazione. Nessuna modifica viene apportata allo stato di Ethereum, tranne l'incremento del nonce del mittente e il pagamento delle commissioni al validatore.
+
+Possiamo immaginare l'EVM che opera su una copia isolata dello stato effettivo di Ethereum, scartando completamente questa versione isolata se l'esecuzione non può essere completata. Tuttavia, se l'esecuzione ha successo, lo stato effettivo viene aggiornato per corrispondere alla versione isolata, inclusi eventuali cambiamenti nei dati di archiviazione del contratto chiamato, la creazione di nuovi smart contracts e i trasferimenti di *ether* avviati. [2]
+
 ## Bytecode EVM
 ### Esempio esecuzione
 ## Alterazione flusso di esecuzione
@@ -168,3 +227,6 @@ A differenza di Bitcoin, che dispone di un linguaggio di scripting limitato, Eth
 9. Blockchain Council: https://www.blockchain-council.org/blockchain/types-of-blockchains-explained-public-vs-private-vs-consortium/
 10. Ethereum Whitepaper: https://ethereum.org/it/whitepaper/
 11. Solidity: https://docs.soliditylang.org/en/latest/
+12. Ethereum Account Type: https://ethereum.org/en/developers/docs/accounts/
+13. Ethereum Smart Contract: https://ethereum.org/en/developers/docs/smart-contracts/
+14. Ethereum Virtual Machine: https://ethereum.org/en/developers/docs/evm/
