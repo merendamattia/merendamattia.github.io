@@ -80,9 +80,27 @@ TODO non so se metterlo o no
 ---
 
 ## Ethereum
-### Storia
-### Funzionamento
+Ethereum è una blockchain aperta (permissionless), accessibile a chiunque (pubblica) e con il codice sorgente disponibile liberamente (open-source). È stata ideata per la prima volta da Vitalik Buterin nel 2013 [10], con l'obiettivo di creare una blockchain in grado di eseguire una vasta gamma di programmi generici.
+
+Dal punto di vista tecnico, Ethereum può essere considerato una sorta di enorme macchina virtuale globale e "infinita", che opera seguendo uno stato singolo accessibile da qualsiasi parte del mondo e una macchina virtuale che applica le modifiche a tale stato.
+
+Tuttavia, in termini più pratici, Ethereum si presenta come un'infrastruttura informatica decentralizzata, aperta a tutti e basata su codice sorgente accessibile (https://github.com/ethereum/go-ethereum TODO footnote), che consente l'esecuzione di programmi denominati [Smart Contracts](#smart-contracts). Utilizza una blockchain per tenere traccia e registrare le variazioni di stato del sistema, utilizzando la criptovaluta nativa (chiamata Ether) per misurare e regolare i costi delle risorse di elaborazione.
+
+Attraverso la piattaforma Ethereum, gli sviluppatori hanno la possibilità di creare applicazioni decentralizzate con funzioni economiche integrate, offrendo non solo elevata disponibilità, verificabilità, trasparenza e neutralità, ma anche la riduzione o l'eliminazione della censura e alcuni rischi associati alle controparti tradizionali. [2]
+
 ### Ethereum vs Bitcoin
+Ethereum presenta numerose caratteristiche comuni con altre blockchain aperte: una rete peer-to-peer che collega gli utenti, un algoritmo di consenso per mantenere gli aggiornamenti di stato sincronizzati (inizialmente basato su un consenso proof-of-work, ma con l'avvento dell'aggiornamento "The Merge" [https://ethereum.org/it/roadmap/merge/ TODO footnote], il consenso è passato a proof-of-stake), l'uso di tecniche crittografiche come firme digitali e hash, e una valuta digitale denominata *ether*.
+
+Tuttavia, sia lo scopo che la struttura di Ethereum si differenziano notevolmente da quelle delle blockchain precedenti, come Bitcoin.
+
+Il principale obiettivo di Ethereum non è solo quello di fungere da sistema di pagamento digitale. Anche se l'*ether* è fondamentale per il funzionamento di Ethereum, essa viene considerata una "valuta di utilità" utilizzata per pagare l'utilizzo della piattaforma Ethereum come un computer globale.
+
+A differenza di Bitcoin, che dispone di un linguaggio di scripting limitato, Ethereum è stato progettato per essere una blockchain programmabile per scopi generici, con una macchina virtuale [EVM](#EVM) in grado di eseguire codice di complessità arbitraria e illimitata. Mentre il linguaggio di scripting di Bitcoin si limita principalmente a valutazioni semplici (true/false) delle condizioni di spesa di un utente, il linguaggio di Ethereum (Solidity [11]) è quasi completo in termini di capacità computazionale (*Turing completeness*), consentendo ad Ethereum di funzionare come un computer per scopi generali. [2]
+
+### Funzionamento
+
+
+
 ## EVM
 ## Smart Contracts
 ## Bytecode EVM
@@ -140,7 +158,7 @@ TODO non so se metterlo o no
 
 # References
 1. Ethereum: https://cryptodeep.ru/doc/paper.pdf
-2. EVM: https://books.google.it/books?id=SedSMQAACAAJ
+2. Mastering Ethereum: https://books.google.it/books?id=SedSMQAACAAJ
 3. Bitcoin: https://bitcoin.org/bitcoin.pdf
 4. EVMLiSA: https://github.com/lisa-analyzer/evm-lisa
 5. Blockchain. Tecnologia e Applicazioni per il business: https://www.hoeplieditore.it/hoepli-catalogo/articolo/blockchain-gianluca-chiap/9788820389253/1522
@@ -148,3 +166,5 @@ TODO non so se metterlo o no
 7. Tesi di Davide Tarpini
 8. Permission.io: https://www.permission.io/blog/permissioned-vs-permissionless-blockchains-explained
 9. Blockchain Council: https://www.blockchain-council.org/blockchain/types-of-blockchains-explained-public-vs-private-vs-consortium/
+10. Ethereum Whitepaper: https://ethereum.org/it/whitepaper/
+11. Solidity: https://docs.soliditylang.org/en/latest/
