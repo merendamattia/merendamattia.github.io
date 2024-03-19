@@ -116,7 +116,7 @@ Ogni operazione sulla blockchain ha un costo specifico in gas. Ad esempio, esegu
 
 A differenza di Bitcoin, dove esiste un limite alla dimensione massima di un blocco, su Ethereum si fa riferimento al limite di gas, che determina la massima quantità di calcoli che la Ethereum Virtual Machine deve eseguire per blocco.
 
-Immaginiamo di dover eseguire una transazione che richiede 10 gas e abbiamo deciso di pagare 100 wei per ogni gas: il costo totale della transazione sarà di 1000 wei (`10 * 100`). Se aumentiamo il prezzo del gas a 1000 wei per gas, il costo totale della transazione sarà di 10000 wei (`10 * 1000`). I validatori della rete Ethereum sono liberi di scegliere le transazioni da includere nel nuovo blocco, e generalmente cercano di massimizzare il profitto. Di conseguenza, le transazioni con un prezzo del gas più elevato hanno una priorita' maggiore di essere aggiunte al blocco successivo.
+Immaginiamo di dover eseguire una transazione che richiede 10 gas e abbiamo deciso di pagare 100 wei per ogni gas: il costo totale della transazione sarà di 1000 wei (`10 * 100`). Se aumentiamo il prezzo del gas a 1000 wei per gas, il costo totale della transazione sarà di 10000 wei (`10 * 1000`). I validatori della rete Ethereum sono liberi di scegliere le transazioni da includere nel nuovo blocco, e generalmente cercano di massimizzare il profitto. Di conseguenza, le transazioni con un prezzo del gas più elevato hanno una priorità maggiore di essere aggiunte al blocco successivo.
 
 Se una transazione richiede 15 gas ma abbiamo impostato un limite di 10 gas, l'esecuzione si interromperà quando verrà raggiunto il limite, e tutto il gas andrà perso. Se, invece, il limite di gas è superiore a quello utilizzato dalla transazione, il gas in eccesso verrà restituito al mittente.
 
@@ -126,24 +126,79 @@ $\text{Costo transazione } = \text{ Limite di gas } \times \text{ Prezzo del gas
 Oltre a compensare i validatori, il costo delle transazioni su Ethereum serve anche a proteggere la blockchain da attacchi, come il DDoS, e da errori di programmazione negli smart contract che potrebbero sovraccaricare il sistema. Ad esempio, se una computazione finisse in un ciclo infinito, la gestione del gas interromperebbe l'esecuzione una volta che il gas disponibile è esaurito. Questa caratteristica ci consente di definire Ethereum come un linguaggio (quasi) Turing-completo, poiché siamo sicuri che ogni programma in esecuzione terminerà. [5]
 
 ## Smart Contracts
-Uno smart contract e' un agente autonomo che vive sulla blockchain a un indirizzo specifico.
-TODO da fare
+Il concetto di smart contract è stato introdotto per la prima volta da Nick Szabo nel 1994, definendolo come "un protocollo di transazione digitale che esegue i termini di un contratto" [15]. Lo scopo principale di uno smart contract è quello di automatizzare l'adempimento delle condizioni contrattuali, riducendo al minimo il rischio di azioni malevole e la necessità di fidarsi degli intermediari (rischio di controparte).
+
+Un contratto, in generale, è un accordo legalmente vincolante tra due o più parti e svolge un ruolo fondamentale nell'instaurare fiducia tra i soggetti coinvolti in una transazione. Può essere tanto semplice quanto un biglietto dell'autobus o molto complesso come un contratto di lavoro. [16]
+
+Nel contesto delle blockchain, uno smart contract è un programma che replica tutte le caratteristiche di un contratto tradizionale, ma viene memorizzato ed eseguito all'interno di una blockchain. Si tratta di un agente autonomo che risiede su una blockchain, senza la necessità di un'entità esterna per valutare le condizioni e prendere decisioni. Questo ruolo è sostituito dal consenso della rete. Gli smart contract stabiliscono le regole e le fanno rispettare automaticamente alle parti coinvolte, senza la necessità di autorità centrali. Quando le condizioni del contratto vengono soddisfatte, lo smart contract esegue autonomamente azioni specifiche, come ad esempio il trasferimento di denaro [5].
+
+Un smart contract può essere paragonato a un'applicazione IFTTT (If This Then That) che risponde a eventi specifici (Figura 2).
+
+<figure>
+    <img src="img/smart-contract.jpeg" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" />
+    <figcaption align="center">Fig. 2: Il processo IFTTT (If This Then That) negli smart contract. [5]</figcaption>
+    <figcaption align="center">TODO sistemare con photoshop questa figura</figcaption>
+</figure>
+
+Gli smart contract, solitamente redatti in un linguaggio di alto livello come Solidity, necessitano di essere compilati nel bytecode di basso livello eseguito nell'EVM per poter essere eseguiti. Dopo la compilazione, vengono distribuiti sulla piattaforma Ethereum attraverso una speciale transazione di creazione del contratto, inviata all'indirizzo di creazione del contratto `0x0`, detto *zero address*. Ogni contratto è identificato da un indirizzo Ethereum, derivato dalla transazione di creazione del contratto in funzione dell'account di origine e del nonce. Come già menzionato nella sezione [Funzionamento](#funzionamento), a differenza degli EOAs, gli account creati per nuovi smart contract non hanno chiavi associate.
+
+Gli smart contract vengono eseguiti solo quando vengono richiamati da una transazione. Ogni smart contract in Ethereum viene eseguito a seguito di una transazione avviata da un EOA. Un contratto può richiamare un altro contratto, che a sua volta può richiamare un altro contratto e così via, ma il primo contratto in questa catena di esecuzione sarà sempre stato richiamato da una transazione proveniente da un EOA.
+
+Le transazioni sono atomiche, indipendentemente dal numero di smart contract richiamati o dalle azioni che eseguono. Ogni transazione viene eseguita nella sua totalità e le eventuali modifiche allo stato globale vengono registrate solo se l'esecuzione termina con successo. Se l'esecuzione fallisce a causa di un errore, tutti gli effetti vengono annullati e la transazione viene registrata come tentata.
+
+È importante notare che una volta distribuito, il codice di un contratto non può essere modificato. Approfondiremo ulteriormente questo aspetto in seguito.
+
+### Esempio
+Ma adesso vediamo un esempio di smart contract (tratto da Solidity by Example [17]):
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+contract ReceiveEther {
+    // Function to receive Ether. msg.data must be empty
+    receive() external payable {}
+
+    // Fallback function is called when msg.data is not empty
+    fallback() external payable {}
+
+    function getBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+}
+
+contract SendEther {
+    function sendViaCall(address payable _to) public payable {
+        // Call returns a boolean value indicating success or failure.
+        (bool sent, bytes memory data) = _to.call{value: msg.value}("");
+        require(sent, "Failed to send Ether");
+    }
+}
+```
+
+Questo smart contract è composto da due contratti: *ReceiveEther* e *SendEther*.
+
+Il contratto *ReceiveEther* è progettato per ricevere *ether*. Contiene due funzioni: `receive()` e `fallback()`. La funzione `receive()` viene chiamata quando viene inviato *ether* al contratto e non ci sono dati associati alla transazione. Questo è possibile tramite l'invio di *ether* direttamente all'indirizzo del contratto senza specificare alcuna funzione. La funzione `fallback()` viene invece chiamata quando viene inviato *ether* al contratto e sono presenti dati associati alla transazione. Entrambe le funzioni accettano *ether* e sono contrassegnate come payable per indicare che possono ricevere fondi. È importante specificare che un contratto che riceve *ether* deve avere almeno una di queste due funzioni.
+
+La funzione `getBalance()` restituisce il saldo attuale del contratto in *ether*.
+
+Il contratto *SendEther* è progettato invece per inviare *ether*. Contiene una funzione `sendViaCall` che invia *ether* a un altro indirizzo Ethereum. Questa funzione prende in input l'indirizzo del destinatario e l'ammontare di *ether* da inviare. Utilizza la funzione `call` per inviare *ether* al destinatario e restituisce un booleano che indica se l'operazione è stata eseguita con successo. Infine, la funzione `require` permette di verificare che l’invio sia andato a buon fine, in caso contrario l’esecuzione viene interrotta con un messaggio di errore.
 
 ## Ethereum Virtual Machine
 Al cuore del protocollo e del funzionamento di Ethereum risiede l'Ethereum Virtual Machine (EVM). Questa componente software gestisce l'implementazione e l'esecuzione degli smart contracts. Quasi ogni azione sulla rete Ethereum comporta un aggiornamento dello stato calcolato dall'EVM, ad eccezione delle semplici transazioni di trasferimento di valore da un EOA ad un altro. A un livello più alto, possiamo concepire l'EVM come un enorme computer decentralizzato, distribuito su scala globale, che contiene milioni di "programmi" eseguibili, ognuno dei quali con il proprio spazio dati permanente. [2]
 
-A livello matematico, possiamo definire la EVM come una funzione matematica: dato un input, essa produce un output deterministico. In particolare, la funzione di transizione e' definita come segue: $Y(S,T) = S'$, dove $S$ e' il vecchio stato macchina valido e $T$ e' un insieme di transazioni valide che, applicate allo stato $S$, producono lo stato $S'$. [14]
+A livello matematico, possiamo definire l'EVM come una funzione matematica: dato un input, essa produce un output deterministico. In particolare, la funzione di transizione è definita come segue: $Y(S,T) = S'$, dove $S$ è il vecchio stato macchina valido e $T$ è un insieme di transazioni valide che, se applicate allo stato $S$, producono lo stato $S'$. [14]
 
 Come detto in precedenza, l'EVM è una macchina quasi Turing-completa, il che significa che tutti i processi di esecuzione sono limitati a un numero finito di passaggi computazionali, determinati dalla quantità di gas disponibile per ogni esecuzione di uno smart contract. Questo limite assicura che ogni programma abbia una fine definita, evitando situazioni in cui l'esecuzione potrebbe protrarsi all'infinito, portando alla congestione dell'intera piattaforma Ethereum. [2]
 
-Dal punto di vista architetturale, l'EVM utilizza uno stack, ovvero una coda volatile di tipo LIFO (Last In First Out), per memorizzare tutti i valori in memoria, con una profondita' massima di 1024 elementi. Opera su parole (words) di 256 bit, principalmente per agevolare le operazioni di hashing, e include diverse componenti di dati indirizzabili:
-1. una ROM contenente il codice del programma, immutabile una volta caricato il bytecode dello smart contract da eseguire;
+Dal punto di vista architetturale, l'EVM utilizza uno stack, ovvero una coda volatile di tipo LIFO (Last In First Out), per memorizzare tutti i valori in memoria, con una profondità massima di 1024 elementi. Opera su parole (words) di 256 bit, principalmente per agevolare le operazioni di hashing, e include diverse componenti di dati indirizzabili:
+1. una ROM virtuale contenente il codice del programma, immutabile una volta caricato il bytecode dello smart contract da eseguire;
 2. una memoria volatile (Memory), in cui ogni posizione è inizializzata a zero e può essere utilizzata temporaneamente durante l'esecuzione;
 3. uno spazio di archiviazione permanente (Storage), parte dello stato di Ethereum, anch'esso inizializzato a zero, che conserva informazioni a lungo termine.
 
 <figure>
     <img src="img/evm.jpeg" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" />
-    <figcaption align="center">Fig. 2: Componenti della Ethereum Virtual Machine.</figcaption>
+    <figcaption align="center">Fig. 3: Componenti della Ethereum Virtual Machine.</figcaption>
 </figure>
 
 Il ruolo principale dell'EVM consiste nell'aggiornare lo stato di Ethereum attraverso il calcolo di transizioni di stato valide derivanti dall'esecuzione del codice degli smart contracts. Questo concetto rende Ethereum una macchina a stati basata sulle transazioni, poiché gli attori esterni, come gli utenti della rete, iniziano le transizioni di stato creando, accettando e ordinando le transazioni. 
@@ -156,7 +211,7 @@ Scendendo al livello inferiore, ogni indirizzo Ethereum rappresenta un account, 
 - lo storage dell'account, che funge da archivio dati permanente utilizzato esclusivamente dagli smart contracts;
 - il codice del programma dell'account, presente solo se l'account è uno smart contract. Da notare che un account esterno controllato dall'utente avrà sempre codice nullo e uno storage vuoto.
 
-Quando una transazione coinvolge l'esecuzione del codice di uno smart contract, viene creato un'istanza dell'EVM (Ethereum Virtual Machine) con tutte le informazioni necessarie relative al blocco corrente in fase di creazione e alla transazione specifica in elaborazione. In questo processo, il codice dello smart contract viene caricato nell'EVM, il program counter è impostato a zero, lo storage del contract account viene recuperato, la memoria viene inizializzata e le variabili di blocco e di ambiente vengono configurate. [2]
+Quando una transazione coinvolge l'esecuzione del codice di uno smart contract, viene creata un'istanza dell'EVM (Ethereum Virtual Machine) con tutte le informazioni necessarie relative al blocco corrente in fase di creazione e alla transazione specifica in elaborazione. In questo processo, il codice dello smart contract viene caricato nell'EVM, il program counter viene impostato a zero, lo storage del contract account viene recuperato, la memoria viene inizializzata e le variabili di blocco e di ambiente vengono configurate. [2]
 
 Un aspetto fondamentale è la quantità di gas disponibile per questa esecuzione, determinata dalla quantità di gas pagata dal mittente all'inizio della transazione. Durante l'esecuzione del codice, la quantità di gas disponibile diminuisce in base al costo delle operazioni eseguite. Se il gas disponibile si esaurisce, viene lanciata un'eccezione "Out of Gas (OOG)" e l'esecuzione viene interrotta, annullando la transazione. Nessuna modifica viene apportata allo stato di Ethereum, tranne l'incremento del nonce del mittente e il pagamento delle commissioni al validatore.
 
@@ -230,3 +285,6 @@ Possiamo immaginare l'EVM che opera su una copia isolata dello stato effettivo d
 12. Ethereum Account Type: https://ethereum.org/en/developers/docs/accounts/
 13. Ethereum Smart Contract: https://ethereum.org/en/developers/docs/smart-contracts/
 14. Ethereum Virtual Machine: https://ethereum.org/en/developers/docs/evm/
+15. Nick Szabo: introduzione agli smart contracts 1994: https://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart.contracts.html
+16. Treccani: definizione contratto: https://www.treccani.it/enciclopedia/contratto/
+17. Smart contract di esempio: https://solidity-by-example.org/sending-ether/
