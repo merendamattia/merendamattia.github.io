@@ -12,7 +12,7 @@ La caratteristica principale di Ethereum è la capacità di eseguire smart contr
 
 Tuttavia, garantire la sicurezza e l'affidabilità degli smart contract è essenziale, poiché non possono essere modificati una volta deployati. La presenza di bug o vulnerabilità potrebbe causare gravi conseguenze, come perdite di fondi o azioni indesiderate.
 
-Per garantire la qualità degli smart contract, vengono sviluppate tecniche di analisi e verifica del codice. L'analisi statica, ad esempio, identifica potenziali problemi di sicurezza senza eseguire effettivamente il codice. Tuttavia, nel contesto di Ethereum, la costruzione di un control flow graph (CFG) affidabile è complessa a causa delle destinazioni dinamiche dei salti (Jump Orfane) durante l'esecuzione del bytecode EVM.
+Per garantire la qualità degli smart contract, vengono sviluppate tecniche di analisi e verifica del codice. L'analisi statica, ad esempio, identifica potenziali problemi di sicurezza senza eseguire effettivamente il codice. Tuttavia, nel contesto di Ethereum, la costruzione di un control flow graph (CFG) affidabile è complessa a causa delle destinazioni dinamiche dei salti (Jump Orfane) durante l'esecuzione del EVM bytecode.
 
 In questo elaborato viene presentato EVMLiSA [4], un software in grado di costruire un CFG sound e affidabile (TODO si spera) di smart contract eseguibili su EVM.
 
@@ -178,9 +178,9 @@ contract SendEther {
 
 Questo smart contract è composto da due contratti: *ReceiveEther* e *SendEther*.
 
-Il contratto *ReceiveEther* è progettato per ricevere *ether*. Contiene due funzioni: `receive()` e `fallback()`. La funzione `receive()` viene chiamata quando viene inviato *ether* al contratto e non ci sono dati associati alla transazione. Questo è possibile tramite l'invio di *ether* direttamente all'indirizzo del contratto senza specificare alcuna funzione. La funzione `fallback()` viene invece chiamata quando viene inviato *ether* al contratto e sono presenti dati associati alla transazione. Entrambe le funzioni accettano *ether* e sono contrassegnate come payable per indicare che possono ricevere fondi. È importante specificare che un contratto che riceve *ether* deve avere almeno una di queste due funzioni.
+Il contratto *ReceiveEther* è progettato per ricevere *ether*. Contiene due funzioni: `receive` e `fallback`. La funzione `receive` viene chiamata quando viene inviato *ether* al contratto e non ci sono dati associati alla transazione. Questo è possibile tramite l'invio di *ether* direttamente all'indirizzo del contratto senza specificare alcuna funzione. La funzione `fallback` viene invece chiamata quando viene inviato *ether* al contratto e sono presenti dati associati alla transazione. Entrambe le funzioni accettano *ether* e sono contrassegnate come payable per indicare che possono ricevere fondi. È importante specificare che un contratto che riceve *ether* deve avere almeno una di queste due funzioni.
 
-La funzione `getBalance()` restituisce il saldo attuale del contratto in *ether*.
+La funzione `getBalance` restituisce il saldo attuale del contratto in *ether*.
 
 Il contratto *SendEther* è progettato invece per inviare *ether*. Contiene una funzione `sendViaCall` che invia *ether* a un altro indirizzo Ethereum. Questa funzione prende in input l'indirizzo del destinatario e l'ammontare di *ether* da inviare. Utilizza la funzione `call` per inviare *ether* al destinatario e restituisce un booleano che indica se l'operazione è stata eseguita con successo. Infine, la funzione `require` permette di verificare che l’invio sia andato a buon fine, in caso contrario l’esecuzione viene interrotta con un messaggio di errore.
 
@@ -207,7 +207,7 @@ Per comprendere meglio cosa costituisca lo stato di Ethereum, possiamo suddivide
 
 Scendendo al livello inferiore, ogni indirizzo Ethereum rappresenta un account, che include diverse informazioni:
 - il saldo in ether, espresso come il numero di wei posseduti dall'account;
-- il nonce, che tiene traccia del numero di transazioni inviate con successo da quell'account, se si tratta di un account controllato dall'utente (EOA), o il numero di contratti creati, se è un contract account;
+- il nonce, che tiene traccia del numero di transazioni inviate con successo da quell'account, se si tratta di un account controllato dall'utente (EOA), o il numero di smart contract creati, se è un contract account;
 - lo storage dell'account, che funge da archivio dati permanente utilizzato esclusivamente dagli smart contracts;
 - il codice del programma dell'account, presente solo se l'account è uno smart contract. Da notare che un account esterno controllato dall'utente avrà sempre codice nullo e uno storage vuoto.
 
@@ -217,8 +217,30 @@ Un aspetto fondamentale è la quantità di gas disponibile per questa esecuzione
 
 Possiamo immaginare l'EVM che opera su una copia isolata dello stato effettivo di Ethereum, scartando completamente questa versione isolata se l'esecuzione non può essere completata. Tuttavia, se l'esecuzione ha successo, lo stato effettivo viene aggiornato per corrispondere alla versione isolata, inclusi eventuali cambiamenti nei dati di archiviazione del contratto chiamato, la creazione di nuovi smart contracts e i trasferimenti di *ether* avviati. [2]
 
-## Bytecode EVM
-### Esempio esecuzione
+## EVM bytecode
+Come accennato in precedenza, Ethereum esegue gli smart contract all'interno dell'Ethereum Virtual Machine (EVM), un ambiente di runtime decentralizzato che si occupa dell'esecuzione del codice di tali contratti. Gli sviluppatori possono scrivere gli smart contract utilizzando diversi linguaggi di alto livello, come Solidity [11] o Vyper [18], ma affinché possano essere eseguiti dall'EVM, devono essere compilati in un linguaggio di basso livello noto come EVM bytecode. Il bytecode dell'EVM è un linguaggio a basso livello basato su stack che comprende circa 150 istruzioni chiamate *opcodes* (la lista la possiamo trovare a https://ethereum.github.io/yellowpaper/paper.pdf TODO footnote), le quali vengono interpretate dall'EVM per manipolare uno stack i cui elementi sono parole di 256 bit. Ogni istruzione è rappresentata da un numero esadecimale preceduto da `0x`.
+
+Consideriamo questo breve frammento di bytecode dell'EVM:
+
+```
+60 01 60 02 01
+```
+
+Il byte `60` corrisponde all'opcode `PUSH1`, il quale inserisce un byte nello stack. Il byte successivo è `01`, che corrisponde al valore che e' stato messo in cima allo stack. Allo stesso modo, i byte `60 02` rappresentano l'istruzione EVM `PUSH1 0x02` (lo stack dopo l'esecuzione di questi opcode è mostrato in Fig. 4a). L'ultimo byte, ossia `01`, corrisponde all'opcode `ADD`, il quale preleva due elementi dallo stack, li somma e mette il risultato di nuovo sulla pila. Pertanto, la versione tradotta in linguaggio umano della stringa di bytecode appena analizzata è:
+
+```
+PUSH1 0x01
+PUSH1 0x02
+ADD
+```
+
+Dopo l'esecuzione di queste istruzioni, l'elemento in cima allo stack avrà il valore 3 (lo stack dopo l'operazione ADD è mostrato in Fig. 4b).
+
+<figure>
+    <img src="img/stack-evm-bytecode.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" />
+    <figcaption align="center">Fig. 4: Stato dello stack (a) prima e (b) dopo l'esecuzione dell'opcode ADD.</figcaption>
+</figure>
+
 ## Alterazione flusso di esecuzione
 ### Jump e JumpI (funzionamento)
 ### Pushed Jumps vs Orphan Jumps
@@ -288,3 +310,4 @@ Possiamo immaginare l'EVM che opera su una copia isolata dello stato effettivo d
 15. Nick Szabo: introduzione agli smart contracts 1994: https://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart.contracts.html
 16. Treccani: definizione contratto: https://www.treccani.it/enciclopedia/contratto/
 17. Smart contract di esempio: https://solidity-by-example.org/sending-ether/
+18. Vyper: https://docs.vyperlang.org/en/stable/toctree.html
