@@ -184,6 +184,8 @@ La funzione `getBalance` restituisce il saldo attuale del contratto in *ether*.
 
 Il contratto *SendEther* è progettato invece per inviare *ether*. Contiene una funzione `sendViaCall` che invia *ether* a un altro indirizzo Ethereum. Questa funzione prende in input l'indirizzo del destinatario e l'ammontare di *ether* da inviare. Utilizza la funzione `call` per inviare *ether* al destinatario e restituisce un booleano che indica se l'operazione è stata eseguita con successo. Infine, la funzione `require` permette di verificare che l’invio sia andato a buon fine, in caso contrario l’esecuzione viene interrotta con un messaggio di errore.
 
+---
+
 ## Ethereum Virtual Machine
 Al cuore del protocollo e del funzionamento di Ethereum risiede l'Ethereum Virtual Machine (EVM). Questa componente software gestisce l'implementazione e l'esecuzione degli smart contracts. Quasi ogni azione sulla rete Ethereum comporta un aggiornamento dello stato calcolato dall'EVM, ad eccezione delle semplici transazioni di trasferimento di valore da un EOA ad un altro. A un livello più alto, possiamo concepire l'EVM come un enorme computer decentralizzato, distribuito su scala globale, che contiene milioni di "programmi" eseguibili, ognuno dei quali con il proprio spazio dati permanente. [2]
 
@@ -217,6 +219,8 @@ Un aspetto fondamentale è la quantità di gas disponibile per questa esecuzione
 
 Possiamo immaginare l'EVM che opera su una copia isolata dello stato effettivo di Ethereum, scartando completamente questa versione isolata se l'esecuzione non può essere completata. Tuttavia, se l'esecuzione ha successo, lo stato effettivo viene aggiornato per corrispondere alla versione isolata, inclusi eventuali cambiamenti nei dati di archiviazione del contratto chiamato, la creazione di nuovi smart contracts e i trasferimenti di *ether* avviati. [2]
 
+---
+
 ## EVM bytecode
 Come accennato in precedenza, Ethereum esegue gli smart contract all'interno dell'Ethereum Virtual Machine (EVM), un ambiente di runtime decentralizzato che si occupa dell'esecuzione del codice di tali contratti. Gli sviluppatori possono scrivere gli smart contract utilizzando diversi linguaggi di alto livello, come Solidity [11] o Vyper [18], ma affinché possano essere eseguiti dall'EVM, devono essere compilati in un linguaggio di basso livello noto come EVM bytecode. Il bytecode dell'EVM è un linguaggio a basso livello basato su stack che comprende circa 150 istruzioni chiamate *opcodes* (la lista la possiamo trovare a https://ethereum.github.io/yellowpaper/paper.pdf TODO footnote), le quali vengono interpretate dall'EVM per manipolare uno stack i cui elementi sono parole di 256 bit. Ogni istruzione è rappresentata da un numero esadecimale preceduto da `0x`.
 
@@ -241,10 +245,116 @@ Dopo l'esecuzione di queste istruzioni, l'elemento in cima allo stack avrà il v
     <figcaption align="center">Fig. 4: Stato dello stack (a) prima e (b) dopo l'esecuzione dell'opcode ADD.</figcaption>
 </figure>
 
+Il set di istruzioni dell'EVM include una vasta gamma di operazioni, tra cui:
+- Operazioni aritmetiche e logiche bit a bit
+- Richieste del contesto di esecuzione
+- Accesso allo stack, alla memoria e allo storage
+- Controllo del flusso di esecuzione
+- Logging, calling e altre operazioni
+
+Oltre alle operazioni standard del bytecode, l'EVM offre anche accesso a informazioni specifiche sull'account (come indirizzo e saldo) e sul blocco (come numero di blocco e prezzo attuale del gas). [2]
+
+Questo elaborato si concentrerà sull'analisi del controllo del flusso di esecuzione.
+
+---
+
 ## Alterazione flusso di esecuzione
-### Jump e JumpI (funzionamento)
+Il flusso di esecuzione di uno smart contract (in EVM bytecode) inizia con il primo opcode e procede in sequenza. Gli unici opcodes che possono alterare il flusso di esecuzione di uno smart contract senza interromperlo (TODO: footnote: L'esecuzione di uno smart contract può terminare in vari modi: (a) in modo implicito, quando il program counter supera l'ultimo opcode del programma; (b) in modo esplicito, durante l'elaborazione di opcodes come `STOP`, `RETURN`, `REVERT`, `SELFDESTRUCT`, `INVALID`; o (c) in modo eccezionale, quando si verificano condizioni illegali, come ad esempio lo stack underflow.) sono `JUMP` e `JUMPI`. 
+
+L'istruzione `JUMP` comporta un salto incondizionato a una posizione specifica del programma, la quale è definita dall'indirizzo memorizzato nell'elemento più in alto dello stack (quindi il valore che viene estratto). Per semplificare, consideriamo il seguente frammento di codice:
+
+```
+PUSH1 0x10
+PUSH1 0x20
+JUMP
+```
+
+Quando l'istruzione `JUMP` viene eseguita, viene prelevato l'elemento in cima allo stack (in questo caso `0x20`) e il programma viene instradato verso l'istruzione all'indirizzo `0x20`, da cui procederà l'esecuzione. 
+
+D'altra parte, l'istruzione `JUMPI` rappresenta un salto condizionato: se il codice operativo `JUMPI` viene soddisfatto, l'esecuzione salta all'indirizzo memorizzato nell'elemento più in alto dello stack solo se l'elemento sottostante (cioè il secondo elemento più in alto) è diverso da zero. In caso contrario, l'esecuzione continua con l'opcode successivo. In entrambi i casi, i due elementi più in alto dello stack vengono estratti. Adesso consideriamo quest'altro frammento di codice:
+
+```
+PUSH1 0x10
+PUSH1 0x20
+JUMPI
+```
+
+In questo scenario, la prima istruzione `PUSH1` inserisce il valore `0x10` nello stack, mentre la seconda istruzione `PUSH1` inserisce il valore `0x20`. Successivamente, l'istruzione `JUMPI` valuta il secondo elemento più alto nello stack (che è `0x10`). Poiché questo valore non è zero, l'esecuzione salta all'indirizzo memorizzato nel primo elemento dello stack (che è `0x20`).
+
+È importante notare che la destinazione del salto, ossia l'elemento più in alto nello stack, deve corrispondere all'opcode `JUMPDEST`, altrimenti l'esecuzione terminerà in modo eccezionale. L'istruzione `JUMPDEST` non modifica lo stack; serve semplicemente a segnalare le posizioni del programma in cui è consentito un salto (condizionato o incondizionato).
+
+### Esempio di funzionamento
+Immaginiamo di voler creare un semplice ciclo utilizzando le istruzioni `JUMP`, `JUMPI` e `JUMPDEST`.
+```bytecode
+0     PUSH1 0x00
+2     JUMPDEST
+3     PUSH1 0x03
+5     DUP2
+6     LT
+7     PUSH1 0x0D
+9     JUMPI
+0A    PUSH1 0x14
+0C    JUMP
+0D    JUMPDEST
+0E    PUSH1 0x01
+10    ADD
+11    PUSH1 0x02
+13    JUMP
+14    JUMPDEST
+15    STOP
+```
+TODO: dire che quelli a sinistra sono indirizzi e non il counter delle righe
+
+Questa sequenza di opcodes può essere implementata in C come segue:
+```c
+int x = 0;
+while (x < 3) {
+    x++;
+}
+return;
+```
+
+Esaminiamo ora passo dopo passo l'esecuzione di questo programma:
+1. `PUSH1 0x00`: Questa istruzione inserisce `0x00` nello stack.
+2. `JUMPDEST`: Contrassegna una destinazione di salto.
+3. `PUSH1 0x03`: Inserisce `0x03` nello stack.
+4. `DUP2`: Duplica il secondo valore più alto nello stack (in questo caso, `0x00`).
+5. `LT`: Confronta i due valori più alti nello stack. Se il valore superiore è inferiore al secondo, il risultato è 1; altrimenti è 0 (in questo caso, è 1).
+6. `PUSH1 0x0D`: Inserisce `0x0D` nello stack.
+7. `JUMPI`: Se il secondo valore più alto nello stack è diverso da zero, passa al blocco di codice all'indirizzo in cima allo stack (in questo caso, salta a `0x0D`, che è un salto condizionato).
+8. Ora il nostro Program Counter (PC) è impostato su `0x0D`. L'operazione successiva è una `PUSH`.
+9. `PUSH1 0x01`: Inserisce `0x01` nello stack.
+10. `ADD`: Aggiunge i due valori più alti nello stack e mette il risultato (in questo caso, il risultato è 3).
+11. `PUSH1 0x02`: Inserisce `0x02` nello stack.
+12. `JUMP`: Salta al blocco di codice all'indirizzo `0x02` e inizia la seconda iterazione del ciclo.
+
+Il programma inizia un ciclo in cui ad ogni iterazione controlla una condizione `LT`. Se la condizione è vera, procede lungo un percorso specifico; altrimenti, segue un percorso alternativo. Ciò che lo rende interessante è che la condizione cambia dopo la seconda iterazione: nelle prime due iterazioni, il percorso seguito è determinato dalla condizione vera, mentre nella terza iterazione la condizione diventa falsa, portando il programma lungo un altro percorso.
+
+Questo comportamento può essere visualizzato con la Figura 4, che rappresenta il Control Flow Graph (CFG) relativo al programma. Il CFG mostra tutti i possibili percorsi che il programma può intraprendere, insieme alle condizioni che determinano quale percorso seguire. In questo caso, il CFG ha un ciclo che rappresenta l'esecuzione ripetuta del programma, e due rami che rappresentano i due possibili percorsi che il programma può intraprendere a seconda della condizione `LT`.
+
+<figure>
+    <img src="img/cfg-esempio.svg" style="display: block; margin-left: auto; margin-right: auto; width: 70%;" />
+    <figcaption align="center">Fig. 4: CFG del bytecode d'esempio.</figcaption>
+</figure>
+
 ### Pushed Jumps vs Orphan Jumps
-#### Esempi
+Dopo aver spiegato come l'EVM bytecode possa influenzare il flusso di esecuzione attraverso gli opcodes `JUMP` e `JUMPI`, diventa evidente che la destinazione di questi salti non è staticamente definita come i dati nelle istruzioni `PUSH`, ma bensì viene calcolata dinamicamente considerando gli elementi presenti nello stack. 
+
+Tuttavia, ci sono situazioni in cui è possibile determinare staticamente la destinazione di un salto senza dover eseguire effettivamente lo smart contract. Ad esempio, nei due frammenti di codice esaminati in precedenza, le destinazioni dei salti possono essere dedotte dal codice sorgente poiché entrambi i codici operativi sono preceduti da un'istruzione `PUSH`. Questi salti sono definiti *"Pushed Jumps"* [19]. Essi non generano complicazioni nella creazione del CFG poiché le destinazioni dei salti possono essere determinate sintatticamente. 
+
+Ciononostante, una categoria di salti più complessa da gestire è rappresentata dalle *"Orphan Jumps"* [19]. Un esempio di jump orfana è il seguente:
+
+```
+PUSH1 0x0A
+PUSH1 0x0C
+ADD
+JUMP
+```
+
+In questo caso, la destinazione dell'istruzione `JUMP` non può essere immediatamente individuata tramite un'analisi sintattica del codice sorgente; per gestire correttamente il salto e costruire un CFG accurato, è necessaria un'analisi del programma in grado di dedurre il contenuto potenziale dello stack durante l'esecuzione. Va notato che l'analisi delle jump orfane è molto complessa e un'implementazione inaccurata dello smart contract potrebbe essere sfruttata da malintenzionati per attacchi di rientranza.
+
+---
+
 ## Vulnerabilità di rientranza
 ### Storia attacco The DAO
 
@@ -311,3 +421,4 @@ Dopo l'esecuzione di queste istruzioni, l'elemento in cima allo stack avrà il v
 16. Treccani: definizione contratto: https://www.treccani.it/enciclopedia/contratto/
 17. Smart contract di esempio: https://solidity-by-example.org/sending-ether/
 18. Vyper: https://docs.vyperlang.org/en/stable/toctree.html
+19. Enhancing Ethereum smart-contracts static analysis by computing a precise Control-Flow Graph of Ethereum bytecode: https://www.sciencedirect.com/science/article/pii/S0164121223000481?via%3Dihub
