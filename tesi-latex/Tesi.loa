@@ -1,1 +1,6 @@
 \contentsline {algorithm}{\numberline {1}{\ignorespaces Esempio di smart contract in Solidity.\relax }}{13}{algorithm.1}%
+\contentsline {algorithm}{\numberline {2}{\ignorespaces Esempio di EVM bytecode con l'opcode {\tt JUMP}.\relax }}{19}{algorithm.2}%
+\contentsline {algorithm}{\numberline {3}{\ignorespaces Esempio di EVM bytecode con l'opcode {\tt JUMPI}.\relax }}{19}{algorithm.3}%
+\contentsline {algorithm}{\numberline {4}{\ignorespaces Esempio ciclo While in EVM bytecode.\relax }}{20}{algorithm.4}%
+\contentsline {algorithm}{\numberline {5}{\ignorespaces Implementazione in C dell'Algoritmo \ref *{lst:esempioBytecode}.\relax }}{22}{algorithm.5}%
+\contentsline {algorithm}{\numberline {6}{\ignorespaces Esempio di Orphan Jump.\relax }}{23}{algorithm.6}%

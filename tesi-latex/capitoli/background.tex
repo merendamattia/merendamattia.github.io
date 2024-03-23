@@ -313,18 +313,298 @@ contract SendEther {
 
 \newpage
 \section{Ethereum Virtual Machine}\label{sec:EVM}
+Al cuore del protocollo e del funzionamento di Ethereum risiede l’Ethereum Virtual Machine (EVM). Questa componente software gestisce l’implementazione 
+e l’esecuzione degli smart contracts. Quasi ogni azione sulla rete Ethereum comporta un aggiornamento dello stato calcolato dall’EVM, ad eccezione 
+delle semplici transazioni di trasferimento di valore da un EOA ad un altro. A un livello più alto, possiamo concepire l’EVM come un enorme computer 
+decentralizzato, distribuito su scala globale, che contiene milioni di “programmi” eseguibili, ognuno dei quali con il proprio spazio dati permanente 
+\cite{antonopoulos2018mastering}.
+
+A livello matematico, possiamo definire l’EVM come una funzione matematica: dato un input, essa produce un output deterministico. In particolare, la 
+funzione di transizione è definita come segue: $Y(S,T)=S'$, dove $S$ è il vecchio stato macchina valido e $T$ è un insieme di transazioni valide che, 
+se applicate allo stato $S$, producono lo stato $S'$ \cite{ethereumvirtualmachine}.
+
+Come detto in precedenza, l’EVM è una macchina quasi Turing-completa, il che significa che tutti i processi di esecuzione sono limitati a un numero 
+finito di passaggi computazionali, determinati dalla quantità di gas disponibile per ogni esecuzione di uno smart contract. Questo limite assicura 
+che ogni programma abbia una fine definita, evitando situazioni in cui l’esecuzione potrebbe protrarsi all’infinito, portando alla congestione 
+dell’intera piattaforma Ethereum \cite{antonopoulos2018mastering}.
+
+Dal punto di vista architetturale, l’EVM utilizza uno stack, ovvero una coda volatile di tipo LIFO (Last In First Out), per memorizzare tutti i valori 
+in memoria, con una profondità massima di 1024 elementi. Opera su parole (words) di 256 bit, principalmente per agevolare le operazioni di hashing, 
+e include diverse componenti di dati indirizzabili:
+
+\begin{itemize}
+    \item una ROM virtuale contenente il codice del programma, immutabile una volta caricato il bytecode dello smart contract da eseguire;
+    \item una memoria volatile (Memory), in cui ogni posizione è inizializzata a zero e può essere utilizzata temporaneamente durante l’esecuzione;
+    \item uno spazio di archiviazione permanente (Storage), parte dello stato di Ethereum, anch’esso inizializzato a zero, che conserva informazioni a lungo termine.
+\end{itemize}
+
+Il ruolo principale dell’EVM consiste nell’aggiornare lo stato di Ethereum attraverso il calcolo di transizioni di stato valide derivanti dall’esecuzione 
+del codice degli smart contracts. Questo concetto rende Ethereum una macchina a stati basata sulle transazioni, poiché gli attori esterni, come gli 
+utenti della rete, iniziano le transizioni di stato creando, accettando e ordinando le transazioni.
+
+Per comprendere meglio cosa costituisca lo stato di Ethereum, possiamo suddividerlo in due livelli. Al livello superiore troviamo lo stato globale di 
+Ethereum, che è essenzialmente una mappatura degli indirizzi Ethereum (160 bit) agli account della rete \cite{antonopoulos2018mastering}.
+
+Scendendo al livello inferiore, ogni indirizzo Ethereum rappresenta un account, che include diverse informazioni:
+
+\begin{itemize}
+    \item il saldo in ether, espresso come il numero di wei posseduti dall’account;
+    \item il nonce, che tiene traccia del numero di transazioni inviate con successo da quell’account, se si tratta di un account controllato dall’utente (EOA), 
+        o il numero di smart contract creati, se è un contract account;
+    \item lo storage dell’account, che funge da archivio dati permanente utilizzato esclusivamente dagli smart contracts;
+    \item il codice del programma dell’account, presente solo se l’account è uno smart contract. Da notare che un account esterno controllato dall’utente avrà 
+        sempre codice nullo e uno storage vuoto.
+\end{itemize}
+
+Quando una transazione coinvolge l’esecuzione del codice di uno smart contract, viene creata un’istanza dell’EVM (Ethereum Virtual Machine) con tutte le 
+informazioni necessarie relative al blocco corrente in fase di creazione e alla transazione specifica in elaborazione. In questo processo, il codice dello 
+smart contract viene caricato nell’EVM, il program counter viene impostato a zero, lo storage del contract account viene recuperato, la memoria viene 
+inizializzata e le variabili di blocco e di ambiente vengono configurate.
+
+Un aspetto fondamentale è la quantità di gas disponibile per questa esecuzione, determinata dalla quantità di gas pagata dal mittente all’inizio della transazione. 
+Durante l’esecuzione del codice, la quantità di gas disponibile diminuisce in base al costo delle operazioni eseguite. Se il gas disponibile si esaurisce, viene 
+lanciata un’eccezione “Out of Gas (OOG)” e l’esecuzione viene interrotta, annullando la transazione. Nessuna modifica viene apportata allo stato di Ethereum, 
+tranne l’incremento del nonce del mittente e il pagamento delle commissioni al validatore.
+
+Possiamo immaginare l’EVM che opera su una copia isolata dello stato effettivo di Ethereum, scartando completamente questa versione isolata se l’esecuzione non 
+può essere completata. Tuttavia, se l’esecuzione ha successo, lo stato effettivo viene aggiornato per corrispondere alla versione isolata, inclusi eventuali 
+cambiamenti nei dati di archiviazione del contratto chiamato, la creazione di nuovi smart contracts e i trasferimenti di ether avviati \cite{antonopoulos2018mastering}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
 \section{EVM Bytecode}\label{sec:bytecode}
+Come accennato in precedenza, Ethereum esegue gli smart contract all’interno dell’Ethereum Virtual Machine (EVM), un ambiente di runtime decentralizzato che si occupa 
+dell’esecuzione del codice di tali contratti. Gli sviluppatori possono scrivere gli smart contract utilizzando diversi linguaggi di alto livello, come Solidity
+\footnote{\url{https://docs.soliditylang.org/en/latest/}} o Vyper\footnote{\url{ https://docs.vyperlang.org/en/stable/toctree.html}}, ma affinché possano essere 
+eseguiti dall’EVM, devono essere compilati in un linguaggio di basso livello noto come EVM bytecode. Il bytecode dell’EVM è un linguaggio a basso livello basato su 
+stack che comprende circa 150 istruzioni chiamate opcodes \footnote{Lista completa: \url{https://ethereum.github.io/yellowpaper/paper.pdf}}, le quali vengono 
+interpretate dall’EVM per manipolare uno stack i cui elementi sono parole di 256 bit. Ogni istruzione è rappresentata da un numero esadecimale preceduto da {\tt 0x}.
+
+Consideriamo questo breve frammento di bytecode dell’EVM: \\
+{\tt 60 01 60 02 01} \\
+Il byte {\tt60} corrisponde all’opcode {\tt PUSH1}, il quale inserisce un byte nello stack. Il byte successivo è {\tt 01}, che corrisponde al valore che e’ stato 
+messo in cima allo stack. Allo stesso modo, i byte {\tt 60 02} rappresentano l’istruzione EVM {\tt PUSH1 0x02} (lo stack dopo l’esecuzione di questi opcode è mostrato 
+in Fig. ~\ref{fig:stack-a}). L’ultimo byte, ossia {\tt 01}, corrisponde all’opcode {\tt ADD}, il quale preleva due elementi dallo stack, li somma e mette il risultato di nuovo 
+sulla pila. Pertanto, la versione tradotta in linguaggio umano della stringa di bytecode appena analizzata è:
+
+\begin{lstlisting}[numbers=none]
+    PUSH1 0x01
+    PUSH1 0x02
+    ADD
+\end{lstlisting}
+
+Dopo l’esecuzione di queste istruzioni, l’elemento in cima allo stack avrà il valore 3 (lo stack dopo l’operazione {\tt ADD} è mostrato nella Figura \ref{fig:stack-b}).
+
+Il set di istruzioni dell’EVM include una vasta gamma di operazioni, tra cui:
+
+\begin{itemize}
+    \item Operazioni aritmetiche e logiche bit a bit
+    \item Richieste del contesto di esecuzione
+    \item Accesso allo stack, alla memoria e allo storage
+    \item Controllo del flusso di esecuzione
+    \item Logging, calling e altre operazioni
+\end{itemize}
+
+Oltre alle operazioni standard del bytecode, l’EVM offre anche accesso a informazioni specifiche sull’account (come indirizzo e saldo) e sul blocco (come numero di 
+blocco e prezzo attuale del gas) \cite{antonopoulos2018mastering}.
+
+Questo elaborato si concentrerà sull’analisi del controllo del flusso di esecuzione.
+
+\begin{figure}[ht]
+	\begin{center}
+		\begin{subfigure}[b]{0.15\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.7]
+				% Stack outline
+				\draw (0,0) -- (0,2); % Left line
+				\draw (2,0) -- (2,2); % Right line
+				\draw (0,2) -- (2,2); % Top line to close the stack
+				
+				% Stack elements
+				% Correcting the math mode for all elements explicitly
+				\draw (0,1) -- ++(2,0) node[midway,yshift=10pt] {$2$};
+				\draw (0,0) -- ++(2,0) node[midway,yshift=10pt] {$1$};
+				%\varnothing
+				
+				% Extended bottom line
+				\draw (-0.5,0) -- (2.5,0); % Making the bottom line longer
+			\end{tikzpicture}
+			\caption{}
+			\label{fig:stack-a}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.15\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.7]
+				% Stack outline
+				\draw (0,0) -- (0,1); % Left line
+				\draw (2,0) -- (2,1); % Right line
+				\draw (0,1) -- (2,1); % Top line to close the stack
+				
+				% Stack elements
+				% Correcting the math mode for all elements explicitly
+				\draw (0,0) -- ++(2,0) node[midway,yshift=10pt] {$3$};
+				%\varnothing
+				
+				% Extended bottom line
+				\draw (-0.5,0) -- (2.5,0); % Making the bottom line longer
+			\end{tikzpicture}
+			\caption{}
+			\label{fig:stack-b}
+		\end{subfigure}
+		\caption{Stato dello stack (a) prima e (b) dopo l'esecuzione dell'opcode {\tt ADD}.}
+	\end{center}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
 \section{Alterazione del flusso di esecuzione}\label{sec:alterazione}
+Il flusso di esecuzione di uno smart contract (in EVM bytecode) inizia con il primo opcode e procede in sequenza. Gli unici opcodes che possono alterare il flusso 
+di esecuzione di uno smart contract senza interromperlo\footnote{L’esecuzione di uno smart contract può terminare in vari modi: (a) in modo implicito, quando il 
+program counter supera l’ultimo opcode del programma; (b) in modo esplicito, durante l’elaborazione di opcodes come {\tt STOP}, {\tt RETURN}, {\tt REVERT}, 
+{\tt SELFDESTRUCT}, {\tt INVALID}; o (c) in modo eccezionale, quando si verificano condizioni illegali, come ad esempio lo stack underflow.} 
+sono {\tt JUMP} e {\tt JUMPI}.
+
+L’istruzione {\tt JUMP} comporta un salto incondizionato a una posizione specifica del programma, la quale è definita dall’indirizzo memorizzato nell’elemento 
+più in alto dello stack (quindi il valore che viene estratto). Per semplificare, consideriamo il seguente frammento di codice:
+\begin{algorithm}[ht]
+\caption{Esempio di EVM bytecode con l'opcode {\tt JUMP}.}
+\label{lst:jump}
+\begin{lstlisting}[style=customsolidity, language=C, numbers=none]
+PUSH1 0x01
+PUSH1 0x02
+JUMP
+\end{lstlisting}
+\end{algorithm}
+
+Quando l’istruzione {\tt JUMP} viene eseguita, viene prelevato l’elemento in cima allo stack (in questo caso {\tt 0x20}) e il programma viene instradato verso 
+l’istruzione all’indirizzo {\tt 0x20}, da cui procederà l’esecuzione.
+
+D’altra parte, l’istruzione {\tt JUMPI} rappresenta un salto condizionato: se il codice operativo {\tt JUMPI} viene soddisfatto, l’esecuzione salta all’indirizzo 
+memorizzato nell’elemento più in alto dello stack solo se l’elemento sottostante (cioè il secondo elemento più in alto) è diverso da zero. In caso contrario, 
+l’esecuzione continua con l’opcode successivo. In entrambi i casi, i due elementi più in alto dello stack vengono estratti. 
+Adesso consideriamo quest’altro frammento di codice:
+
+\begin{algorithm}[ht]
+\caption{Esempio di EVM bytecode con l'opcode {\tt JUMPI}.}
+\label{lst:jumpi}
+\begin{lstlisting}[style=customsolidity, language=C, numbers=none]
+PUSH1 0x01
+PUSH1 0x02
+JUMPI
+\end{lstlisting}
+\end{algorithm}
+
+In questo scenario, la prima istruzione {\tt PUSH1} inserisce il valore {\tt 0x10} nello stack, mentre la seconda istruzione {\tt PUSH1} inserisce il valore {\tt 0x20}. 
+Successivamente, l’istruzione {\tt JUMPI} valuta il secondo elemento più alto nello stack (che è {\tt 0x10}). Poiché questo valore non è zero, l’esecuzione 
+salta all’indirizzo memorizzato nel primo elemento dello stack (che è {\tt 0x20}).
+
+È importante notare che la destinazione del salto, ossia l’elemento più in alto nello stack, deve corrispondere all’opcode {\tt JUMPDEST}, altrimenti 
+l’esecuzione terminerà in modo eccezionale. L’istruzione {\tt JUMPDEST} non modifica lo stack; serve semplicemente a segnalare le posizioni del programma 
+in cui è consentito un salto (condizionato o incondizionato).
+
 \subsection{Esempio di alterazione}\label{subsec:esempioAlterazione}
+Immaginiamo di voler creare un semplice ciclo utilizzando le istruzioni {\tt JUMP}, {\tt JUMPI} e {\tt JUMPDEST} (Algoritmo \ref*{lst:esempioBytecode}).
+
+\begin{algorithm}[ht]
+\caption{Esempio ciclo While in EVM bytecode.}
+\label{lst:esempioBytecode}
+\begin{lstlisting}[style=customsolidity, language=C, numbers=none]
+0     PUSH1 0x00
+2     JUMPDEST
+3     PUSH1 0x03
+5     DUP2
+6     LT
+7     PUSH1 0x0D
+9     JUMPI
+0A    PUSH1 0x14
+0C    JUMP
+0D    JUMPDEST
+0E    PUSH1 0x01
+10    ADD
+11    PUSH1 0x02
+13    JUMP
+14    JUMPDEST
+15    STOP
+\end{lstlisting}
+\end{algorithm}
+
+Esaminiamo ora passo dopo passo l’esecuzione dell'Algoritmo \ref*{lst:esempioBytecode}:
+\begin{enumerate}
+    \item {\tt PUSH1 0x00}: Questa istruzione inserisce {\tt 0x00} nello stack.
+    \item {\tt JUMPDEST}: Contrassegna una destinazione di salto.
+    \item {\tt PUSH1 0x03}: Inserisce {\tt 0x03} nello stack.
+    \item {\tt DUP2}: Duplica il secondo valore più alto nello stack (in questo caso, {\tt 0x00}).
+    \item {\tt LT}: Confronta i due valori più alti nello stack. Se il valore superiore è inferiore al secondo, il risultato è {\tt 1}; altrimenti è {\tt 0} 
+        (in questo caso, è {\tt 1}).
+    \item {\tt PUSH1 0x0D}: Inserisce {\tt 0x0D} nello stack.
+    \item {\tt JUMPI}: Se il secondo valore più alto nello stack è diverso da zero, passa al blocco di codice all’indirizzo in cima allo stack (in questo 
+        caso, salta a {\tt 0x0D}, che è un salto condizionato).
+    \item Ora il nostro Program Counter (PC) è impostato su {\tt 0x0D}. L’operazione successiva è una {\tt PUSH}.
+    \item {\tt PUSH1 0x01}: Inserisce {\tt 0x01} nello stack.
+    \item {\tt ADD}: Aggiunge i due valori più alti nello stack e mette il risultato (in questo caso, il risultato è {\tt 3}).
+    \item {\tt PUSH1 0x02}: Inserisce {\tt 0x02} nello stack.
+    \item {\tt JUMP}: Salta al blocco di codice all’indirizzo {\tt 0x02} e inizia la seconda iterazione del ciclo.
+\end{enumerate}
+
+Il programma inizia un ciclo in cui ad ogni iterazione controlla una condizione {\tt LT}. Se la condizione è vera, procede lungo un percorso specifico; altrimenti, 
+segue un percorso alternativo. Ciò che lo rende interessante è che la condizione cambia dopo la seconda iterazione: nelle prime due iterazioni, il percorso 
+seguito è determinato dalla condizione vera, mentre nella terza iterazione la condizione diventa falsa, portando il programma lungo un altro percorso.
+
+Questo comportamento può essere visualizzato con la Figura \ref*{fig:whilegraph}, la quale rappresenta il Control Flow Graph (CFG) relativo al programma. Il CFG mostra 
+tutti i possibili percorsi che il programma può intraprendere, insieme alle condizioni che determinano quale percorso seguire. In questo caso, il CFG ha un ciclo 
+che rappresenta l’esecuzione ripetuta del programma, e due rami che rappresentano i due possibili percorsi che il programma può intraprendere a seconda 
+della condizione {\tt LT}.
+
+L'Algoritmo \ref*{lst:esempioBytecode} può essere rappresentato in C con l'Algoritmo \ref*{lst:esempioBytecodeInC}.
+
+\begin{algorithm}[ht]
+\caption{Implementazione in C dell'Algoritmo \ref*{lst:esempioBytecode}.}
+\label{lst:esempioBytecodeInC}
+\begin{lstlisting}[style=customsolidity, language=C]
+int x = 0;
+while (x < 3) {
+    x++;
+}
+return;
+\end{lstlisting}
+\end{algorithm}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.23\textwidth]{Immagini/whilegraph.pdf}
+    \caption{CFG dell'Algoritmo \ref*{lst:esempioBytecode}.}
+    \label{fig:whilegraph}
+\end{figure}
+
 \subsection{Pushed jumps vs Orphan jumps}\label{subsec:pushedOrphanJumps}
+Dopo aver spiegato come nell’EVM bytecode si possa influenzare il flusso di esecuzione attraverso gli opcodes {\tt JUMP} e {\tt JUMPI}, diventa evidente che la destinazione 
+di questi salti non è staticamente definita come i dati nelle istruzioni {\tt PUSH}, ma bensì viene calcolata dinamicamente considerando gli elementi presenti nello stack.
+
+Tuttavia, ci sono situazioni in cui è possibile determinare staticamente la destinazione di un salto senza dover eseguire effettivamente lo smart contract. 
+Ad esempio, nei due frammenti di codice esaminati in precedenza, le destinazioni dei salti possono essere dedotte dal codice sorgente poiché entrambi gli opcodes 
+sono preceduti da un’istruzione {\tt PUSH}. Questi salti sono definiti \textit{“Pushed Jumps”} \cite{pasqua2023enhancing}.
+Essi non generano complicazioni nella creazione del CFG poiché le destinazioni dei salti possono essere determinate sintatticamente.
+
+Ciononostante, una categoria di salti più complessa da gestire è rappresentata dalle \textit{“Orphan Jumps”} \cite{pasqua2023enhancing}. 
+Un esempio di jump orfana è il seguente:
+
+\begin{algorithm}[ht]
+\caption{Esempio di Orphan Jump.}
+\label{lst:OrphanJump}
+\begin{lstlisting}[style=customsolidity, language=C, numbers=none]
+PUSH1 0x0A
+PUSH1 0x0C
+ADD
+JUMP
+\end{lstlisting}
+\end{algorithm}
+
+In questo caso, la destinazione dell’istruzione {\tt JUMP} non può essere immediatamente individuata tramite un’analisi sintattica del codice sorgente; 
+per gestire correttamente il salto e costruire un CFG accurato, è necessaria un’analisi del programma in grado di dedurre il contenuto potenziale dello 
+stack durante l’esecuzione. Va notato che l’analisi delle jump orfane è molto complessa e un’implementazione inaccurata dello smart contract potrebbe 
+essere sfruttata da malintenzionati per attacchi di rientranza.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

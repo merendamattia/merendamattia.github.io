@@ -1263,6 +1263,7 @@ OUTPUT Tesi.toc
 INPUT ./Tesi.lof
 INPUT Tesi.lof
 INPUT Tesi.lof
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 OUTPUT Tesi.lof
 INPUT ./Tesi.loa
 INPUT Tesi.loa
@@ -1307,7 +1308,11 @@ INPUT ./Immagini/smart-contract.jpeg
 INPUT Immagini/smart-contract.jpeg
 INPUT ./Immagini/smart-contract.jpeg
 INPUT ./Immagini/smart-contract.jpeg
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
+INPUT ./Immagini/whilegraph.pdf
+INPUT ./Immagini/whilegraph.pdf
+INPUT Immagini/whilegraph.pdf
+INPUT ./Immagini/whilegraph.pdf
+INPUT ./Immagini/whilegraph.pdf
 INPUT ./capitoli/Conclusione.tex
 INPUT ./capitoli/Conclusione.tex
 INPUT ./capitoli/Conclusione.tex
@@ -1349,6 +1354,7 @@ INPUT ./Tesi.out
 INPUT ./Tesi.out
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
