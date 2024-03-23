@@ -211,7 +211,6 @@
 \makeatother
 
 
-% Definizione del linguaggio Solidity
 \lstdefinelanguage{Solidity}{
     keywords={pragma, contract, receive, fallback, function, external, payable, public, view, returns, bool, bytes, memory, require},
     keywordstyle=[1]\color{blue}\bfseries,
@@ -229,7 +228,7 @@
     stringstyle=\color{red},
     morestring=[b]",
     numbers=left,
-    numberstyle=\large\color{gray},
+    numberstyle=\scriptsize\color{gray},
     numbersep=8pt,
 }
 
@@ -253,6 +252,6 @@
     backgroundcolor=\color{gray!5},
     breaklines=true,
     numbers=left,
-    numberstyle=\large\color{gray},
+    numberstyle=\scriptsize\color{gray},
     numbersep=8pt,
 }
