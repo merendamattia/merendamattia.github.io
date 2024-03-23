@@ -209,3 +209,50 @@
 		\restoregeometry
 }
 \makeatother
+
+
+% Definizione del linguaggio Solidity
+\lstdefinelanguage{Solidity}{
+    keywords={pragma, contract, receive, fallback, function, external, payable, public, view, returns, bool, bytes, memory, require},
+    keywordstyle=[1]\color{blue}\bfseries,
+    keywordstyle=[2]\color{magenta}\bfseries,
+    keywordstyle=[3]\color{orange}\bfseries,
+    keywordstyle=[4]\color{green!60!black}\bfseries,
+    keywordstyle=[5]\color{cyan}\bfseries,
+    keywordstyle=[6]\color{red}\bfseries,
+    keywordstyle=[7]\color{violet}\bfseries,
+    keywordstyle=[8]\color{brown}\bfseries,
+    sensitive=false,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red},
+    morestring=[b]",
+    numbers=left,
+    numberstyle=\large\color{gray},
+    numbersep=8pt,
+}
+
+\lstdefinestyle{customsolidity}{
+    language=Solidity,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=[1]\color{blue}\bfseries,
+    keywordstyle=[2]\color{magenta}\bfseries,
+    keywordstyle=[3]\color{orange}\bfseries,
+    keywordstyle=[4]\color{green!60!black}\bfseries,
+    keywordstyle=[5]\color{cyan}\bfseries,
+    keywordstyle=[6]\color{red}\bfseries,
+    keywordstyle=[7]\color{violet}\bfseries,
+    keywordstyle=[8]\color{brown}\bfseries,
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    tabsize=2,
+    frame=single,
+    rulecolor=\color{black!20},
+    backgroundcolor=\color{gray!5},
+    breaklines=true,
+    numbers=left,
+    numberstyle=\large\color{gray},
+    numbersep=8pt,
+}

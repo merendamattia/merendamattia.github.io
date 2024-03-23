@@ -13,8 +13,8 @@
 % Everybody needs to complete the following:
 
 \title{Titolo in Italiano}
-\author{Nome Cognome}
-\advisor{Prof. Nome Cognome}
+\author{Saverio Mattia Merenda}
+\advisor{Prof. Vincenzo Arceri}
 \college{Dipartimento di Scienze Matematiche, Fisiche e Informatiche}
 \degree{Corso di Laurea Triennale in Informatica}
 \degreeyears{2023--2024}
@@ -42,7 +42,7 @@
 \thispagestyle{empty}
 \null\vspace{\stretch{1}}
 \begin{flushright}
-	\textit{A me medesimo}
+	\textit{A me medesimo.}
 \end{flushright}
 \vspace{\stretch{3}}\null
 \newpage
@@ -51,39 +51,40 @@
 \pagestyle{plain}
 \pagenumbering{roman}
 \tableofcontents
-%
+
 \listoffigures    %Commentare se non vi sono Immagini
 \listofalgorithms %Commentare se non vi sono Algoritmi
-\listoftables     %Commentare se non vi sono Tabelle
-%
-%
-%
+%\listoftables     %Commentare se non vi sono Tabelle
+
 %%%% La prefazione
-\include{Capitoli/Introduzione}
-%
-%%%% I Capitoli di Contenuto	
+\include{capitoli/introduzione}
+
+%%%% I capitoli di Contenuto	
 \pagestyle{fancy}
-\include{Capitoli/Formattazione}
-\include{Capitoli/Background}
-\include{Capitoli/Obiettivi}
-\include{Capitoli/Progettazione-Implementazione}
-\include{Capitoli/Risultati}
-%
-%
+% \include{capitoli/Formattazione}
+\include{capitoli/background}
+% \include{capitoli/Obiettivi}
+% \include{capitoli/Progettazione-Implementazione}
+% \include{capitoli/Risultati}
+
+
 %%%% Le Conclusioni
 \pagestyle{plain}
-\include{Capitoli/Conclusione}
-%
+\include{capitoli/Conclusione}
+
+
 %%%% La bibliograﬁa
 \bibliographystyle{apalike} %{plain} -- Scegliere lo stile preferito
 \cleardoublepage
 \addcontentsline{toc}{chapter}{\bibname}
 \bibliography{./Bibliografia}
-%
-\include{Capitoli/Ringraziamenti}
-%
+
+
+\include{capitoli/Ringraziamenti}
+
+
 % Le appendici
-\appendix
-\include{Capitoli/Appendici/Appendice1}
+% \appendix
+% \include{capitoli/Appendici/Appendice1}
 %
 \end{document}
