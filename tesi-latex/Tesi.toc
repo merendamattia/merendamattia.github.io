@@ -6,18 +6,18 @@
 \contentsline {subsection}{\numberline {1.1.1}Funzionamento}{4}{subsection.1.1.1}%
 \contentsline {subsection}{\numberline {1.1.2}Consenso}{4}{subsection.1.1.2}%
 \contentsline {subsection}{\numberline {1.1.3}Classificazione delle blockchain}{6}{subsection.1.1.3}%
-\contentsline {subsection}{\numberline {1.1.4}Chiave pubblica e chiave privata}{6}{subsection.1.1.4}%
-\contentsline {section}{\numberline {1.2}Ethereum}{7}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Etherem vs Bitcoin}{7}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Funzionamento}{8}{subsection.1.2.2}%
-\contentsline {section}{\numberline {1.3}Smart Contracts}{11}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Esempio di smart contract}{12}{subsection.1.3.1}%
-\contentsline {section}{\numberline {1.4}Ethereum Virtual Machine}{14}{section.1.4}%
-\contentsline {section}{\numberline {1.5}EVM Bytecode}{17}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Alterazione del flusso di esecuzione}{19}{section.1.6}%
-\contentsline {subsection}{\numberline {1.6.1}Esempio di alterazione}{20}{subsection.1.6.1}%
-\contentsline {subsection}{\numberline {1.6.2}Pushed jumps vs Orphan jumps}{23}{subsection.1.6.2}%
-\contentsline {section}{\numberline {1.7}Vulnerabilità di rientranza}{24}{section.1.7}%
-\contentsline {subsection}{\numberline {1.7.1}Attacco a The DAO (2016)}{26}{subsection.1.7.1}%
-\contentsline {chapter}{Conclusione}{29}{chapter*.9}%
-\contentsline {chapter}{Bibliografia}{31}{chapter*.9}%
+\contentsline {subsection}{\numberline {1.1.4}Chiave pubblica e chiave privata}{7}{subsection.1.1.4}%
+\contentsline {section}{\numberline {1.2}Ethereum}{9}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Etherem vs Bitcoin}{9}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Funzionamento}{10}{subsection.1.2.2}%
+\contentsline {section}{\numberline {1.3}Smart Contracts}{13}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Esempio di smart contract}{14}{subsection.1.3.1}%
+\contentsline {section}{\numberline {1.4}Ethereum Virtual Machine}{16}{section.1.4}%
+\contentsline {section}{\numberline {1.5}EVM Bytecode}{19}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Alterazione del flusso di esecuzione}{21}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Esempio di alterazione}{22}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Pushed jumps vs Orphan jumps}{25}{subsection.1.6.2}%
+\contentsline {section}{\numberline {1.7}Vulnerabilità di rientranza}{26}{section.1.7}%
+\contentsline {subsection}{\numberline {1.7.1}Attacco a The DAO (2016)}{28}{subsection.1.7.1}%
+\contentsline {chapter}{Conclusione}{31}{chapter*.10}%
+\contentsline {chapter}{Bibliografia}{33}{chapter*.10}%

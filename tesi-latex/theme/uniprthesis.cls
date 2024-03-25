@@ -126,6 +126,7 @@
 \def\university#1{\gdef\@university{#1}}
 % The (possibly multiple) advisor
 \def\advisor#1{\gdef\@advisor{#1}}
+\def\serialNumber#1{\gdef\@serialNumber{#1}}
 %\def\advisorSecond#1{\gdef\@\advisorSecond{#1}}
 %\def\advisorThird#1{\gdef\@\advisorThird{#1}}
 %\def\advisorFourth#1{\gdef\@\advisorFourth{#1}}
@@ -147,66 +148,67 @@
 %\advisorSecond{empty}
 \makeatletter
 \renewcommand{\maketitle}{%
-		\newgeometry{hmarginratio=1:1,left=25mm, top=20mm, bottom=15mm}
-		\renewcommand{\footnotesize}{\small}
-		\renewcommand{\footnoterule}{\relax}
-		\thispagestyle{empty}
-		\begin{center}
-			%\vspace*{-4em}
-			{\large {\crest \par} \vspace*{2mm}}
-			{\noindent\rule{\textwidth}{0.4pt}\par}
-			{{\large {\scshape \@college}} \par}
-			{\vspace*{3mm}{\large \it \@degree} \par}
-			\vfill
-			{ \LARGE {\bfseries \uppercase {\@title}} \par}
-			\ifdef{\subTitle}%
-			{\vspace*{3mm}\Large {\itshape {\subTitle}} \par}%
-			{}%
-		\end{center}
-			\vfill
-		{\large \textsc{Candidato:}} \hfill 
-		%\ifempty{\@advisorSecond}
-		\ifdef{\advisorSecond}%
-			{{\large \raggedleft \textsc{Relatori:} \par}}%
-			{{\large \raggedleft \textsc{Relatore:} \par}}%
-		{\large {\nameStyle{\@author}} \hfill {\nameStyle{\@advisor}} \par}
-		\ifdef{\advisorSecond}%
-			{{\large \raggedleft {\nameStyle{\advisorSecond}} \par}
-				\ifdef{\advisorThird}%
-					{{\large \raggedleft {\nameStyle{\advisorThird}} \par}
-					\ifdef{\advisorFourth}%
-						{{\large \raggedleft {\nameStyle{\advisorFourth}} \par}}%
-						{}
-					}%
-					{}%
-			}%
-			{}%
-		\vspace*{1.0em}
-		\ifdef{\coadvisor}{%
-			\ifdef{\coadvisorSecond}%
-			{{\large \raggedleft \textsc{Correlatori:} \par}}%
-			{{\large \raggedleft \textsc{Correlatore:} \par}}%
-			{\large \raggedleft {\nameStyle{\coadvisor}} \par}
-			\ifdef{\coadvisorSecond}%
-			{{\large \raggedleft {\nameStyle{\coadvisorSecond}} \par}
-				\ifdef{\coadvisorThird}%
-				{{\large \raggedleft {\nameStyle{\coadvisorThird}} \par}
-					\ifdef{\coadvisorFourth}%
-					{{\large \raggedleft {\nameStyle{\coadvisorFourth}} \par}}%
-					{}
-				}%
-				{}%
-			}%
-			{}%
-			}%
-			{}
-		\vfill
-		{\noindent\rule{\textwidth}{0.4pt}\par}
-		\begin{center}
-		{Anno Accademico \@degreeyears}
-		\end{center}
-	%	\vfill\null
-		\restoregeometry
+                \newgeometry{hmarginratio=1:1,left=25mm, top=20mm, bottom=15mm}
+                \renewcommand{\footnotesize}{\small}
+                \renewcommand{\footnoterule}{\relax}
+                \thispagestyle{empty}
+                \begin{center}
+                        %\vspace*{-4em}
+                        {\large {\crest \par} \vspace*{2mm}}
+                        {\noindent\rule{\textwidth}{0.4pt}\par}
+                        {{\large {\scshape \@college}} \par}
+                        {\vspace*{3mm}{\large \it \@degree} \par}
+                        \vfill
+                        { \LARGE {\bfseries \uppercase {\@title}} \par}
+                        \ifdef{\subTitle}%
+                        {\vspace*{3mm}\Large {\itshape {\subTitle}} \par}%
+                        {}%
+                \end{center}
+                        \vfill
+                {\large \textsc{Candidato:}} \hfill 
+                %\ifempty{\@advisorSecond}
+                \ifdef{\advisorSecond}%
+                        {{\large \raggedleft \textsc{Relatori:} \par}}%
+                        {{\large \raggedleft \textsc{Relatore:} \par}}%
+                {\large {\nameStyle{\@author}} \hfill {\nameStyle{\@advisor}} \par}
+                \ifdef{\advisorSecond}%
+                        {{\large \raggedleft {\nameStyle{\advisorSecond}} \par}
+                                \ifdef{\advisorThird}%
+                                        {{\large \raggedleft {\nameStyle{\advisorThird}} \par}
+                                        \ifdef{\advisorFourth}%
+                                                {{\large \raggedleft {\nameStyle{\advisorFourth}} \par}}%
+                                                {}
+                                        }%
+                                        {}%
+                        }%
+                        {}%
+                \vspace*{1.0em}
+					{\large \textsc{Matricola:}} \hfill
+								\ifdef{\coadvisor}{%
+										\ifdef{\coadvisorSecond}%
+										{{\large \raggedleft \textsc{Correlatori:} \par}}%
+										{{\large \raggedleft \textsc{Correlatore:} \par}}%
+					{\large \raggedleft {\nameStyle{\@serialNumber}} \hfill {\nameStyle{\coadvisor}} \par}
+										\ifdef{\coadvisorSecond}%
+										{{\large \raggedleft {\nameStyle{\coadvisorSecond}} \par}
+												\ifdef{\coadvisorThird}%
+												{{\large \raggedleft {\nameStyle{\coadvisorThird}} \par}
+														\ifdef{\coadvisorFourth}%
+														{{\large \raggedleft {\nameStyle{\coadvisorFourth}} \par}}%
+														{}
+												}%
+												{}%
+										}%
+										{}%
+                        }%
+                        {}
+                \vfill
+                {\noindent\rule{\textwidth}{0.4pt}\par}
+                \begin{center}
+                {Anno Accademico \@degreeyears}
+                \end{center}
+        %        \vfill\null
+                \restoregeometry
 }
 \makeatother
 

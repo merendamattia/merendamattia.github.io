@@ -115,17 +115,56 @@ Ulteriormente, le blockchain possono essere suddivise in base alle loro applicaz
 \end{itemize}
 
 \subsection{Chiave pubblica e chiave privata}\label{subsec:chiavi}
-\mm{TODO non so se metterlo o no}
+La tecnologia blockchain si basa su uno dei principi fondamentali della sicurezza informatica: la \textit{crittografia}. 
+La crittografia è l'insieme di tecniche utilizzate per rendere un messaggio incomprensibile a chi non è autorizzato a leggerlo, 
+garantendo così la confidenzialità dei dati, un pilastro cruciale nella sicurezza informatica moderna.
+
+Nel panorama della blockchain, si fa ampio uso della crittografia asimmetrica, conosciuta anche come \textit{crittografia a chiave pubblica}. 
+Questo tipo di crittografia coinvolge una coppia di chiavi per ciascun partecipante alla comunicazione:
+\begin{itemize}
+    \item la chiave pubblica, accessibile a chiunque debba inviare informazioni;
+    \item la chiave privata, custodita esclusivamente dal proprietario.
+\end{itemize}
+
+In un sistema basato sulla crittografia a chiave pubblica, qualsiasi persona può cifrare un messaggio utilizzando la chiave 
+pubblica del destinatario, ma solo il destinatario può decifrarlo con la sua chiave privata. Questo meccanismo consente a due 
+utenti di comunicare in modo sicuro anche su canali non sicuri, poiché la sicurezza dipende esclusivamente dalla custodia 
+segreta della chiave privata \cite{crittografiaAsimmetrica}.
+
+Nel contesto della blockchain, la crittografia asimmetrica viene utilizzata per consentire lo scambio di asset digitali, 
+come le criptovalute. Ogni partecipante alla blockchain possiede una coppia di chiavi, una pubblica e una privata.
+
+Per comprendere meglio il funzionamento, consideriamo un esempio pratico con Alice e Bob:
+\begin{itemize}
+    \item entrambi sono identificati all'interno della blockchain tramite un indirizzo pubblico (chiave pubblica), noto 
+        come \textit{"address"};
+    \item chiunque desideri inviare loro degli asset deve farlo tramite il loro rispettivo indirizzo;
+    \item ognuno di loro possiede la sua chiave privata, necessaria per autorizzare le transazioni in uscita;
+    \item questa chiave privata è fondamentale per garantire che solo il legittimo proprietario possa effettuare transazioni.
+\end{itemize}
+
+Quando Alice vuole inviare 1 ether a Bob, accede ai suoi fondi utilizzando la sua chiave privata e invia la transazione verso 
+l'indirizzo di Bob. La transazione è crittografata con la chiave pubblica di Bob, garantendo la sicurezza del trasferimento. 
+Solo Bob, utilizzando la sua chiave privata, sarà in grado di decifrare e confermare la transazione, garantendo così la 
+legittimità dell'operazione. È fondamentale che entrambi custodiscano le proprie chiavi private in modo sicuro per evitare 
+accessi non autorizzati \cite{crittografiaBlockchain}.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Immagini/Crittografia_asimmetrica_schema.png}
+	\caption{Esempio di comunicazione utilizzando un sistema di crittografia asimmetrica \cite{crittografiaAsimmetrica}.}
+	\label{fig:crittografiaBobAlice}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
 \section{Ethereum}\label{sec:ethereum}
-Ethereum è una blockchain aperta (permissionless), accessibile a chiunque (pubblica) e con il codice sorgente disponibile 
-liberamente (open-source). È stata ideata per la prima volta da Vitalik Buterin nel 2013 \cite{buterin2013ethereum}, con 
-l’obiettivo di creare una blockchain in grado di eseguire una vasta gamma di programmi generici.
+Ethereum è una blockchain aperta (\textit{permissionless}), accessibile a chiunque (\textit{pubblica}) e con il codice sorgente 
+disponibile liberamente (\textit{open-source}). È stata ideata per la prima volta da Vitalik Buterin nel 2013 
+\cite{buterin2013ethereum}, con l’obiettivo di creare una blockchain in grado di eseguire una vasta gamma di programmi generici.
 
-Dal punto di vista tecnico, Ethereum può essere considerato una sorta di enorme macchina virtuale globale e “infinita”, 
+Dal punto di vista tecnico, Ethereum può essere considerato una sorta di enorme macchina virtuale globale e \textit{“infinita”}, 
 che opera seguendo uno stato singolo accessibile da qualsiasi parte del mondo e una macchina virtuale che applica le 
 modifiche a tale stato.
 
@@ -142,13 +181,13 @@ o l’eliminazione della censura e alcuni rischi associati alle controparti trad
 \subsection{Etherem vs Bitcoin}\label{subsec:ethVSbtc}
 Ethereum presenta numerose caratteristiche comuni con altre blockchain aperte: una rete peer-to-peer che collega gli utenti, 
 un algoritmo di consenso per mantenere gli aggiornamenti di stato sincronizzati (inizialmente basato su un consenso proof-of-work, 
-ma con l’avvento dell’aggiornamento “The Merge”\footnote{\url{https://ethereum.org/it/roadmap/merge/}}, il consenso è passato 
+ma con l’avvento dell’aggiornamento \textit{The Merge}\footnote{\url{https://ethereum.org/it/roadmap/merge/}}, il consenso è passato 
 a proof-of-stake), l’uso di tecniche crittografiche come firme digitali e hash, e una valuta digitale (ETH).
 
-Tuttavia, sia lo scopo che la struttura di Ethereum si differenziano notevolmente da quelle delle blockchain precedenti, come Bitcoin.
+Tuttavia, sia lo scopo che la struttura di Ethereum si differenziano notevolmente da quelle delle blockchain antecedenti, come Bitcoin.
 
 Il principale obiettivo di Ethereum non è solo quello di fungere da sistema di pagamento digitale. Anche se l’ether è fondamentale 
-per il funzionamento di Ethereum, essa viene considerata una “valuta di utilità” utilizzata per pagare l’utilizzo della piattaforma 
+per il funzionamento di Ethereum, essa viene considerata una \textit{“valuta di utilità”} utilizzata per pagare l’utilizzo della piattaforma 
 Ethereum come un computer globale.
 
 A differenza di Bitcoin, che dispone di un linguaggio di scripting limitato, Ethereum è stato progettato per essere una blockchain 
@@ -170,7 +209,7 @@ dell’account \cite{ethereumaccounts}.
 I \textit{Contract Account}, invece, sono associati agli smart contract. Questi account contengono il codice dello smart contract e vengono 
 attivati quando ricevono una transazione. Le transazioni con questi account possono coinvolgere l’esecuzione di codice dello smart 
 contract, oltre allo scambio di ether e comportano un costo di creazione in quanto richiedono risorse di calcolo e di archiviazione 
-sulla rete Ethereum \cite{ethereumaccounts}.
+sulla rete Ethereum \cite{ethereumaccounts}. 
 
 Affinché una transazione venga effettuata su Ethereum, il mittente deve conoscere l’indirizzo del destinatario, detto anche chiave 
 pubblica dell’account, e firmare digitalmente la transazione con la propria chiave privata. Questo processo dimostra che il richiedente 

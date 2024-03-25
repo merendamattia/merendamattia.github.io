@@ -9,8 +9,6 @@ INPUT ./theme/uniprthesis.cls
 INPUT theme/uniprthesis.cls
 INPUT ./theme/uniprthesis.cls
 INPUT ./theme/uniprthesis.cls
-INPUT ./uniprthesis.cls
-INPUT ./uniprthesis.cls
 INPUT ./theme/uniprthesis.cls
 INPUT theme/uniprthesis.cls
 INPUT ./theme/uniprthesis.cls
@@ -1314,6 +1312,11 @@ INPUT ./Immagini/blockchain.png
 INPUT ./Immagini/blockchain.png
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+INPUT ./Immagini/Crittografia_asimmetrica_schema.png
+INPUT ./Immagini/Crittografia_asimmetrica_schema.png
+INPUT Immagini/Crittografia_asimmetrica_schema.png
+INPUT ./Immagini/Crittografia_asimmetrica_schema.png
+INPUT ./Immagini/Crittografia_asimmetrica_schema.png
 INPUT ./Immagini/smart-contract.jpeg
 INPUT ./Immagini/smart-contract.jpeg
 INPUT Immagini/smart-contract.jpeg

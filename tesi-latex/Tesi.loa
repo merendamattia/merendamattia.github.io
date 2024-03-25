@@ -1,10 +1,10 @@
-\contentsline {algorithm}{\numberline {1}{\ignorespaces Esempio di smart contract in Solidity.\relax }}{13}{algorithm.1}%
-\contentsline {algorithm}{\numberline {2}{\ignorespaces Frammento di bytecode dell’EVM.\relax }}{17}{algorithm.2}%
-\contentsline {algorithm}{\numberline {3}{\ignorespaces Traduzione in linguaggio umano dell'Algoritmo \ref *{lst:frammentoBytecode}.\relax }}{17}{algorithm.3}%
-\contentsline {algorithm}{\numberline {4}{\ignorespaces Esempio di EVM bytecode con l'opcode {\tt JUMP}.\relax }}{19}{algorithm.4}%
-\contentsline {algorithm}{\numberline {5}{\ignorespaces Esempio di EVM bytecode con l'opcode {\tt JUMPI}.\relax }}{19}{algorithm.5}%
-\contentsline {algorithm}{\numberline {6}{\ignorespaces Esempio ciclo While in EVM bytecode.\relax }}{20}{algorithm.6}%
-\contentsline {algorithm}{\numberline {7}{\ignorespaces Implementazione in C dell'Algoritmo \ref *{lst:esempioBytecode}.\relax }}{22}{algorithm.7}%
-\contentsline {algorithm}{\numberline {8}{\ignorespaces Esempio di Orphan Jump.\relax }}{23}{algorithm.8}%
-\contentsline {algorithm}{\numberline {9}{\ignorespaces Vulnerabilità di rientranza in uno smart contract vittima.\relax }}{25}{algorithm.9}%
-\contentsline {algorithm}{\numberline {10}{\ignorespaces Smart contract che sfrutta la vulnerabilità dell'Algoritmo \ref *{lst:vulnerabilitaRientranzaVittima}.\relax }}{26}{algorithm.10}%
+\contentsline {algorithm}{\numberline {1}{\ignorespaces Esempio di smart contract in Solidity.\relax }}{15}{algorithm.1}%
+\contentsline {algorithm}{\numberline {2}{\ignorespaces Frammento di bytecode dell’EVM.\relax }}{19}{algorithm.2}%
+\contentsline {algorithm}{\numberline {3}{\ignorespaces Traduzione in linguaggio umano dell'Algoritmo \ref *{lst:frammentoBytecode}.\relax }}{19}{algorithm.3}%
+\contentsline {algorithm}{\numberline {4}{\ignorespaces Esempio di EVM bytecode con l'opcode {\tt JUMP}.\relax }}{21}{algorithm.4}%
+\contentsline {algorithm}{\numberline {5}{\ignorespaces Esempio di EVM bytecode con l'opcode {\tt JUMPI}.\relax }}{21}{algorithm.5}%
+\contentsline {algorithm}{\numberline {6}{\ignorespaces Esempio ciclo While in EVM bytecode.\relax }}{22}{algorithm.6}%
+\contentsline {algorithm}{\numberline {7}{\ignorespaces Implementazione in C dell'Algoritmo \ref *{lst:esempioBytecode}.\relax }}{24}{algorithm.7}%
+\contentsline {algorithm}{\numberline {8}{\ignorespaces Esempio di Orphan Jump.\relax }}{25}{algorithm.8}%
+\contentsline {algorithm}{\numberline {9}{\ignorespaces Vulnerabilità di rientranza in uno smart contract vittima.\relax }}{27}{algorithm.9}%
+\contentsline {algorithm}{\numberline {10}{\ignorespaces Smart contract che sfrutta la vulnerabilità dell'Algoritmo \ref *{lst:vulnerabilitaRientranzaVittima}.\relax }}{28}{algorithm.10}%
