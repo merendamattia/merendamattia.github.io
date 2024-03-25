@@ -1,5 +1,5 @@
 \chapter{Background}\label{chapter:background}
-TODO scrivere riassuntino
+\mm{TODO scrivere riassuntino}
 
 \section{Blockchain}\label{sec:blockchain}
 Il concetto di blockchain è stato introdotto per la prima volta nel 2008 da Satoshi Nakamoto con il whitepaper 
@@ -31,7 +31,7 @@ Sebbene il concetto di catena di blocchi sia comune a quasi tutti i sistemi bloc
 dei blocchi possono variare a seconda dello scopo della blockchain stessa. Ad esempio, i blocchi della blockchain di 
 Bitcoin possono essere diversi da quelli della blockchain di Ethereum.
 
-I blocchi sono interconnessi tramite funzioni di hash crittografiche (e.g. SHA-256 [TODO forse andrebbe spiegato?]), 
+I blocchi sono interconnessi tramite funzioni di hash crittografiche (e.g. SHA-256 \mm{TODO forse andrebbe spiegato?}), 
 creando un legame matematico tra di loro. Questo processo fornisce un modo conveniente per esprimere l’intero contenuto 
 della blockchain in una singola stringa di lunghezza definita.
 
@@ -115,7 +115,7 @@ Ulteriormente, le blockchain possono essere suddivise in base alle loro applicaz
 \end{itemize}
 
 \subsection{Chiave pubblica e chiave privata}\label{subsec:chiavi}
-TODO non so se metterlo o no
+\mm{TODO non so se metterlo o no}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -130,7 +130,7 @@ che opera seguendo uno stato singolo accessibile da qualsiasi parte del mondo e 
 modifiche a tale stato.
 
 Tuttavia, in termini più pratici, Ethereum si presenta come un’infrastruttura informatica decentralizzata, aperta a tutti 
-e basata su codice sorgente accessibile \footnote{\url{https://github.com/ethereum/go-ethereum}}, che consente l’esecuzione 
+e basata su codice sorgente accessibile\footnote{\url{https://github.com/ethereum/go-ethereum}}, che consente l’esecuzione 
 di programmi denominati Smart Contracts (Sezione \ref*{sec:smartContracts}). Utilizza una blockchain per tenere traccia e 
 registrare le variazioni di stato del sistema, utilizzando la criptovaluta nativa (chiamata Ether) per misurare e regolare 
 i costi delle risorse di elaborazione.
@@ -142,7 +142,7 @@ o l’eliminazione della censura e alcuni rischi associati alle controparti trad
 \subsection{Etherem vs Bitcoin}\label{subsec:ethVSbtc}
 Ethereum presenta numerose caratteristiche comuni con altre blockchain aperte: una rete peer-to-peer che collega gli utenti, 
 un algoritmo di consenso per mantenere gli aggiornamenti di stato sincronizzati (inizialmente basato su un consenso proof-of-work, 
-ma con l’avvento dell’aggiornamento “The Merge” \footnote{\url{https://ethereum.org/it/roadmap/merge/}}, il consenso è passato 
+ma con l’avvento dell’aggiornamento “The Merge”\footnote{\url{https://ethereum.org/it/roadmap/merge/}}, il consenso è passato 
 a proof-of-stake), l’uso di tecniche crittografiche come firme digitali e hash, e una valuta digitale (ETH).
 
 Tuttavia, sia lo scopo che la struttura di Ethereum si differenziano notevolmente da quelle delle blockchain precedenti, come Bitcoin.
@@ -154,20 +154,20 @@ Ethereum come un computer globale.
 A differenza di Bitcoin, che dispone di un linguaggio di scripting limitato, Ethereum è stato progettato per essere una blockchain 
 programmabile per scopi generici, con una macchina virtuale EVM in grado di eseguire codice di complessità arbitraria e illimitata. 
 Mentre il linguaggio di scripting di Bitcoin si limita principalmente a valutazioni semplici (true/false) delle condizioni di spesa 
-di un utente, il linguaggio di Ethereum (Solidity \footnote{\url{https://docs.soliditylang.org/en/latest/}}) è quasi completo in 
+di un utente, il linguaggio di Ethereum (Solidity\footnote{\url{https://docs.soliditylang.org/en/latest/}}) è quasi completo in 
 termini di capacità computazionale (Turing completeness), consentendo ad Ethereum di funzionare come un computer per scopi 
 generali \cite{antonopoulos2018mastering}.
 
 \subsection{Funzionamento}\label{subsec:funzionamentoETH}
 Sulla blockchain Ethereum sistono due tipi principali di account utilizzabili per gestire le transazioni e l’interazione sulla rete: 
-gli Externally Owned Account e i Contract Account.
+gli \textit{Externally Owned Account} e i \textit{Contract Account}.
 
-Gli Externally Owned Account (EOA) sono controllati direttamente dagli utenti e sono associati a una coppia di chiavi crittografiche, 
+Gli \textit{Externally Owned Account} (EOA) sono controllati direttamente dagli utenti e sono associati a una coppia di chiavi crittografiche, 
 pubblica e privata. Questi account consentono agli individui di ricevere e inviare ether e di partecipare alle transazioni sulla rete. 
 Le transazioni tra due account esterni coinvolgono esclusivamente lo scambio di ether e non comportano alcun costo di creazione 
 dell’account \cite{ethereumaccounts}.
 
-I Contract Account, invece, sono associati agli smart contract. Questi account contengono il codice dello smart contract e vengono 
+I \textit{Contract Account}, invece, sono associati agli smart contract. Questi account contengono il codice dello smart contract e vengono 
 attivati quando ricevono una transazione. Le transazioni con questi account possono coinvolgere l’esecuzione di codice dello smart 
 contract, oltre allo scambio di ether e comportano un costo di creazione in quanto richiedono risorse di calcolo e di archiviazione 
 sulla rete Ethereum \cite{ethereumaccounts}.
@@ -185,12 +185,12 @@ gli effetti della transazione vengono annullati e lo stato viene ripristinato al
 non fosse mai avvenuta. Anche se una transazione fallisce, viene comunque registrata come tentata, ma non influenza lo stato complessivo 
 della rete \cite{ethereumsmartcontracts}.
 
-Ogni transazione su Ethereum comporta un costo proporzionale alla sua complessità computazionale, misurato in “gas”. Possiamo pensare al 
+Ogni transazione su Ethereum comporta un costo proporzionale alla sua complessità computazionale, misurato in \textit{“gas”}. Possiamo pensare al 
 gas come al carburante necessario per far funzionare le operazioni sulla blockchain, simile al carburante utilizzato da un’auto per 
 percorrere una determinata distanza.
 
 Ogni operazione sulla blockchain ha un costo specifico in gas. Ad esempio, calcolare un hash o fare una somma di due numeri richiede una 
-differente quantità di gas (30 e 3, rispettivamente). 
+differente quantità di gas ({\tt 30} e {\tt 3}, rispettivamente). 
 
 Il gas è misurato in “wei” ($1 \text{ wei } = 1^{-18} \text{ ETH }$) ed è strettamente legato alle transazioni. 
 Ogni transazione su Ethereum ha due parametri: il prezzo del gas (gas price) e il limite del gas (gas limit), che rappresentano 
@@ -199,36 +199,36 @@ rispettivamente il prezzo che si è disposti a pagare per unità di gas e la qua
 A differenza di Bitcoin, dove esiste un limite alla dimensione massima di un blocco, su Ethereum si fa riferimento al limite di gas, che 
 determina la massima quantità di calcoli che la Ethereum Virtual Machine deve eseguire per blocco.
 
-Immaginiamo di dover eseguire una transazione che richiede 10 gas e abbiamo deciso di pagare 100 wei per ogni gas: il costo totale della 
-transazione sarà di 1000 wei ($10 \times 100$). Se aumentiamo il prezzo del gas a 1000 wei per gas, il costo totale della transazione sarà di 
+Immaginiamo di dover eseguire una transazione che richiede 10 gas e abbiamo deciso di pagare {\tt 100 wei} per ogni gas: il costo totale della 
+transazione sarà di {\tt 1000 wei} ($10 \times 100$). Se aumentiamo il prezzo del gas a {\tt 1000 wei} per gas, il costo totale della transazione sarà di 
 10000 wei ($10 \times 1000$). I validatori della rete Ethereum sono liberi di scegliere le transazioni da includere nel nuovo blocco, e 
 generalmente cercano di massimizzare il profitto. Di conseguenza, le transazioni con un prezzo del gas più elevato hanno una priorità 
 maggiore di essere aggiunte al blocco successivo.
 
-Se una transazione richiede 15 gas ma abbiamo impostato un limite di 10 gas, l’esecuzione si interromperà quando verrà raggiunto il limite, 
+Se una transazione richiede {\tt 15} gas ma abbiamo impostato un limite di {\tt 10} gas, l’esecuzione si interromperà quando verrà raggiunto il limite, 
 e tutto il gas andrà perso. Se, invece, il limite di gas è superiore a quello utilizzato dalla transazione, il gas in eccesso verrà restituito 
 al mittente.
 
 Quindi, il costo totale di una transazione può essere calcolato con la seguente formula: 
 $$\text{Costo transazione } = \text{ Limite di gas } \times \text{ Prezzo del gas}$$
 
-Oltre a compensare i validatori, il costo delle transazioni su Ethereum serve anche a proteggere la blockchain da attacchi, come il DDoS, 
-e da errori di programmazione negli smart contract che potrebbero sovraccaricare il sistema. Ad esempio, se una computazione finisse in 
-un ciclo infinito, la gestione del gas interromperebbe l’esecuzione una volta che il gas disponibile è esaurito. Questa caratteristica 
-ci consente di definire Ethereum come un linguaggio (quasi) Turing-completo, poiché siamo sicuri che ogni programma in esecuzione terminerà 
-\cite{chiap2019blockchain}.
+Oltre a compensare i validatori, il costo delle transazioni su Ethereum serve anche a proteggere la blockchain da attacchi, come il DDoS 
+(Distributed Denial of Service), e da errori di programmazione negli smart contract che potrebbero sovraccaricare il sistema. Ad esempio, 
+se una computazione finisse in un ciclo infinito, la gestione del gas interromperebbe l’esecuzione una volta che il gas disponibile è 
+esaurito. Questa caratteristica ci consente di definire Ethereum come un linguaggio (quasi) Turing-completo, poiché siamo sicuri che 
+ogni programma in esecuzione terminerà \cite{chiap2019blockchain}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
 \section{Smart Contracts}\label{sec:smartContracts}
-Il concetto di smart contract è stato introdotto per la prima volta da Nick Szabo nel 1996, definendolo come “un protocollo di transazione 
-digitale che esegue i termini di un contratto” \cite{szabo1996smart}. Lo scopo principale di uno smart contract è quello di automatizzare 
+Il concetto di smart contract è stato introdotto per la prima volta da Nick Szabo nel 1996, definendolo come \textit{“un protocollo di transazione 
+digitale che esegue i termini di un contratto”} \cite{szabo1996smart}. Lo scopo principale di uno smart contract è quello di automatizzare 
 l’adempimento delle condizioni contrattuali, riducendo al minimo il rischio di azioni malevole e la necessità di fidarsi degli intermediari 
 (rischio di controparte).
 
 Un contratto, in generale, è un accordo legalmente vincolante tra due o più parti e svolge un ruolo fondamentale nell’instaurare fiducia 
-tra i soggetti coinvolti in una transazione \footnote{\url{https://www.treccani.it/enciclopedia/contratto/}}. Può essere tanto semplice 
+tra i soggetti coinvolti in una transazione\footnote{\url{https://www.treccani.it/enciclopedia/contratto/}}. Può essere tanto semplice 
 quanto un biglietto dell’autobus o molto complesso come un contratto di lavoro.
 
 Nel contesto delle blockchain, uno smart contract è un programma che replica tutte le caratteristiche di un contratto tradizionale, ma viene 
@@ -243,7 +243,7 @@ Un smart contract può essere paragonato a un’applicazione IFTTT (If This Then
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth]{Immagini/smart-contract.jpeg}
-	\caption{Il processo IFTTT negli smart contracts \\ TODO sistemare con photoshop questa figura}
+	\caption{Il processo IFTTT negli smart contracts \\ \mm{TODO sistemare con photoshop questa figura}}
 	\label{fig:two}
 \end{figure}
 
@@ -265,8 +265,7 @@ l’esecuzione fallisce a causa di un errore, tutti gli effetti vengono annullat
 aspetto in seguito.
 
 \subsection{Esempio di smart contract}\label{subsec:esempioSmartContract}
-Ma adesso vediamo un esempio di smart contract 
-\footnote{Tratto da: \url{https://solidity-by-example.org/sending-ether/}} 
+Ma adesso vediamo un esempio di smart contract\footnote{Tratto da: \url{https://solidity-by-example.org/sending-ether/}} 
 nell'Algoritmo \ref*{lst:esempioSolidity}.
 
 Questo smart contract è composto da due contratti: \textit{ReceiveEther} e \textit{SendEther}.
@@ -274,7 +273,7 @@ Questo smart contract è composto da due contratti: \textit{ReceiveEther} e \tex
 Il contratto \textit{ReceiveEther} è progettato per ricevere \textit{ether}. Contiene due funzioni: {\tt receive} e {\tt fallback}. La funzione {\tt receive} 
 viene chiamata quando viene inviato ether al contratto e non ci sono dati associati alla transazione. Questo è possibile tramite l’invio 
 di ether direttamente all’indirizzo del contratto senza specificare alcuna funzione. La funzione {\tt fallback} viene invece chiamata quando viene 
-inviato ether al contratto e sono presenti dati associati alla transazione (e.g. TODO fare esempio). Entrambe le funzioni accettano ether e sono contrassegnate come 
+inviato ether al contratto e sono presenti dati associati alla transazione (e.g. \mm{TODO fare esempio}). Entrambe le funzioni accettano ether e sono contrassegnate come 
 {\tt payable} per indicare che possono ricevere fondi. È importante specificare che un contratto che riceve ether deve avere almeno una di queste 
 due funzioni.
 La funzione {\tt getBalance} restituisce il saldo attuale del contratto in ether.
@@ -320,7 +319,9 @@ decentralizzato, distribuito su scala globale, che contiene milioni di “progra
 \cite{antonopoulos2018mastering}.
 
 A livello matematico, possiamo definire l’EVM come una funzione matematica: dato un input, essa produce un output deterministico. In particolare, la 
-funzione di transizione è definita come segue: $Y(S,T)=S'$, dove $S$ è il vecchio stato macchina valido e $T$ è un insieme di transazioni valide che, 
+funzione di transizione è definita come segue: 
+$$Y(S,T)=S'$$ 
+dove $S$ è il vecchio stato macchina valido e $T$ è un insieme di transazioni valide che, 
 se applicate allo stato $S$, producono lo stato $S'$ \cite{ethereumvirtualmachine}.
 
 Come detto in precedenza, l’EVM è una macchina quasi Turing-completa, il che significa che tutti i processi di esecuzione sono limitati a un numero 
@@ -375,35 +376,46 @@ cambiamenti nei dati di archiviazione del contratto chiamato, la creazione di nu
 \newpage
 \section{EVM Bytecode}\label{sec:bytecode}
 Come accennato in precedenza, Ethereum esegue gli smart contract all’interno dell’Ethereum Virtual Machine (EVM), un ambiente di runtime decentralizzato che si occupa 
-dell’esecuzione del codice di tali contratti. Gli sviluppatori possono scrivere gli smart contract utilizzando diversi linguaggi di alto livello, come Solidity
-\footnote{\url{https://docs.soliditylang.org/en/latest/}} o Vyper\footnote{\url{ https://docs.vyperlang.org/en/stable/toctree.html}}, ma affinché possano essere 
+dell’esecuzione del codice di tali contratti. Gli sviluppatori possono scrivere gli smart contract utilizzando diversi linguaggi di alto livello, come 
+Solidity\footnote{\url{https://docs.soliditylang.org/en/latest/}} o Vyper\footnote{\url{ https://docs.vyperlang.org/en/stable/toctree.html}}, ma affinché possano essere 
 eseguiti dall’EVM, devono essere compilati in un linguaggio di basso livello noto come EVM bytecode. Il bytecode dell’EVM è un linguaggio a basso livello basato su 
 stack che comprende circa 150 istruzioni chiamate opcodes \footnote{Lista completa: \url{https://ethereum.github.io/yellowpaper/paper.pdf}}, le quali vengono 
 interpretate dall’EVM per manipolare uno stack i cui elementi sono parole di 256 bit. Ogni istruzione è rappresentata da un numero esadecimale preceduto da {\tt 0x}.
 
-Consideriamo questo breve frammento di bytecode dell’EVM: \\
-{\tt 60 01 60 02 01} \\
+Consideriamo questo breve frammento di bytecode dell’EVM:
+\begin{algorithm}[ht]
+\caption{Frammento di bytecode dell’EVM.}
+\label{lst:frammentoBytecode}
+\begin{lstlisting}[style=customsolidity, language=C, numbers=none]
+60 01 60 02 01
+\end{lstlisting}
+\end{algorithm}
+
 Il byte {\tt60} corrisponde all’opcode {\tt PUSH1}, il quale inserisce un byte nello stack. Il byte successivo è {\tt 01}, che corrisponde al valore che e’ stato 
-messo in cima allo stack. Allo stesso modo, i byte {\tt 60 02} rappresentano l’istruzione EVM {\tt PUSH1 0x02} (lo stack dopo l’esecuzione di questi opcode è mostrato 
-in Fig. ~\ref{fig:stack-a}). L’ultimo byte, ossia {\tt 01}, corrisponde all’opcode {\tt ADD}, il quale preleva due elementi dallo stack, li somma e mette il risultato di nuovo 
+messo in cima allo stack. Allo stesso modo, i byte {\tt 60 02} rappresentano l’istruzione {\tt PUSH1 0x02} (lo stack dopo l’esecuzione di questi opcode è mostrato 
+in Figura \ref{fig:stack-a}). L’ultimo byte, ossia {\tt 01}, corrisponde all’opcode {\tt ADD}, il quale preleva due elementi dallo stack, li somma e mette il risultato di nuovo 
 sulla pila. Pertanto, la versione tradotta in linguaggio umano della stringa di bytecode appena analizzata è:
 
-\begin{lstlisting}[numbers=none]
-    PUSH1 0x01
-    PUSH1 0x02
-    ADD
+\begin{algorithm}[ht]
+\caption{Traduzione in linguaggio umano dell'Algoritmo \ref*{lst:frammentoBytecode}.}
+\label{lst:frammentoBytecodeUmano}
+\begin{lstlisting}[style=customsolidity, language=C, numbers=none]
+PUSH1 0x01
+PUSH1 0x02
+ADD
 \end{lstlisting}
+\end{algorithm}
 
-Dopo l’esecuzione di queste istruzioni, l’elemento in cima allo stack avrà il valore 3 (lo stack dopo l’operazione {\tt ADD} è mostrato nella Figura \ref{fig:stack-b}).
+Dopo l’esecuzione di queste istruzioni, l’elemento in cima allo stack avrà il valore {\tt 3} (lo stack dopo l’operazione {\tt ADD} è mostrato nella Figura \ref{fig:stack-b}).
 
 Il set di istruzioni dell’EVM include una vasta gamma di operazioni, tra cui:
 
 \begin{itemize}
-    \item Operazioni aritmetiche e logiche bit a bit
-    \item Richieste del contesto di esecuzione
-    \item Accesso allo stack, alla memoria e allo storage
-    \item Controllo del flusso di esecuzione
-    \item Logging, calling e altre operazioni
+    \item operazioni aritmetiche e logiche bit a bit;
+    \item richieste del contesto di esecuzione;
+    \item accesso allo stack, alla memoria e allo storage;
+    \item controllo del flusso di esecuzione;
+    \item logging, calling e altre operazioni.
 \end{itemize}
 
 Oltre alle operazioni standard del bytecode, l’EVM offre anche accesso a informazioni specifiche sull’account (come indirizzo e saldo) e sul blocco (come numero di 
@@ -547,6 +559,8 @@ Esaminiamo ora passo dopo passo l’esecuzione dell'Algoritmo \ref*{lst:esempioB
     \item {\tt PUSH1 0x02}: Inserisce {\tt 0x02} nello stack.
     \item {\tt JUMP}: Salta al blocco di codice all’indirizzo {\tt 0x02} e inizia la seconda iterazione del ciclo.
 \end{enumerate}
+
+\mm{TODO: aggiungere due figure che mi rappresentano gli stati dello stack}
 
 Il programma inizia un ciclo in cui ad ogni iterazione controlla una condizione {\tt LT}. Se la condizione è vera, procede lungo un percorso specifico; altrimenti, 
 segue un percorso alternativo. Ciò che lo rende interessante è che la condizione cambia dopo la seconda iterazione: nelle prime due iterazioni, il percorso 
