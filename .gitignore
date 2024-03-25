@@ -18,3 +18,4 @@ vendor
 *.fls
 *.fdb_latexmk
 *.lof
+*.loa
