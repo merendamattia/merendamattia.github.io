@@ -18,6 +18,6 @@
 \contentsline {subsection}{\numberline {1.6.1}Esempio di alterazione}{20}{subsection.1.6.1}%
 \contentsline {subsection}{\numberline {1.6.2}Pushed jumps vs Orphan jumps}{23}{subsection.1.6.2}%
 \contentsline {section}{\numberline {1.7}Vulnerabilità di rientranza}{24}{section.1.7}%
-\contentsline {subsection}{\numberline {1.7.1}Attacco a The DAO}{24}{subsection.1.7.1}%
-\contentsline {chapter}{Conclusione}{25}{chapter*.9}%
-\contentsline {chapter}{Bibliografia}{27}{chapter*.9}%
+\contentsline {subsection}{\numberline {1.7.1}Attacco a The DAO (2016)}{26}{subsection.1.7.1}%
+\contentsline {chapter}{Conclusione}{29}{chapter*.9}%
+\contentsline {chapter}{Bibliografia}{31}{chapter*.9}%

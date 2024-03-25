@@ -6,3 +6,5 @@
 \contentsline {algorithm}{\numberline {6}{\ignorespaces Esempio ciclo While in EVM bytecode.\relax }}{20}{algorithm.6}%
 \contentsline {algorithm}{\numberline {7}{\ignorespaces Implementazione in C dell'Algoritmo \ref *{lst:esempioBytecode}.\relax }}{22}{algorithm.7}%
 \contentsline {algorithm}{\numberline {8}{\ignorespaces Esempio di Orphan Jump.\relax }}{23}{algorithm.8}%
+\contentsline {algorithm}{\numberline {9}{\ignorespaces Vulnerabilità di rientranza in uno smart contract vittima.\relax }}{25}{algorithm.9}%
+\contentsline {algorithm}{\numberline {10}{\ignorespaces Smart contract che sfrutta la vulnerabilità dell'Algoritmo \ref *{lst:vulnerabilitaRientranzaVittima}.\relax }}{26}{algorithm.10}%

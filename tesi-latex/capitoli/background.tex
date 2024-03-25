@@ -1,5 +1,6 @@
 \chapter{Background}\label{chapter:background}
 \mm{TODO scrivere riassuntino}
+\mm{Scrivere la parola ether in corsivo in tutta la tesi}
 
 \section{Blockchain}\label{sec:blockchain}
 Il concetto di blockchain è stato introdotto per la prima volta nel 2008 da Satoshi Nakamoto con il whitepaper 
@@ -624,4 +625,123 @@ essere sfruttata da malintenzionati per attacchi di rientranza.
 
 \newpage
 \section{Vulnerabilità di rientranza}\label{sec:vulnerabilita}
-\subsection{Attacco a The DAO}\label{subsec:theDAO}
+Gli smart contract, essendo programmi eseguiti sulla blockchain, possono essere soggetti a vulnerabilità, proprio come qualsiasi altro software. 
+Tuttavia, le vulnerabilità negli smart contract sono particolarmente rischiose, poiché, come già spiegato nella Sezione \ref*{sec:smartContracts},
+una volta che il contratto viene pubblicato sulla blockchain, non può essere più modificato. Tra le vulnerabilità più comuni individuate nella 
+documentazione di Ethereum possiamo trovare la rientranza, l'overflow/underflow di interi e la manipolazione degli oracoli \cite{davidetarpini}.
+In questo elaborato, ci concentreremo sulla vulnerabilità di rientranza.
+
+Per spiegare la rientranza, è importante notare che la EVM non supporta la concorrenza, il che significa che due contratti coinvolti in una 
+chiamata di messaggio non possono essere eseguiti contemporaneamente. Quando viene effettuata una chiamata esterna ({\tt msg.call}), l'esecuzione 
+e la memoria del contratto chiamante vengono sospese fino al completamento della chiamata. 
+Successivamente, l'esecuzione riprende normalmente. Questo processo può essere formalmente descritto come il trasferimento del flusso di controllo a 
+un altro contratto.
+
+Sebbene in gran parte innocuo, il trasferimento del flusso di controllo a contratti non fidati può causare problemi, come nel caso della rientranza. 
+Un attacco di rientranza si verifica quando un contratto malizioso viene chiamato all'interno di un contratto vulnerabile prima che l'invocazione della 
+funzione originale sia completata. Questo tipo di attacco può essere meglio spiegato con il seguente esempio.
+
+Supponiamo di avere uno smart contract {\tt Victim} che consente a chiunque di depositare e prelevare ether 
+(Algoritmo \ref*{lst:vulnerabilitaRientranzaVittima})\footnote{Tratto da: \url{https://ethereum.org/it/developers/docs/smart-contracts/security/}}.
+
+Il contratto in questione offre una funzione chiamata {\tt withdraw()}, che consente agli utenti di prelevare gli ETH precedentemente depositati nel 
+contratto. Durante un prelievo, il contratto esegue diverse operazioni:
+\begin{enumerate}
+    \item verifica il saldo di ETH dell'utente;
+    \item invia i fondi all'indirizzo del chiamante;
+    \item azzerà il saldo dell'utente, impedendo ulteriori prelievi.
+\end{enumerate}
+
+Inizialmente, verifica se le condizioni necessarie sono soddisfatte (ad esempio, se l'utente ha un saldo di {\tt ETH} positivo). Successivamente, esegue 
+l'interazione inviando gli {\tt ETH} al chiamante prima di applicare gli effetti della transazione, come la riduzione del saldo dell'utente.
+
+Quando {\tt withdraw()} è chiamato da un utente (EOA), la funzione si comporta come previsto: {\tt msg.sender.call.value()} trasferisce gli {\tt ETH} 
+al chiamante. Tuttavia, se {\tt msg.sender} è uno smart contract e chiama {\tt withdraw()}, l'invio dei fondi tramite {\tt msg.sender.call.value()} 
+attiverà anche l'esecuzione del codice archiviato a quell'indirizzo.
+
+\begin{algorithm}[ht]
+\caption{Vulnerabilità di rientranza in uno smart contract vittima.}
+\label{lst:vulnerabilitaRientranzaVittima}
+\begin{lstlisting}[style=customsolidity, language=Solidity]
+contract Victim {
+    mapping (address => uint256) public balances;
+
+    function deposit() external payable {
+        balances[msg.sender] += msg.value;
+    }
+
+    function withdraw() external {
+        uint256 amount = balances[msg.sender];
+        (bool success, ) = msg.sender.call.value(amount)("");
+        require(success);
+        balances[msg.sender] = 0;
+    }
+}
+\end{lstlisting}
+\end{algorithm}
+
+Supponiamo adesso di avere uno smart contract {\tt Attacker} che vuole sfruttare la vulnerabilità di {\tt Victim} (Algoritmo \ref*{lst:vulnerabilitaRientranzaAttaccante}).
+
+Questo contratto è progettato per eseguire tre operazioni:
+\begin{enumerate}
+    \item accettare un deposito da un altro account (probabilmente l'EOA dell'utente malevolo);
+    \item depositare {\tt 1 ETH} nel contratto {\tt Victim};
+    \item prelevare {\tt 1 ETH} archiviato nel contratto {\tt Victim}.
+\end{enumerate}
+
+In apparenza, tutto sembra regolare, tranne per un dettaglio: l'{\tt Attacker} ha incluso una funzione che richiama nuovamente {\tt withdraw()} in {\tt Victim} 
+se il gas rimanente da {\tt msg.sender.call.value} in entrata è superiore a {\tt 40.000}. Questo consente all'{\tt Attacker} di rientrare nel contratto 
+{\tt Victim} e prelevare ulteriori fondi, prima che la prima invocazione di {\tt withdraw()} di {\tt Victim} sia completata.
+
+Ciò accade perché in Solidity sono presenti le \textit{funzioni di fallback}, dette anche \textit{funzioni di default}, le quali sono definite con la forma 
+{\tt function()} e vengono invocate quando un contratto riceve una transazione senza specificare alcuna funzione.
+Il contratto {\tt Attacker} è progettato per accettare fondi in arrivo da un'altra fonte. Quando riceve una transazione di {\tt ETH}, viene automaticamente 
+invocata la funzione di fallback ({\tt function()}).
+
+\begin{algorithm}[ht]
+\caption{Smart contract che sfrutta la vulnerabilità dell'Algoritmo \ref*{lst:vulnerabilitaRientranzaVittima}.}
+\label{lst:vulnerabilitaRientranzaAttaccante}
+\begin{lstlisting}[style=customsolidity, language=Solidity]
+contract Attacker {
+    function beginAttack() external payable {
+        Victim(victim_address).deposit.value(1 ether)();
+        Victim(victim_address).withdraw();
+    }
+
+    function() external payable {
+        if (gasleft() > 40000) {
+            Victim(victim_address).withdraw();
+        }
+    }
+}
+
+\end{lstlisting}
+\end{algorithm}
+
+In sintesi, poiché il saldo del chiamante non viene azzerato fino al termine dell'esecuzione della funzione, le successive invocazioni avranno successo, 
+permettendo al chiamante di prelevare ripetutamente il proprio saldo \cite{ethereumsecurity}. Gli attacchi di rientranza rimangono ancora oggi una grave 
+preoccupazione per gli smart contract, come dimostrato dalle pubbliche segnalazioni di exploit di 
+rientranza\footnote{\url{https://github.com/pcaversaccio/reentrancy-attacks}}.
+
+\subsection{Attacco a The DAO (2016)}\label{subsec:theDAO}
+Quando si affronta il tema delle vulnerabilità di rientranza, è inevitabile menzionare l'attacco a The DAO del 2016, il quale rappresenta uno degli episodi 
+più celebri nella storia di Ethereum.
+
+The DAO era una startup che gestiva un fondo d'investimento in Ether (ETH) ed operava come uno smart contract su Ethereum. Il nome "The DAO" venne scelto 
+dai fondatori come riferimento al concetto di Organizzazione Autonoma Decentralizzata (DAO). The DAO era un contratto che consentiva agli utenti di 
+depositare Ether e ricevere in cambio dei token, utilizzabili per votare i progetti da finanziare. La sua popolarità crebbe rapidamente, diventando il 
+più grande crowdfunding della storia (fino ad allora), con oltre 150 milioni di dollari in Ether raccolti da oltre 10.000 investitori \cite{daoattack}.
+
+Fin dall'inizio, il fondo si impegnò ad operare in conformità con i termini e le condizioni del proprio smart contract, che altro non erano che il codice 
+di un programma deployato sulla blockchain. 
+
+Tuttavia, The DAO divenne famosa a causa di una vulnerabilità all'interno del proprio programma che permise a un utente sconosciuto di prelevare un terzo 
+dei fondi. La perdita ammontò a 3,6 milioni di Ether, equivalenti a circa 60 milioni di dollari all'epoca (circa 12 miliardi di dollari ai prezzi attuali). 
+Data l'ampia partecipazione e le implicazioni negative, Ethereum si trovò sotto forte pressione pubblica e i leader della rete decisero di eseguire un 
+\textit{hard-fork retroattivo} (rollback) della blockchain per annullare l'attacco.
+
+Attraverso l'hard-fork, i fondi di The DAO furono trasferiti su un indirizzo di recupero, cancellando virtualmente la fuga di fondi. Successivamente, 
+gli utenti del fondo poterono reclamare i propri investimenti. Ciononostante, l'hard-fork generò un significativo dissenso tra gli utenti della rete Ethereum, 
+con alcuni dei quali che continuarono ad utilizzare la blockchain originale di Ethereum, ora denominata Ethereum 
+Classic\footnote{\url{https://ethereumclassic.org/}} (ETC). Tale rete opera ancora oggi, mantenendo la catena di blocchi originale, con l'utente 
+sconosciuto che possiede ancora i fondi sottratti \cite{daoattackhistory}.
