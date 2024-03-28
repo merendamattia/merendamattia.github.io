@@ -84,15 +84,13 @@
 %%%% La prefazione
 \include{capitoli/introduzione}
 \mm{Scrivere la parola ether in corsivo in tutta la tesi}
-\mm{Scegliere lo stile della bibliografia plain o apalike}
 
 %%%% I capitoli di Contenuto	
 \pagestyle{fancy}
-% \include{capitoli/Formattazione}
 \include{capitoli/background}
-% \include{capitoli/Obiettivi}
-% \include{capitoli/Progettazione-Implementazione}
-% \include{capitoli/Risultati}
+\include{capitoli/analisi-statica}
+\include{capitoli/evmlisa}
+
 
 
 %%%% Le Conclusioni
@@ -101,7 +99,7 @@
 
 
 %%%% La bibliograﬁa
-\bibliographystyle{plain} %{apalike} -- Scegliere lo stile preferito
+\bibliographystyle{IEEEtran} %{apalike, plain, IEEEtran, ACM-Reference-Format} -- Scegliere lo stile preferito
 \cleardoublepage
 \addcontentsline{toc}{chapter}{\bibname}
 \bibliography{./Bibliografia}

@@ -657,7 +657,27 @@ JUMP
 In questo caso, la destinazione dell’istruzione {\tt JUMP} non può essere immediatamente individuata tramite un’analisi sintattica del codice sorgente; 
 per gestire correttamente il salto e costruire un CFG accurato, è necessaria un’analisi del programma in grado di dedurre il contenuto potenziale dello 
 stack durante l’esecuzione. Va notato che l’analisi delle jump orfane è molto complessa e un’implementazione inaccurata dello smart contract potrebbe 
-essere sfruttata da malintenzionati per attacchi di rientranza.
+essere sfruttata da malintenzionati per attacchi di rientranza (questo problema verrà approfondito nella Sezione \ref*{sec:vulnerabilita}).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section{L'importanza di costruire un CFG completo}\label{sec:importanzaCFG}
+Garantire la sicurezza e l’affidabilità degli smart contract è di vitale importanza per il successo della piattaforma Ethereum. Come già detto in precedenza, 
+una volta implementati, questi contratti non possono essere modificati, il che significa che eventuali bug o vulnerabilità presenti nel codice possono 
+causare conseguenze irrevocabili, come la perdita di fondi o l'esecuzione di azioni indesiderate. Pertanto, è fondamentale assicurarsi che gli smart contract 
+siano privi di difetti prima della loro implementazione. 
+
+Per raggiungere questo obiettivo, i ricercatori hanno sviluppato diverse tecniche per analizzare e verificare il codice degli smart contract. Una tecnica 
+possibile è l'analisi statica, che esamina il codice senza effettivamente eseguirlo. L'analisi statica si basa spesso sui control flow graph (CFG) per 
+identificare potenziali problemi di sicurezza. 
+
+Tuttavia, nel contesto di Ethereum, costruire un CFG accurato e preciso per l'EVM bytecode non è banale. Questo perché alcune destinazioni dei salti sono 
+determinate durante l'esecuzione e non durante la compilazione. Di conseguenza, non è sempre semplice costruire un CFG completo e preciso, che includa 
+tutti i possibili percorsi di esecuzione.
+
+Se non si riesce a costruire un CFG completo e preciso che includa tutti i possibili percorsi di esecuzione e risolva tutte le jump, si potrebbero lasciare 
+aperture per vulnerabilità nel codice.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -785,6 +805,3 @@ Classic\footnote{\url{https://ethereumclassic.org/}} (ETC). Tale rete opera anco
 sconosciuto che possiede ancora i fondi sottratti \cite{daoattackhistory}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newpage
-\section{L'importanza di costruire un CFG completo}\label{sec:importanzaCFG}
