@@ -22,7 +22,7 @@ layout: secondary
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<topic>{{ post.tags | join: "</topic> <topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
-		<small>{{ post.when }} - {{ post.location }}</small>
+		<small><i>{{ post.when }} - {{ post.location }}</i></small>
 		<venue>{{ post.content }}</venue>
 	</li>
 	

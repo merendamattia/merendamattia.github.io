@@ -22,12 +22,12 @@ layout: secondary
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<topic>{{ post.tags | join: "</topic> <topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
-		<small>{{ post.when }} - {{ post.location }}
+		<small><i>{{ post.when }} - {{ post.location }}</i>
 		{% if post.manuscript %}
 			 - <i class="fas fa-file-pdf"></i> Thesis available<br/>
 		{% endif %}
 		</small>
-		<venue>{{ post.content }}</venue>
+		<!-- <venue>{{ post.content }}</venue> -->
 	</li>
 {% endfor %}
 </ul>
