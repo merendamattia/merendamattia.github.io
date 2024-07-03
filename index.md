@@ -4,7 +4,13 @@ layout: default
 
 ## Hi, I'm Mattia!
 
-...
+I'm Saverio Mattia Merenda, a recent graduate in Computer Science from the University of Parma, Italy.
+
+Throughout my academic journey, I have gained extensive experience in software development, research, and static analysis. Notably, I played a key role in the development of EVMLiSA, a static analyzer for EVM bytecode, and contributed to various AI and blockchain-related initiatives.
+
+In addition to my academic pursuits, I have had the opportunity to work with several organizations. These experiences have allowed me to develop cutting-edge software solutions, streamline operations, and enhance security measures.
+
+I'm constantly driven to explore new technologies and techniques, always seeking to improve my skills and knowledge. I believe that experimentation and innovation are essential in the rapidly evolving field of computer science, and I am excited to continue contributing to its advancement.
 
 You can find my full CV [here](cv.pdf).
 
@@ -57,7 +63,7 @@ You can find my full CV [here](cv.pdf).
 <ul class="fa-ul">
 {% for post in site.categories.research limit: 2 %}
 	<li>
-		<span class="fa-li"><i class="fas fa-briefcase"></i></span>
+		<span class="fa-li"><i class="fa-solid fa-brain"></i></span>
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
