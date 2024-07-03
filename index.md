@@ -170,3 +170,6 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 </ul>
 
 [All talks ({{ site.categories.events.size }}) >>]({{ site.baseurl }}/events/)
+
+<!-- ----------------------- -->
+
