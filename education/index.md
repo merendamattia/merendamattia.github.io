@@ -27,6 +27,7 @@ layout: secondary
 			 - <i class="fas fa-file-pdf"></i> Thesis available<br/>
 		{% endif %}
 		</small>
+		<venue>{{ post.content }}</venue>
 	</li>
 {% endfor %}
 </ul>
