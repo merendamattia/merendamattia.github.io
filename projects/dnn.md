@@ -3,7 +3,7 @@ layout: project
 project: true
 pinned: false
 projid: dnn
-languages: c++
+languages: C++
 title: "Deep Neural Network Library"
 description: "A flexible C++ library for building, training, and using deep neural networks. Modular, easy-to-use, and high-performance."
 repo: "https://github.com/unipr-org/deep-neural-network"
