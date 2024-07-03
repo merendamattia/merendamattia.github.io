@@ -1,0 +1,57 @@
+---
+layout: secondary
+---
+
+<h1>Project: {{ page.title }}</h1>
+
+<span>{{ page.description }}</span><br/>
+
+<small>
+{% assign langs = page.languages | split: " " %}
+{% for lang in langs %}
+	<span class="language-dot {{ lang | downcase }}-dot"></span> {{ lang }}&nbsp;
+{% endfor %}
+</small><br/>
+
+<br/>
+{{content}}
+
+<div class="divtable">
+  <table>
+    <tbody>
+{% if page.repo %}
+      <tr>
+      	<td><i class="fas fa-code-branch"></i> Code:</td>
+        <td><a href="{{ page.repo }}">GitHub</a></td>
+      </tr>
+{% endif %}
+{% if page.website %}
+      <tr>
+      	<td><i class="fas fa-id-card"></i> Website:</td>
+        <td><a href="{{ page.website }}">Link</a></td>
+      </tr>
+{% endif %}
+    </tbody>
+  </table>
+</div>
+
+<h4>Related publications</h4>
+
+{% assign publist = '' | split: '' %}
+{% for p in site.categories.publications %}
+	{% assign pprojects = p.projects | split: ' '  %}
+	{% if pprojects contains page.projid %}
+		<a href="{{ p.url }}"><i class="fas fa-book-open"></i> {{ p.title }}</a><br/>
+	{% endif %}	
+{% endfor %}
+
+<br/>
+<h4>Related talks</h4>
+
+{% assign publist = '' | split: '' %}
+{% for p in site.categories.talks %}
+	{% assign pprojects = p.projects | split: ' '  %}
+	{% if pprojects contains page.projid %}
+		<a href="{{ p.url }}"><i class="fas fa-calendar-alt"></i> {{ p.title }}</a><br/>
+	{% endif %}	
+{% endfor %}

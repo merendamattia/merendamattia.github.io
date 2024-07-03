@@ -4,17 +4,18 @@ layout: secondary
 
 <topic>{{ page.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
 
-<h1>Talk: {{ page.title }}</h1>
+<h1>Publication: {{ page.title }}</h1>
+
+{{ page.authors }}<br/><br/>
 
 <venue>{{ page.venue }}</venue><br/>
 
-<small>{{ page.location }}, {{ page.when }}</small><br/>
+<small>{% if page.location %}{{ page.location }}, {% endif %}{{ page.when }}</small><br/>
 
-<small>{{ page.kind }}</small><br/>
+<small>{{ page.kind }}</small>
 
 <br/>
 {{content}}
-
 
 <div class="divtable">
   <table>
@@ -25,10 +26,10 @@ layout: secondary
         <td><a href="{{ site.baseurl }}/manuscripts/{{ page.manuscript }}">PDF</a></td>
       </tr>
 {% endif %}
-{% if page.relatedpubtitle and page.relatedpub %}
+{% if page.relatedtalktitle and page.relatedtalk %}
       <tr>
       	<td><i class="fas fa-calendar-alt"></i> Conference talk:</td>
-        <td><a href="{{ page.relatedpub }}">{{ page.relatedpubtitle }}</a></td>
+        <td><a href="{{ page.relatedtalk }}">{{ page.relatedtalktitle }}</a></td>
       </tr>
 {% endif %}
 {% if page.projects %}

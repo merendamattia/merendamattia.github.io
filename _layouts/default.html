@@ -1,31 +1,82 @@
----
-layout: compress
----
-
-{% include base_path %}
-
-<!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
   <head>
-    {% include head.html %}
-    {% include head/custom.html %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	{% seo %}
+
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    
+	<!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+    
+    <link rel="icon" type="image/jpg" href="{{ site.baseurl }}/icon.png">
+	
+	  <link rel="stylesheet" href="{{ site.baseurl }}/css/academicons.min.css"/>
+	  <link rel="stylesheet" href="{{ site.baseurl }}/css/all.css"> 
+	
+	  <title>{{ site.title }}</title>
   </head>
-
   <body>
+	{% include simple-menu.html %}
+    <div class="wrapper">
+      <header>
+		<div id="contactPhotoWrapper">
+			<img src="{{site.logo | relative_url}}" alt="Logo" id="contactPhoto"/>
+		</div>
 
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
+		<div class="header-content">
+			<h1>{{ site.title }}</h1>
+		
+			<div class="location">
+				<a href="https://www.unive.it/">Ca' Foscari</a> | <a href="https://ssv.dais.unive.it/">SSV</a>
+			</div>
+			
+			<ul class="links">
+				<li><a href="mailto:{{ site.mail-work }}"><i class="fas fa-envelope big-icon"></i></a></li>
+				<li><a href="{{ site.linkedin }}"><i class="fab fa-linkedin big-icon"></i></a></li>
+				<li><a href="{{ site.github }}"><i class="fab fa-github big-icon"></i></a></li>
+				<li><a href="{{ site.twitter-handle }}"><i class="fab fa-twitter big-icon"></i></a></li>
+				<li><a href="{{ site.orcid }}"><i class="ai ai-orcid big-icon"></i></a></li>
+			</ul>
+			<ul class="links">
+				<li><a href="{{ site.scopus }}"><i class="ai ai-scopus big-icon"></i></a></li>
+				<li><a href="{{ site.dblp }}"><i class="ai ai-dblp big-icon"></i></a></li>
+				<li><a href="{{ site.scholar }}"><i class="ai ai-google-scholar big-icon"></i></a></li>
+				<li><a href="{{ site.research-gate }}"><i class="ai ai-researchgate big-icon"></i></a></li>
+			</ul>
+		</div>
+      </header>
+	  
+      <section>
+		
+      {{ content }}
 
-    {{ content }}
-
-    <div class="page__footer">
+      </section>
       <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
+		    <p><small>&copy; {{ 'now' | date: "%Y" }} Luca Negrini<br/>
+        Hosted on GitHub Pages &mdash; Original theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+	<script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer></script><script>window.addEventListener("load",function(){window.wpcc.init({"corners":"small","colors":{"popup":{"background":"#ffffff","text":"#545454","border":"#5e5e5e"},"button":{"background":"#1297d1","text":"#ffffff"}},"position":"bottom","border":"thin","content":{"href":"https://www.cookiesandyou.com/","message":"This website uses analytics cookies to ensure you get the best experience on our website."}})});</script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-2785G76625"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
 
-    {% include scripts.html %}
-
+	  gtag('config', 'G-2785G76625');
+	  gtag('set', 'anonymizeIp', true);
+      gtag('require', 'eventTracker');
+      gtag('require', 'outboundLinkTracker');
+      gtag('require', 'urlChangeTracker');
+      gtag('send', 'pageview');
+    
+	</script>
   </body>
 </html>
