@@ -18,8 +18,7 @@ layout: secondary
 		<ul class="fa-ul talk-list">
 	{% endif %}
 	<li>
-		<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-		<p>Voto: {{ post.voto }}</p>
+		<b><a href="{{ post.url }}">{{ post.title }}</b>, voto: {{ post.voto }}</a>
 	</li>
 {% endfor %}
 </ul>
