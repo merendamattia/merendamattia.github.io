@@ -2,13 +2,9 @@
 layout: default
 ---
 
-## Hi, I'm Luca!
+## Hi, I'm Mattia!
 
-I am currently an Assistant Professor (non-tenure) at the Ca' Foscari University of Venice focusing on static analysis by abstract interpretation. My interest on the topic is broad, but I mainly focus on the practical aspects of multi-language static analyzers.
-
-I started studying computer science in high school, continuing with both Bachelor's and Master's degree at the University of Verona. I got in touch with JuliaSoft (part of [Corvallis](http://www.corvallis.it/)) during my Master's thesis, and that was the place where I got interested in Abstract Interpretation. I joined JuliaSoft as a developer of the Julia static analyzer in April 2018, following its development mainly in Java and C#. I was also part of the Scientific LAB, whose main focus is to bring the theoretical resesarch on Static analysis in contact with the industrial ecosystem. This led to a vast number of publications and continues to bring contributions to the scientific community. When Julia was [integrated](https://news.grammatech.com/grammatech-acquires-juliasoft) inside [CodeSonar](https://www.grammatech.com/codesonar-cc), I kept working on the analyzer in conjunction with the GrammaTech team, bridging the two tools for a wider impact on the Static Analysis market.
-
-In October 2019, I joined the Ca' Foscari University of Venice as a PhD student in Computer Science, focusing on multi-language static analysis, and graduating in January 2023. I have now joined Ca' Foscary and the [Software and System Verification (SSV)](https://ssv.dais.unive.it/), first as a Research Fellow and now as an Assistant Professor (non-tenure).
+...
 
 You can find my full CV [here](cv.pdf).
 
@@ -48,7 +44,7 @@ You can find my full CV [here](cv.pdf).
 ## Publications
 
 <ul class="fa-ul">
-{% for post in site.categories.publications limit: 2 %}
+{% for post in site.categories.publications limit: 6 %}
 	<li>
 		<span class="fa-li"><i class="fas fa-book-open"></i></span>
 		{{ post.authors }}. <a href="{{ post.url }}">{{ post.title }}</a><br/>
@@ -68,7 +64,7 @@ You can find my full CV [here](cv.pdf).
 ## Talks
 
 <ul class="fa-ul">
-{% for post in site.categories.talks limit: 2 %}
+{% for post in site.categories.talks limit: 8 %}
 	<li>
 		<span class="fa-li"><i class="fas fa-calendar-alt"></i></span>
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
