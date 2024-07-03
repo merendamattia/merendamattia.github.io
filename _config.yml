@@ -4,15 +4,15 @@ descrition: Personal homepage of Mattia Merenda
 author: Mattia Merenda
 logo: profile.jpg
 
-mail-work: info@merendamattia.com
+mail-work: saveriomattia.merenda@studenti.unipr.it
 linkedin: https://www.linkedin.com/in/merendamattia/
-# scholar: https://scholar.google.com/citations?user=zGO9bhkAAAAJ&hl=en
-# research-gate: https://www.researchgate.net/profile/Luca_Negrini
-# orcid: https://orcid.org/0000-0001-9930-8854
-# researcherid: https://publons.com/researcher/3259949/luca-negrini/
-# scopus: https://www.scopus.com/authid/detail.uri?authorId=57219763637
+# scholar:
+# research-gate: 
+# orcid: 
+# researcherid: 
+# scopus: 
 github: https://github.com/merendamattia
-# dblp: https://dblp.org/pid/266/7746.html
+# dblp: 
 
 exclude: [README.md]
 future: true

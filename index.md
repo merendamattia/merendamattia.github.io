@@ -6,13 +6,13 @@ layout: default
 
 I'm Saverio Mattia Merenda, a recent graduate in Computer Science from the University of Parma, Italy.
 
-Throughout my academic journey, I have gained extensive experience in software development, research, and static analysis. Notably, I played a key role in the development of EVMLiSA, a static analyzer for EVM bytecode, and contributed to various AI and blockchain-related initiatives.
+Throughout my academic journey, I have gained extensive experience in software development, research, and static analysis. Notably, I played a key role in the development of [EVMLiSA](https://github.com/lisa-analyzer/evm-lisa), a static analyzer for EVM bytecode, and contributed to various AI and blockchain-related initiatives.
 
 In addition to my academic pursuits, I have had the opportunity to work with several organizations. These experiences have allowed me to develop cutting-edge software solutions, streamline operations, and enhance security measures.
 
-I'm constantly driven to explore new technologies and techniques, always seeking to improve my skills and knowledge. I believe that experimentation and innovation are essential in the rapidly evolving field of computer science, and I am excited to continue contributing to its advancement.
+I'm constantly driven to explore new technologies and techniques, always seeking to improve my skills and knowledge. I believe that experimentation and innovation are essential in the rapidly evolving field of computer science, and I'm excited to continue contributing to its advancement.
 
-You can find my full CV [here](cv.pdf).
+<span class="subsect">You can find my full CV [here](cv.pdf)</span>.
 
 <span class="subsect">Interests:</span> Static Program Analysis, Abstract Interpretation, Blockchain.
 
@@ -149,3 +149,25 @@ You can find my full CV [here](cv.pdf).
 </ul>
 
 [All talks ({{ site.categories.talks.size }}) >>]({{ site.baseurl }}/talks/) -->
+
+<!-- ----------------------- -->
+
+## Events
+
+<ul class="fa-ul">
+{% for post in site.categories.events limit: 2 %}
+	<li>
+		<span class="fa-li"><i class="fas fa-calendar-day"></i></i></span>
+		<a href="{{ post.url }}">{{ post.title }}</a><br/>
+		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
+		<venue>{{ post.venue }}</venue><br/>
+		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
+		{% if post.manuscript %}
+			 - <i class="fas fa-file-pdf"></i> PDF available<br/>
+		{% endif %}
+		</small>
+	</li>
+{% endfor %}
+</ul>
+
+[All talks ({{ site.categories.events.size }}) >>]({{ site.baseurl }}/events/)
