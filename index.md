@@ -14,7 +14,7 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 
 You can find my full CV [here](cv.pdf).
 
-<span class="subsect">Interests:</span> Static Program Analysis, Program Verification, Abstract Interpretation.
+<span class="subsect">Interests:</span> Static Program Analysis, Abstract Interpretation, Blockchain.
 
 <!-- ----------------------- -->
 
@@ -63,7 +63,7 @@ You can find my full CV [here](cv.pdf).
 <ul class="fa-ul">
 {% for post in site.categories.research limit: 2 %}
 	<li>
-		<span class="fa-li"><i class="fa-solid fa-brain"></i></span>
+		<span class="fa-li"><i class="fas fa-brain"></i></i></span>
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
