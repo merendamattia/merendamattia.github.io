@@ -2,7 +2,7 @@
 layout: experience
 title: "Software Developer"
 tags: management-software Picasso Mirth
-venue: "Full time"
+venue: "HeliopsyLab"
 location: "Reggio Emilia, Italy"
 when: "Jan. 2021 ‑ Sep. 2021"
 ---
