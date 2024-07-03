@@ -1,6 +1,5 @@
 ---
-layout: talk
-kind: Workshop presentation
+layout: secondary
 title: "B.S. in Computer Science"
 tags: library-models software-frameworks static-analysis
 venue: "Construction of sound Control‑Flow Graphs for bytecode EVM."
