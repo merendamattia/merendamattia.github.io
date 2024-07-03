@@ -48,7 +48,7 @@ You can find my full CV [here](cv.pdf).
 {% endfor %}
 </ul>
 
-[See all ({{ site.categories.education.size }}) >>]({{ site.baseurl }}/education/)
+[See all experiences ({{ site.categories.experience.size }}) >>]({{ site.baseurl }}/experience/)
 
 <!-- ----------------------- -->
 
