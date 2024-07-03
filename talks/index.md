@@ -2,7 +2,7 @@
 layout: secondary
 ---
 
-## All talks
+## Education
 
 {% assign first_talk = site.categories.talks | first %}
 {% assign year = first_talk.date | date: "%Y" %}
@@ -18,7 +18,7 @@ layout: secondary
 <ul class="fa-ul talk-list">
 	{% endif %}
 	<li>
-		<span class="fa-li"><i class="fas fa-calendar-alt"></i></span>
+		<span class="fa-li"><i class="fas fa-graduation-cap"></i></span>
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<topic>{{ post.tags | join: "</topic> <topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>

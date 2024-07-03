@@ -10,6 +10,24 @@ You can find my full CV [here](cv.pdf).
 
 <span class="subsect">Interests:</span> Static Program Analysis, Program Verification, Abstract Interpretation.
 
+## Education
+
+<ul class="fa-ul">
+{% for post in site.categories.education limit: 8 %}
+	<li>
+		<span class="fa-li"><i class="fas fa-calendar-alt"></i></span>
+		<a href="{{ post.url }}">{{ post.title }}</a><br/>
+		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
+		<venue>{{ post.venue }}</venue><br/>
+		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
+		{% if post.manuscript %}
+			 • <i class="fas fa-file-pdf"></i> PDF available<br/>
+		{% endif %}
+		</small>
+	</li>
+{% endfor %}
+</ul>
+
 ## Projects
 
 {% assign pinned_prjs = site.pages | where: "project", true | where: "pinned", true %}
