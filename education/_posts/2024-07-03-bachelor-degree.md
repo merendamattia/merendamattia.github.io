@@ -1,5 +1,5 @@
 ---
-layout: secondary
+layout: education
 title: "B.S. in Computer Science"
 tags: library-models software-frameworks static-analysis
 venue: "Construction of sound Control‑Flow Graphs for bytecode EVM."
@@ -10,6 +10,6 @@ manuscript: "TAPAS18.pdf"
 
 ### Description
 
-- Thesis Title: Construction of complete Control‑Flow Graphs for bytecode EVM.
+- Thesis Title: Construction of sound Control‑Flow Graphs for bytecode EVM.
 - Best Marks: Calculus, Programming, Algorithms & DS, Cloud Administration, Database, AI, HPC.
 - Got different ERGO scholarships which are given to promising students in Unipr.
