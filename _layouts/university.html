@@ -4,7 +4,7 @@ layout: secondary
 
 <h1>Corso: {{ page.title }}</h1>
 
-<venue>{{ page.year }}</venue><br/>
+<venue>L'esame è stato svolto nel {{ page.year }}</venue><br/>
 
 <br/>
 {{content}}
@@ -20,20 +20,20 @@ layout: secondary
 {% endif %}
 {% if page.appunti %}
         <tr>
-            <td><i class="fas fa-id-card"></i> Appunti:</td>
-          <td><a href="{{ page.appunti }}">link</a></td>
+            <td><i class="fas fa-pen"></i> Appunti:</td>
+          <td><a href="{{ page.appunti }}">dispensa</a></td>
         </tr>
 {% endif %}
 {% if page.esercizi %}
         <tr>
-            <td><i class="fas fa-id-card"></i> Esercizi:</td>
-            <td><a href="{{ page.esercizi }}">link</a></td>
+            <td><i class="fas fa-pen-nib"></i>Esercizi:</td>
+            <td><a href="{{ page.esercizi }}">quaderno</a></td>
         </tr>
 {% endif %}
 {% if page.esercitazioni %}
         <tr>
-            <td><i class="fas fa-id-card"></i> Esercitazioni:</td>
-            <td><a href="{{ page.esercitazioni }}">link</a></td>
+            <td><i class="fas fa-book-open"></i>Esercitazioni:</td>
+            <td><a href="{{ page.esercitazioni }}">quaderno</a></td>
         </tr>
 {% endif %}
       </tbody>
