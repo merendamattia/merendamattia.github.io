@@ -2,7 +2,7 @@
 layout: secondary
 ---
 
-## Education
+## All talks
 
 {% assign first_talk = site.categories.talks | first %}
 {% assign year = first_talk.date | date: "%Y" %}

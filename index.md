@@ -12,34 +12,11 @@ You can find my full CV [here](cv.pdf).
 
 ## Education
 
-{% assign first_edu = site.categories.education | first %}
-{% assign year = first_edu.start_date | date: "%Y" %}
-
-<h3>{{ year }}</h3>
-<ul class="fa-ul education-list">
-{% for post in site.categories.education %}
-	{% assign cur_year = edu.start_date | date: "%Y" %}
-	{% if cur_year != year %}
-</ul>
-		{% assign year = cur_year %} 
-<h3>{{ year }}</h3>
-<ul class="fa-ul education-list">
-	{% endif %}
-	<li>
-		<span class="fa-li"><i class="fas fa-university"></i></span>
-		<strong>{{ edu.degree }}</strong> in {{ edu.field }}<br/>
-		<institution>{{ edu.institution }}</institution><br/>
-		<location>{{ edu.location }}</location><br/>
-		<small>{{ edu.start_date | date: "%-d %B %Y" }} - {% if edu.end_date %}{{ edu.end_date | date: "%-d %B %Y" }}{% else %}Present{% endif %}</small>
-	</li>
-{% endfor %}
-</ul>
-
 <ul class="fa-ul">
-{% for post in site.categories.education limit: 6 %}
+{% for post in site.categories.education limit: 2 %}
 	<li>
-		<span class="fa-li"><i class="fas fa-book-open"></i></span>
-		{{ post.authors }}. <a href="{{ post.url }}">{{ post.title }}</a><br/>
+		<span class="fa-li"><i class="fas fa-calendar-alt"></i></span>
+		<a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
 		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
@@ -50,6 +27,9 @@ You can find my full CV [here](cv.pdf).
 	</li>
 {% endfor %}
 </ul>
+
+
+[All talks ({{ site.categories.talks.size }}) >>]({{ site.baseurl }}/talks/)
 
 ## Projects
 

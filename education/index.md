@@ -4,25 +4,29 @@ layout: secondary
 
 ## Education
 
-{% assign first_edu = site.categories.education | first %}
-{% assign year = first_edu.start_date | date: "%Y" %}
+{% assign first_talk = site.categories.education | first %}
+{% assign year = first_talk.date | date: "%Y" %}
 
 <h3>{{ year }}</h3>
-<ul class="fa-ul education-list">
-{% for edu in site.categories.education %}
-	{% assign cur_year = edu.start_date | date: "%Y" %}
+<ul class="fa-ul talk-list">
+{% for post in site.categories.education %}
+	{% assign cur_year = post.date | date: "%Y" %}
 	{% if cur_year != year %}
 </ul>
 		{% assign year = cur_year %} 
 <h3>{{ year }}</h3>
-<ul class="fa-ul education-list">
+<ul class="fa-ul talk-list">
 	{% endif %}
 	<li>
-		<span class="fa-li"><i class="fas fa-university"></i></span>
-		<strong>{{ edu.degree }}</strong> in {{ edu.field }}<br/>
-		<institution>{{ edu.institution }}</institution><br/>
-		<location>{{ edu.location }}</location><br/>
-		<small>{{ edu.start_date | date: "%-d %B %Y" }} - {% if edu.end_date %}{{ edu.end_date | date: "%-d %B %Y" }}{% else %}Present{% endif %}</small>
+		<span class="fa-li"><i class="fas fa-calendar-alt"></i></span>
+		<a href="{{ post.url }}">{{ post.title }}</a><br/>
+		<topic>{{ post.tags | join: "</topic> <topic>" }}</topic><br/>
+		<venue>{{ post.venue }}</venue><br/>
+		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
+		{% if post.manuscript %}
+			 • <i class="fas fa-file-pdf"></i> PDF available<br/>
+		{% endif %}
+		</small>
 	</li>
 {% endfor %}
 </ul>
