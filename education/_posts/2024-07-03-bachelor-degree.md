@@ -1,7 +1,7 @@
 ---
 layout: education
 title: "B.S. in Computer Science"
-tags: library-models software-frameworks static-analysis
+tags: static-analysis abstract-interpretation EVMLiSA
 venue: "Thesis title: Construction of sound Control‑Flow Graphs for bytecode EVM."
 location: "University of Parma, Italy"
 when: "Sep. 2021 ‑ Jul. 2024"
@@ -9,10 +9,8 @@ manuscript: "bachelor-thesis.pdf"
 slides: "bachelor-slides.pdf"
 ---
 
-* Thesis Title: Construction of sound Control‑Flow Graphs for bytecode EVM.
 * Best Marks: Calculus, Programming, Algorithms & DS, Cloud Administration, Database, AI, HPC.
 * Got different ERGO scholarships which are given to promising students in Unipr.
-
 
 # Abstract thesis
 Ethereum è una piattaforma blockchain che consente la creazione di un ambiente globale decentralizzato, in cui gli utenti possono sviluppare strumenti digitali sicuri utilizzando la valuta nativa ether (ETH) per transazioni e servizi computazionali.
