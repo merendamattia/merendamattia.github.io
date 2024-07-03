@@ -95,13 +95,12 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 		{% assign langs = p.languages | split: " " %}
 		<small>
 		{% for lang in langs %}
-			<span class="language-dot {{ lang | downcase }}-dot"></span> {{ lang }}&nbsp;
+			{{ lang }}&nbsp;
 		{% endfor %}
 		</small>
 	</a>
 {% endfor %}
 </div>
-<p/>
 
 {% assign prj_count = pinned_prjs.size | plus: unpinned_prjs.size %}
 [All projects ({{ prj_count }}) >>]({{ site.baseurl }}/projects/)
@@ -161,7 +160,7 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
-		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
+		<small>{{ post.kind }} - {{ post.when }} - {{ post.location }}
 		{% if post.manuscript %}
 			 - <i class="fas fa-file-pdf"></i> PDF available<br/>
 		{% endif %}
