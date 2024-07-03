@@ -2,7 +2,7 @@
 layout: secondary
 ---
 
-## Research Projects
+## Appunti universitari
 
 {% assign first_talk = site.categories.university | first %}
 {% assign year = first_talk.date | date: "%Y" %}
