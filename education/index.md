@@ -18,13 +18,13 @@ layout: secondary
 <ul class="fa-ul talk-list">
 	{% endif %}
 	<li>
-		<span class="fa-li"><i class="fas fa-university-alt"></i></span>
+		<span class="fa-li"><i class="fas fa-university"></i></span>
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<topic>{{ post.tags | join: "</topic> <topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
 		<small>{{ post.when }} - {{ post.location }}
 		{% if post.manuscript %}
-			 • <i class="fas fa-file-pdf"></i> PDF available<br/>
+			 - <i class="fas fa-file-pdf"></i> Thesis available<br/>
 		{% endif %}
 		</small>
 	</li>
