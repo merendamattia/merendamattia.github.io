@@ -60,7 +60,7 @@ You can find my full CV [here](cv.pdf).
 {% assign prj_count = pinned_prjs.size | plus: unpinned_prjs.size %}
 [All projects ({{ prj_count }}) >>]({{ site.baseurl }}/projects/)
 
-## Publications
+<!-- ## Publications
 
 <ul class="fa-ul">
 {% for post in site.categories.publications limit: 2 %}
@@ -78,12 +78,13 @@ You can find my full CV [here](cv.pdf).
 {% endfor %}
 </ul>
 
-[All publications ({{ site.categories.publications.size }}) >>]({{ site.baseurl }}/publications/)
+[All publications ({{ site.categories.publications.size }}) >>]({{ site.baseurl }}/publications/) -->
 
-## Talks
+
+<!-- ## Talks
 
 <ul class="fa-ul">
-{% for post in site.categories.talks limit: 8 %}
+{% for post in site.categories.talks limit: 2 %}
 	<li>
 		<span class="fa-li"><i class="fas fa-calendar-alt"></i></span>
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
@@ -98,5 +99,4 @@ You can find my full CV [here](cv.pdf).
 {% endfor %}
 </ul>
 
-
-[All talks ({{ site.categories.talks.size }}) >>]({{ site.baseurl }}/talks/)
+[All talks ({{ site.categories.talks.size }}) >>]({{ site.baseurl }}/talks/) -->
