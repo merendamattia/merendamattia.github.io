@@ -23,3 +23,9 @@ future: true
 
 plugins:
   - jekyll-sitemap
+
+collections:
+  education:
+    output: true
+  talks:
+    output: true
