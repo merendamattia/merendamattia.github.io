@@ -24,12 +24,12 @@ Elenco dei corsi i cui appunti sono stati presi su Obsidian:
 
 <!-- ----------------------- -->
 
-{% assign first_talk = site.categories.university | first %}
+{% assign first_talk = site.categories.uni | first %}
 {% assign year = first_talk.date | date: "%Y" %}
 
 <h3>{{ year }}</h3>
 <ul class="fa-ul talk-list">
-{% for post in site.categories.university %}
+{% for post in site.categories.uni %}
 	{% assign cur_year = post.date | date: "%Y" %}
 	{% if cur_year != year %}
 </ul>
