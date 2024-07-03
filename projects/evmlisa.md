@@ -5,7 +5,7 @@ pinned: true
 projid: evmlisa
 languages: Java
 title: "EVMLiSA"
-description: "An abstract interpretation-based static analyzer for EVM bytecode"
+description: "An abstract interpretation-based static analyzer for EVM bytecode."
 repo: "https://github.com/lisa-analyzer/evmlisa"
 website: "https://lisa-analyzer.github.io/"
 ---
