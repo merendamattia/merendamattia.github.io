@@ -1,6 +1,3 @@
-.green-heading {
-    color: #27A45A;
-}
-h2 {
+.green-heading, h2 {
     color: #27A45A;
 }
