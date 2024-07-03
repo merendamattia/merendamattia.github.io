@@ -52,6 +52,24 @@ You can find my full CV [here](cv.pdf).
 
 <!-- ----------------------- -->
 
+## Research Projects
+
+<ul class="fa-ul">
+{% for post in site.categories.research limit: 2 %}
+	<li>
+		<span class="fa-li"><i class="fas fa-briefcase"></i></span>
+		<a href="{{ post.url }}">{{ post.title }}</a><br/>
+		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
+		<venue>{{ post.venue }}</venue><br/>
+		<small><i>{{ post.when }} - {{ post.location }}</i></small>
+	</li>
+{% endfor %}
+</ul>
+
+[See all research projects ({{ site.categories.research.size }}) >>]({{ site.baseurl }}/research/)
+
+<!-- ----------------------- -->
+
 ## Projects
 
 {% assign pinned_prjs = site.pages | where: "project", true | where: "pinned", true %}
