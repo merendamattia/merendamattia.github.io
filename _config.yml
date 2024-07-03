@@ -19,6 +19,7 @@ twitter:
   card: summary
 
 exclude: [README.md]
+future: true
 
 plugins:
   - jekyll-sitemap
