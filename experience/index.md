@@ -23,7 +23,8 @@ layout: secondary
 		<topic>{{ post.tags | join: "</topic> <topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
 		<small>{{ post.when }} - {{ post.location }}</small>
+		<venue>{{ post.content }}</venue>
 	</li>
-	{{post.content}}
+	
 {% endfor %}
 </ul>
