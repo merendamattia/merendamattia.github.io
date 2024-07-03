@@ -23,3 +23,9 @@ Qualcosa di about me
 {% for post in site.talks %}
   {% include archive-single.html %}
 {% endfor %}
+
+Talks
+======
+  <ul>{% for post in site.talks reversed %}
+    {% include archive-single-talk-cv.html  %}
+  {% endfor %}</ul>
