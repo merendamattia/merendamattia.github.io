@@ -10,12 +10,14 @@ You can find my full CV [here](cv.pdf).
 
 <span class="subsect">Interests:</span> Static Program Analysis, Program Verification, Abstract Interpretation.
 
+<!-- ----------------------- -->
+
 ## Education
 
 <ul class="fa-ul">
 {% for post in site.categories.education limit: 2 %}
 	<li>
-		<span class="fa-li"><i class="fas fa-calendar-alt"></i></span>
+		<span class="fa-li"><i class="fas fa-university"></i></span>
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
@@ -29,6 +31,26 @@ You can find my full CV [here](cv.pdf).
 </ul>
 
 [See all ({{ site.categories.education.size }}) >>]({{ site.baseurl }}/education/)
+
+<!-- ----------------------- -->
+
+## Experience
+
+<ul class="fa-ul">
+{% for post in site.categories.experience limit: 2 %}
+	<li>
+		<span class="fa-li"><i class="fas fa-briefcase"></i></span>
+		<a href="{{ post.url }}">{{ post.title }}</a><br/>
+		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
+		<venue>{{ post.venue }}</venue><br/>
+		<small>{{ post.when }} - {{ post.location }}</small>
+	</li>
+{% endfor %}
+</ul>
+
+[See all ({{ site.categories.education.size }}) >>]({{ site.baseurl }}/education/)
+
+<!-- ----------------------- -->
 
 ## Projects
 
@@ -60,6 +82,8 @@ You can find my full CV [here](cv.pdf).
 {% assign prj_count = pinned_prjs.size | plus: unpinned_prjs.size %}
 [All projects ({{ prj_count }}) >>]({{ site.baseurl }}/projects/)
 
+<!-- ----------------------- -->
+
 <!-- ## Publications
 
 <ul class="fa-ul">
@@ -80,6 +104,7 @@ You can find my full CV [here](cv.pdf).
 
 [All publications ({{ site.categories.publications.size }}) >>]({{ site.baseurl }}/publications/) -->
 
+<!-- ----------------------- -->
 
 <!-- ## Talks
 
