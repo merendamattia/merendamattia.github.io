@@ -6,6 +6,7 @@ venue: "Thesis title: Construction of sound Control‑Flow Graphs for bytecode E
 location: "University of Parma, Italy"
 when: "Sep. 2021 ‑ Jul. 2024"
 manuscript: "bachelor-thesis.pdf"
+slides: "bachelor-slides.pdf"
 ---
 
 * Thesis Title: Construction of sound Control‑Flow Graphs for bytecode EVM.

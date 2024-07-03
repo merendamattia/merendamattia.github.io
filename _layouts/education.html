@@ -12,3 +12,22 @@ layout: secondary
 
 <br/>
 {{content}}
+
+<div class="divtable">
+    <table>
+        <tbody>
+        {% if page.manuscript %}
+            <tr>
+                <td><i class="fas fa-file-pdf"></i> Thesis:</td>
+            <td><a href="{{ site.baseurl }}/manuscripts/{{ page.manuscript }}">PDF</a></td>
+            </tr>
+        {% endif %}
+        {% if page.slides %}
+            <tr>
+                <td><i class="fas fa-file-pdf"></i> Slides:</td>
+            <td><a href="{{ site.baseurl }}/manuscripts/{{ page.slides }}">PDF</a></td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
