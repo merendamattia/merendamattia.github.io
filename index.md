@@ -28,7 +28,7 @@ You can find my full CV [here](cv.pdf).
 {% endfor %}
 </ul>
 
-[Other ({{ site.categories.education.size }}) >>]({{ site.baseurl }}/education/)
+[See all ({{ site.categories.education.size }}) >>]({{ site.baseurl }}/education/)
 
 ## Projects
 
