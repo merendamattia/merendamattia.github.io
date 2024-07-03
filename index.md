@@ -21,7 +21,7 @@ You can find my full CV [here](cv.pdf).
 		<venue>{{ post.venue }}</venue><br/>
 		<small>{{ post.when }} - {{ post.location }}
 		{% if post.manuscript %}
-			 • <i class="fas fa-file-pdf"></i> PDF available<br/>
+			 • <i class="fas fa-file-pdf"></i> Thesis available<br/>
 		{% endif %}
 		</small>
 	</li>
@@ -57,14 +57,13 @@ You can find my full CV [here](cv.pdf).
 </div>
 <p/>
 
-
 {% assign prj_count = pinned_prjs.size | plus: unpinned_prjs.size %}
 [All projects ({{ prj_count }}) >>]({{ site.baseurl }}/projects/)
 
 ## Publications
 
 <ul class="fa-ul">
-{% for post in site.categories.publications limit: 6 %}
+{% for post in site.categories.publications limit: 2 %}
 	<li>
 		<span class="fa-li"><i class="fas fa-book-open"></i></span>
 		{{ post.authors }}. <a href="{{ post.url }}">{{ post.title }}</a><br/>
@@ -101,9 +100,3 @@ You can find my full CV [here](cv.pdf).
 
 
 [All talks ({{ site.categories.talks.size }}) >>]({{ site.baseurl }}/talks/)
-
-## PhD Thesis
-
-In my PhD thesis, I defined a generic framework for the development of modular multilanguage static analyses using the abstract interpretation theory. The framework has been implemented in [LiSA]({% link projects/lisa.md %}). LiSA strives to be modular, while ensuring that analysis components are parametric to all language-specific features. Together with my colleagues, we instantiated LiSA for the analysis of smart contracts written in Go using GoLiSA, and for the analysis of data science notebooks written in Python using PyLiSA. The framework is then strenghtened by two additiona components: SARL, a domain-specific language that can be used to compactly model how frameworks and libraries interact with the analyzed application, and Tarsis, an abstract domain that abstracts strings as regular languages.
-
-You can access the full thesis [here](manuscripts/phd-thesis.pdf).

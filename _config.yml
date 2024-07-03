@@ -4,19 +4,15 @@ descrition: Personal homepage of Mattia Merenda
 author: Mattia Merenda
 logo: profile.jpg
 
-mail-work: luca.negrini@unive.it
-linkedin: https://www.linkedin.com/in/luca-negrini-4a9813160
-scholar: https://scholar.google.com/citations?user=zGO9bhkAAAAJ&hl=en
-research-gate: https://www.researchgate.net/profile/Luca_Negrini
-orcid: https://orcid.org/0000-0001-9930-8854
-researcherid: https://publons.com/researcher/3259949/luca-negrini/
-scopus: https://www.scopus.com/authid/detail.uri?authorId=57219763637
-github: https://github.com/lucaneg
-dblp: https://dblp.org/pid/266/7746.html
-twitter-handle: https://twitter.com/lucaneg7
-twitter:
-  username: lucaneg7
-  card: summary
+mail-work: info@merendamattia.com
+linkedin: https://www.linkedin.com/in/merendamattia/
+# scholar: https://scholar.google.com/citations?user=zGO9bhkAAAAJ&hl=en
+# research-gate: https://www.researchgate.net/profile/Luca_Negrini
+# orcid: https://orcid.org/0000-0001-9930-8854
+# researcherid: https://publons.com/researcher/3259949/luca-negrini/
+# scopus: https://www.scopus.com/authid/detail.uri?authorId=57219763637
+github: https://github.com/merendamattia
+# dblp: https://dblp.org/pid/266/7746.html
 
 exclude: [README.md]
 future: true
@@ -24,8 +20,3 @@ future: true
 plugins:
   - jekyll-sitemap
 
-collections:
-  education:
-    output: true
-  talks:
-    output: true
