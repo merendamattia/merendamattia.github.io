@@ -24,5 +24,6 @@ layout: secondary
 		<venue>{{ post.venue }}</venue><br/>
 		<small>{{ post.when }} - {{ post.location }}</small>
 	</li>
+	{{content}}
 {% endfor %}
 </ul>
