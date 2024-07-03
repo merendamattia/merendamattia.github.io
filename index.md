@@ -157,7 +157,7 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 <ul class="fa-ul">
 {% for post in site.categories.events limit: 2 %}
 	<li>
-		<span class="fa-li"><i class="fas fa-calendar-day"></i></i></span>
+		<span class="fa-li"><i class="fas fa-calendar-day"></i></span>
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>

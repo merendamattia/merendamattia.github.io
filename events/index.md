@@ -27,7 +27,7 @@ layout: secondary
 			 • <i class="fas fa-file-pdf"></i> PDF available<br/>
 		{% endif %}
 		</small>
-		<small>{{ post.content }}</small>
+		<venue>{{ post.content }}</venue>
 	</li>
 {% endfor %}
 </ul>

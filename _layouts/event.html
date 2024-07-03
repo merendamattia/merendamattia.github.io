@@ -1,0 +1,67 @@
+---
+layout: secondary
+---
+
+<topic>{{ page.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
+
+<h1>Event: {{ page.title }}</h1>
+
+<venue>{{ page.venue }}</venue><br/>
+
+<small>{{ page.location }}, {{ page.when }}</small><br/>
+
+<small>{{ page.kind }}</small><br/>
+
+<br/>
+{{content}}
+
+
+<div class="divtable">
+  <table>
+    <tbody>
+{% if page.manuscript %}
+      <tr>
+      	<td><i class="fas fa-file-pdf"></i> Manuscript:</td>
+        <td><a href="{{ site.baseurl }}/manuscripts/{{ page.manuscript }}">PDF</a></td>
+      </tr>
+{% endif %}
+{% if page.relatedpubtitle and page.relatedpub %}
+      <tr>
+      	<td><i class="fas fa-calendar-alt"></i> Conference talk:</td>
+        <td><a href="{{ page.relatedpub }}">{{ page.relatedpubtitle }}</a></td>
+      </tr>
+{% endif %}
+{% if page.projects %}
+	{% assign projectlist = '' | split: '' %}
+	{% assign referredprojects = page.projects | split: ' ' %}
+	{% for p in referredprojects %}
+		{% assign matching = site.pages | where: "project", true | where: "projid", p %}
+		{% assign projectlist = projectlist | concat: matching %}
+	{% endfor %}
+	{% if projectlist.size > 0 %}
+	  <tr>
+      	<td><i class="fas fa-laptop-code"></i> Associated project{% if projectlist.size > 1 %}s{% endif %}:</td>
+        <td>
+		{% assign count = 0%}
+		{% for p in projectlist %}
+			{% assign count = count | plus: 1 %}
+<a href="{{ p.url }}">{{ p.title }}</a>{% if count < projectlist.size %}, {% endif %}
+		{% endfor %}</td>
+      </tr>
+	{% endif %}
+{% endif %}
+{% if page.confpage %}
+      <tr>
+      	<td><i class="fas fa-chalkboard-teacher"></i> Conference page:</td>
+        <td><a href="{{ page.confpage }}">Link</a></td>
+      </tr>
+{% endif %}
+{% if page.publishername and page.publisherpage %}
+      <tr>
+      	<td><i class="fas fa-atlas"></i> {{ page.publishername }} page:</td>
+        <td><a href="{{ page.publisherpage }}">Link</a></td>
+      </tr>
+{% endif %}
+    </tbody>
+  </table>
+</div>
