@@ -21,7 +21,7 @@ layout: secondary
 		<!-- <span class="fa-li"><i class="fas fa-brain"></i></span> -->
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<!-- <topic>{{ post.tags | join: "</topic> <topic>" }}</topic><br/> -->
-		<venue>{{ post.venue }}</venue><br/>
+		<venue>{{ post.year }}</venue><br/>
 		<!-- <small><i>{{ post.when }} - {{ post.location }}</i></small>
 		<venue>{{ post.content }}</venue> -->
 	</li>
