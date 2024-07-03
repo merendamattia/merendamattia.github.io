@@ -12,19 +12,13 @@ layout: secondary
 {% for post in site.categories.university %}
 	{% assign cur_year = post.date | date: "%Y" %}
 	{% if cur_year != year %}
-</ul>
+		</ul>
 		{% assign year = cur_year %} 
-<h3>{{ year }}</h3>
-<ul class="fa-ul talk-list">
+		<h3>{{ year }}</h3>
+		<ul class="fa-ul talk-list">
 	{% endif %}
 	<li>
-		<!-- <span class="fa-li"><i class="fas fa-brain"></i></span> -->
-		<a href="{{ post.url }}">{{ post.title }}</a><br/>
-		<!-- <topic>{{ post.tags | join: "</topic> <topic>" }}</topic><br/> -->
-		<venue>{{ post.year }}</venue><br/>
-		<!-- <small><i>{{ post.when }} - {{ post.location }}</i></small>
-		<venue>{{ post.content }}</venue> -->
+		<h3><a href="{{ post.url }}">{{ post.title }}, voto: {{ post.voto }}</a></h3>
 	</li>
-	
 {% endfor %}
 </ul>
