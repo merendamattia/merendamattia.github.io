@@ -93,11 +93,11 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 		<i class="fas fa-laptop-code"></i> <span>{{ p.title }}</span><br/>
 		<venue>{{ p.description }}</venue><br/>
 		{% assign langs = p.languages | split: " " %}
-		<small>
+		<!-- <small>
 		{% for lang in langs %}
 			{{ lang }}&nbsp;
 		{% endfor %}
-		</small>
+		</small> -->
 	</a>
 {% endfor %}
 </div>
