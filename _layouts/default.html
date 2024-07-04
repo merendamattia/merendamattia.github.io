@@ -5,6 +5,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+	<!--
+		Allows control over where resources are loaded from.
+		Place as early in the <head> as possible, as the tag  
+		only applies to resources that are declared after it.
+	-->
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+
+	<!-- Short description of the document (limit to 150 characters) -->
+	<!-- This content *may* be used as a part of search engine results. -->
+	<meta name="description" content="Mattia Merenda Curriculum">
+
+	<!-- Control the behavior of search engine crawling and indexing -->
+	<meta name="robots" content="index,follow"><!-- All Search Engines -->
+	<meta name="googlebot" content="index,follow"><!-- Google Specific -->
+
 	
 
 	<title>{{ site.title }}</title>
