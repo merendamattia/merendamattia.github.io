@@ -19,4 +19,5 @@ future: true
 
 plugins:
   - jekyll-sitemap
+  - jekyll-seo-tag
 
