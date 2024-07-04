@@ -1,4 +1,4 @@
 ---
 layout: forward
-target: https://merendamattia.com/files.cv.pdf
+target: https://merendamattia.com/files/cv.pdf
 ---
