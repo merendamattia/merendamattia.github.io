@@ -6,12 +6,7 @@ layout: secondary
 
 <span>{{ page.description }}</span><br/>
 
-<small>
-{% assign langs = page.languages | split: " " %}
-{% for lang in langs %}
-	<span class="language-dot {{ lang | downcase }}-dot"></span> {{ lang }}&nbsp;
-{% endfor %}
-</small><br/>
+<topic>{{ page.languages | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic>
 
 <br/>
 {{content}}
