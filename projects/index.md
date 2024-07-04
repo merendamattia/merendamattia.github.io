@@ -10,7 +10,7 @@ layout: secondary
 <div class="project-item-wrapper">
 {% for p in projectlist %}
 	<div class="project-item">
-		<a href="{{ p.url }}">{{ p.title }}</a><br/>
+		<i class="fas fa-laptop-code"></i> <span><a href="{{ p.url }}">{{ p.title }}</a></span><br/>
 		<venue>{{ p.description }}</venue><br/>
 		<topic>{{ p.languages | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic>
 	</div>
