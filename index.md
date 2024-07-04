@@ -101,7 +101,7 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 	</a>
 {% endfor %}
 </div>
-<br/>
+
 {% assign prj_count = pinned_prjs.size | plus: unpinned_prjs.size %}
 [All projects ({{ prj_count }}) >>]({{ site.baseurl }}/projects/)
 
@@ -118,7 +118,7 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 		<venue>{{ post.venue }}</venue><br/>
 		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
 		{% if post.manuscript %}
-			 • <i class="fas fa-file-pdf"></i> PDF available<br/>
+			 - <i class="fas fa-file-pdf"></i> PDF available<br/>
 		{% endif %}
 		</small>
 	</li>
@@ -140,7 +140,7 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 		<venue>{{ post.venue }}</venue><br/>
 		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
 		{% if post.manuscript %}
-			 • <i class="fas fa-file-pdf"></i> PDF available<br/>
+			 - <i class="fas fa-file-pdf"></i> PDF available<br/>
 		{% endif %}
 		</small>
 	</li>
