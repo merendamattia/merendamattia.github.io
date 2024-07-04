@@ -12,12 +12,7 @@ layout: secondary
 	<div class="project-item">
 		<a href="{{ p.url }}">{{ p.title }}</a><br/>
 		<venue>{{ p.description }}</venue><br/>
-		{% assign langs = p.languages | split: " " %}
-		<small>
-		{% for lang in langs %}
-			<span class="language-dot {{ lang | downcase }}-dot"></span> {{ lang }}&nbsp;
-		{% endfor %}
-		</small>
+		<topic>{{ p.languages | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic>
 	</div>
 {% endfor %}
 </div>
