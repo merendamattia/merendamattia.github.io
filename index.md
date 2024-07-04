@@ -12,7 +12,7 @@ In addition to my academic pursuits, I have had the opportunity to work with sev
 
 I'm constantly driven to explore new technologies and techniques, always seeking to improve my skills and knowledge. I believe that experimentation and innovation are essential in the rapidly evolving field of computer science, and I'm excited to continue contributing to its advancement.
 
-<span class="subsect">You can find my full CV <a href="{{ site.baseurl }}/manuscripts/cv.pdf">here</a></span>.
+<span class="subsect">You can find my full CV <a href="{{ site.baseurl }}/files/cv.pdf">here</a></span>.
 
 <span class="subsect">Interests:</span> Static Program Analysis, Abstract Interpretation, Blockchain.
 
@@ -101,7 +101,7 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 	</a>
 {% endfor %}
 </div>
-
+<br/>
 {% assign prj_count = pinned_prjs.size | plus: unpinned_prjs.size %}
 [All projects ({{ prj_count }}) >>]({{ site.baseurl }}/projects/)
 
