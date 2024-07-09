@@ -17,6 +17,7 @@ github: https://github.com/merendamattia
 exclude: [README.md]
 future: true
 
+url: "https://www.merendamattia.com/"
 plugins:
   - jekyll-sitemap
 

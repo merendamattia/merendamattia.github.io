@@ -37,8 +37,44 @@ Elenco dei corsi i cui appunti sono stati presi su Obsidian:
 <h3>{{ year }}</h3>
 <ul class="fa-ul talk-list">
 	{% endif %}
-	<li>
-		<a href="{{ post.url }}"><b>{{ post.title }}</b>, voto: {{ post.voto }}</a>
+	<li >
+		<table>
+			<tr>
+				<td style="width:40%;"><a href="{{ post.url }}"><b>{{ post.title }}</b>, voto: {{ post.voto }}</a></td>
+				<!-- Esercitazioni -->
+				<td style="text-align: right; width:17%;">
+				{% if post.esercitazioni %}
+					<i class="fas fa-book-open"></i> <a target="_blank" href="{{ post.esercitazioni }}">Esercitazioni</a>
+				{% else %}
+					<span style="opacity: 0;"><i class="fas fa-pen-nib"></i> Esercitazioni</span>
+				{% endif %}
+				</td>
+				<!-- Esercizi -->
+				<td style="text-align: right; width:12%;">
+				{% if post.esercizi %}
+					<i class="fas fa-pen-nib"></i> <a target="_blank" href="{{ post.esercizi }}">Esercizi</a>
+				{% else %}
+					<span style="opacity: 0;"><i class="fas fa-pen-nib"></i> Esercizi</span>
+				{% endif %}
+				</td>
+				<!-- Appunti -->
+				<td style="text-align: right; width:15%;">
+				{% if post.appunti %}
+					<i class="fas fa-pen"></i> <a target="_blank" href="{{ post.appunti }}">Appunti</a>
+				{% else %}
+					<span style="opacity: 0;"><i class="fas fa-pen-nib"></i> Appunti</span>
+				{% endif %}
+				</td>
+				<!-- Github -->
+				<td style="text-align: right; width:10%;">
+				{% if post.github %}
+					<i class="fas fa-code-branch"></i> <a target="_blank" href="{{ post.github }}">Github</a>
+				{% else %}
+					<span style="opacity: 0;"><i class="fas fa-pen-nib"></i> Github</span>
+				{% endif %}	
+				</td>
+			</tr>
+		</table>
 	</li>
 {% endfor %}
 </ul>

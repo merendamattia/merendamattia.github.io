@@ -1,3 +1,7 @@
 .green-heading, h2 {
     color: #27A45A;
 }
+
+table td {
+    text-align: right;
+}
