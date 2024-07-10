@@ -31,7 +31,23 @@ layout: secondary
   </table>
 </div>
 
-<!-- <h4>Related publications</h4>
+<h3>Related works</h3>
+
+{% assign publist = '' | split: '' %}
+{% for p in site.categories.education %}
+  {% assign pprojects = p.projects | split: ' '  %}
+  {% if pprojects contains page.projid %}
+    <a href="{{ p.url }}"><i class="fas fa-university"></i> {{ p.title }}</a><br/>
+  {% endif %}	
+{% endfor %}
+
+{% assign publist = '' | split: '' %}
+{% for p in site.categories.talks %}
+	{% assign pprojects = p.projects | split: ' '  %}
+	{% if pprojects contains page.projid %}
+		<a href="{{ p.url }}"><i class="fas fa-calendar-alt"></i> {{ p.title }}</a><br/>
+	{% endif %}	
+{% endfor %}
 
 {% assign publist = '' | split: '' %}
 {% for p in site.categories.publications %}
@@ -40,14 +56,3 @@ layout: secondary
 		<a href="{{ p.url }}"><i class="fas fa-book-open"></i> {{ p.title }}</a><br/>
 	{% endif %}	
 {% endfor %}
-
-<br/>
-<h4>Related talks</h4>
-
-{% assign publist = '' | split: '' %}
-{% for p in site.categories.talks %}
-	{% assign pprojects = p.projects | split: ' '  %}
-	{% if pprojects contains page.projid %}
-		<a href="{{ p.url }}"><i class="fas fa-calendar-alt"></i> {{ p.title }}</a><br/>
-	{% endif %}	
-{% endfor %} -->

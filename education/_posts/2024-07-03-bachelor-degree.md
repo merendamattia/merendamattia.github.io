@@ -8,6 +8,7 @@ when: "Sep. 2021 ‑ Jul. 2024"
 manuscript: "bachelor-thesis.pdf"
 slides: "bachelor-slides.pdf"
 grade: "108/110"
+projects: evmlisa
 ---
 
 * Best Marks: Calculus, Programming, Algorithms & DS, Cloud Administration, Database, AI, HPC.
