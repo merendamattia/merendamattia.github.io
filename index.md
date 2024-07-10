@@ -172,7 +172,7 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 {% endfor %}
 </ul>
 
-[All talks ({{ site.categories.events.size }}) >>]({{ site.baseurl }}/events/)
+[All events ({{ site.categories.events.size }}) >>]({{ site.baseurl }}/events/)
 
 <!-- ----------------------- -->
 
