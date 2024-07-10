@@ -6,6 +6,10 @@ layout: secondary
 
 <h1>Education: {{ page.title }}</h1>
 
+{% if page.grade %}
+    <venue>Grade: {{ page.grade }}</venue><br/>
+{% endif %}
+
 <venue>{{ page.venue }}</venue><br/>
 
 <small>{{ page.location }}, {{ page.when }}</small>

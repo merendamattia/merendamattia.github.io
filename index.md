@@ -28,8 +28,11 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
 		<small><i>{{ post.when }} - {{ post.location }}</i>
+		{% if post.grade %}
+			 - <small><i>Grade: {{ post.grade }}</i></small>
+		{% endif %}
 		{% if post.manuscript %}
-			 • <i class="fas fa-file-pdf"></i> Thesis available<br/>
+			 - <i class="fas fa-file-pdf"></i> Thesis available<br/>
 		{% endif %}
 		</small>
 	</li>
