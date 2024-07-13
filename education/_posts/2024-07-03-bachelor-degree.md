@@ -15,10 +15,10 @@ projects: evmlisa
 * Got different ERGO scholarships which are given to promising students in Unipr.
 
 # Abstract thesis
-Ethereum è una piattaforma blockchain che consente la creazione di un ambiente globale decentralizzato, in cui gli utenti possono sviluppare strumenti digitali sicuri utilizzando la valuta nativa ether (ETH) per transazioni e servizi computazionali.
-La rete Ethereum è costituita da nodi interconnessi che seguono regole definite nel protocollo Ethereum, supportando una vasta gamma di comunità, applicazioni, organizzazioni e attività digitali accessibili a chiunque abbia una connessione internet.
-La caratteristica principale di Ethereum è la capacità di eseguire smart contract tramite la Ethereum Virtual Machine (EVM), consentendo funzionalità avanzate al di là delle transazioni finanziarie di base (e.g., Bitcoin). Gli smart contract sono programmi immutabili memorizzati sulla blockchain che eseguono azioni predefinite senza l’intervento umano.
-Tuttavia, garantire la sicurezza e l’affidabilità degli smart contract è essenziale, poich ́e non possono essere modificati una volta caricati sulla blockchain. La presenza di bug o vulnerabilità potrebbe causare gravi conseguenze, come perdite di fondi o azioni indesiderate, proprio come è accaduto nel 2016 con l’attacco a The DAO.
-Per garantire la qualità degli smart contract, vengono sviluppate tecniche di analisi e verifica del codice. L’analisi statica, ad esempio, identifica potenziali problemi di sicurezza senza eseguire effettivamente il codice. Tuttavia, nel contesto di Ethereum, la costruzione di un Control-Flow Graph (CFG) affidabile è complesso a causa delle destinazioni dinamiche dei salti (Jump Orfane) durante l’esecuzione del EVM bytecode.
-In questo elaborato viene presentato EVMLiSA, un software in grado di costruire un CFG completo e affidabile di smart contract eseguibili su EVM.
-
+Ethereum is a blockchain platform that enables the creation of a decentralized global environment, where users can develop secure digital tools using the native currency ether (ETH) for transactions and computational services. 
+The Ethereum network is made up of interconnected nodes that follow rules defined in the Ethereum protocol, supporting a wide range of digital communities, applications, organizations, and businesses that are accessible to anyone with an internet connection. 
+Ethereum's main feature is the ability to execute smart contracts via the Ethereum Virtual Machine (EVM), enabling advanced functionality beyond basic financial transactions (e.g., Bitcoin). Smart contracts are immutable programs stored on the blockchain that perform predefined actions without human intervention. 
+However, ensuring the security and reliability of smart contracts is essential, as they cannot be modified once uploaded to the blockchain. Bugs or vulnerabilities could cause serious consequences, such as loss of funds or unwanted actions, as happened in 2016 with the attack on The DAO. 
+To ensure the quality of smart contracts, code analysis and verification techniques are developed. Static analysis, for example, identifies potential security issues without actually executing the code. 
+However, in the context of Ethereum, building a reliable Control-Flow Graph (CFG) is complex due to dynamic jump destinations (Orphan Jumps) during the execution of the EVM bytecode. 
+This paper presents EVMLiSA, a software capable of building a complete and reliable CFG of smart contracts that can be executed on EVM.
