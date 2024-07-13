@@ -14,14 +14,6 @@ Hai bisogno di aiuto per studiare una materia? Puoi contattarmi via <a href="mai
 ### Guida all'utilizzo di Obsidian
 Obsidian è un editor di testo che utilizza la sintassi Markdown (.md) per gestire gli appunti in modo organizzato. Si consiglia inoltre di installare i plugin presenti nella seguente [Wiki](http://bit.ly/3lfPQiB) per sfruttare al meglio le potenzialità del software. La preview che si vede su Github può risultare incompleta o non leggibile.
 
-Elenco dei corsi i cui appunti sono stati presi su Obsidian:
-- Metodologie di Programmazione
-- Laboratorio di Algoritmi
-- Fondamenti di Informatica
-- Reti di Calcolatori
-- Ingegneria del Software
-- Intelligenza Artificiale
-
 <!-- ----------------------- -->
 
 {% assign first_talk = site.categories.uni | first %}
