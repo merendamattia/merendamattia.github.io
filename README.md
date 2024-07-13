@@ -2,33 +2,53 @@
 
 Every command should be executed from the **git bash**.
 
-* Download ruby from [here](https://rubyinstaller.org/downloads/)
-* Install bundler: **gem install bundler**
-* Install jekyll: **gem install jekyll**
+* Download ruby from [here](https://rubyinstaller.org/downloads/).
+* Install bundler: 
+```
+gem install bundler
+```
+
+* Install jekyll: 
+```
+gem install jekyll
+```
+
 * Create Gemfile: 
-    * **echo "source 'https://rubygems.org'" > Gemfile**
-    * **echo "gem 'github-pages', group: :jekyll_plugins" >> Gemfile**
-* Install gems: **bundle install**
-    * If some gem fails to install, use this: **gem install gem_name -v 'version' --source 'https://rubygems.org/'**
-* Create site: **bundle exec jekyll \_3.3.0\_ new . --force**
-    * Revert all changes made to *_config.yml* and *index.md* and other staged files
+```
+echo "source 'https://rubygems.org'" > Gemfile**
+echo "gem 'github-pages', group: :jekyll_plugins" >> Gemfile
+```
+
+* Install gems: 
+```
+bundle install
+```
+
+* If some gem fails to install, use this: 
+```
+gem install gem_name -v 'version' --source 'https://rubygems.org/'
+```
+
+* Create site: 
+```
+bundle exec jekyll \_3.3.0\_ new . --force
+```
+
+* Revert all changes made to `_config.yml` and `index.md` and other staged files.
+
 * Change the theme in Gemfile
-    * Find a line similar to this: **gem "minima", "~> 2.0"**
-    * Replace with this: **gem "jekyll-theme-minimal", "~> 0.1.1"**
-    * Execute **bundle install**
-* Execute Jekyll: **bundle exec jekyll serve**
-    * If the port is in use, add **--port port_number**
+    * Find a line similar to this: `gem "minima", "~> 2.0"`
+    * Replace with this: `gem "jekyll-theme-minimal", "~> 0.1.1"`
+    * Execute `bundle install`
 
-## PROXY
+* Execute Jekyll: 
+```
+bundle exec jekyll serve
+```
 
-The following should work for every command:
+* If the port is in use, add `--port port_number`
 
-export http_proxy=http://user:password@host:port
-export HTTP_PROXY=$http_proxy
-export https_proxy=http://user:password@host:port
-export HTTPS_PROXY=$https_proxy
-
-Besides, the **gem install** command has another parameter: --http-proxy http://user:password@host:port
+---
 
 ## REFERENCE
 
