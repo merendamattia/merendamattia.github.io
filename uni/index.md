@@ -12,7 +12,7 @@ Hai bisogno di aiuto per studiare una materia? Puoi contattarmi via <a href="mai
 È possibile che ci siano alcuni errori e/o imprecisioni: per uno studio adeguato della materia è fondamentale riferirsi principalmente al materiale fornito dal docente e ad i libri di testo consigliati.
 
 ### Guida all'utilizzo di Obsidian
-Obsidian è un editor di testo che utilizza la sintassi Markdown (.md) per gestire gli appunti in modo organizzato. Si consiglia inoltre di installare i plugin presenti nella seguente [Wiki](http://bit.ly/3lfPQiB) per sfruttare al meglio le potenzialità del software. La preview che si vede su Github può risultare incompleta o non leggibile.
+Obsidian è un editor di testo che utilizza la sintassi Markdown (`.md`) per gestire gli appunti in modo organizzato. Si consiglia inoltre di installare i plugin presenti nella seguente [Wiki](http://bit.ly/3lfPQiB) per sfruttare al meglio le potenzialità del software. La preview che si vede su Github può risultare incompleta o non leggibile.
 
 <!-- ----------------------- -->
 
