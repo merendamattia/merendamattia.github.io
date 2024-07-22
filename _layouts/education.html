@@ -38,6 +38,6 @@ layout: secondary
 
 {% assign images = page.images | split: " " %}
 {% for image in images %}
-    {{ image }}&nbsp;
+    <br>
     <img src="/images/{{ image }}" alt="{{ image }}">
 {% endfor %}
