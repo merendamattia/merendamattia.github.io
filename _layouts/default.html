@@ -129,5 +129,22 @@
       gtag('send', 'pageview');
     
 	</script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			if ($(window).width() <= 800) {
+				$('.esercitazioni, .esercizi, .appunti, .github').hide();
+			}
+			
+			$(window).resize(function() {
+				if ($(window).width() <= 800) {
+					$('.esercitazioni, .esercizi, .appunti, .github').hide();
+				} else {
+					$('.esercitazioni, .esercizi, .appunti, .github').show();
+				}
+			});
+		});
+	</script>
+	
   </body>
 </html>
