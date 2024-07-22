@@ -35,3 +35,9 @@ layout: secondary
         </tbody>
     </table>
 </div>
+
+{% assign images = page.images | split: " " %}
+{% for image in images %}
+    {{ image }}&nbsp;
+    <img src="/images/{{ image }}" alt="{{ image }}">
+{% endfor %}

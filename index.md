@@ -162,7 +162,7 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 		<span class="fa-li"><i class="fas fa-calendar-day"></i></span>
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
-		<venue>{{ post.venue }}</venue><br/>
+		<venue><i>{{ post.venue }}</i></venue><br/>
 		<small>{{ post.kind }} - {{ post.when }} - {{ post.location }}
 		{% if post.manuscript %}
 			 - <i class="fas fa-file-pdf"></i> PDF available<br/>

@@ -9,6 +9,7 @@ manuscript: "bachelor-thesis.pdf"
 slides: "bachelor-slides.pdf"
 grade: "108/110"
 projects: evmlisa
+images: "matematica.jpeg discussione1.jpeg discussione2.jpeg"
 ---
 
 * Best Marks: Calculus, Programming, Algorithms & DS, Cloud Administration, Database, AI, HPC.
