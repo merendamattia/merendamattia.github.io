@@ -3,7 +3,7 @@ layout: experience
 title: "Researcher and Software Developer"
 tags: static-analysis abstract-interpretation EVMLiSA
 venue: "University of Parma - Internship"
-location: "University of Parma, Italy"
+location: "Parma, Italy"
 when: "Sep. 2023 ‑ May 2024"
 ---
 
