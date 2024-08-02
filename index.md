@@ -4,7 +4,7 @@ layout: default
 
 ## Hi, I'm Mattia!
 
-I'm Saverio Mattia Merenda, a recent graduate in Computer Science from the University of Parma, Italy.
+I'm Saverio Mattia Merenda, a Master's Student in Computer Science from the University of Parma, Italy.
 
 Throughout my academic journey, I have gained extensive experience in software development, research, and static analysis. Notably, I played a key role in the development of [EVMLiSA](https://github.com/lisa-analyzer/evm-lisa), a static analyzer for EVM bytecode, and contributed to various AI and blockchain-related initiatives.
 
@@ -61,6 +61,28 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 
 <!-- ----------------------- -->
 
+## Publications
+
+<ul class="fa-ul">
+{% for post in site.categories.publications limit: 2 %}
+	<li>
+		<span class="fa-li"><i class="fas fa-book-open"></i></span>
+		{{ post.authors }}. <a href="{{ post.url }}">{{ post.title }}</a><br/>
+		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
+		<venue>{{ post.venue }}</venue><br/>
+		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
+		{% if post.manuscript %}
+			 - <i class="fas fa-file-pdf"></i> PDF available<br/>
+		{% endif %}
+		</small>
+	</li>
+{% endfor %}
+</ul>
+
+[All publications ({{ site.categories.publications.size }}) >>]({{ site.baseurl }}/publications/)
+
+<!-- ----------------------- -->
+
 ## Research Projects
 
 <ul class="fa-ul">
@@ -107,28 +129,6 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 
 {% assign prj_count = pinned_prjs.size | plus: unpinned_prjs.size %}
 [All projects ({{ prj_count }}) >>]({{ site.baseurl }}/projects/)
-
-<!-- ----------------------- -->
-
-<!-- ## Publications
-
-<ul class="fa-ul">
-{% for post in site.categories.publications limit: 2 %}
-	<li>
-		<span class="fa-li"><i class="fas fa-book-open"></i></span>
-		{{ post.authors }}. <a href="{{ post.url }}">{{ post.title }}</a><br/>
-		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
-		<venue>{{ post.venue }}</venue><br/>
-		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
-		{% if post.manuscript %}
-			 - <i class="fas fa-file-pdf"></i> PDF available<br/>
-		{% endif %}
-		</small>
-	</li>
-{% endfor %}
-</ul>
-
-[All publications ({{ site.categories.publications.size }}) >>]({{ site.baseurl }}/publications/) -->
 
 <!-- ----------------------- -->
 
