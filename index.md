@@ -70,7 +70,7 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 		{{ post.authors }}. <a href="{{ post.url }}">{{ post.title }}</a><br/>
 		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
-		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
+		<small><i>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}</i>
 		{% if post.manuscript %}
 			 - <i class="fas fa-file-pdf"></i> PDF available<br/>
 		{% endif %}
