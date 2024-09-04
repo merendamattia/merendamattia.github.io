@@ -101,6 +101,28 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 
 <!-- ----------------------- -->
 
+## Events
+
+<ul class="fa-ul">
+{% for post in site.categories.events limit: 2 %}
+	<li>
+		<span class="fa-li"><i class="fas fa-calendar-day"></i></span>
+		<a href="{{ post.url }}">{{ post.title }}</a><br/>
+		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
+		<venue><i>{{ post.venue }}</i></venue><br/>
+		<small>{{ post.kind }} - {{ post.when }} - {{ post.location }}
+		{% if post.manuscript %}
+			 - <i class="fas fa-file-pdf"></i> PDF available<br/>
+		{% endif %}
+		</small>
+	</li>
+{% endfor %}
+</ul>
+
+[All events ({{ site.categories.events.size }}) >>]({{ site.baseurl }}/events/)
+
+<!-- ----------------------- -->
+
 ## Projects
 
 {% assign pinned_prjs = site.pages | where: "project", true | where: "pinned", true %}
@@ -151,28 +173,6 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 </ul>
 
 [All talks ({{ site.categories.talks.size }}) >>]({{ site.baseurl }}/talks/) -->
-
-<!-- ----------------------- -->
-
-## Events
-
-<ul class="fa-ul">
-{% for post in site.categories.events limit: 2 %}
-	<li>
-		<span class="fa-li"><i class="fas fa-calendar-day"></i></span>
-		<a href="{{ post.url }}">{{ post.title }}</a><br/>
-		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
-		<venue><i>{{ post.venue }}</i></venue><br/>
-		<small>{{ post.kind }} - {{ post.when }} - {{ post.location }}
-		{% if post.manuscript %}
-			 - <i class="fas fa-file-pdf"></i> PDF available<br/>
-		{% endif %}
-		</small>
-	</li>
-{% endfor %}
-</ul>
-
-[All events ({{ site.categories.events.size }}) >>]({{ site.baseurl }}/events/)
 
 <!-- ----------------------- -->
 

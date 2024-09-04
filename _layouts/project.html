@@ -55,3 +55,9 @@ layout: secondary
 		<a href="{{ p.url }}"><i class="fas fa-book-open"></i> {{ p.title }}</a><br/>
 	{% endif %}	
 {% endfor %}
+
+{% assign images = page.images | split: " " %}
+{% for image in images %}
+    <br>
+    <img src="/images/{{ image }}" alt="{{ image }}">
+{% endfor %}
