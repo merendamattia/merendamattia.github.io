@@ -21,7 +21,7 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 ## Education
 
 <ul class="fa-ul">
-{% for post in site.categories.education limit: 2 %}
+{% for post in site.categories.education limit: 3 %}
 	<li>
 		<span class="fa-li"><i class="fas fa-university"></i></span>
 		<a href="{{ post.url }}">{{ post.title }}</a><br/>

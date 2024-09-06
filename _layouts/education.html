@@ -32,6 +32,37 @@ layout: secondary
             <td><a href="{{ site.baseurl }}/files/{{ page.slides }}">PDF</a></td>
             </tr>
         {% endif %}
+        {% if page.projects %}
+            {% assign projectlist = '' | split: '' %}
+            {% assign referredprojects = page.projects | split: ' ' %}
+            {% for p in referredprojects %}
+                {% assign matching = site.pages | where: "project", true | where: "projid", p %}
+                {% assign projectlist = projectlist | concat: matching %}
+            {% endfor %}
+            {% if projectlist.size > 0 %}
+            <tr>
+                <td><i class="fas fa-laptop-code"></i> Associated project{% if projectlist.size > 1 %}s{% endif %}:</td>
+                <td>
+                {% assign count = 0%}
+                {% for p in projectlist %}
+                    {% assign count = count | plus: 1 %}
+        <a href="{{ p.url }}">{{ p.title }}</a>{% if count < projectlist.size %}, {% endif %}
+                {% endfor %}</td>
+            </tr>
+            {% endif %}
+        {% endif %}
+        {% if page.confpage %}
+            <tr>
+                <td><i class="fas fa-chalkboard-teacher"></i> Conference page:</td>
+                <td><a href="{{ page.confpage }}">Link</a></td>
+            </tr>
+        {% endif %}
+        {% if page.publishername and page.publisherpage %}
+            <tr>
+                <td><i class="fas fa-atlas"></i> {{ page.publishername }} page:</td>
+                <td><a href="{{ page.publisherpage }}">Link</a></td>
+            </tr>
+        {% endif %}
         </tbody>
     </table>
 </div>
