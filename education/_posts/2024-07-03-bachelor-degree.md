@@ -10,6 +10,7 @@ slides: "bachelor-slides.pdf"
 grade: "108/110"
 projects: evmlisa
 images: "matematica.jpeg discussione1.jpeg discussione2.jpeg"
+linkedinpost: "https://www.linkedin.com/posts/merendamattia_ieri-ho-conseguito-la-laurea-triennale-in-activity-7217439870296719361-Qcau?utm_source=share&utm_medium=member_desktop"
 ---
 
 * Best Marks: Calculus, Programming, Algorithms & DS, Cloud Administration, Database, AI, HPC.
