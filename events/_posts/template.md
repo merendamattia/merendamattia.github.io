@@ -8,6 +8,7 @@ location: ""
 when: ""
 confpage: ""
 linkedinpost: ""
+images: ""
 ---
 
 Some text
