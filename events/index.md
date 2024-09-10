@@ -23,9 +23,12 @@ layout: secondary
 		<topic>{{ post.tags | join: "</topic> <topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
 		<small>{{ post.kind }} - {{ post.when }} - {{ post.location }}
-		{% if post.manuscript %}
-			 - <i class="fas fa-file-pdf"></i> PDF available<br/>
-		{% endif %}
+			{% if post.manuscript %}
+				- <i class="fas fa-file-pdf"></i> PDF available<br/>
+			{% endif %}
+			{% if post.attendance %}
+					- <i class="fas fa-file-pdf"></i> Attendance available<br/>
+			{% endif %}
 		</small>
 		<venue>
 			{{ post.content }} 

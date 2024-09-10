@@ -11,6 +11,7 @@ grade: ""
 projects: 
 images: ""
 linkedinpost: ""
+attendance: ""
 ---
 
 Some text

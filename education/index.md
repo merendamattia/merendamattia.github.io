@@ -26,9 +26,12 @@ layout: secondary
 			<venue>Grade: {{ post.grade }}</venue><br/>
 		{% endif %}
 		<small><i>{{ post.when }} - {{ post.location }}</i>
-		{% if post.manuscript %}
-			 - <i class="fas fa-file-pdf"></i> Thesis available<br/>
-		{% endif %}
+			{% if post.manuscript %}
+				- <i class="fas fa-file-pdf"></i> Thesis available<br/>
+			{% endif %}
+			{% if post.attendance %}
+					- <i class="fas fa-file-pdf"></i> Attendance available<br/>
+			{% endif %}
 		</small>
 		<!-- <venue>{{ post.content }}</venue> -->
 	</li>

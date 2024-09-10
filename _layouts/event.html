@@ -68,6 +68,12 @@ layout: secondary
                 <td><a href="{{ page.linkedinpost }}">Link</a></td>
             </tr>
         {% endif %}
+        {% if page.attendance %}
+            <tr>
+                <td><i class="fas fa-file-pdf"></i> Attendance:</td>
+            <td><a href="{{ site.baseurl }}/files/{{ page.attendance }}">PDF</a></td>
+            </tr>
+        {% endif %}
     </tbody>
   </table>
 </div>

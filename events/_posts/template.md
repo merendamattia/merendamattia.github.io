@@ -9,6 +9,7 @@ when: ""
 confpage: ""
 linkedinpost: ""
 images: ""
+attendance: ""
 ---
 
 Some text
