@@ -86,6 +86,28 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 
 <!-- ----------------------- -->
 
+## Talks
+
+<ul class="fa-ul">
+{% for post in site.categories.talks limit: 2 %}
+	<li>
+		<span class="fa-li"><i class="fas fa-calendar-alt"></i></span>
+		<a href="{{ post.url }}">{{ post.title }}</a><br/>
+		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
+		<venue>{{ post.venue }}</venue><br/>
+		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
+		{% if post.slides %}
+			 - <i class="fas fa-file-pdf"></i> Slides available<br/>
+		{% endif %}
+		</small>
+	</li>
+{% endfor %}
+</ul>
+
+[All talks ({{ site.categories.talks.size }}) >>]({{ site.baseurl }}/talks/) 
+
+<!-- ----------------------- -->
+
 ## Research Projects
 
 <ul class="fa-ul">
@@ -157,25 +179,4 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 
 <!-- ----------------------- -->
 
-<!-- ## Talks
-
-<ul class="fa-ul">
-{% for post in site.categories.talks limit: 2 %}
-	<li>
-		<span class="fa-li"><i class="fas fa-calendar-alt"></i></span>
-		<a href="{{ post.url }}">{{ post.title }}</a><br/>
-		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
-		<venue>{{ post.venue }}</venue><br/>
-		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
-		{% if post.manuscript %}
-			 - <i class="fas fa-file-pdf"></i> PDF available<br/>
-		{% endif %}
-		</small>
-	</li>
-{% endfor %}
-</ul>
-
-[All talks ({{ site.categories.talks.size }}) >>]({{ site.baseurl }}/talks/) -->
-
-<!-- ----------------------- -->
 
