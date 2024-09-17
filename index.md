@@ -139,6 +139,9 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 		{% if post.manuscript %}
 			 - <i class="fas fa-file-pdf"></i> PDF available<br/>
 		{% endif %}
+		{% if post.attendance %}
+			- <i class="fas fa-file-pdf"></i> Attendance available<br/>
+		{% endif %}
 		</small>
 	</li>
 {% endfor %}

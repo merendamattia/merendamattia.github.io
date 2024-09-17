@@ -10,6 +10,7 @@ confpage: ""
 linkedinpost: ""
 images: ""
 attendance: ""
+preview: ""
 ---
 
 Some text

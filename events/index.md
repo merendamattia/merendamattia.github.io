@@ -24,14 +24,14 @@ layout: secondary
 		<venue>{{ post.venue }}</venue><br/>
 		<small>{{ post.kind }} - {{ post.when }} - {{ post.location }}
 			{% if post.manuscript %}
-				- <i class="fas fa-file-pdf"></i> PDF available<br/>
+				- <i class="fas fa-file-pdf"></i> PDF available
 			{% endif %}
 			{% if post.attendance %}
-					- <i class="fas fa-file-pdf"></i> Attendance available<br/>
+					- <i class="fas fa-file-pdf"></i> Attendance available
 			{% endif %}
-		</small>
+		</small><br/>
 		<venue>
-			{{ post.content }} 
+			{{ post.preview }} 
 		</venue>
 	</li>
 {% endfor %}
