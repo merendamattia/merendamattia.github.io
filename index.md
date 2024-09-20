@@ -97,11 +97,12 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 		<venue>{{ post.venue }}</venue><br/>
 		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
 			{% if post.slides %}
-				- <i class="fas fa-file-pdf"></i> Slides available<br/>
+				- <i class="fas fa-file-pdf"></i> Slides available
 			{% endif %}
 			{% if post.attendance %}
 				- <i class="fas fa-file-pdf"></i> Attendance available
 			{% endif %}
+			<br/>
 		</small>
 	</li>
 {% endfor %}
