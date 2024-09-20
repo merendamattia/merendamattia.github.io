@@ -11,10 +11,11 @@ relatedpub: "2024/07/25/FTfJP2024.html"
 relatedpubtitle: "Paper @ FTfJP 2024"
 confpage: "https://conf.researchr.org/details/issta-ecoop-2024/FTfJP-2024-papers/9/Towards-a-Sound-Construction-of-EVM-Bytecode-Control-flow-Graphs"
 slides: "FTfJP2024-slides.pdf"
+images: "FTfJP24_1.jpeg FTfJP24_2.jpeg"
 attendance: "attendance-FTfJP2024.pdf"
-# linkedinpost: ""
-# publishername: ""
-# publisherpage: ""
+linkedinpost: "https://www.linkedin.com/posts/vincenzo-arceri-923b7582_saverio-mattia-merenda-just-presented-our-activity-7242871907530747904-0b8P?utm_source=share&utm_medium=member_desktop"
+publishername: "ACM"
+publisherpage: "https://dl.acm.org/doi/10.1145/3678721.3686227"
 ---
 
 ### Abstract
