@@ -96,9 +96,12 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 		<topic>{{ post.tags | join: "</topic>&nbsp;&nbsp;<topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
 		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
-		{% if post.slides %}
-			 - <i class="fas fa-file-pdf"></i> Slides available<br/>
-		{% endif %}
+			{% if post.slides %}
+				- <i class="fas fa-file-pdf"></i> Slides available<br/>
+			{% endif %}
+			{% if post.attendance %}
+				- <i class="fas fa-file-pdf"></i> Attendance available
+			{% endif %}
 		</small>
 	</li>
 {% endfor %}

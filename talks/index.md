@@ -23,9 +23,12 @@ layout: secondary
 		<topic>{{ post.tags | join: "</topic> <topic>" }}</topic><br/>
 		<venue>{{ post.venue }}</venue><br/>
 		<small>{{ post.kind }} - {{ post.date | date: "%-d %B %Y" }} - {{ post.location }}
-		{% if post.slides %}
-			 • <i class="fas fa-file-pdf"></i> Slides available<br/>
-		{% endif %}
+			{% if post.slides %}
+				- <i class="fas fa-file-pdf"></i> Slides available<br/>
+			{% endif %}
+			{% if post.attendance %}
+				- <i class="fas fa-file-pdf"></i> Attendance available
+			{% endif %}
 		</small>
 	</li>
 {% endfor %}
