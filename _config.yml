@@ -12,7 +12,7 @@ orcid: https://orcid.org/0009-0000-4137-9852
 # researcherid: 
 # scopus: 
 github: https://github.com/merendamattia
-# dblp: 
+dblp: https://dblp.uni-trier.de/pid/387/1312.html
 
 exclude: [README.md]
 future: true
