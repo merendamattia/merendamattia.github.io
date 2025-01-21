@@ -8,10 +8,46 @@ when: "Sep. 2024 ‑ Present"
 # grade: ""
 ---
 
-* Topics: Software Security, Quantum Computing, Machine Learning & AI, Compilers.
+* Topics: Software Security & Verification, Quantum Computing, Machine Learning & AI, Compilers.
+
+---
+
+
+## Quantum Computing
+#### Project: Quantum Portfolio Optimization
+
+In collaboration with [Simone Colli](https://github.com/simonecolli), this project was presented during the *Quantum Computing* course (academic year 2024/25) and explored the application of quantum computing to portfolio optimization in financial contexts. The project compared classical optimization methods with quantum approaches leveraging the Variational Quantum Eigensolver (VQE) and the Quantum Approximate Optimization Algorithm (QAOA).
+
+Key highlights include:
+- Objective: Formulated the portfolio optimization problem as a Quadratic Unconstrained Binary Optimization (QUBO) problem to balance risk and returns in asset allocation.
+- Methodology: Implemented quantum algorithms using Qiskit, modeling the problem through expected returns, covariance matrices, and penalty terms for constraint violations.
+- Implementation: Simulated the algorithms under both noiseless and noisy conditions to evaluate performance and robustness.
+- Validation: Results demonstrated that quantum approaches, particularly QAOA, can approximate optimal solutions effectively while highlighting current hardware limitations.
+
+This project underscores the potential of quantum computing in addressing complex optimization problems in finance, despite current scalability challenges. The source code is available on GitHub.
+
+<div class="divtable">
+  <table>
+    <tbody>
+      <tr>
+      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
+        <td><a href="{{ site.baseurl }}/files/slides-QC.pdf">PDF</a></td>
+      </tr>
+      <tr>
+      	<td><i class="fas fa-file-pdf"></i> Paper:</td>
+        <td><a href="{{ site.baseurl }}/files/paper-QC.pdf">PDF</a></td>
+      </tr>
+      <tr>
+      	<td><i class="fas fa-code-branch"></i> Code:</td>
+        <td><a href="https://github.com/merendamattia/quantum-portfolio-optimization">GitHub</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 ## Declarative Programming
-Optimization of Academic Guarantors: A Declarative Approach
+#### Project: Optimization of Academic Guarantors
 
 In collaboration with [Simone Colli](https://github.com/simonecolli), this project was presented during the *Declarative Programming* course (academic year 2024/25) and focused on developing an automated system for assigning academic guarantors to university courses while adhering to ministerial regulations.
 
@@ -37,6 +73,7 @@ This project underscores the potential of declarative programming in solving com
     </tbody>
   </table>
 </div>
+
 
 ## Languages, Interpreters, and Compilers
 In this seminar for the *Languages, Interpreters, and Compilers* course (cademic year 2024/25), I explored the intricacies of 

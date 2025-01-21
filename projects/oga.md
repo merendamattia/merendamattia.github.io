@@ -4,7 +4,7 @@ project: true
 pinned: true
 projid: oga
 languages: ASP
-title: "academic-guarantee-optimization"
+title: "Academic Guarantee Optimization"
 description: "Answer Set Programming (ASP)-based tool for optimizing the assignment of academic guarantors to university courses."
 repo: "https://github.com/merendamattia/ottimizzazione-garanti-accademici"
 ---

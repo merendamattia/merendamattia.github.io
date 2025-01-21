@@ -160,10 +160,10 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 {% assign pinned_prjs = site.pages | where: "project", true | where: "pinned", true %}
 {% assign unpinned_prjs = site.pages | where: "project", true | where: "pinned", false %}
 {% assign projectlist = pinned_prjs | concat: unpinned_prjs %}
-{% if pinned_prjs.size > 4 %}
+{% if pinned_prjs.size > 6 %}
 	{% assign limit = pinned_prjs.size %}
 {% else %}
-	{% assign limit = 4 %}
+	{% assign limit = 6 %}
 {% endif %}
 
 <div class="project-box-wrapper">
