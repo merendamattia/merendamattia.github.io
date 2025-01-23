@@ -1,7 +1,7 @@
 ---
 layout: education
 title: "M.S. in Computer Science"
-tags: quantum-computing software-security machine-learning
+tags: software-security quantum-computing machine-learning AI
 venue: "Expected graduation year: July 2026."
 location: "University of Parma, Italy"
 when: "Sep. 2024 ‑ Present"
@@ -19,10 +19,10 @@ when: "Sep. 2024 ‑ Present"
 In collaboration with [Simone Colli](https://github.com/simonecolli), this project was presented during the *Quantum Computing* course (academic year 2024/25) and explored the application of quantum computing to portfolio optimization in financial contexts. The project compared classical optimization methods with quantum approaches leveraging the Variational Quantum Eigensolver (VQE) and the Quantum Approximate Optimization Algorithm (QAOA).
 
 Key highlights include:
-- Objective: Formulated the portfolio optimization problem as a Quadratic Unconstrained Binary Optimization (QUBO) problem to balance risk and returns in asset allocation.
-- Methodology: Implemented quantum algorithms using Qiskit, modeling the problem through expected returns, covariance matrices, and penalty terms for constraint violations.
-- Implementation: Simulated the algorithms under both noiseless and noisy conditions to evaluate performance and robustness.
-- Validation: Results demonstrated that quantum approaches, particularly QAOA, can approximate optimal solutions effectively while highlighting current hardware limitations.
+- Objective: formulated the portfolio optimization problem as a Quadratic Unconstrained Binary Optimization (QUBO) problem to balance risk and returns in asset allocation.
+- Methodology: implemented quantum algorithms using Qiskit, modeling the problem through expected returns, covariance matrices, and penalty terms for constraint violations.
+- Implementation: simulated the algorithms under both noiseless and noisy conditions to evaluate performance and robustness.
+- Validation: results demonstrated that quantum approaches, particularly QAOA, can approximate optimal solutions effectively while highlighting current hardware limitations.
 
 This project underscores the potential of quantum computing in addressing complex optimization problems in finance, despite current scalability challenges. The source code is available on GitHub.
 
@@ -40,6 +40,31 @@ This project underscores the potential of quantum computing in addressing comple
       <tr>
       	<td><i class="fas fa-code-branch"></i> Code:</td>
         <td><a href="https://github.com/merendamattia/quantum-portfolio-optimization">GitHub</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+## Cyber ​​Security
+Presented during the *Cyber Security* course (academic year 2024/25), this seminar analyzed the 2016 Bitfinex hack, one of the most significant events in cryptocurrency history. The analysis examined vulnerabilities in multi-signature wallets and the sophisticated laundering strategy used by cybercriminals.
+
+Key highlights include:
+- Objective: investigated the vulnerability exploited in Bitfinex's multi-signature wallet configuration and its impact on cryptocurrency security.
+- Methodology: analyzed the N-of-M scheme employed by Bitfinex and BitGo, identifying weaknesses in transaction approval and monitoring mechanisms.
+- Case Study: documented the attackers' laundering process, involving over 2,000 transactions, mixers, and integration of stolen funds into the traditional banking system.
+- Outcome: discussed the recovery of $3.6 billion worth of Bitcoin by U.S. authorities in 2022, marking the largest financial seizure in the history of the Department of Justice.
+
+<div class="divtable">
+  <table>
+    <tbody>
+      <tr>
+      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
+        <td><a href="{{ site.baseurl }}/files/slides-SI.pdf">PDF</a></td>
+      </tr>
+      <tr>
+      	<td><i class="fas fa-file-pdf"></i> Paper:</td>
+        <td><a href="{{ site.baseurl }}/files/paper-SI.pdf">PDF</a></td>
       </tr>
     </tbody>
   </table>
@@ -85,9 +110,6 @@ Key topics included:
 - Cross-Chain Interoperability Challenges: the inability of blockchains to natively interact and the role of cross-chain smart contracts (bridges).
 - Bridge Vulnerabilities: common attack surfaces, including logical flaws and reentrancy attacks.
 - SmartAxe: a tool leveraging static analysis for detecting vulnerabilities in smart contracts, highlighting techniques like control-flow analysis, semantic alignment, and taint analysis.
-
-The seminar also presented experimental results demonstrating SmartAxe’s effectiveness in detecting vulnerabilities, 
-while acknowledging its limitations, such as false positives, the absence of on-chain analysis, and restricted support for non-EVM blockchains.
 
 <div class="divtable">
   <table>
