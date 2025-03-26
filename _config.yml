@@ -17,7 +17,7 @@ dblp: https://dblp.uni-trier.de/pid/387/1312.html
 exclude: [README.md]
 future: true
 
-url: "https://www.merendamattia.com/"
+# url: "https://www.merendamattia.com/"
 plugins:
   - jekyll-sitemap
 
