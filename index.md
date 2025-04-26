@@ -6,9 +6,9 @@ layout: default
 
 I'm Saverio Mattia Merenda, a Master's Student in Computer Science from the University of Parma, Italy.
 
-Throughout my academic journey, I have gained extensive experience in software development, research, and static analysis. Notably, I played a key role in the development of [EVMLiSA](https://github.com/lisa-analyzer/evm-lisa), a static analyzer for EVM bytecode, and contributed to various AI and blockchain-related initiatives.
+Throughout my academic journey, I have gained extensive experience in software development, research, and static analysis. Notably, I played a key role in the development of [EVMLiSA](https://github.com/lisa-analyzer/evm-lisa), a static analyzer for EVM bytecode, and contributed to various AI and blockchain-related initiatives. Currently, during my Master's studies, I am further expanding my expertise through projects in cutting-edge areas such as Software Security, Quantum Computing, Machine Learning & AI, and Compilers. My ongoing work includes the early stages of xEVMLiSA, aiming to extend EVMLiSA's analysis capabilities across multiple blockchains, and research participation in projects like "LLMs Meet Static Analysis: improving quality and reliability of AI-generated code."
 
-In addition to my academic pursuits, I have had the opportunity to work with several organizations. These experiences have allowed me to develop cutting-edge software solutions, streamline operations, and enhance security measures.
+In addition to my academic pursuits, I have had the opportunity to work with several organizations and serve as a Teaching Assistant and Tutor at the University of Parma. These experiences have allowed me to develop cutting-edge software solutions, streamline operations, and enhance security measures, further solidifying my practical skills.
 
 I'm constantly driven to explore new technologies and techniques, always seeking to improve my skills and knowledge. I believe that experimentation and innovation are essential in the rapidly evolving field of computer science, and I'm excited to continue contributing to its advancement.
 
@@ -108,7 +108,7 @@ I'm constantly driven to explore new technologies and techniques, always seeking
 {% endfor %}
 </ul>
 
-[All talks ({{ site.categories.talks.size }}) >>]({{ site.baseurl }}/talks/) 
+[All talks ({{ site.categories.talks.size }}) >>]({{ site.baseurl }}/talks/)
 
 <!-- ----------------------- -->
 
