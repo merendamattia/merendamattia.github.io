@@ -7,7 +7,7 @@
 
 	<!-- Short description of the document (limit to 150 characters) -->
 	<!-- This content *may* be used as a part of search engine results. -->
-	<meta name="description" content="Academic Curriculum of Mattia Merenda (unipr student)">
+	<meta name="description" content="Academic Curriculum of Merenda Saverio Mattia">
 
 	<!-- Control the behavior of search engine crawling and indexing -->
 	<meta name="robots" content="index,follow"><!-- All Search Engines -->
@@ -31,7 +31,7 @@
 	<meta name="generator" content="Github Pages">
 
 	<!-- Short description of your document's subject -->
-	<meta name="subject" content="Academic Curriculum of Mattia Merenda">
+	<meta name="subject" content="Academic Curriculum of Merenda Saverio Mattia">
 
 	<!-- Gives a general age rating based on the document's content -->
 	<meta name="rating" content="General">
@@ -51,15 +51,15 @@
 	<!-- Geo tags -->
 	<meta name="ICBM" content="latitude, longitude">
 	<meta name="geo.position" content="latitude;longitude">
-	<meta name="geo.region" content="country[-state]"><!-- Country code (ISO 3166-1): mandatory, state code (ISO 3166-2): optional; eg. content="US" / content="US-NY" -->
-	<meta name="geo.placename" content="city/town"><!-- eg. content="New York City" -->
+	<meta name="geo.region" content="IT"><!-- Country code (ISO 3166-1): mandatory, state code (ISO 3166-2): optional; eg. content="US" / content="US-NY" -->
+	<meta name="geo.placename" content="Parma"><!-- eg. content="New York City" -->
 
 	<title>{{ site.title }}</title>
 
 	<!-- Apertura nuova pagina al click del link -->
 	<!--
 	<base href="https://merendamattia.com">
-	<base target="_blank"> 
+	<base target="_blank">
 	-->
 
 	{% seo %}
@@ -68,8 +68,10 @@
 
 	<link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/academicons.min.css"/>
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/all.css"> 
-	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/personal.css"> 
+	<link rel="stylesheet" href="{{ site.baseurl }}/css/all.css">
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/personal.css">
+
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4879151575586815" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -82,14 +84,14 @@
 
 		<div class="header-content">
 			<h1>Saverio Mattia <b>Merenda</b></h1>
-		
+
 			<div class="location green-heading">
 				Master's Student
 			</div>
 			<div class="location">
 				<i>University of Parma, Italy</i>
 			</div>
-			
+
 			<ul class="links">
 				<li><a href="mailto:{{ site.mail-work }}"><i class="fas fa-envelope big-icon"></i></a></li>
 				<li><a href="{{ site.linkedin }}"><i class="fab fa-linkedin big-icon"></i></a></li>
@@ -104,12 +106,12 @@
 				<li><a href="{{ site.baseurl }}/files/cv.pdf"><i class="ai ai-cv big-icon"></i></a></li>
 				<!-- <li><a href="{{ site.scopus }}"><i class="ai ai-scopus big-icon"></i></a></li>
 				<li><a href="{{ site.research-gate }}"><i class="ai ai-researchgate big-icon"></i></a></li>-->
-			</ul> 
+			</ul>
 		</div>
       </header>
-	  
+
       <section>
-		
+
       {{ content }}
 
       </section>
@@ -133,7 +135,7 @@
       gtag('require', 'outboundLinkTracker');
       gtag('require', 'urlChangeTracker');
       gtag('send', 'pageview');
-    
+
 	</script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
@@ -141,7 +143,7 @@
 			if ($(window).width() <= 800) {
 				$('.esercitazioni, .esercizi, .appunti, .github').hide();
 			}
-			
+
 			$(window).resize(function() {
 				if ($(window).width() <= 800) {
 					$('.esercitazioni, .esercizi, .appunti, .github').hide();
@@ -151,6 +153,6 @@
 			});
 		});
 	</script>
-	
+
   </body>
 </html>
