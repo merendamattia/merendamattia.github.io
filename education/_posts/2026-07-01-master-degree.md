@@ -12,6 +12,45 @@ when: "Sep. 2024 ‑ Present"
 
 ---
 
+## Big Data and Data Mining
+#### Project 1: Interpretable Machine Learning Techniques
+Presented as part of the *Big Data and Data Mining* course, this project delved into the critical challenge of understanding "black box" machine learning models. The work explored various techniques to enhance model transparency and explainability, which are crucial for building trust and ensuring fairness in AI systems.   
+
+Key highlights include:
+- Objective: Investigated methods to interpret ML model decisions, aiming to improve trust in AI, facilitate model debugging, ensure fairness, and extract actionable insights from data.   
+- Methodology: Explored the distinction between intrinsic and post-hoc interpretability, and global versus local explanation methods.  Key techniques studied included LIME for generating local, model-agnostic explanations and feature importance for understanding global model behavior.   
+- Outcome: Developed a strong understanding of applying interpretability techniques for model validation, identifying potential biases, and debugging ML systems.  Recognized the importance of creating user-friendly explanations and acknowledged the current limitations and future directions in Explainable AI (xAI).
+
+<div class="divtable">
+  <table>
+    <tbody>
+      <tr>
+      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
+        <td><a href="{{ site.baseurl }}/files/slides-BDDM.pdf">PDF</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### Project 2: GraphQL API Design and Comparative Analysis
+This project, undertaken for the *Big Data and Data Mining* course, and in collaboration with Pasquale Castelluccia, focused on addressing the inherent inefficiencies of traditional REST APIs, such as over-fetching and under-fetching of data. The core task was to design and analyze an API using GraphQL to optimize data retrieval.   
+
+Key highlights include:
+- Objective: To design and prototype a data access layer using GraphQL, enabling clients to request precisely the data they need in a single call, thereby improving efficiency and flexibility.   
+- Methodology: Mastered fundamental GraphQL concepts, including schema design using Schema Definition Language (SDL) to define data types and relationships.  Implemented GraphQL queries for efficient data fetching and mutations for data manipulation.  Conducted a comparative analysis of the GraphQL approach against traditional REST patterns, evaluating performance metrics.   
+- Outcome: Demonstrated GraphQL's advantages in minimizing network latency, reducing payload sizes through precise data fetching, and enhancing developer productivity by decoupling client data needs from backend endpoint structures.  Gained practical experience in developing modern, efficient, and client-centric APIs.   
+
+<div class="divtable">
+  <table>
+    <tbody>
+      <tr>
+      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
+        <td><a href="{{ site.baseurl }}/files/slides-BDDM-graphql.pdf">PDF</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 ## Quantum Computing
 #### Project: Quantum Portfolio Optimization
@@ -101,8 +140,8 @@ This project underscores the potential of declarative programming in solving com
 
 
 ## Languages, Interpreters, and Compilers
-In this seminar for the *Languages, Interpreters, and Compilers* course (cademic year 2024/25), I explored the intricacies of 
-blockchain technology and the critical challenges of cross-chain interactions. The seminar focused on the role 
+In this seminar for the *Languages, Interpreters, and Compilers* course (cademic year 2024/25), I explored the intricacies of
+blockchain technology and the critical challenges of cross-chain interactions. The seminar focused on the role
 of static analysis in enhancing the security of smart contracts, especially in addressing vulnerabilities in cross-chain bridges.
 
 Key topics included:
