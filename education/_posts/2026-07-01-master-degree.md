@@ -12,6 +12,32 @@ when: "Sep. 2024 ‑ Present"
 
 ---
 
+## Fundamentals of Artificial Intelligence
+#### Project: Impact of Data Preprocessing on Neural Network Performance: A Comparative Analysis
+
+This project, part of the *Fundamentals of Artificial Intelligence* course, investigated how different data preprocessing techniques affect the performance of neural networks. It aimed to compare neural network effectiveness on clean versus unfiltered datasets.   
+
+Key highlights include:
+- Objective: To study and compare how neural network effectiveness varies when using datasets with and without various preprocessing steps, such as NaN value handling (removal, imputation with mean, mode, median), outlier removal (Isolation Forest), normalization (z-score), and quantile transformation.   
+- Methodology: Implemented a comprehensive preprocessing pipeline and evaluated scenarios on multiple classification (Census Income, Bank Marketing) and regression (Bike Sharing, House Pricing) datasets using a feed-forward neural network.  Performance was measured using standard metrics like Accuracy, Precision, Recall, F1-score for classification, and MAE, MSE, R2 for regression.   
+- Outcome: Identified that mode/median imputation and moderate outlier removal (3-5% thresholds) were generally effective preprocessing techniques. Quantile transformations were found to be essential for skewed data, while simple normalization often degraded performance. The study underscored that aggressive preprocessing can remove valuable patterns and complex combinations do not guarantee improvements, offering insights into selecting appropriate techniques.
+
+<div class="divtable">
+  <table>
+    <tbody>
+      <tr>
+      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
+        <td><a href="{{ site.baseurl }}/files/slides-FdAI.pdf">PDF</a></td>
+      </tr>
+      <tr>
+      	<td><i class="fas fa-code-branch"></i> Code:</td>
+        <td><a href="https://github.com/merendamattia/neural-network-performance-by-data-quality">GitHub</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 ## Big Data and Data Mining
 #### Project 1: Interpretable Machine Learning Techniques
 Presented as part of the *Big Data and Data Mining* course, this project delved into the critical challenge of understanding "black box" machine learning models. The work explored various techniques to enhance model transparency and explainability, which are crucial for building trust and ensuring fairness in AI systems.   
@@ -19,7 +45,7 @@ Presented as part of the *Big Data and Data Mining* course, this project delved 
 Key highlights include:
 - Objective: Investigated methods to interpret ML model decisions, aiming to improve trust in AI, facilitate model debugging, ensure fairness, and extract actionable insights from data.   
 - Methodology: Explored the distinction between intrinsic and post-hoc interpretability, and global versus local explanation methods.  Key techniques studied included LIME for generating local, model-agnostic explanations and feature importance for understanding global model behavior.   
-- Outcome: Developed a strong understanding of applying interpretability techniques for model validation, identifying potential biases, and debugging ML systems.  Recognized the importance of creating user-friendly explanations and acknowledged the current limitations and future directions in Explainable AI (xAI).
+- Outcome: Developed a strong understanding of applying interpretability techniques for model validation, identifying potential biases, and debugging ML systems. Recognized the importance of creating user-friendly explanations and acknowledged the current limitations and future directions in Explainable AI (xAI).
 
 <div class="divtable">
   <table>
