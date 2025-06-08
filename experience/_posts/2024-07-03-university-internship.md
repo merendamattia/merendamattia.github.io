@@ -1,10 +1,10 @@
 ---
 layout: experience
 title: "Researcher and Software Developer"
-tags: static-analysis abstract-interpretation EVMLiSA
+tags: static-analysis abstract-interpretation EVMLiSA blockchain
 venue: "University of Parma - Internship"
 location: "Parma, Italy"
-when: "Sep. 2023 ‑ May 2024"
+when: "Sep. 2023 ‑ May 2025"
 ---
 
 ### Development of EVMLiSA
