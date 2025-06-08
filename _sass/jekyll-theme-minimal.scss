@@ -38,7 +38,7 @@ body {
     padding: 50px 50px;
     font: 1rem/1.5 montserrat, sans-serif;
     color: $text-color;
-    
+
     @media (max-width: $small-screen-size) {
         padding: 0 50px;
     }
@@ -73,7 +73,7 @@ a:hover, a:focus {
 .wrapper {
     max-width: 1300px;
     margin: 0 auto;
-    padding: 10px;
+    padding: 20px;
 }
 
 blockquote {
@@ -140,7 +140,7 @@ header {
     position: fixed;
     text-align: center;
     -webkit-font-smoothing: subpixel-antialiased;
-    
+
     @media print, screen and (max-width: $medium-screen-size) {
         display: flex;
         justify-content: center;
@@ -149,7 +149,7 @@ header {
         margin: 0 auto;
         width: 1300px;
     }
-    
+
     @media (max-width: $small-screen-size) {
         display: block;
     }
@@ -251,7 +251,7 @@ html {
 	height: auto;
 }
 
-#contactPhotoWrapper {  
+#contactPhotoWrapper {
 	position: relative;
 	width: 200px;
 	height: 200px;
@@ -259,13 +259,13 @@ html {
 	border-radius: 50%;
     margin: 0 auto;
 	margin-bottom: 20px;
-    
+
     @media print, screen and (max-width: $medium-screen-size) {
         margin: 0;
         margin-bottom: 20px;
         margin-right: 50px;
     }
-    
+
     @media (max-width: $small-screen-size) {
         margin: 0 auto;
         margin-bottom: 20px;
@@ -274,7 +274,7 @@ html {
 
 .backlink {
     display: none;
-    
+
     @media (max-width: $small-screen-size) {
         display: block;
     }
@@ -320,17 +320,17 @@ html {
     @media (max-width: $small-screen-size) {
         display: none;
     }
-}   
+}
 
 .head-menu-wrapper-internal {
     max-width: 1300px;
     margin: 0 auto;
     border-bottom: .0625rem solid $separator-color;
-    
+
     @media print, screen and (max-width: $medium-screen-size) {
         width: 100%;
     }
-}   
+}
 
 .head-menu-title:visited, .head-menu-title:link {
     text-transform: uppercase;
@@ -341,8 +341,8 @@ html {
     width: 300px;
     text-align: center;
     float: left;
-    color: $navigation-bar-color; 
-    
+    color: $navigation-bar-color;
+
     @media print, screen and (max-width: $medium-screen-size) {
         display: none;
         padding: 0;
@@ -358,7 +358,7 @@ html {
     align-items: center;
     justify-content: right;
     margin: 0;
-    
+
     @media print, screen and (max-width: $medium-screen-size) {
         width: auto;
         margin: 0;
@@ -369,30 +369,30 @@ html {
 .head-menu-item {
     padding: 1rem 2rem;
     list-style: none;
-    
+
     a, a:visited, a:link {
         color: $navigation-bar-color;
         text-decoration: none;
-    } 
-    
+    }
+
     a:hover, a:active {
         color: $highlight-color;
         text-decoration: none;
-    } 
+    }
 }
 
 div.highlight {
     position: relative;
-    
+
     > button {
-        opacity: 0;     
+        opacity: 0;
         position: absolute;
         right: 10px;
         top: 10px;
         z-index: 500;
         width: 30px;
         height: 30px;
-    
+
         @media (max-width: $small-screen-size) {
             display: none;
         }
@@ -409,7 +409,7 @@ div.highlight > button:focus {
 }
 
 /* this is the <topic> tag used with publications and talks */
-topic { 
+topic {
     display: inline-block;
     border: 1px $border-color solid;
     border-radius: 5px;
@@ -444,7 +444,7 @@ div.divtable td:first-child {
     grid-template-columns: 49% 49%;
     grid-gap: 5px;
     justify-content: center;
-    
+
     @media (max-width: $small-screen-size) {
         grid-template-columns: 99%;
     }
