@@ -12,7 +12,7 @@ when: "Sep. 2024 ‑ Present"
 
 ---
 
-## Development of reliable, safe and secure software
+## Development of Reliable, Safe and Secure Software
 #### Isolette: UI Simulation & Scenario Visualization for Safety-Critical Systems
 
 Isolette is a model project for the development of safety-critical software, simulating a neonatal incubator system that monitors and controls temperature to ensure infant health. The project emphasizes formal specifications, deterministic behavior, and testability under strict requirements.
