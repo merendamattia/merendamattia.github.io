@@ -12,6 +12,17 @@ when: "Sep. 2024 ‑ Present"
 
 ---
 
+## Development of reliable, safe and secure software
+#### Isolette: UI Simulation & Scenario Visualization for Safety-Critical Systems
+
+Isolette is a model project for the development of safety-critical software, simulating a neonatal incubator system that monitors and controls temperature to ensure infant health. The project emphasizes formal specifications, deterministic behavior, and testability under strict requirements.
+
+- Contributed to the User Interface Hardware (UIH) layer, defining and implementing both the UIH and its simulator (UIHS) to ensure behavioral consistency during simulation.
+- Developed the web UI in Vue and TypeScript, with strict client-side JSON validation and a clear interface displaying time, messages, real-time temperature charts, and a time slider for interactive inspection.
+- Designed and implemented a Scenario Visualization Framework to replace gnuplot, leveraging Vue, Chart.js, and modular design to produce dynamic, interactive, and navigable scenario visualizations.
+- The result is a scalable, browser-based visualization frontend that improves usability, speeds up development, and removes external dependencies.
+
+
 ## Fundamentals of Artificial Intelligence
 #### Project: Impact of Data Preprocessing on Neural Network Performance: A Comparative Analysis
 
