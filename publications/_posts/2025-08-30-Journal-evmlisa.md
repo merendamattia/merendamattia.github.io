@@ -3,14 +3,14 @@ layout: publication
 kind: "Journal paper"
 title: "EVMLiSA: Sound Static Control-Flow Graph Construction for EVM Bytecode"
 tags: blockchain smart-contract ethereum static-analysis abstract-interpretation
-# venue:
+venue: "Special issue of: Novel Applications of Blockchain for Information Systems and Business Process Management (1 September 2025)"
 when: "Accepted August 29, 2025"
-# location: "Vienna, Austria"
+location: "Open access"
 authors: "V. Arceri, <u>S.M. Merenda</u>, L. Negrini, L. Olivieri, E. Zaffanella"
 projects: evmlisa
-# manuscript: ""
+manuscript: "BCRA2025.pdf"
 publishername: "Elsevier"
-# publisherpage: ""
+publisherpage: "https://doi.org/10.1016/j.bcra.2025.100384"
 ---
 
 ### Abstract
