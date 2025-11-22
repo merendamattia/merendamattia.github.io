@@ -1,10 +1,10 @@
 theme: jekyll-theme-minimal
 title: Merenda Mattia
-descrition: Academic Curriculum of Merenda Saverio Mattia
+description: Academic Curriculum of Merenda Saverio Mattia
 author: Merenda Saverio Mattia
 logo: profile.jpg
 
-mail-work: saveriomattia.merenda@studenti.unipr.it
+mail-work: info@merendamattia.com
 linkedin: https://www.linkedin.com/in/merendamattia/
 scholar: https://scholar.google.com/citations?user=EXZavkQAAAAJ&hl=en&oi=ao
 # research-gate:
@@ -12,6 +12,7 @@ orcid: https://orcid.org/0009-0000-4137-9852
 # researcherid:
 # scopus:
 github: https://github.com/merendamattia
+gitlab: https://gitlab.com/merendamattia
 dblp: https://dblp.uni-trier.de/pid/387/1312.html
 
 exclude: [README.md]
