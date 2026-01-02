@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-US' }}">
-  <head>
-    <meta charset="UTF-8">
+
+<head>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<!-- Short description of the document (limit to 150 characters) -->
 	<!-- This content *may* be used as a part of search engine results. -->
@@ -51,109 +52,119 @@
 	<!-- Geo tags -->
 	<meta name="ICBM" content="latitude, longitude">
 	<meta name="geo.position" content="latitude;longitude">
-	<meta name="geo.region" content="IT"><!-- Country code (ISO 3166-1): mandatory, state code (ISO 3166-2): optional; eg. content="US" / content="US-NY" -->
+	<meta name="geo.region" content="IT">
+	<!-- Country code (ISO 3166-1): mandatory, state code (ISO 3166-2): optional; eg. content="US" / content="US-NY" -->
 	<meta name="geo.placename" content="Parma"><!-- eg. content="New York City" -->
 
 	<!-- AdSense -->
 	<meta name="google-adsense-account" content="ca-pub-4879151575586815">
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4879151575586815" crossorigin="anonymous"></script>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4879151575586815"
+		crossorigin="anonymous"></script>
 
 	<title>{{ site.title }} | {{ site.description }}</title>
 
 	<!-- Rybbit tracking -->
-	<script
-		src="https://app.rybbit.io/api/script.js"
-		data-site-id="607"
-		defer
-	></script>
+	<script src="https://app.rybbit.io/api/script.js" data-site-id="607" defer></script>
 
 	{% seo %}
 
-    <link rel="icon" type="image/jpg" href="{{ site.baseurl }}/icon.png">
+	<link rel="icon" type="image/jpg" href="{{ site.baseurl }}/icon.png">
 
 	<link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/academicons.min.css"/>
+	<link rel="stylesheet" href="{{ site.baseurl }}/css/academicons.min.css" />
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/all.css">
 	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/personal.css">
 	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/mobile-menu.css">
 	<script src="{{ site.baseurl }}/assets/js/mobile-menu.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
 	{% include simple-menu.html %}
-    <div class="wrapper">
-      <header>
-		<div id="contactPhotoWrapper">
-			<img src="{{site.logo | relative_url}}" alt="Logo" id="contactPhoto"/>
-		</div>
-
-		<div class="header-content">
-			<h1>Saverio Mattia <b>Merenda</b></h1>
-
-			<div class="location green-heading">
-				Master's Student
-			</div>
-			<div class="location">
-				<i>University of Parma, Italy</i>
+	<div class="wrapper">
+		<header>
+			<div id="contactPhotoWrapper">
+				<img src="{{site.logo | relative_url}}" alt="Logo" id="contactPhoto" />
 			</div>
 
-			<ul class="links">
-				<li><a href="mailto:{{ site.mail-work }}"><i class="fas fa-envelope big-icon"></i></a></li>
-				<li><a href="{{ site.linkedin }}"><i class="fab fa-linkedin big-icon"></i></a></li>
-				<li><a href="{{ site.github }}"><i class="fab fa-github big-icon"></i></a></li>
-				<li><a href="{{ site.gitlab }}"><i class="fab fa-gitlab big-icon"></i></a></li>
-				<!-- <li><a href="{{ site.twitter-handle }}"><i class="fab fa-twitter big-icon"></i></a></li> -->
-			</ul>
-			<br>
-			<ul class="links">
-				<li><a href="{{ site.orcid }}"><i class="ai ai-orcid big-icon"></i></a></li>
-				<li><a href="{{ site.scholar }}"><i class="ai ai-google-scholar big-icon"></i></a></li>
-				<li><a href="{{ site.dblp }}"><i class="ai ai-dblp big-icon"></i></a></li>
-			</ul>
-			<br>
-			<ul class="links">
-				<li><a href="{{ site.baseurl }}/files/cv.pdf"><i class="ai ai-cv big-icon"></i></a></li>
-				<!-- <li><a href="{{ site.scopus }}"><i class="ai ai-scopus big-icon"></i></a></li>
+			<div class="header-content">
+				<h1>Saverio Mattia <b>Merenda</b></h1>
+
+				<div class="location green-heading">
+					Master's Student
+				</div>
+				<div class="location">
+					<i>University of Parma, Italy</i>
+				</div>
+
+				<ul class="links">
+					<li><a href="mailto:{{ site.mail-work }}"><i class="fas fa-envelope big-icon"></i></a></li>
+					<li><a href="{{ site.linkedin }}"><i class="fab fa-linkedin big-icon"></i></a></li>
+					<li><a href="{{ site.github }}"><i class="fab fa-github big-icon"></i></a></li>
+					<li><a href="{{ site.gitlab }}"><i class="fab fa-gitlab big-icon"></i></a></li>
+					<!-- <li><a href="{{ site.twitter-handle }}"><i class="fab fa-twitter big-icon"></i></a></li> -->
+				</ul>
+				<br>
+				<ul class="links">
+					<li><a href="{{ site.orcid }}"><i class="ai ai-orcid big-icon"></i></a></li>
+					<li><a href="{{ site.scholar }}"><i class="ai ai-google-scholar big-icon"></i></a></li>
+					<li><a href="{{ site.dblp }}"><i class="ai ai-dblp big-icon"></i></a></li>
+				</ul>
+				<br>
+				<ul class="links">
+					<li><a href="{{ site.baseurl }}/files/cv.pdf"><i class="ai ai-cv big-icon"></i></a></li>
+					<!-- <li><a href="{{ site.scopus }}"><i class="ai ai-scopus big-icon"></i></a></li>
 				<li><a href="{{ site.research-gate }}"><i class="ai ai-researchgate big-icon"></i></a></li>-->
-			</ul>
-		</div>
-      </header>
+				</ul>
+			</div>
+			<script type="text/x-mathjax-config">
+				MathJax.Hub.Config({
+					tex2jax: {
+					skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+					inlineMath: [['$','$']]
+					}
+				});
+			</script>
+			<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+				type="text/javascript"></script>
+		</header>
 
-      <section>
+		<section>
 
-      {{ content }}
+			{{ content }}
 
-      </section>
-      <footer>
-		    <p><small>&copy; {{ 'now' | date: "%Y" }} - Saverio Mattia Merenda<br/>
-        Hosted on GitHub Pages &mdash; Original theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
-	<script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer></script><script>window.addEventListener("load",function(){window.wpcc.init({"corners":"small","colors":{"popup":{"background":"#ffffff","text":"#545454","border":"#5e5e5e"},"button":{"background":"#1297d1","text":"#ffffff"}},"position":"bottom","border":"thin","content":{"href":"https://www.cookiesandyou.com/","message":"This website uses analytics cookies to ensure you get the best experience on our website."}})});</script>
+		</section>
+		<footer>
+			<p><small>&copy; {{ 'now' | date: "%Y" }} - Saverio Mattia Merenda<br />
+					Hosted on GitHub Pages &mdash; Original theme by <a
+						href="https://github.com/orderedlist">orderedlist</a></small></p>
+		</footer>
+	</div>
+	<script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
+	<script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer></script>
+	<script>window.addEventListener("load", function () { window.wpcc.init({ "corners": "small", "colors": { "popup": { "background": "#ffffff", "text": "#545454", "border": "#5e5e5e" }, "button": { "background": "#1297d1", "text": "#ffffff" } }, "position": "bottom", "border": "thin", "content": { "href": "https://www.cookiesandyou.com/", "message": "This website uses analytics cookies to ensure you get the best experience on our website." } }) });</script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=GTM-T4BG5FL"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
 
-	  gtag('config', 'GTM-T4BG5FL');
-	  gtag('set', 'anonymizeIp', true);
-      gtag('require', 'eventTracker');
-      gtag('require', 'outboundLinkTracker');
-      gtag('require', 'urlChangeTracker');
-      gtag('send', 'pageview');
+		gtag('config', 'GTM-T4BG5FL');
+		gtag('set', 'anonymizeIp', true);
+		gtag('require', 'eventTracker');
+		gtag('require', 'outboundLinkTracker');
+		gtag('require', 'urlChangeTracker');
+		gtag('send', 'pageview');
 
 	</script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
-		$(document).ready(function() {
+		$(document).ready(function () {
 			if ($(window).width() <= 800) {
 				$('.esercitazioni, .esercizi, .appunti, .github').hide();
 			}
 
-			$(window).resize(function() {
+			$(window).resize(function () {
 				if ($(window).width() <= 800) {
 					$('.esercitazioni, .esercizi, .appunti, .github').hide();
 				} else {
@@ -163,5 +174,6 @@
 		});
 	</script>
 
-  </body>
+</body>
+
 </html>
