@@ -261,10 +261,10 @@ Misure per confrontare distribuzioni di probabilità:
 Il documento copre in modo approfondito le tecniche di **Clustering** (raggruppamento), una forma di apprendimento non supervisionato utilizzata per scoprire strutture nascoste nei dati senza l'uso di etichette predefinite.
 
 ### 1. Fondamenti del Clustering
-*   **Definizione:** Il clustering è il processo di raggruppamento di oggetti in modo che gli oggetti nello stesso gruppo (cluster) siano più simili tra loro rispetto a quelli in altri gruppi,.
+*   **Definizione:** Il clustering è il processo di raggruppamento di oggetti in modo che gli oggetti nello stesso gruppo (cluster) siano più simili tra loro rispetto a quelli in altri gruppi.
 *   **Obiettivi di qualità:** Un buon clustering deve massimizzare la **similarità intra-classe** (coesione) e minimizzare la **similarità inter-classe** (separazione).
-*   **Requisiti:** Gli algoritmi devono essere scalabili, gestire diversi tipi di attributi, scoprire cluster di forma arbitraria, gestire il rumore (outlier) e l'alta dimensionalità,.
-*   **Complessità:** Il problema di trovare il clustering ottimo è NP-hard. Il numero di possibili partizioni cresce esponenzialmente con il numero di dati (approssimato dai numeri di Bell o Stirling),.
+*   **Requisiti:** Gli algoritmi devono essere scalabili, gestire diversi tipi di attributi, scoprire cluster di forma arbitraria, gestire il rumore (outlier) e l'alta dimensionalità.
+*   **Complessità:** Il problema di trovare il clustering ottimo è NP-hard. Il numero di possibili partizioni cresce esponenzialmente con il numero di dati (approssimato dai numeri di Bell o Stirling).
 
 ### 2. Principali Famiglie di Algoritmi
 Il documento classifica gli algoritmi in tre categorie principali: **Partizionamento**, **Gerarchici** e **Basati sulla Densità**.
@@ -273,43 +273,43 @@ Il documento classifica gli algoritmi in tre categorie principali: **Partizionam
 Questi metodi dividono i dati in $k$ gruppi cercando di ottimizzare una funzione obiettivo (solitamente basata sulla distanza).
 *   **K-means:**
     *   Rappresenta ogni cluster con il suo **centroide** (media dei punti).
-    *   È efficiente ($O(t \cdot k \cdot n)$) e semplice, ma tende a bloccarsi in ottimi locali e richiede di specificare $k$ a priori,.
-    *   Funziona bene solo per cluster di forma **sferica** o convessa e non è robusto agli outlier,.
+    *   È efficiente ($O(t \cdot k \cdot n)$) e semplice, ma tende a bloccarsi in ottimi locali e richiede di specificare $k$ a priori.
+    *   Funziona bene solo per cluster di forma **sferica** o convessa e non è robusto agli outlier.
 *   **K-medoids (PAM & CLARA):**
-    *   Rappresenta il cluster con un **medoide** (l'oggetto più centrale del cluster), rendendolo più robusto agli outlier rispetto al K-means,.
+    *   Rappresenta il cluster con un **medoide** (l'oggetto più centrale del cluster), rendendolo più robusto agli outlier rispetto al K-means.
     *   **PAM (Partitioning Around Medoids):** Preciso ma costoso computazionalmente ($O(k(n-k)^2)$).
     *   **CLARA:** Usa il campionamento per applicare PAM su dataset più grandi.
 *   **Fuzzy K-means (Soft Clustering):**
     *   Permette a un punto di appartenere a più cluster con diversi gradi di probabilità (membership). I centroidi sono calcolati come media pesata basata su queste probabilità.
 *   **Expectation-Maximization (EM):**
     *   Approccio probabilistico che assume che i dati siano generati da una mistura di distribuzioni (es. Gaussiane).
-    *   Itera due fasi: **Expectation** (stima la probabilità di appartenenza) e **Maximization** (aggiorna i parametri della distribuzione). Può modellare cluster di forma ellissoidale,.
+    *   Itera due fasi: **Expectation** (stima la probabilità di appartenenza) e **Maximization** (aggiorna i parametri della distribuzione). Può modellare cluster di forma ellissoidale.
 
 #### B. Algoritmi Gerarchici
-Creano una decomposizione gerarchica dei dati, rappresentabile tramite un **dendrogramma**,.
+Creano una decomposizione gerarchica dei dati, rappresentabile tramite un **dendrogramma**.
 *   **Approcci:**
     *   *Agglomerativi (Bottom-up):* Si parte dai singoli punti e si uniscono iterativamente i più simili.
     *   *Divisivi (Top-down):* Si parte da un unico cluster e lo si divide ricorsivamente.
-*   **Metriche di Linkage:** Definiscono la distanza tra cluster (Single, Complete, Average, Ward) influenzando la forma dei cluster risultanti,.
+*   **Metriche di Linkage:** Definiscono la distanza tra cluster (Single, Complete, Average, Ward) influenzando la forma dei cluster risultanti.
 *   **Algoritmi Specifici:**
-    *   **BIRCH:** Progettato per grandi dataset, costruisce incrementalmente un **CF-Tree** (Cluster Feature Tree) per comprimere i dati. Utilizza le "Cluster Features" (statistiche riassuntive: Numero punti, Somma Lineare, Somma Quadrata) per rappresentare i sottocluster in modo compatto,.
-    *   **CURE:** Usa più punti rappresentativi per ogni cluster (invece di uno solo), "restringendoli" verso il centroide. Questo permette di trovare cluster di forma non sferica ed è robusto agli outlier,.
-    *   **ROCK:** Specifico per **dati categoriali**. Usa il concetto di "Link" (numero di vicini comuni) invece della distanza euclidea,.
-    *   **Chameleon:** Usa un grafo k-nearest-neighbor e modella dinamicamente la similarità basandosi su **Interconnettività Relativa** e **Vicinanza Relativa**. È molto efficace nel trovare cluster di forma arbitraria,.
+    *   **BIRCH:** Progettato per grandi dataset, costruisce incrementalmente un **CF-Tree** (Cluster Feature Tree) per comprimere i dati. Utilizza le "Cluster Features" (statistiche riassuntive: Numero punti, Somma Lineare, Somma Quadrata) per rappresentare i sottocluster in modo compatto.
+    *   **CURE:** Usa più punti rappresentativi per ogni cluster (invece di uno solo), "restringendoli" verso il centroide. Questo permette di trovare cluster di forma non sferica ed è robusto agli outlier.
+    *   **ROCK:** Specifico per **dati categoriali**. Usa il concetto di "Link" (numero di vicini comuni) invece della distanza euclidea.
+    *   **Chameleon:** Usa un grafo k-nearest-neighbor e modella dinamicamente la similarità basandosi su **Interconnettività Relativa** e **Vicinanza Relativa**. È molto efficace nel trovare cluster di forma arbitraria.
     *   **Dynamic Tree Cut:** Un metodo per tagliare il dendrogramma in modo adattivo (non a un'altezza fissa) per identificare cluster nidificati.
 
 #### C. Algoritmi Basati sulla Densità
 Definiscono i cluster come regioni ad alta densità separate da regioni a bassa densità.
 *   **DBSCAN:**
     *   Concetti chiave: **Eps** (raggio di vicinato) e **MinPts** (numero minimo di punti).
-    *   Classifica i punti in: **Core** (interni densi), **Border** (sul confine) e **Noise** (rumore/outlier),.
+    *   Classifica i punti in: **Core** (interni densi), **Border** (sul confine) e **Noise** (rumore/outlier).
     *   Vantaggi: Non richiede di specificare $k$, trova forme arbitrarie e gestisce il rumore.
     *   Svantaggi: Sensibile ai parametri e alla densità variabile.
 
 ### 3. Algoritmi e Concetti Avanzati
-*   **BFR (Bradley-Fayyad-Reina):** Variante del K-means per dataset molto grandi che non stanno in memoria. Assume che i cluster siano distribuiti in modo Gaussiano e mantiene statistiche riassuntive (Discard Set, Compression Set, Retained Set),.
-*   **GRGPF:** Simile a BFR/BIRCH ma per metriche non Euclidee. Introduce i concetti di **Clusteroide** e **Rowsum** per gestire i cluster senza caricare tutti i punti in memoria,.
-*   **1-Mediana e Antipole:** Algoritmi per trovare rappresentanti o dividere i dati basandosi su tornei di triple o punti distanti (poli), utili per ridurre il numero di calcoli delle distanze,.
+*   **BFR (Bradley-Fayyad-Reina):** Variante del K-means per dataset molto grandi che non stanno in memoria. Assume che i cluster siano distribuiti in modo Gaussiano e mantiene statistiche riassuntive (Discard Set, Compression Set, Retained Set).
+*   **GRGPF:** Simile a BFR/BIRCH ma per metriche non Euclidee. Introduce i concetti di **Clusteroide** e **Rowsum** per gestire i cluster senza caricare tutti i punti in memoria.
+*   **1-Mediana e Antipole:** Algoritmi per trovare rappresentanti o dividere i dati basandosi su tornei di triple o punti distanti (poli), utili per ridurre il numero di calcoli delle distanze.
 *   **Clustering con Ostacoli:** Adatta la misura di distanza (es. usando un grafo di visibilità) per tenere conto di ostacoli fisici nel dominio dei dati.
 
 
@@ -433,7 +433,7 @@ Esistono due approcci principali per costruire un *Problem Solver*:
 2.  **Machine oriented (Comportamentale):** Mira a *manifestare* attività intelligente, risolvendo il problema nel modo migliore possibile (approccio ingegneristico).
 
 ### 2. Formalizzazione come Ricerca nello Spazio degli Stati
-Il *Problem Solving* viene formalizzato come una ricerca all'interno di uno "spazio degli stati". Un problema è definito da una 5-tupla $P = \{X, SCS, x_0, g, t\}$ dove:
+Il *Problem Solving* viene formalizzato come una ricerca all'interno di uno "spazio degli stati". Un problema è definito da una 5-tupla $P = \langle X, SCS, x_0, g, t\rangle$ dove:
 *   $X$: Spazio degli stati.
 *   $SCS$: Strategia di ricerca (azioni/operatori possibili).
 *   $x_0$: Stato iniziale.
