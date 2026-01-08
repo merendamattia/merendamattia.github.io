@@ -275,15 +275,35 @@ Questi metodi dividono i dati in $k$ gruppi cercando di ottimizzare una funzione
     *   Rappresenta ogni cluster con il suo **centroide** (media dei punti).
     *   È efficiente ($O(t \cdot k \cdot n)$) e semplice, ma tende a bloccarsi in ottimi locali e richiede di specificare $k$ a priori.
     *   Funziona bene solo per cluster di forma **sferica** o convessa e non è robusto agli outlier.
+    *   **Algoritmo:**
+        1. Inizializza casualmente $k$ centroidi.
+        2. **Assegnamento:** Assegna ogni punto al centroide più vicino.
+        3. **Aggiornamento:** Ricalcola i centroidi come media dei punti nel cluster.
+        4. Ripeti finché i centroidi non cambiano più (convergenza).
 *   **K-medoids (PAM & CLARA):**
     *   Rappresenta il cluster con un **medoide** (l'oggetto più centrale del cluster), rendendolo più robusto agli outlier rispetto al K-means.
     *   **PAM (Partitioning Around Medoids):** Preciso ma costoso computazionalmente ($O(k(n-k)^2)$).
+        *   **Algoritmo PAM:**
+            1. **BUILD:** Seleziona $k$ oggetti come medoidi iniziali.
+            2. **SWAP:** Tenta di scambiare medoidi con non-medoidi per ridurre il costo totale.
+            3. Ripeti finché non ci sono miglioramenti.
     *   **CLARA:** Usa il campionamento per applicare PAM su dataset più grandi.
+        *   Estrae campioni casuali di dimensione fissa, applica PAM a ciascun campione e seleziona la soluzione con il costo minore sull'intero dataset.
 *   **Fuzzy K-means (Soft Clustering):**
     *   Permette a un punto di appartenere a più cluster con diversi gradi di probabilità (membership). I centroidi sono calcolati come media pesata basata su queste probabilità.
+    *   **Algoritmo:**
+        1. Inizializza la matrice di membership con valori casuali (ogni punto ha una probabilità di appartenenza a ciascun cluster).
+        2. **Aggiornamento centroidi:** Calcola i centroidi come media pesata dei punti (pesati dalle loro membership).
+        3. **Aggiornamento membership:** Aggiorna le probabilità di appartenenza in base alla distanza dai centroidi.
+        4. Ripeti finché la variazione è minima.
 *   **Expectation-Maximization (EM):**
     *   Approccio probabilistico che assume che i dati siano generati da una mistura di distribuzioni (es. Gaussiane).
     *   Itera due fasi: **Expectation** (stima la probabilità di appartenenza) e **Maximization** (aggiorna i parametri della distribuzione). Può modellare cluster di forma ellissoidale.
+    *   **Algoritmo:**
+        1. Inizializza i parametri delle $k$ gaussiane (medie, covarianze e pesi).
+        2. **E-step (Expectation):** Calcola la probabilità che ogni punto appartenga a ciascun cluster.
+        3. **M-step (Maximization):** Aggiorna i parametri delle gaussiane basandosi sulle probabilità calcolate.
+        4. Ripeti finché converge.
 
 #### B. Algoritmi Gerarchici
 Creano una decomposizione gerarchica dei dati, rappresentabile tramite un **dendrogramma**.
@@ -293,9 +313,34 @@ Creano una decomposizione gerarchica dei dati, rappresentabile tramite un **dend
 *   **Metriche di Linkage:** Definiscono la distanza tra cluster (Single, Complete, Average, Ward) influenzando la forma dei cluster risultanti.
 *   **Algoritmi Specifici:**
     *   **BIRCH:** Progettato per grandi dataset, costruisce incrementalmente un **CF-Tree** (Cluster Feature Tree) per comprimere i dati. Utilizza le "Cluster Features" (statistiche riassuntive: Numero punti, Somma Lineare, Somma Quadrata) per rappresentare i sottocluster in modo compatto.
+        *   **Algoritmo:**
+            1. Costruisce il CF-Tree caricando i punti uno alla volta, inserendoli nella foglia più vicina o creando nuove foglie.
+            2. Condensa il CF-Tree per ridurre la memoria (opzionale).
+            3. Applica un algoritmo di clustering (es. K-means) sui centroidi delle foglie.
+            4. Riassegna i punti originali ai cluster trovati (opzionale).
     *   **CURE:** Usa più punti rappresentativi per ogni cluster (invece di uno solo), "restringendoli" verso il centroide. Questo permette di trovare cluster di forma non sferica ed è robusto agli outlier.
+        *   **Algoritmo:**
+            1. Campiona casualmente punti dal dataset.
+            2. Partiziona il campione e fa un clustering parziale su ciascuna partizione.
+            3. Elimina gli outlier (cluster con pochi punti).
+            4. Per ogni cluster, seleziona multipli punti rappresentativi dispersi e "restringili" verso il centroide.
+            5. Fonde iterativamente i due cluster più vicini (usando i punti rappresentativi) finché si raggiunge il numero desiderato.
+            6. Assegna i punti non campionati al cluster più vicino.
     *   **ROCK:** Specifico per **dati categoriali**. Usa il concetto di "Link" (numero di vicini comuni) invece della distanza euclidea.
+        *   **Algoritmo:**
+            1. Calcola la similarità tra tutte le coppie di punti (usando Jaccard).
+            2. Definisci due punti come "vicini" se la loro similarità supera una soglia.
+            3. Calcola il numero di **link** (vicini comuni) tra ogni coppia di punti.
+            4. Fonde iterativamente i cluster con più link in comune.
+            5. Continua finché si raggiunge il numero desiderato di cluster.
     *   **Chameleon:** Usa un grafo k-nearest-neighbor e modella dinamicamente la similarità basandosi su **Interconnettività Relativa** e **Vicinanza Relativa**. È molto efficace nel trovare cluster di forma arbitraria.
+        *   **Algoritmo:**
+            1. Costruisci un grafo k-nearest-neighbor (ogni punto connesso ai suoi $k$ vicini più prossimi).
+            2. Usa un algoritmo di graph partitioning per dividere il grafo in molti piccoli sub-cluster.
+            3. Fonde iterativamente le coppie di cluster più simili valutando:
+                *   **Interconnettività Relativa:** quanto sono connessi i cluster tra loro rispetto alla connessione interna.
+                *   **Vicinanza Relativa:** quanto sono vicini i cluster tra loro rispetto alla vicinanza interna.
+            4. Continua finché si raggiunge il numero desiderato di cluster.
     *   **Dynamic Tree Cut:** Un metodo per tagliare il dendrogramma in modo adattivo (non a un'altezza fissa) per identificare cluster nidificati.
 
 #### C. Algoritmi Basati sulla Densità
@@ -305,6 +350,14 @@ Definiscono i cluster come regioni ad alta densità separate da regioni a bassa 
     *   Classifica i punti in: **Core** (interni densi), **Border** (sul confine) e **Noise** (rumore/outlier).
     *   Vantaggi: Non richiede di specificare $k$, trova forme arbitrarie e gestisce il rumore.
     *   Svantaggi: Sensibile ai parametri e alla densità variabile.
+    *   **Algoritmo:**
+        1. Marca tutti i punti come non visitati.
+        2. Per ogni punto non visitato:
+            a. Marca il punto come visitato.
+            b. Trova tutti i punti nel suo vicinato (entro raggio Eps).
+            c. Se ha meno di MinPts vicini, marcalo come **Noise**.
+            d. Altrimenti è un **Core point**: crea un nuovo cluster ed espandilo ricorsivamente visitando i vicini dei vicini (se anche loro sono core points).
+        3. I punti non assegnati rimangono classificati come **Noise**.
 
 ### 3. Algoritmi e Concetti Avanzati
 *   **BFR (Bradley-Fayyad-Reina):** Variante del K-means per dataset molto grandi che non stanno in memoria. Assume che i cluster siano distribuiti in modo Gaussiano e mantiene statistiche riassuntive (Discard Set, Compression Set, Retained Set).
