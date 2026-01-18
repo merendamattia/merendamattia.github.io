@@ -461,6 +461,13 @@ Gran parte del documento è dedicata alla scoperta di strutture di comunità (gr
 *   **Definizioni di Comunità:** Si basano sull'ipotesi che i nodi interni a una comunità abbiano più collegamenti tra loro ($k_{int}$) rispetto a quelli verso l'esterno ($k_{ext}$).
 *   **Modularità ($Q$):** Una funzione obiettivo fondamentale che misura la qualità di una partizione confrontando la densità degli archi interni con quella attesa in un modello casuale. Massimizzare la modularità è una strategia chiave, ma ha un "limite di risoluzione" (non vede comunità piccole in reti grandi).
 
+Le 5 ipotesi fondamentali relative al rilevamento delle comunità (Community Detection) sono:
+1. H1: La struttura della comunità è codificata in modo univoco nella topologia (schema delle connessioni) della rete.
+2. H2 (Ipotesi di connettività): Una comunità corrisponde a un sottografo connesso.
+3. H3 (Ipotesi di densità): Una comunità corrisponde a un vicinato localmente denso.
+4. H4 (Ipotesi di randomicità): Le reti casuali non dovrebbero possedere strutture comunitarie.
+5. H5 (Ipotesi di massima modularità): La partizione che massimizza la modularità per una data rete offre la struttura ottimale della comunità.
+
 ### **Principali Algoritmi trattati:**
 1.  **Algoritmo di Girvan-Newman (Divisivo):** Rimuove iterativamente gli archi con la più alta *betweenness centrality*, poiché i ponti tra comunità sono attraversati da molti cammini minimi.
 2.  **MCL (Markov Cluster Algorithm):** Simula flussi stocastici. Alterna fasi di *Expansion* (potenza della matrice) e *Inflation* (accentuazione delle differenze di probabilità) per separare i cluster.
