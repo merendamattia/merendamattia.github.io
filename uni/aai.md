@@ -514,7 +514,7 @@ Per migliorare l'efficienza, si utilizzano **euristiche ($h(n)$)**, ovvero stime
 La funzione di valutazione diventa $f(n) = g(n) + h(n)$, dove $g(n)$ è il costo per arrivare al nodo corrente e $h(n)$ è il costo stimato per arrivare alla fine.
 
 **Proprietà delle euristiche:**
-*   **Ammissibilità:** Una euristica è ammissibile se non sovrastima mai il costo reale per raggiungere l'obiettivo ($h(n) \le h^*(n)$). Questa proprietà è fondamentale per garantire l'ottimalità in A*.
+*   **Ammissibilità:** Una euristica è ammissibile se non sovrastima mai il costo reale per raggiungere l'obiettivo ($h(n) \le h^{\*}(n)$). Questa proprietà è fondamentale per garantire l'ottimalità in A*.
 *   **Consistenza (o Monotonicità):** Il costo stimato non deve mai diminuire lungo un percorso più di quanto costi il passo stesso (disuguaglianza triangolare). Se un'euristica è monotona, è anche ammissibile.
 
 **Algoritmi Euristici Principali:**
