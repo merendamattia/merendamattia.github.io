@@ -17,6 +17,8 @@ Algoritmi trattati:
 Descrizione:
 Algoritmo che enumera tutte le permutazioni iniettive dei nodi di `graph1` su `graph2`, calcola il numero di archi preservati per ciascuna mappatura e tiene la migliore. Estremamente semplice ma esplode combinatorialmente.
 
+> Nota sulla "mappatura": nel contesto di questi algoritmi, una *mappatura* è una funzione iniettiva che associa ciascun nodo di `graph1` a un nodo distinto di `graph2`. Serve a confrontare le strutture dei due grafi e a valutare quanti archi vengono preservati sotto tale associazione, cioè quanti archi di `graph1` trovano corrispondenza in `graph2` secondo la mappatura scelta.
+
 Pseudocodice:
 ```
 # Pseudocode: Naïve Brute-Force
@@ -237,5 +239,3 @@ Contro:
 | `brute_force_arcmatch` | Sì (se esplorato completamente) | Il pruning non rimuove soluzioni ottime; la garanzia dipende dall'esplorazione completa dello spazio residuo |
 | `connected_mces` | Sì (entro il vincolo di connettività) | Ottimo rispetto al criterio connettività: può però escludere soluzioni globalmente migliori che non sono connesse |
 | `greedy_path_mces` | No | Heuristica: può restituire soluzioni subottimali; utile per scalabilità |
-
-```
