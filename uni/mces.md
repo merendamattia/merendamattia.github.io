@@ -311,6 +311,47 @@ Contro:
 
 ---
 
+## ILP-R2 (Integer Linear Programming)
+
+Descrizione:
+Algoritmo basato sulla programmazione lineare intera (ILP) per risolvere il problema del massimo sottografo comune di archi (MCES). Utilizza una formulazione R2 per massimizzare il numero di archi comuni tra due grafi.
+
+> Nota: L'algoritmo garantisce una soluzione ottimale, ma può essere computazionalmente intensivo su grafi di grandi dimensioni.
+
+Pseudocodice:
+```
+# Pseudocode: ILP-R2
+Input: graph1, graph2
+Define ILP problem to maximize preserved edges:
+  Variables:
+    x[u, v] -> Binary (1 if node u in graph1 maps to node v in graph2)
+    z[u1, v2] -> Binary (1 if edge (u1, v2) is preserved)
+  Objective:
+    Maximize sum of z[u1, v2] / 2
+  Constraints:
+    - Each node in graph1 maps to at most one node in graph2
+    - Each node in graph2 receives at most one node from graph1
+    - Topological consistency: neighbors in graph1 map to neighbors in graph2
+Solve ILP problem and extract solution:
+  Mapping: {u -> v for x[u, v] == 1}
+  Preserved edges: [(u, v) for (u, v) in graph1.edges if (mapping[u], mapping[v]) in graph2.edges]
+Return mapping, preserved edges, statistics
+```
+
+Complessità:
+- Tempo: Dipende dalla dimensione del problema ILP e dal solver utilizzato.
+- Memoria: Dipende dal numero di variabili e vincoli nel problema ILP.
+
+Pro:
+- Garantisce soluzione ottimale.
+- Applicabile a grafi di dimensioni moderate.
+
+Contro:
+- Computazionalmente intensivo su grafi grandi.
+- Richiede un solver ILP efficiente.
+
+---
+
 ## Confronto generale — differenze, pro e contro
 
 - Ottimalità:
@@ -318,23 +359,27 @@ Contro:
   - `brute_force_arcmatch`: ottimale per grafi piccoli, applica pruning ma non sacrifica correttezza
   - `connected_mces`: ottimale rispetto al sottoinsieme connesso (vincola la soluzione)
   - `greedy_path_mces`: euristica, non ottimale
+  - `ilp_r2`: ottimale (utilizza un approccio basato su ILP per garantire la soluzione migliore)
 
 - Scalabilità:
   - peggior: `brute_force` ≈ fattoriale
   - migliore pratica: `greedy_path_mces` (parametrico)
   - intermedio: `brute_force_arcmatch`, `connected_mces` (pruning aiuta ma non elimina l’esponenzialità)
+  - dipendente dal solver: `ilp_r2` (scalabilità limitata da dimensione del problema ILP)
 
 - Quando usare quale:
   - Uso didattico o su grafi molto piccoli (≤8–10 nodi): `brute_force` per dimostrare optimalità.
   - Quando si vuole ancora optimalità ma si cerca pruning efficace: `brute_force_arcmatch`.
   - Se serve che il sottografo conservato sia connesso per motivi applicativi: `connected_mces`.
   - Per dataset più grandi o demo interattive in tempo reale: `greedy_path_mces`.
+  - Per ottenere una soluzione ottimale su grafi di dimensioni moderate: `ilp_r2`.
 
 - Pro/Contro riassuntivi:
   - `brute_force`: + corretto e semplice, - esplosione combinatoria
   - `brute_force_arcmatch`: + molto meno esplosivo in molti casi, + statistiche utili, - overhead di controllo
   - `connected_mces`: + vincolo di connettività selettivo, - potrebbe escludere soluzioni migliori non connesse
   - `greedy_path_mces`: + veloce, adattabile, - soluzione non garantita e sensibile ai parametri
+  - `ilp_r2`: + garantisce soluzione ottimale, - computazionalmente intensivo e dipendente dal solver
 
 ---
 
@@ -346,6 +391,7 @@ Contro:
 | `brute_force_arcmatch` | Sì (per grafi piccoli) | Pruning efficace; statistiche utili | Ancora esponenziale nel peggior caso; overhead di controllo |
 | `connected_mces` | Sì (con vincolo di connettività) | Restituisce sottografi connessi; utile per applicazioni specifiche | Può escludere soluzioni migliori non connesse |
 | `greedy_path_mces` | No | Scalabile e veloce; parametrizzabile | Non garantisce ottimalità; qualità dipende dai parametri |
+| `ilp_r2` | Sì | Garantisce soluzione ottimale; applicabile a grafi di dimensioni moderate | Computazionalmente intensivo su grafi grandi; richiede un solver ILP efficiente |
 
 ## Confronto sull'ottimalità
 
@@ -355,3 +401,4 @@ Contro:
 | `brute_force_arcmatch` | Sì (se esplorato completamente) | Il pruning non rimuove soluzioni ottime; la garanzia dipende dall'esplorazione completa dello spazio residuo |
 | `connected_mces` | Sì (entro il vincolo di connettività) | Ottimo rispetto al criterio connettività: può però escludere soluzioni globalmente migliori che non sono connesse |
 | `greedy_path_mces` | No | Heuristica: può restituire soluzioni subottimali; utile per scalabilità |
+| `ilp_r2` | Sì | Garantisce soluzione ottimale; dipende dalla capacità del solver ILP e dalla dimensione del problema |
