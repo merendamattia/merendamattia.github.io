@@ -4,8 +4,6 @@ layout: secondary
 
 # MCES — Algoritmi inclusi nel progetto
 
-Questo documento riassume gli algoritmi presenti nella cartella `backend/algorithms` del progetto: una descrizione, l'"OpssodoCodice" (pseudocodice), complessità, e i pro/contro utili per preparare una presentazione.
-
 Algoritmi trattati:
 - brute_force (brute_force.py)
 - brute_force_arcmatch (brute_force_arcmatch.py)
@@ -40,8 +38,8 @@ return result_with_stats
 ```
 
 Complessità:
-- Tempo: O(P(|V2|,|V1|) * |E1|) dove P indica le permutazioni: in pratica O(|V2|!/(|V2|-|V1|)! * |E1|)
-- Memoria: O(|V1|) per la mappatura temporanea
+- Tempo: $O(P(\lvert V_2 \rvert,\lvert V_1 \rvert) \cdot \lvert E_1 \rvert)$ dove $P$ indica le permutazioni: in pratica $O\left(\frac{\lvert V_2 \rvert!}{(\lvert V_2 \rvert-\lvert V_1 \rvert)!} \cdot \lvert E_1 \rvert\right)$
+- Memoria: $O(\lvert V_1 \rvert)$ per la mappatura temporanea
 
 Pro:
 - Semplice, garantisce soluzione ottimale.
