@@ -87,6 +87,38 @@ function backtrack(i):
 
 backtrack(0)
 return best + statistics
+
+function preserved_edges(graph1, graph2, mapping):
+  preserved = []
+  for (u, v) in graph1.edges:
+    if u in mapping and v in mapping:
+      mu = mapping[u]
+      mv = mapping[v]
+      if (mu, mv) in graph2.edges or (mv, mu) in graph2.edges:
+        preserved.append((u, v))
+  return preserved
+
+function partial_mapping_consistent(mapping, graph1, graph2):
+  for (u, v) in graph1.edges:
+    if u in mapping and v in mapping:
+      mu = mapping[u]
+      mv = mapping[v]
+      if not ((mu, mv) in graph2.edges or (mv, mu) in graph2.edges):
+        return False
+  return True
+
+function optimistic_upper_bound(current_mapping, graph1, graph2):
+  already_preserved = 0
+  potentially_preservable = 0
+  mapped = set(current_mapping.keys())
+  for (u, v) in graph1.edges:
+    if u in mapped and v in mapped:
+      mu, mv = current_mapping[u], current_mapping[v]
+      if (mu, mv) in graph2.edges or (mv, mu) in graph2.edges:
+        already_preserved += 1
+    else:
+      potentially_preservable += 1
+  return already_preserved + potentially_preservable
 ```
 
 Complessità:
@@ -133,6 +165,51 @@ function backtrack(i):
 
 backtrack(0)
 return best + statistics
+
+
+function preserved_edges(graph1, graph2, mapping):
+  preserved = []
+  for (u, v) in graph1.edges:
+    if u in mapping and v in mapping:
+      mu = mapping[u]
+      mv = mapping[v]
+      if (mu, mv) in graph2.edges or (mv, mu) in graph2.edges:
+        preserved.append((u, v))
+  return preserved
+
+
+# is_connected(preserved_edges)
+function is_connected(preserved_edges):
+  if preserved_edges is empty: return False
+  adj = dict()
+  for (u, v) in preserved_edges:
+    adj.setdefault(u, []).append(v)
+    adj.setdefault(v, []).append(u)
+  start = preserved_edges[0][0]
+  seen = {start}
+  stack = [start]
+  while stack:
+    n = stack.pop()
+    for nb in adj.get(n, []):
+      if nb not in seen:
+        seen.add(nb)
+        stack.append(nb)
+  nodes_in_preserved = {n for e in preserved_edges for n in e}
+  return seen >= nodes_in_preserved
+
+
+function optimistic_upper_bound(current_mapping, graph1, graph2):
+  already_preserved = 0
+  potentially_preservable = 0
+  mapped = set(current_mapping.keys())
+  for (u, v) in graph1.edges:
+    if u in mapped and v in mapped:
+      mu, mv = current_mapping[u], current_mapping[v]
+      if (mu, mv) in graph2.edges or (mv, mu) in graph2.edges:
+        already_preserved += 1
+    else:
+      potentially_preservable += 1
+  return already_preserved + potentially_preservable
 ```
 
 Complessità:
@@ -180,6 +257,45 @@ while there are unmapped nodes:
   apply best_extension to mapping and update preserved_edges
 
 return mapping, preserved_edges, statistics
+
+
+function enumerate_simple_paths(start_node, max_len, graph1):
+  paths = []
+  function dfs(path):
+    if 1 <= len(path) <= max_len:
+      paths.append(copy(path))
+    if len(path) == max_len:
+      return
+    last = path[-1]
+    for (u, v) in graph1.edges:
+      nb = None
+      if u == last and v not in path: nb = v
+      if v == last and u not in path: nb = u
+      if nb is not None:
+        path.append(nb)
+        dfs(path)
+        path.pop()
+  dfs([start_node])
+  return paths
+
+
+# limited_permutations(available_targets, k, max_perms)
+function limited_permutations(available_targets, k, max_perms=2000):
+  perms = permutations(sorted(available_targets), k)
+  return islice(perms, max_perms)
+
+
+# evaluate_new_preserved(ext_mapping, mapping, graph1, graph2)
+function evaluate_new_preserved(ext_mapping, mapping, graph1, graph2):
+  combined = mapping.copy()
+  combined.update(ext_mapping)
+  new_preserved = []
+  for (u, v) in graph1.edges:
+    if u in combined and v in combined:
+      mu, mv = combined[u], combined[v]
+      if (mu, mv) in graph2.edges or (mv, mu) in graph2.edges:
+        new_preserved.append((u, v))
+  return len(new_preserved), new_preserved
 ```
 
 Complessità:
