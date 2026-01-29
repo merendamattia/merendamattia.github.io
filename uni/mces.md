@@ -352,6 +352,49 @@ Contro:
 
 ---
 
+## Simulated Annealing MCES
+
+Descrizione:
+L'algoritmo di Simulated Annealing (SA) per MCES utilizza un approccio probabilistico per trovare una soluzione approssimata al problema del massimo sottografo comune di archi. L'algoritmo esplora lo spazio delle soluzioni accettando transizioni che migliorano la soluzione corrente e, con una probabilità decrescente, anche transizioni peggiorative, per evitare di rimanere bloccati in minimi locali. La probabilità di accettare soluzioni peggiori diminuisce con il raffreddamento della temperatura.
+
+Pseudocodice:
+```
+# Pseudocode: Simulated Annealing MCES
+Input: graph1, graph2, initial_temp, cooling_rate, max_iterations
+current_solution = random_initial_solution(graph1, graph2)
+best_solution = current_solution
+current_temp = initial_temp
+
+for iteration in range(max_iterations):
+    new_solution = generate_neighbor_solution(current_solution)
+    delta = evaluate(new_solution) - evaluate(current_solution)
+
+    if delta > 0 or random() < exp(delta / current_temp):
+        current_solution = new_solution
+
+    if evaluate(current_solution) > evaluate(best_solution):
+        best_solution = current_solution
+
+    current_temp *= cooling_rate
+
+return best_solution + statistics
+```
+
+Complessità:
+- Tempo: Dipende dal numero di iterazioni, dalla dimensione dei grafi e dalla complessità della funzione di valutazione.
+- Memoria: $O(\lvert V_1 \rvert)$ per la mappatura temporanea.
+
+Pro:
+- Scalabile su grafi di dimensioni maggiori rispetto agli approcci esaustivi.
+- Può trovare soluzioni di alta qualità in tempi ragionevoli.
+- Evita i minimi locali grazie all'accettazione probabilistica di soluzioni peggiori.
+
+Contro:
+- Non garantisce ottimalità.
+- La qualità della soluzione dipende dalla scelta dei parametri (temperatura iniziale, tasso di raffreddamento, numero massimo di iterazioni).
+
+---
+
 ## Confronto generale — differenze, pro e contro
 
 - Ottimalità:
@@ -360,18 +403,20 @@ Contro:
   - `connected_mces`: ottimale rispetto al sottoinsieme connesso (vincola la soluzione)
   - `greedy_path_mces`: euristica, non ottimale
   - `ilp_r2`: ottimale (utilizza un approccio basato su ILP per garantire la soluzione migliore)
+  - `simulated_annealing_mces`: euristica, non ottimale ma evita minimi locali
 
 - Scalabilità:
   - peggior: `brute_force` ≈ fattoriale
   - migliore pratica: `greedy_path_mces` (parametrico)
   - intermedio: `brute_force_arcmatch`, `connected_mces` (pruning aiuta ma non elimina l’esponenzialità)
   - dipendente dal solver: `ilp_r2` (scalabilità limitata da dimensione del problema ILP)
+  - buona: `simulated_annealing_mces` (scalabile su grafi più grandi rispetto agli approcci esaustivi)
 
 - Quando usare quale:
   - Uso didattico o su grafi molto piccoli (≤8–10 nodi): `brute_force` per dimostrare optimalità.
   - Quando si vuole ancora optimalità ma si cerca pruning efficace: `brute_force_arcmatch`.
   - Se serve che il sottografo conservato sia connesso per motivi applicativi: `connected_mces`.
-  - Per dataset più grandi o demo interattive in tempo reale: `greedy_path_mces`.
+  - Per dataset più grandi o demo interattive in tempo reale: `greedy_path_mces` o `simulated_annealing_mces`.
   - Per ottenere una soluzione ottimale su grafi di dimensioni moderate: `ilp_r2`.
 
 - Pro/Contro riassuntivi:
@@ -380,6 +425,7 @@ Contro:
   - `connected_mces`: + vincolo di connettività selettivo, - potrebbe escludere soluzioni migliori non connesse
   - `greedy_path_mces`: + veloce, adattabile, - soluzione non garantita e sensibile ai parametri
   - `ilp_r2`: + garantisce soluzione ottimale, - computazionalmente intensivo e dipendente dal solver
+  - `simulated_annealing_mces`: + scalabile, evita minimi locali, - non garantisce ottimalità, dipende dai parametri
 
 ---
 
@@ -392,6 +438,9 @@ Contro:
 | `connected_mces` | Sì (con vincolo di connettività) | Restituisce sottografi connessi; utile per applicazioni specifiche | Può escludere soluzioni migliori non connesse |
 | `greedy_path_mces` | No | Scalabile e veloce; parametrizzabile | Non garantisce ottimalità; qualità dipende dai parametri |
 | `ilp_r2` | Sì | Garantisce soluzione ottimale; applicabile a grafi di dimensioni moderate | Computazionalmente intensivo su grafi grandi; richiede un solver ILP efficiente |
+| `simulated_annealing_mces` | No | Scalabile; evita minimi locali; soluzione di alta qualità | Non garantisce ottimalità; dipende dalla scelta dei parametri |
+
+---
 
 ## Confronto sull'ottimalità
 
@@ -402,3 +451,4 @@ Contro:
 | `connected_mces` | Sì (entro il vincolo di connettività) | Ottimo rispetto al criterio connettività: può però escludere soluzioni globalmente migliori che non sono connesse |
 | `greedy_path_mces` | No | Heuristica: può restituire soluzioni subottimali; utile per scalabilità |
 | `ilp_r2` | Sì | Garantisce soluzione ottimale; dipende dalla capacità del solver ILP e dalla dimensione del problema |
+| `simulated_annealing_mces` | No | Heuristica: evita minimi locali e trova soluzioni di alta qualità, ma non garantisce ottimalità |
