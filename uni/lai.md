@@ -316,7 +316,7 @@ Il **Dynamic Time Warping** è un algoritmo progettato per misurare la similarit
 *   **Vincoli**: La mappatura degli indici deve essere **monotonicamente crescente** e gli indici di inizio e fine delle due serie devono coincidere.
 
 ### Algoritmo
-1.  **Matrice**: Si utilizza una matrice $n \times m$. La cella $$ è inizializzata a 0, mentre la prima riga e la prima colonna a infinito.
+1.  **Matrice**: Si utilizza una matrice $n \times m$. La cella $[0,0]$ è inizializzata a 0, mentre la prima riga e la prima colonna a infinito.
 2.  **Calcolo**: Per ogni cella, si calcola la distanza (es. Euclidea) tra i punti delle due serie. A questa si aggiunge il minimo costo proveniente dalle celle adiacenti:
     *   *Precedente riga*: Cancellazione.
     *   *Precedente colonna*: Inserimento.
