@@ -12,6 +12,83 @@ when: "Sep. 2024 ‑ Present"
 
 ---
 
+## Constraint Programming
+#### Project: Sorting as a Planning Problem
+
+Presented during the *Constraint Programming* course (academic year 2025/26), this project explored modeling the sorting of a permutation vector as a discrete-time planning problem. The challenge was to identify the minimum sequence of pairwise swaps required to reach a sorted state, addressing the combinatorial explosion typical of CP-based planning approaches.
+
+Key highlights include:
+- Objective: to find the minimum plan length $k$ required to sort a permutation of $N$ integers through pairwise swaps, optimizing search efficiency even for large problem instances ($N=30$).
+- Methodology: implemented dual representation using channeling constraints (`inverse` global constraint) to synchronize value-based and position-based views of the vector. Applied Generalized Arc Consistency (GAC) using Régin's algorithm for permutations. Deployed mathematical pruning through parity constraints and optimal swap properties to reduce the branching factor from $O(N^2)$ to $O(N)$.
+- Implementation: developed an advanced iterative deepening meta-solver in Python integrated with MiniZinc/Gecode backend. Implemented theoretical lower bounds using cycle decomposition to bypass expensive UNSAT phases. Conducted comprehensive benchmarking of 12 search strategies, including variable/value selection heuristics (first_fail, dom_w_deg, max_regret) and restart policies (Luby, Geometric, Linear).
+- Outcome: demonstrated significant performance improvements through constraint programming optimizations, achieving efficient solving for permutations up to $N=30$. Generated visualization charts analyzing execution time, success rates, strategy rankings, and correlations between plan length and solving time. The project underscored the effectiveness of combining dual representation, GAC, and mathematical pruning in reducing the search space.
+
+<div class="divtable">
+  <table>
+    <tbody>
+      <tr>
+      	<td><i class="fas fa-file-pdf"></i> Paper:</td>
+        <td><a href="{{ site.baseurl }}/files/paper-CP.pdf">PDF</a></td>
+      </tr>
+      <tr>
+      	<td><i class="fas fa-code-branch"></i> Code:</td>
+        <td><a href="https://github.com/merendamattia/sorting-as-a-planning-problem">GitHub</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+## Artificial Intelligence Laboratory
+#### Project: Maximum Common Edge Subgraph (MCES) - Algorithm Implementation and Analysis
+
+Developed during the *Artificial Intelligence Laboratory* course (academic year 2025/26), this project addressed the Maximum Common Edge Subgraph (MCES) problem, a fundamental NP-complete problem in graph theory. Given two graphs $G_1$ and $G_2$, the objective is to find a common subgraph H with the maximum number of edges that is isomorphic to both graphs.
+
+Key highlights include:
+- Objective: to implement and benchmark a comprehensive suite of algorithms spanning the entire spectrum from exact methods to heuristics, evaluating their trade-offs in terms of solution quality, execution time, and scalability.
+- Methodology: implemented six distinct algorithms including Brute Force, Brute Force with Pruning and Backtracking, Connected MCES, Greedy Path heuristic, Integer Linear Programming (ILP) using the PuLP solver, and Simulated Annealing metaheuristic. Each algorithm returns node mappings, preserved edges, and detailed performance statistics (time, explored space, optimality, memory usage).
+- Implementation: developed a robust benchmarking infrastructure with parallel execution (5 worker threads), process-based timeouts, fixed random seeds for reproducibility, and real-time CSV output with file locking. Created an interactive web visualizer with Flask backend and JavaScript frontend featuring random graph generation, side-by-side visualization with force-directed layout, real-time algorithm execution, and performance statistics display.
+- Validation: conducted systematic performance analysis across graphs of varying sizes and densities, generating comprehensive visualization plots including performance summaries, scalability analysis, heatmaps, solution quality comparisons, and timeout analysis. Demonstrated the practical applicability of different algorithmic approaches in computational chemistry, biology, pattern recognition, and social network analysis.
+
+<div class="divtable">
+  <table>
+    <tbody>
+      <tr>
+      	<td><i class="fas fa-code-branch"></i> Code:</td>
+        <td><a href="https://github.com/merendamattia/mces">GitHub</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+## Artificial Intelligence Industrial Applications
+#### Project: Personal Financial AI Agent
+
+Developed for the *Artificial Intelligence Industrial Applications* course (academic year 2025/26), this project created an intelligent personal financial advisor leveraging Retrieval-Augmented Generation (RAG) and multi-provider LLM support. The system provides expert financial guidance through natural language interactions while ensuring privacy and flexibility in model selection.
+
+Key highlights include:
+- Objective: to develop an AI-powered financial advisory system capable of extracting investor profiles through conversational interactions and generating personalized portfolio recommendations based on historical data and risk assessment.
+- Methodology: implemented a multi-stage pipeline consisting of agent selection (Ollama, Google Gemini, OpenAI), interactive conversation for financial assessment, AI-driven profile extraction, and RAG-enhanced portfolio generation. Integrated retrieval mechanisms accessing 10-year historical return data for comprehensive asset analysis. Applied privacy-first design principles with full offline support through Ollama for local inference.
+- Implementation: developed using Python and Streamlit for the interactive interface, incorporating support for multiple LLM providers with dynamic provider detection. Implemented robust profile management capabilities including JSON-based load, save, and download functionality. Created comprehensive testing suite with pytest and established DevOps automation with Docker containerization (multi-stage builds for backend and frontend), Docker Compose orchestration, and CI/CD pipelines.
+- Outcome: delivered a production-ready application with multi-language support, enabling users to communicate in their preferred language. Demonstrated the effectiveness of RAG in enhancing financial decision-making by combining LLM reasoning with factual historical data. The system balances privacy concerns (local inference with Ollama) with performance flexibility (cloud-based Gemini/OpenAI), making it adaptable to different user requirements and deployment scenarios.
+
+<div class="divtable">
+  <table>
+    <tbody>
+      <tr>
+      	<td><i class="fas fa-file-pdf"></i> Paper:</td>
+        <td><a href="{{ site.baseurl }}/files/paper-AIAI.pdf">PDF</a></td>
+      </tr>
+      <tr>
+      	<td><i class="fas fa-code-branch"></i> Code:</td>
+        <td><a href="https://github.com/merendamattia/personal-financial-ai-agent">GitHub</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 ## Development of Reliable, Safe and Secure Software
 #### Isolette: UI Simulation & Scenario Visualization for Safety-Critical Systems
 
