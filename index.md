@@ -4,17 +4,21 @@ layout: default
 
 ## Hi, I'm Mattia!
 
-I'm Saverio Mattia Merenda, a Master's Student in Computer Science from the University of Parma, Italy.
+I’m Saverio Mattia Merenda, an AI Solution Architect and Master’s Student in Computer Science at the University of Parma, Italy.
 
-Throughout my academic journey, I have gained extensive experience in software development, research, and static analysis. Notably, I played a key role in the development of [EVMLiSA](https://github.com/lisa-analyzer/evm-lisa), a static analyzer for EVM bytecode, and contributed to various AI and blockchain-related initiatives. Currently, during my Master's studies, I am further expanding my expertise through projects in cutting-edge areas such as Software Security, Quantum Computing, Machine Learning & AI, and Compilers. My ongoing work includes the early stages of xEVMLiSA, aiming to extend EVMLiSA's analysis capabilities across multiple blockchains, and research participation in projects like "LLMs Meet Static Analysis: improving quality and reliability of AI-generated code."
+My academic and professional path sits at the intersection of artificial intelligence, software engineering, and software security. Alongside my Master’s studies, focused on Artificial Intelligence and Software Verification, I actively design and engineer advanced AI systems, combining research-driven methodologies with production-grade architectures.
 
-In addition to my academic pursuits, I have had the opportunity to work with several organizations and serve as a Teaching Assistant and Tutor at the University of Parma. These experiences have allowed me to develop cutting-edge software solutions, streamline operations, and enhance security measures, further solidifying my practical skills.
+Currently, I work as an AI Solution Architect, where I design, develop, and deploy custom AI agents and AI-driven systems for both client-specific solutions and internal optimization projects. My work includes the development of autonomous agent ecosystems, continuous-learning AI agents for customer support, and meta-agent architectures capable of automatically configuring and generating other AI agents. I also engineer ad-hoc MCP tools and internal AI tooling platforms to support agent orchestration, lifecycle management, and scalable deployment, integrating these systems into enterprise workflows through modern automation and orchestration platforms.
 
-I'm constantly driven to explore new technologies and techniques, always seeking to improve my skills and knowledge. I believe that experimentation and innovation are essential in the rapidly evolving field of computer science, and I'm excited to continue contributing to its advancement.
+In parallel, I am deeply involved in academic research and advanced software development. I contributed to the development of [EVMLiSA](https://github.com/lisa-analyzer/evm-lisa), a static analyzer for EVM bytecode based on abstract interpretation, and I am currently working on xEVMLiSA, extending static analysis capabilities to cross-chain ecosystems. My research activities include software security, access control analysis in smart contracts, and the integration of large language models with static analysis to improve the quality and reliability of AI-generated code. These activities have led to peer-reviewed publications and participation in international research projects.
+
+Alongside research and industry work, I have served as a Teaching Assistant at the University of Parma, delivering academic lectures and supporting undergraduate education in computer science. This role strengthened my ability to combine theoretical rigor with practical system design, communication, and mentorship.
+
+I am driven by the construction of intelligent systems that are not only functional, but also scalable, verifiable, and architecturally sound. My focus is on building AI infrastructures that merge automation, learning, and formal methods, with a long-term vision toward reliable, autonomous, and secure AI-driven systems.
 
 <span class="subsect">You can find my full CV <a href="{{ site.baseurl }}/files/cv.pdf">here</a></span>.
 
-<span class="subsect">Interests:</span> Static Program Analysis, Abstract Interpretation, Blockchain, Machine Learning.
+<span class="subsect">Interests:</span> AI Agents & Autonomous Systems, Multi-Agent Architectures, AI Systems Engineering, Software Verification, Blockchain.
 
 <!-- ----------------------- -->
 
