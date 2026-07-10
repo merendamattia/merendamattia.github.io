@@ -1,14 +1,43 @@
 ---
 layout: education
 title: "M.S. in Computer Science"
-tags: software-security quantum-computing machine-learning AI
-venue: "Expected graduation year: July 2026."
+tags: static-analysis abstract-interpretation software-verification EVMLiSA
+venue: "Thesis title: Static Detection of Access Control Incompleteness in EVM Smart Contracts: Relational Taint Analysis for Cross‑Chain Bridges."
 location: "University of Parma, Italy"
-when: "Sep. 2024 ‑ Present"
-# grade: ""
+when: "Sep. 2024 ‑ Jul. 2026"
+grade: "110/110 cum laude"
+projects: evmlisa
+hide_meta_table: true
 ---
 
 * Topics: Software Security & Verification, Quantum Computing, Machine Learning & AI, Compilers.
+* Graduated on July 9, 2026, with a thesis supervised by Prof. Vincenzo Arceri.
+
+# Abstract thesis
+Smart contracts are programs deployed immutably on a blockchain: any bug in the code remains exploitable for the entire lifetime of the contract and can lead to the theft of the funds it manages. Detecting vulnerabilities before deployment is therefore essential, and static analysis is the right tool for this purpose, since it reasons about the properties of the code without executing it and simultaneously considers all possible executions.
+
+Among the most exploited classes of vulnerabilities in recent years is *Access Control Incompleteness*, a condition in which a function that modifies the critical state of a contract is not protected by an adequate authorization check. The compromises of the Ronin and Nomad cross-chain bridges, with losses of 625M USD and 190M USD in 2022 alone, stem from incompleteness of this kind, and it is the most recurrent vulnerability class in this context.
+
+This thesis proposes a static checker for detecting Access Control Incompleteness in cross-chain bridges starting from EVM bytecode alone. The checker is built on top of [EVMLiSA](https://github.com/lisa-analyzer/evm-lisa), a static analyzer based on the LiSA framework and Abstract Interpretation. The thesis formalizes the core of EVMLiSA and proves soundness and termination of the Control-Flow Graph construction; on top of this graph, a relational taint analysis tracks the provenance of untrusted values at the program-point level and verifies that every path from a *source* to a *sink* passes through an authorization *sanitizer*. The evaluation covers 16 real cross-chain bridges, 1,003 contracts in total (109,952 lines of bytecode) against a ground truth of 301 manually validated vulnerabilities, achieving 100% recall and precision from 73.24% (ABI only) up to 94.36% in the modifier-aware configuration.
+
+<div class="divtable">
+  <table>
+    <tbody>
+      <tr>
+      	<td><i class="fas fa-file-pdf"></i> Thesis:</td>
+        <td><a href="{{ site.baseurl }}/files/master-thesis.pdf">PDF</a></td>
+      </tr>
+      <tr>
+      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
+        <td><a href="{{ site.baseurl }}/files/master-slides.pdf">PDF</a></td>
+      </tr>
+      <tr>
+      	<td><i class="fas fa-laptop-code"></i> Associated project:</td>
+        <td><a href="{{ site.baseurl }}/projects/evmlisa">EVMLiSA</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ---
 

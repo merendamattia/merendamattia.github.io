@@ -17,6 +17,7 @@ layout: secondary
 <br/>
 {{content}}
 
+{% unless page.hide_meta_table %}
 <div class="divtable">
     <table>
         <tbody>
@@ -78,6 +79,7 @@ layout: secondary
         </tbody>
     </table>
 </div>
+{% endunless %}
 
 {% assign images = page.images | split: " " %}
 {% for image in images %}

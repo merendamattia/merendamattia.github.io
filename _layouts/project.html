@@ -37,13 +37,12 @@ layout: secondary
   </table>
 </div>
 
-{% assign publist = '' | split: '' %}
+<h3>Related works</h3>
 {% for p in site.categories.education %}
   {% assign pprojects = p.projects | split: ' '  %}
   {% if pprojects contains page.projid %}
-    <h3>Related works</h3>
     <a href="{{ p.url }}"><i class="fas fa-university"></i> {{ p.title }}</a><br/>
-  {% endif %}	
+  {% endif %}
 {% endfor %}
 
 {% assign publist = '' | split: '' %}
