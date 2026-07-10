@@ -5,6 +5,8 @@ tags: static-analysis abstract-interpretation software-verification EVMLiSA
 venue: "Thesis title: Static Detection of Access Control Incompleteness in EVM Smart Contracts: Relational Taint Analysis for Cross‑Chain Bridges."
 location: "University of Parma, Italy"
 when: "Sep. 2024 ‑ Jul. 2026"
+manuscript: "master-thesis.pdf"
+slides: "master-slides.pdf"
 grade: "110/110 cum laude"
 projects: evmlisa
 hide_meta_table: true
