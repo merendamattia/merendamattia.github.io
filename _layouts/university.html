@@ -1,41 +1,28 @@
 ---
-layout: secondary
+layout: default
 ---
+<main>
+<article class="detail">
+	<a class="backlink" href="{{ site.baseurl }}/uni/"><i class="ph ph-arrow-left"></i>Back to University Notes</a>
 
-<h1>Corso: {{ page.title }}</h1>
+	<span class="d-kicker">University Notes</span>
+	<h1 class="d-title">Corso: {{ page.title }}</h1>
 
-<venue>L'esame è stato svolto nel {{ page.year }}.</venue><br/>
+	<div class="d-meta">
+		<span><i class="ph ph-calendar-blank"></i>L'esame è stato svolto nel {{ page.year }}.</span>
+	</div>
 
-<br/>
-{{content}}
+	<div class="res-row" style="margin-bottom:34px">
+		{% if page.github %}<a class="res" href="{{ page.github }}" target="_blank" rel="noopener"><i class="ph ph-github-logo"></i>Github: repository</a>{% endif %}
+		{% if page.appunti %}<a class="res" href="{{ page.appunti }}" target="_blank" rel="noopener"><i class="ph ph-note"></i>Appunti: dispensa</a>{% endif %}
+		{% if page.esercizi %}<a class="res" href="{{ page.esercizi }}" target="_blank" rel="noopener"><i class="ph ph-pencil-line"></i>Esercizi: quaderno</a>{% endif %}
+		{% if page.esercitazioni %}<a class="res" href="{{ page.esercitazioni }}" target="_blank" rel="noopener"><i class="ph ph-chalkboard"></i>Esercitazioni: quaderno</a>{% endif %}
+	</div>
 
-<div class="divtable">
-    <table>
-      <tbody>
-{% if page.github %}
-        <tr>
-            <td><i class="fas fa-code-branch"></i> Github:</td>
-          <td><a href="{{ page.github }}">repository</a></td>
-        </tr>
-{% endif %}
-{% if page.appunti %}
-        <tr>
-            <td><i class="fas fa-pen"></i> Appunti:</td>
-          <td><a href="{{ page.appunti }}">dispensa</a></td>
-        </tr>
-{% endif %}
-{% if page.esercizi %}
-        <tr>
-            <td><i class="fas fa-pen-nib"></i> Esercizi:</td>
-            <td><a href="{{ page.esercizi }}">quaderno</a></td>
-        </tr>
-{% endif %}
-{% if page.esercitazioni %}
-        <tr>
-            <td><i class="fas fa-book-open"></i> Esercitazioni:</td>
-            <td><a href="{{ page.esercitazioni }}">quaderno</a></td>
-        </tr>
-{% endif %}
-      </tbody>
-    </table>
-  </div>
+	<div class="d-body">{{ content }}</div>
+
+	<div class="d-back">
+		<a class="btn btn-secondary" href="{{ site.baseurl }}/uni/"><i class="ph ph-arrow-left"></i>Back to University Notes</a>
+	</div>
+</article>
+</main>

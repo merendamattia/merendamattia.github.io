@@ -1,6 +1,7 @@
 ---
 layout: experience
 title: "Software Developer"
+description: "Software development experience at HeliopsyLab, improving hospital management systems and Picasso and Mirth integrations."
 tags: management-software Picasso Mirth
 venue: "HeliopsyLab"
 location: "Reggio Emilia, Italy"

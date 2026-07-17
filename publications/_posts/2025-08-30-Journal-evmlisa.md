@@ -2,6 +2,7 @@
 layout: publication
 kind: "Journal paper"
 title: "EVMLiSA: Sound Static Control-Flow Graph Construction for EVM Bytecode"
+description: "Journal paper presenting EVMLiSA, a sound static control-flow graph construction method for EVM bytecode, published by Elsevier."
 tags: blockchain smart-contract ethereum static-analysis abstract-interpretation
 venue: "Special issue of: Novel Applications of Blockchain for Information Systems and Business Process Management (1 September 2025)"
 when: "Accepted August 29, 2025"

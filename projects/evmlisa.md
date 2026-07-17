@@ -3,7 +3,7 @@ layout: project
 project: true
 pinned: true
 projid: evmlisa
-languages: Java
+languages: Java static-analysis abstract-interpretation software-verification smart-contract ethereum
 title: "EVMLiSA"
 description: "An abstract interpretation-based static analyzer for EVM bytecode."
 repo: "https://github.com/lisa-analyzer/evm-lisa"

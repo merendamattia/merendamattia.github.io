@@ -1,6 +1,7 @@
 ---
 layout: experience
 title: "Researcher and Software Developer"
+description: "Research internship at the University of Parma developing EVMLiSA for sound static analysis of Ethereum smart contract bytecode."
 tags: static-analysis abstract-interpretation EVMLiSA blockchain
 venue: "University of Parma - Internship"
 location: "Parma, Italy"

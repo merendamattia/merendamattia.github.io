@@ -1,6 +1,7 @@
 ---
 layout: experience
 title: "Software Developer"
+description: "Software development experience at Pico srl, building secure database user management and a wizard-style examination application."
 tags: database UX
 venue: "Pico srl"
 location: "Reggio Emilia, Italy"

@@ -1,0 +1,74 @@
+{% comment %} Reusable detail-page template (PRODUCT.md §2). Params:
+  kicker (defaults to the post's category), lede / lede_italic, show_venue,
+  tags_str (space-separated string override, for pages), manuscript_label.
+{% endcomment %}
+{% assign kicker = include.kicker | default: page.categories.first | capitalize %}
+{% assign taglist = include.tags_str | default: page.tags %}
+{% if taglist and taglist.first == nil %}{% assign taglist = taglist | split: ' ' %}{% endif %}
+<main>
+<article class="detail">
+	<a class="backlink" href="{{ site.baseurl }}/"><i class="ph ph-arrow-left"></i>Back to overview</a>
+
+	<span class="d-kicker">{{ kicker }}</span>
+	<h1 class="d-title">{{ page.title }}</h1>
+
+	<div class="d-meta">
+		{% if page.kind %}<span><i class="ph ph-note"></i>{{ page.kind }}</span>{% endif %}
+		{% if include.show_venue and page.venue %}<span><i class="ph ph-buildings"></i>{{ page.venue }}</span>{% endif %}
+		{% if page.location %}<span><i class="ph ph-map-pin"></i>{{ page.location }}</span>{% endif %}
+		{% if page.when %}<span><i class="ph ph-calendar-blank"></i>{{ page.when }}</span>{% endif %}
+		{% if page.grade %}<span><i class="ph ph-seal-check"></i><strong>{{ page.grade }}</strong></span>{% endif %}
+	</div>
+	{% if page.authors %}<p class="d-authors">{{ page.authors }}</p>{% endif %}
+	{% if taglist %}<div class="d-tags">{% for tag in taglist %}{% include tag.html label=tag %}{% endfor %}</div>{% endif %}
+
+	{% if include.lede %}<p class="d-lede{% if include.lede_italic %} thesis-title{% endif %}">{{ include.lede }}</p>{% endif %}
+
+	<div class="d-body">{{ content }}</div>
+
+	{% unless page.hide_meta_table %}
+	{% capture refs %}
+		{% if page.manuscript %}<a class="reflink" href="{{ site.baseurl }}/files/{{ page.manuscript }}" target="_blank" rel="noopener"><i class="ph ph-file-pdf"></i><span><span class="ref-name">{{ include.manuscript_label | default: 'Manuscript' }}</span><span class="ref-sub">PDF</span></span><i class="ph ph-arrow-up-right"></i></a>{% endif %}
+		{% if page.slides %}<a class="reflink" href="{{ site.baseurl }}/files/{{ page.slides }}" target="_blank" rel="noopener"><i class="ph ph-file-pdf"></i><span><span class="ref-name">Slides</span><span class="ref-sub">PDF</span></span><i class="ph ph-arrow-up-right"></i></a>{% endif %}
+		{% if page.attendance %}<a class="reflink" href="{{ site.baseurl }}/files/{{ page.attendance }}" target="_blank" rel="noopener"><i class="ph ph-file-pdf"></i><span><span class="ref-name">Attendance</span><span class="ref-sub">PDF</span></span><i class="ph ph-arrow-up-right"></i></a>{% endif %}
+		{% if page.repo %}<a class="reflink" href="{{ page.repo }}" target="_blank" rel="noopener"><i class="ph ph-github-logo"></i><span><span class="ref-name">Source code</span><span class="ref-sub">{{ page.repo | remove: 'https://' }}</span></span><i class="ph ph-arrow-up-right"></i></a>{% endif %}
+		{% if page.website %}<a class="reflink" href="{{ page.website }}" target="_blank" rel="noopener"><i class="ph ph-arrow-up-right"></i><span><span class="ref-name">Website</span><span class="ref-sub">{{ page.website | remove: 'https://' }}</span></span><i class="ph ph-arrow-up-right"></i></a>{% endif %}
+		{% if page.confpage %}<a class="reflink" href="{{ page.confpage }}" target="_blank" rel="noopener"><i class="ph ph-chalkboard-teacher"></i><span><span class="ref-name">Conference page</span><span class="ref-sub">{{ page.confpage | remove: 'https://' | truncate: 60 }}</span></span><i class="ph ph-arrow-up-right"></i></a>{% endif %}
+		{% if page.publisherpage %}<a class="reflink" href="{{ page.publisherpage }}" target="_blank" rel="noopener"><i class="ph ph-books"></i><span><span class="ref-name">{% if page.publishername %}{{ page.publishername }} page{% else %}Publisher page{% endif %}</span><span class="ref-sub">{{ page.publisherpage | remove: 'https://' | truncate: 60 }}</span></span><i class="ph ph-arrow-up-right"></i></a>{% endif %}
+		{% if page.relatedpub %}<a class="reflink" href="{{ site.baseurl }}/publications/{{ page.relatedpub }}"><i class="ph ph-books"></i><span><span class="ref-name">{{ page.relatedpubtitle | default: 'Related publication' }}</span><span class="ref-sub">Publication</span></span><i class="ph ph-arrow-up-right"></i></a>{% endif %}
+		{% if page.linkedinpost %}<a class="reflink" href="{{ page.linkedinpost }}" target="_blank" rel="noopener"><i class="ph ph-linkedin-logo"></i><span><span class="ref-name">LinkedIn post</span><span class="ref-sub">linkedin.com</span></span><i class="ph ph-arrow-up-right"></i></a>{% endif %}
+		{% if page.projects %}
+			{% assign referred = page.projects | split: ' ' %}
+			{% for pid in referred %}
+				{% assign matching = site.pages | where: "project", true | where: "projid", pid %}
+				{% for prj in matching %}<a class="reflink" href="{{ prj.url }}"><i class="ph ph-arrow-up-right"></i><span><span class="ref-name">{{ prj.title }}</span><span class="ref-sub">Associated project</span></span><i class="ph ph-arrow-up-right"></i></a>{% endfor %}
+			{% endfor %}
+		{% endif %}
+		{% if page.projid %}
+			{% assign related = site.categories.education | concat: site.categories.talks | concat: site.categories.publications %}
+			{% for rel in related %}
+				{% assign relprojects = rel.projects | split: ' ' %}
+				{% if relprojects contains page.projid %}<a class="reflink" href="{{ rel.url }}"><i class="ph ph-books"></i><span><span class="ref-name">{{ rel.title }}</span><span class="ref-sub">{{ rel.categories.first | capitalize }}</span></span><i class="ph ph-arrow-up-right"></i></a>{% endif %}
+			{% endfor %}
+		{% endif %}
+	{% endcapture %}
+	{% if refs contains 'reflink' %}
+	<h2 class="d-sec-title">References</h2>
+	{{ refs }}
+	{% endif %}
+	{% endunless %}
+
+	{% if page.images %}
+	<div class="d-body">
+		{% assign images = page.images | split: " " %}
+		{% for image in images %}
+		<img src="{{ site.baseurl }}/images/{{ image }}" alt="{{ page.title }} - photo {{ forloop.index }}" loading="lazy" decoding="async" style="width:80%">
+		{% endfor %}
+	</div>
+	{% endif %}
+
+	<div class="d-back">
+		<a class="btn btn-secondary" href="{{ site.baseurl }}/"><i class="ph ph-arrow-left"></i>Back to overview</a>
+	</div>
+</article>
+</main>

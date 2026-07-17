@@ -1,6 +1,7 @@
 ---
 layout: experience
 title: "Teaching Assistant and Tutor"
+description: "Teaching Assistant and Tutor for the Foundations of Programming A and B courses in Computer Science at the University of Parma."
 tags: teaching
 venue: "University of Parma"
 location: "Parma, Italy"
