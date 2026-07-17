@@ -41,6 +41,9 @@ This thesis proposes a static checker for detecting Access Control Incompletenes
   </table>
 </div>
 
+<br>
+<img src="/images/magistrale.webp" alt="magistrale.webp" style="display: block; margin-left: auto; margin-right: auto; width: 80%;">
+
 ---
 
 ## Constraint Programming
