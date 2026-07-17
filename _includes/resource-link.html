@@ -1,0 +1,9 @@
+{% if include.external %}{% assign resource_href = include.href %}{% else %}{% assign resource_href = include.href | relative_url %}{% endif %}
+<a class="reflink" href="{{ resource_href }}"{% if include.external or include.new_tab %} target="_blank" rel="noopener"{% endif %}>
+	<i class="ph ph-{{ include.icon | default: 'arrow-up-right' }}"></i>
+	<span>
+		<span class="ref-name">{{ include.label }}</span>
+		{% if include.meta %}<span class="ref-sub">{{ include.meta }}</span>{% endif %}
+	</span>
+	<i class="ph ph-arrow-up-right"></i>
+</a>

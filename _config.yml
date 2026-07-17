@@ -1,8 +1,12 @@
 theme: jekyll-theme-minimal
-title: Merenda Mattia
-description: Academic Curriculum of Merenda Saverio Mattia
-author: Merenda Saverio Mattia
-logo: profile.jpg
+title: Saverio Mattia Merenda
+tagline: AI Solution Architect and Computer Science Researcher
+description: Saverio Mattia Merenda is an AI Solution Architect and researcher focused on AI agents, software verification, static analysis, and blockchain.
+author: Saverio Mattia Merenda
+lang: en
+locale: en_US
+url: "https://www.merendamattia.com"
+logo: /assets/images/profile.webp
 
 mail-work: info@merendamattia.com
 linkedin: https://www.linkedin.com/in/merendamattia/
@@ -12,13 +16,23 @@ orcid: https://orcid.org/0009-0000-4137-9852
 # researcherid:
 # scopus:
 github: https://github.com/merendamattia
-gitlab: https://gitlab.com/merendamattia
-dblp: https://dblp.uni-trier.de/pid/387/1312.html
 
-exclude: [README.md]
+social:
+  name: Saverio Mattia Merenda
+  links:
+    - https://www.linkedin.com/in/merendamattia/
+    - https://github.com/merendamattia
+    - https://orcid.org/0009-0000-4137-9852
+    - https://scholar.google.com/citations?user=EXZavkQAAAAJ
+
+exclude: [README.md, HANDOFF.md, PRODUCT.md, DESIGN.md, mockup, about.md]
 future: true
 
-# url: "https://www.merendamattia.com/"
+defaults:
+  - scope:
+      path: "uni"
+    values:
+      locale: it_IT
+
 plugins:
   - jekyll-sitemap
-

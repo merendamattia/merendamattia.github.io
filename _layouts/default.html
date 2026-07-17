@@ -1,145 +1,55 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en-US' }}">
+<html lang="{% if page.url contains '/uni/' %}it{% else %}{{ page.lang | default: site.lang | default: 'en' }}{% endif %}">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<!-- Short description of the document (limit to 150 characters) -->
-	<!-- This content *may* be used as a part of search engine results. -->
-	<meta name="description" content="Academic Curriculum of Merenda Saverio Mattia">
-
-	<!-- Control the behavior of search engine crawling and indexing -->
-	<meta name="robots" content="index,follow"><!-- All Search Engines -->
-	<meta name="googlebot" content="index,follow"><!-- Google Specific -->
-
-	<!-- Tells Google not to show the sitelinks search box -->
-	<meta name="google" content="nositelinkssearchbox">
-
-	<!-- Tells Google not to provide a translation for this document -->
-	<meta name="google" content="notranslate">
-
-	<!-- Verify website ownership -->
-	<meta name="google-site-verification" content="verification_token"><!-- Google Search Console -->
-	<meta name="yandex-verification" content="verification_token"><!-- Yandex Webmasters -->
-	<meta name="msvalidate.01" content="verification_token"><!-- Bing Webmaster Center -->
-	<meta name="alexaVerifyID" content="verification_token"><!-- Alexa Console -->
-	<meta name="p:domain_verify" content="code_from_pinterest"><!-- Pinterest Console-->
-	<meta name="norton-safeweb-site-verification" content="norton_code"><!-- Norton Safe Web -->
-
-	<!-- Identify the software used to build the document (i.e. - WordPress, Dreamweaver) -->
-	<meta name="generator" content="Github Pages">
-
-	<!-- Short description of your document's subject -->
-	<meta name="subject" content="Academic Curriculum of Merenda Saverio Mattia">
-
-	<!-- Gives a general age rating based on the document's content -->
-	<meta name="rating" content="General">
-
-	<!-- Allows control over how referrer information is passed -->
-	<meta name="referrer" content="no-referrer">
-
-	<!-- Disable automatic detection and formatting of possible phone numbers -->
 	<meta name="format-detection" content="telephone=no">
-
-	<!-- Completely opt out of DNS prefetching by setting to "off" -->
-	<meta http-equiv="x-dns-prefetch-control" content="off">
-
-	<!-- Specifies the document to appear in a specific frame -->
-	<meta http-equiv="Window-Target" content="_value">
-
-	<!-- Geo tags -->
-	<meta name="ICBM" content="latitude, longitude">
-	<meta name="geo.position" content="latitude;longitude">
-	<meta name="geo.region" content="IT">
-	<!-- Country code (ISO 3166-1): mandatory, state code (ISO 3166-2): optional; eg. content="US" / content="US-NY" -->
-	<meta name="geo.placename" content="Parma"><!-- eg. content="New York City" -->
+	{% if page.sitemap == false %}<meta name="robots" content="noindex,follow">{% endif %}
 
 	<!-- AdSense -->
 	<meta name="google-adsense-account" content="ca-pub-4879151575586815">
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4879151575586815"
 		crossorigin="anonymous"></script>
 
-	<title>{{ site.title }} | {{ site.description }}</title>
-
 	<!-- Rybbit tracking -->
 	<script src="https://app.rybbit.io/api/script.js" data-site-id="607" defer></script>
 
 	{% seo %}
 
-	<link rel="icon" type="image/jpg" href="{{ site.baseurl }}/icon.png">
+	<link rel="icon" type="image/webp" sizes="64x64" href="{{ '/assets/images/favicon.webp' | relative_url }}">
+	<link rel="preload" href="{{ '/assets/fonts/source-serif-4-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{{ '/assets/fonts/source-serif-4-latin-italic.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
-	<link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/academicons.min.css" />
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/all.css">
-	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/personal.css">
-	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/mobile-menu.css">
-	<script src="{{ site.baseurl }}/assets/js/mobile-menu.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/broadsheet.css">
+	<link rel="stylesheet" href="{{ '/assets/vendor/phosphor/style.css' | relative_url }}">
+	<script src="{{ site.baseurl }}/assets/js/broadsheet.js" defer></script>
+
+	{% if page.mathjax %}
+	<script>window.MathJax = { tex: { inlineMath: [['$', '$']] } };</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+	{% endif %}
 </head>
 
 <body>
-	{% include simple-menu.html %}
-	<div class="wrapper">
-		<header>
-			<div id="contactPhotoWrapper">
-				<img src="{{site.logo | relative_url}}" alt="Logo" id="contactPhoto" />
-			</div>
+	<header class="masthead">
+		<a class="brand" href="{{ site.baseurl }}/">Saverio Mattia <strong>Merenda</strong></a>
+		<button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="Open navigation">
+			<i class="ph ph-list" aria-hidden="true"></i>
+		</button>
+		<nav id="site-navigation">
+			<a class="navlink" href="{{ site.baseurl }}/" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a>
+			<a class="navlink curriculum-link" href="{{ site.baseurl }}/cv" target="_blank" rel="noopener">Curriculum</a>
+			<a class="navlink" href="{{ site.baseurl }}/uni/" {% if page.url contains '/uni/' %}aria-current="page"{% endif %}>University notes</a>
+			<a class="btn btn-primary" href="{{ site.baseurl }}/files/cv.pdf" target="_blank" rel="noopener"><i class="ph ph-file-pdf"></i>CV</a>
+		</nav>
+	</header>
+	<hr class="rule-head" />
 
-			<div class="header-content">
-				<h1>Saverio Mattia <b>Merenda</b></h1>
+	{{ content }}
 
-				<div class="location green-heading">
-					AI Solution Architect | M.Sc.
-				</div>
-				<div class="location">
-					<i>University of Parma, Italy</i>
-				</div>
-
-				<ul class="links">
-					<li><a href="mailto:{{ site.mail-work }}"><i class="fas fa-envelope big-icon"></i></a></li>
-					<li><a href="{{ site.linkedin }}"><i class="fab fa-linkedin big-icon"></i></a></li>
-					<li><a href="{{ site.github }}"><i class="fab fa-github big-icon"></i></a></li>
-					<li><a href="{{ site.gitlab }}"><i class="fab fa-gitlab big-icon"></i></a></li>
-					<!-- <li><a href="{{ site.twitter-handle }}"><i class="fab fa-twitter big-icon"></i></a></li> -->
-				</ul>
-				<br>
-				<ul class="links">
-					<li><a href="{{ site.orcid }}"><i class="ai ai-orcid big-icon"></i></a></li>
-					<li><a href="{{ site.scholar }}"><i class="ai ai-google-scholar big-icon"></i></a></li>
-					<li><a href="{{ site.dblp }}"><i class="ai ai-dblp big-icon"></i></a></li>
-				</ul>
-				<br>
-				<ul class="links">
-					<li><a href="{{ site.baseurl }}/files/cv.pdf"><i class="ai ai-cv big-icon"></i></a></li>
-					<!-- <li><a href="{{ site.scopus }}"><i class="ai ai-scopus big-icon"></i></a></li>
-				<li><a href="{{ site.research-gate }}"><i class="ai ai-researchgate big-icon"></i></a></li>-->
-				</ul>
-			</div>
-			<script type="text/x-mathjax-config">
-				MathJax.Hub.Config({
-					tex2jax: {
-					skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-					inlineMath: [['$','$']]
-					}
-				});
-			</script>
-			<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-				type="text/javascript"></script>
-		</header>
-
-		<section>
-
-			{{ content }}
-
-		</section>
-		<footer>
-			<p><small>&copy; {{ 'now' | date: "%Y" }} - Saverio Mattia Merenda<br />
-					Hosted on GitHub Pages &mdash; Original theme by <a
-						href="https://github.com/orderedlist">orderedlist</a></small></p>
-		</footer>
-	</div>
-	<script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
 	<script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer></script>
 	<script>window.addEventListener("load", function () { window.wpcc.init({ "corners": "small", "colors": { "popup": { "background": "#ffffff", "text": "#545454", "border": "#5e5e5e" }, "button": { "background": "#1297d1", "text": "#ffffff" } }, "position": "bottom", "border": "thin", "content": { "href": "https://www.cookiesandyou.com/", "message": "This website uses analytics cookies to ensure you get the best experience on our website." } }) });</script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -155,25 +65,7 @@
 		gtag('require', 'outboundLinkTracker');
 		gtag('require', 'urlChangeTracker');
 		gtag('send', 'pageview');
-
 	</script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		$(document).ready(function () {
-			if ($(window).width() <= 800) {
-				$('.esercitazioni, .esercizi, .appunti, .github').hide();
-			}
-
-			$(window).resize(function () {
-				if ($(window).width() <= 800) {
-					$('.esercitazioni, .esercizi, .appunti, .github').hide();
-				} else {
-					$('.esercitazioni, .esercizi, .appunti, .github').show();
-				}
-			});
-		});
-	</script>
-
 </body>
 
 </html>

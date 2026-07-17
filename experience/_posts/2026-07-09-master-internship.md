@@ -1,6 +1,7 @@
 ---
 layout: experience
 title: "Researcher and Software Developer"
+description: "Research internship extending EVMLiSA with cross-chain analysis and static detection of access-control vulnerabilities in smart contracts."
 tags: static-analysis abstract-interpretation EVMLiSA blockchain
 venue: "University of Parma"
 location: "Parma, Italy"

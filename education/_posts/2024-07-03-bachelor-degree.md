@@ -1,6 +1,7 @@
 ---
 layout: education
 title: "B.S. in Computer Science"
+description: "Bachelor's degree in Computer Science at the University of Parma, with a thesis on sound control-flow graphs for EVM bytecode."
 tags: static-analysis abstract-interpretation EVMLiSA
 venue: "Thesis title: Construction of sound Control‑Flow Graphs for bytecode EVM."
 location: "University of Parma, Italy"
@@ -16,7 +17,7 @@ linkedinpost: "https://www.linkedin.com/posts/merendamattia_ieri-ho-conseguito-l
 * Best Marks: Calculus, Programming, Algorithms & DS, Cloud Administration, Database, AI, HPC.
 * Got different ERGO scholarships which are given to promising students in Unipr.
 
-# Abstract thesis
+## Abstract thesis
 Ethereum is a blockchain platform that enables the creation of a decentralized global environment, where users can develop secure digital tools using the native currency ether (ETH) for transactions and computational services. 
 The Ethereum network is made up of interconnected nodes that follow rules defined in the Ethereum protocol, supporting a wide range of digital communities, applications, organizations, and businesses that are accessible to anyone with an internet connection. 
 Ethereum's main feature is the ability to execute smart contracts via the Ethereum Virtual Machine (EVM), enabling advanced functionality beyond basic financial transactions (e.g., Bitcoin). Smart contracts are immutable programs stored on the blockchain that perform predefined actions without human intervention. 

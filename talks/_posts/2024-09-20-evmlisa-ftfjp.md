@@ -2,6 +2,7 @@
 layout: talk
 kind: Conference presentation
 title: "Towards a Sound Construction of EVM Bytecode Control-flow Graphs"
+description: "Conference presentation on sound control-flow graph construction for EVM bytecode at the ACM FTfJP 2024 workshop in Vienna."
 tags: static-analysis abstract-interpretation blockchain ethereum smart-contract
 venue: "26th ACM International Workshop on Formal Techniques for Java-like Programs (FTfJP 2024)"
 location: "Vienna, Austria"

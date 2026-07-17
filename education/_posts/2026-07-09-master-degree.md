@@ -1,6 +1,7 @@
 ---
 layout: education
 title: "M.S. in Computer Science"
+description: "Master's degree in Computer Science at the University of Parma, focused on AI and software verification, graduated 110/110 cum laude."
 tags: static-analysis abstract-interpretation software-verification EVMLiSA
 venue: "Thesis title: Static Detection of Access Control Incompleteness in EVM Smart Contracts: Relational Taint Analysis for Cross‑Chain Bridges."
 location: "University of Parma, Italy"
@@ -10,39 +11,27 @@ slides: "master-slides.pdf"
 grade: "110/110 cum laude"
 projects: evmlisa
 hide_meta_table: true
+mathjax: true
 ---
 
 * Topics: Software Security & Verification, Quantum Computing, Machine Learning & AI, Compilers.
 * Graduated on July 9, 2026, with a thesis supervised by Prof. Vincenzo Arceri.
 
-# Abstract thesis
+## Abstract thesis
 Smart contracts are programs deployed immutably on a blockchain: any bug in the code remains exploitable for the entire lifetime of the contract and can lead to the theft of the funds it manages. Detecting vulnerabilities before deployment is therefore essential, and static analysis is the right tool for this purpose, since it reasons about the properties of the code without executing it and simultaneously considers all possible executions.
 
 Among the most exploited classes of vulnerabilities in recent years is *Access Control Incompleteness*, a condition in which a function that modifies the critical state of a contract is not protected by an adequate authorization check. The compromises of the Ronin and Nomad cross-chain bridges, with losses of 625M USD and 190M USD in 2022 alone, stem from incompleteness of this kind, and it is the most recurrent vulnerability class in this context.
 
 This thesis proposes a static checker for detecting Access Control Incompleteness in cross-chain bridges starting from EVM bytecode alone. The checker is built on top of [EVMLiSA](https://github.com/lisa-analyzer/evm-lisa), a static analyzer based on the LiSA framework and Abstract Interpretation. The thesis formalizes the core of EVMLiSA and proves soundness and termination of the Control-Flow Graph construction; on top of this graph, a relational taint analysis tracks the provenance of untrusted values at the program-point level and verifies that every path from a *source* to a *sink* passes through an authorization *sanitizer*. The evaluation covers 16 real cross-chain bridges, 1,003 contracts in total (109,952 lines of bytecode) against a ground truth of 301 manually validated vulnerabilities, achieving 100% recall and precision from 73.24% (ABI only) up to 94.36% in the modifier-aware configuration.
 
-<div class="divtable">
-  <table>
-    <tbody>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Thesis:</td>
-        <td><a href="{{ site.baseurl }}/files/master-thesis.pdf">PDF</a></td>
-      </tr>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
-        <td><a href="{{ site.baseurl }}/files/master-slides.pdf">PDF</a></td>
-      </tr>
-      <tr>
-      	<td><i class="fas fa-laptop-code"></i> Associated project:</td>
-        <td><a href="{{ site.baseurl }}/projects/evmlisa">EVMLiSA</a></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="resource-list" aria-label="Thesis references">
+{% include resource-link.html href="/files/master-thesis.pdf" icon="file-pdf" label="Thesis" meta="PDF" new_tab=true %}
+{% include resource-link.html href="/files/master-slides.pdf" icon="file-pdf" label="Slides" meta="PDF" new_tab=true %}
+{% include resource-link.html href="/projects/evmlisa" icon="code" label="EVMLiSA" meta="Associated project" %}
 </div>
 
 <br>
-<img src="/images/magistrale.webp" alt="magistrale.webp" style="display: block; margin-left: auto; margin-right: auto; width: 80%;">
+<img src="/images/magistrale.webp" alt="Graduation photo of Saverio Mattia Merenda" loading="lazy" decoding="async" style="display: block; margin-left: auto; margin-right: auto; width: 80%;">
 
 ---
 
@@ -57,19 +46,9 @@ Key highlights include:
 - Implementation: developed an advanced iterative deepening meta-solver in Python integrated with MiniZinc/Gecode backend. Implemented theoretical lower bounds using cycle decomposition to bypass expensive UNSAT phases. Conducted comprehensive benchmarking of 12 search strategies, including variable/value selection heuristics (first_fail, dom_w_deg, max_regret) and restart policies (Luby, Geometric, Linear).
 - Outcome: demonstrated significant performance improvements through constraint programming optimizations, achieving efficient solving for permutations up to $N=30$. Generated visualization charts analyzing execution time, success rates, strategy rankings, and correlations between plan length and solving time. The project underscored the effectiveness of combining dual representation, GAC, and mathematical pruning in reducing the search space.
 
-<div class="divtable">
-  <table>
-    <tbody>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Paper:</td>
-        <td><a href="{{ site.baseurl }}/files/paper-CP.pdf">PDF</a></td>
-      </tr>
-      <tr>
-      	<td><i class="fas fa-code-branch"></i> Code:</td>
-        <td><a href="https://github.com/merendamattia/sorting-as-a-planning-problem">GitHub</a></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="resource-list" aria-label="Constraint Programming resources">
+{% include resource-link.html href="/files/paper-CP.pdf" icon="file-pdf" label="Paper" meta="PDF" new_tab=true %}
+{% include resource-link.html href="https://github.com/merendamattia/sorting-as-a-planning-problem" icon="github-logo" label="Source code" meta="GitHub" external=true %}
 </div>
 
 
@@ -84,15 +63,8 @@ Key highlights include:
 - Implementation: developed a robust benchmarking infrastructure with parallel execution (5 worker threads), process-based timeouts, fixed random seeds for reproducibility, and real-time CSV output with file locking. Created an interactive web visualizer with Flask backend and JavaScript frontend featuring random graph generation, side-by-side visualization with force-directed layout, real-time algorithm execution, and performance statistics display.
 - Validation: conducted systematic performance analysis across graphs of varying sizes and densities, generating comprehensive visualization plots including performance summaries, scalability analysis, heatmaps, solution quality comparisons, and timeout analysis. Demonstrated the practical applicability of different algorithmic approaches in computational chemistry, biology, pattern recognition, and social network analysis.
 
-<div class="divtable">
-  <table>
-    <tbody>
-      <tr>
-      	<td><i class="fas fa-code-branch"></i> Code:</td>
-        <td><a href="https://github.com/merendamattia/mces">GitHub</a></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="resource-list" aria-label="Artificial Intelligence Laboratory resources">
+{% include resource-link.html href="https://github.com/merendamattia/mces" icon="github-logo" label="Source code" meta="GitHub" external=true %}
 </div>
 
 
@@ -107,19 +79,9 @@ Key highlights include:
 - Implementation: developed using Python and Streamlit for the interactive interface, incorporating support for multiple LLM providers with dynamic provider detection. Implemented robust profile management capabilities including JSON-based load, save, and download functionality. Created comprehensive testing suite with pytest and established DevOps automation with Docker containerization (multi-stage builds for backend and frontend), Docker Compose orchestration, and CI/CD pipelines.
 - Outcome: delivered a production-ready application with multi-language support, enabling users to communicate in their preferred language. Demonstrated the effectiveness of RAG in enhancing financial decision-making by combining LLM reasoning with factual historical data. The system balances privacy concerns (local inference with Ollama) with performance flexibility (cloud-based Gemini/OpenAI), making it adaptable to different user requirements and deployment scenarios.
 
-<div class="divtable">
-  <table>
-    <tbody>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Paper:</td>
-        <td><a href="{{ site.baseurl }}/files/paper-AIAI.pdf">PDF</a></td>
-      </tr>
-      <tr>
-      	<td><i class="fas fa-code-branch"></i> Code:</td>
-        <td><a href="https://github.com/merendamattia/personal-financial-ai-agent">GitHub</a></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="resource-list" aria-label="Artificial Intelligence Industrial Applications resources">
+{% include resource-link.html href="/files/paper-AIAI.pdf" icon="file-pdf" label="Paper" meta="PDF" new_tab=true %}
+{% include resource-link.html href="https://github.com/merendamattia/personal-financial-ai-agent" icon="github-logo" label="Source code" meta="GitHub" external=true %}
 </div>
 
 
@@ -144,19 +106,9 @@ Key highlights include:
 - Methodology: Implemented a comprehensive preprocessing pipeline and evaluated scenarios on multiple classification (Census Income, Bank Marketing) and regression (Bike Sharing, House Pricing) datasets using a feed-forward neural network.  Performance was measured using standard metrics like Accuracy, Precision, Recall, F1-score for classification, and MAE, MSE, R2 for regression.   
 - Outcome: Identified that mode/median imputation and moderate outlier removal (3-5% thresholds) were generally effective preprocessing techniques. Quantile transformations were found to be essential for skewed data, while simple normalization often degraded performance. The study underscored that aggressive preprocessing can remove valuable patterns and complex combinations do not guarantee improvements, offering insights into selecting appropriate techniques.
 
-<div class="divtable">
-  <table>
-    <tbody>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
-        <td><a href="{{ site.baseurl }}/files/slides-FdAI.pdf">PDF</a></td>
-      </tr>
-      <tr>
-      	<td><i class="fas fa-code-branch"></i> Code:</td>
-        <td><a href="https://github.com/merendamattia/neural-network-performance-by-data-quality">GitHub</a></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="resource-list" aria-label="Fundamentals of Artificial Intelligence resources">
+{% include resource-link.html href="/files/slides-FdAI.pdf" icon="file-pdf" label="Slides" meta="PDF" new_tab=true %}
+{% include resource-link.html href="https://github.com/merendamattia/neural-network-performance-by-data-quality" icon="github-logo" label="Source code" meta="GitHub" external=true %}
 </div>
 
 
@@ -169,15 +121,8 @@ Key highlights include:
 - Methodology: Explored the distinction between intrinsic and post-hoc interpretability, and global versus local explanation methods.  Key techniques studied included LIME for generating local, model-agnostic explanations and feature importance for understanding global model behavior.   
 - Outcome: Developed a strong understanding of applying interpretability techniques for model validation, identifying potential biases, and debugging ML systems. Recognized the importance of creating user-friendly explanations and acknowledged the current limitations and future directions in Explainable AI (xAI).
 
-<div class="divtable">
-  <table>
-    <tbody>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
-        <td><a href="{{ site.baseurl }}/files/slides-BDDM.pdf">PDF</a></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="resource-list" aria-label="Big Data and Data Mining project one resources">
+{% include resource-link.html href="/files/slides-BDDM.pdf" icon="file-pdf" label="Slides" meta="PDF" new_tab=true %}
 </div>
 
 #### Project 2: GraphQL API Design and Comparative Analysis
@@ -188,15 +133,8 @@ Key highlights include:
 - Methodology: Mastered fundamental GraphQL concepts, including schema design using Schema Definition Language (SDL) to define data types and relationships.  Implemented GraphQL queries for efficient data fetching and mutations for data manipulation.  Conducted a comparative analysis of the GraphQL approach against traditional REST patterns, evaluating performance metrics.   
 - Outcome: Demonstrated GraphQL's advantages in minimizing network latency, reducing payload sizes through precise data fetching, and enhancing developer productivity by decoupling client data needs from backend endpoint structures.  Gained practical experience in developing modern, efficient, and client-centric APIs.   
 
-<div class="divtable">
-  <table>
-    <tbody>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
-        <td><a href="{{ site.baseurl }}/files/slides-BDDM-graphql.pdf">PDF</a></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="resource-list" aria-label="Big Data and Data Mining project two resources">
+{% include resource-link.html href="/files/slides-BDDM-graphql.pdf" icon="file-pdf" label="Slides" meta="PDF" new_tab=true %}
 </div>
 
 
@@ -213,23 +151,10 @@ Key highlights include:
 
 This project underscores the potential of quantum computing in addressing complex optimization problems in finance, despite current scalability challenges. The source code is available on GitHub.
 
-<div class="divtable">
-  <table>
-    <tbody>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
-        <td><a href="{{ site.baseurl }}/files/slides-QC.pdf">PDF</a></td>
-      </tr>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Paper:</td>
-        <td><a href="{{ site.baseurl }}/files/paper-QC.pdf">PDF</a></td>
-      </tr>
-      <tr>
-      	<td><i class="fas fa-code-branch"></i> Code:</td>
-        <td><a href="https://github.com/merendamattia/quantum-portfolio-optimization">GitHub</a></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="resource-list" aria-label="Quantum Computing resources">
+{% include resource-link.html href="/files/slides-QC.pdf" icon="file-pdf" label="Slides" meta="PDF" new_tab=true %}
+{% include resource-link.html href="/files/paper-QC.pdf" icon="file-pdf" label="Paper" meta="PDF" new_tab=true %}
+{% include resource-link.html href="https://github.com/merendamattia/quantum-portfolio-optimization" icon="github-logo" label="Source code" meta="GitHub" external=true %}
 </div>
 
 
@@ -242,19 +167,9 @@ Key highlights include:
 - Case Study: documented the attackers' laundering process, involving over 2,000 transactions, mixers, and integration of stolen funds into the traditional banking system.
 - Outcome: discussed the recovery of $3.6 billion worth of Bitcoin by U.S. authorities in 2022, marking the largest financial seizure in the history of the Department of Justice.
 
-<div class="divtable">
-  <table>
-    <tbody>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
-        <td><a href="{{ site.baseurl }}/files/slides-SI.pdf">PDF</a></td>
-      </tr>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Paper:</td>
-        <td><a href="{{ site.baseurl }}/files/paper-SI.pdf">PDF</a></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="resource-list" aria-label="Cyber Security resources">
+{% include resource-link.html href="/files/slides-SI.pdf" icon="file-pdf" label="Slides" meta="PDF" new_tab=true %}
+{% include resource-link.html href="/files/paper-SI.pdf" icon="file-pdf" label="Paper" meta="PDF" new_tab=true %}
 </div>
 
 
@@ -271,19 +186,9 @@ Key highlights include:
 
 This project underscores the potential of declarative programming in solving complex resource allocation problems in academia. The full source code and further documentation are accessible via GitHub.
 
-<div class="divtable">
-  <table>
-    <tbody>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Paper:</td>
-        <td><a href="{{ site.baseurl }}/files/paper-PD.pdf">PDF</a></td>
-      </tr>
-      <tr>
-      	<td><i class="fas fa-code-branch"></i> Code:</td>
-        <td><a href="https://github.com/merendamattia/ottimizzazione-garanti-accademici">GitHub</a></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="resource-list" aria-label="Declarative Programming resources">
+{% include resource-link.html href="/files/paper-PD.pdf" icon="file-pdf" label="Paper" meta="PDF" new_tab=true %}
+{% include resource-link.html href="https://github.com/merendamattia/ottimizzazione-garanti-accademici" icon="github-logo" label="Source code" meta="GitHub" external=true %}
 </div>
 
 
@@ -298,13 +203,6 @@ Key topics included:
 - Bridge Vulnerabilities: common attack surfaces, including logical flaws and reentrancy attacks.
 - SmartAxe: a tool leveraging static analysis for detecting vulnerabilities in smart contracts, highlighting techniques like control-flow analysis, semantic alignment, and taint analysis.
 
-<div class="divtable">
-  <table>
-    <tbody>
-      <tr>
-      	<td><i class="fas fa-file-pdf"></i> Slides:</td>
-        <td><a href="{{ site.baseurl }}/files/slides-LIC.pdf">PDF</a></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="resource-list" aria-label="Languages, Interpreters, and Compilers resources">
+{% include resource-link.html href="/files/slides-LIC.pdf" icon="file-pdf" label="Slides" meta="PDF" new_tab=true %}
 </div>
