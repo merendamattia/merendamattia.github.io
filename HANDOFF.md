@@ -31,7 +31,7 @@ Latest follow-up completed: refresh Projects for the current AI engineering prof
 - Ordine finale: Swarmloom; Ledgerly; Build Production Web App; EVM Cross-chain Policy Agent; EVMLiSA; Personal Financial AI Agent; Academic Guarantee Optimization; Quantum Portfolio Optimization; Deep Neural Network Library; My-gpt4; Tracking messages on Bitcoin blockchain.
 - Nessun lavoro richiesto rimasto. Report e screenshot di verifica in `/private/tmp/projects-*`, esclusi dal repository.
 - Vincoli: branch `feat/refresh-projects-2026`; commit e push autorizzati dall'utente dopo il completamento, il 2026-10-03. Nessun merge o PR autorizzato. Non modificare Head of AI, Experience, Education o Publications; usare il pinning esistente senza card duplicate, conservare contenuto storico, design e stack.
-- [ ] Registrare l'aggiornamento Projects in un commit e pubblicare il branch su `origin/feat/refresh-projects-2026`, verificando il riferimento remoto.
+- [x] Commit `5646c29` (`feat(projects): refresh AI engineering projects`) creato e pubblicato su `origin/feat/refresh-projects-2026`; `git ls-remote` conferma `5646c2958094926981c3f4974e8b8276174abef8`. Hook superati, build e audit di 67 pagine riconfermati; worktree pulito dopo il push. Nessun merge o PR. Questo esito viene registrato in un successivo commit di sola documentazione sullo stesso branch.
 
 ### Correzione richiesta: push su master e rimozione main
 
