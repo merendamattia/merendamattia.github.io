@@ -2,6 +2,7 @@
 layout: project
 project: true
 pinned: false
+priority: 11
 projid: opreturn-bitcoin
 languages: Javascript
 title: "Tracking messages on Bitcoin blockchain"

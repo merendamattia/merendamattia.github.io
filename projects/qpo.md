@@ -1,7 +1,8 @@
 ---
 layout: project
 project: true
-pinned: true
+pinned: false
+priority: 8
 projid: qpo
 languages: Python
 title: "Quantum Portfolio Optimization"

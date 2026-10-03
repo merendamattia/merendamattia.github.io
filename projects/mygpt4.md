@@ -2,6 +2,7 @@
 layout: project
 project: true
 pinned: false
+priority: 10
 projid: my-gpt4
 languages: Python
 title: "My-gpt4"

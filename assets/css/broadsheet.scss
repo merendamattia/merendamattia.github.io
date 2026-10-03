@@ -433,6 +433,7 @@ figcaption { font-size: 11px; margin-top: var(--space-1); color: color-mix(in sr
   transition: color .14s ease, padding-left .14s ease;
 }
 .reflink:hover { color: var(--color-accent); padding-left: 6px; }
+.reflink > span { min-width: 0; overflow-wrap: anywhere; }
 .reflink > i:first-child { font-size: 20px; color: var(--color-accent); }
 .reflink i:last-child { margin-left: auto; color: var(--color-accent); opacity: 0.5; transition: opacity .14s ease; }
 .reflink:hover i:last-child { opacity: 1; }

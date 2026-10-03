@@ -1,7 +1,8 @@
 ---
 layout: project
 project: true
-pinned: true
+pinned: false
+priority: 7
 projid: oga
 languages: ASP
 title: "Academic Guarantee Optimization"

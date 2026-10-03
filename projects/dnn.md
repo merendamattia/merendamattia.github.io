@@ -2,6 +2,7 @@
 layout: project
 project: true
 pinned: false
+priority: 9
 projid: dnn
 languages: C++
 title: "Deep Neural Network Library"

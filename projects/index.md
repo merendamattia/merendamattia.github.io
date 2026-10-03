@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Projects
-description: Software, artificial intelligence, optimization, quantum computing, and blockchain projects by Saverio Mattia Merenda.
+description: "AI Systems Engineering, Agentic Software Engineering, Production AI, and Software Verification projects by Saverio Mattia Merenda."
 ---
 
 <main class="list-main">
@@ -9,8 +9,8 @@ description: Software, artificial intelligence, optimization, quantum computing,
 	<span class="d-kicker">Curriculum</span>
 		<h1 class="list-title">All projects</h1>
 
-	{% assign pinned_prjs = site.pages | where: "project", true | where: "pinned", true %}
-	{% assign unpinned_prjs = site.pages | where: "project", true | where: "pinned", false %}
+	{% assign pinned_prjs = site.pages | where: "project", true | where: "pinned", true | sort: "priority" %}
+	{% assign unpinned_prjs = site.pages | where: "project", true | where: "pinned", false | sort: "priority" %}
 	{% assign projectlist = pinned_prjs | concat: unpinned_prjs %}
 	<div class="pgrid">
 			{% for p in projectlist %}

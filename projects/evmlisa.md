@@ -2,6 +2,7 @@
 layout: project
 project: true
 pinned: true
+priority: 5
 projid: evmlisa
 languages: Java static-analysis abstract-interpretation software-verification smart-contract ethereum
 title: "EVMLiSA"

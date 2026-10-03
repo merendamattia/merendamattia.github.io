@@ -142,8 +142,8 @@ seo:
 
 		<!-- PROJECTS -->
 		<section class="rec" style="margin-bottom:12px">
-			{% assign pinned_prjs = site.pages | where: "project", true | where: "pinned", true %}
-			{% assign unpinned_prjs = site.pages | where: "project", true | where: "pinned", false %}
+			{% assign pinned_prjs = site.pages | where: "project", true | where: "pinned", true | sort: "priority" %}
+			{% assign unpinned_prjs = site.pages | where: "project", true | where: "pinned", false | sort: "priority" %}
 			{% assign projectlist = pinned_prjs | concat: unpinned_prjs %}
 			{% assign prj_count = projectlist.size %}
 			<div class="sec-head" style="margin-bottom:14px"><h2>Projects</h2><a class="seeall" href="{{ site.baseurl }}/projects/">All ({{ prj_count }}) →</a></div>

@@ -6,7 +6,7 @@ Last updated: 2026-10-03
 
 Polish the Jekyll redesign without changing the original CV and site content. Keep the visual language sober and editorial, make every route responsive, preserve the Markdown content workflow, and improve technical/on-page SEO.
 
-Current follow-up: align the professional profile and home résumé with the updated CV supplied by the user on 2026-10-03, preserving historical content and the established design.
+Latest follow-up completed: refresh Projects for the current AI engineering profile on `feat/refresh-projects-2026`, preserving historical projects and the established design.
 
 ## Non-negotiable constraints
 
@@ -16,6 +16,22 @@ Current follow-up: align the professional profile and home résumé with the upd
 - Keep this file updated while work is in progress, including new requests and unfinished verification.
 
 ## Todo list
+
+### Completato: aggiornamento Projects 2026
+
+- [x] Letti AGENTS.md, HANDOFF.md, PRODUCT.md e DESIGN.md; worktree iniziale pulito. Esaminati i sei progetti esistenti e il pinning condiviso da home e listing.
+- [x] Aggiunte le cinque pagine nel formato esistente, con riferimenti GitHub e soli tag già presenti. Descrizioni confrontate con i README locali; API GitHub conferma tutti i repository pubblici e raggiungibili.
+- [x] Impostato l'ordine richiesto tramite `priority` e `sort` nelle query esistenti di home/listing. I primi sei sono pinned; EVMLiSA resta strategico. OGA e QPO passano a unpinned; i cinque storici conservano ordine relativo e contenuto.
+- [x] Aggiornata description di `/projects/` per AI Systems Engineering, Agentic Software Engineering, Production AI e Software Verification.
+- [x] `bundle exec jekyll build` e `git diff --check` superati. Audit di 67 pagine: 0 problemi di link/asset locali, title/description/canonical/H1, lingua, JSON-LD e alt; Person e PDF preservati. Tutte le nuove pagine presenti in sitemap; tag solo dalla palette esistente.
+- [x] Corretto l'overflow di 3 px del riferimento GitHub a 320 px con `min-width: 0` e wrapping al contenitore testo `.reflink`, senza cambiare geometria o tipografia.
+- [x] Chrome: 44 controlli su home, listing, sei dettagli Projects e tre dettagli Experience/Education/Publications a 320/400/768/1440 px; 0 overflow, un H1 per pagina, ordine e assenza di card duplicate confermati. Menu aperto/Escape verificato su tutte le route a 320/400 px. Screenshot home/listing/dettaglio ispezionati su mobile e desktop.
+- [x] Lighthouse 13.4.1 locale, Chrome headless senza estensioni e senza blocco richieste: finale Performance/Accessibilità/Best Practices/SEO home 100/100/100/100 e Projects 100/96/100/100, sia mobile sia desktop; Agentic Browsing 100, CLS 0. Baseline home mobile 89/100/100/100, desktop 100/100/100/100; Projects 100/96/100/100 su entrambi. Nessuna regressione nei punteggi; il 96 preesistente riguarda il contrasto 4,48:1 del backlink. Richieste invariate: 11 home, 10 listing. Misure lab su server statico locale, senza gzip; nessun dato INP sul campo o verifica di pubblicazione.
+- [x] Confronto Git: contenuto dei sei progetti originali invariato, modificato solo pinning/priorità. Home modificata soltanto nelle due query Projects; Head of AI, Experience, Education, Publications, configurazione e CV intatti. Nessuna dipendenza o risorsa runtime aggiunta.
+- Ordine finale: Swarmloom; Ledgerly; Build Production Web App; EVM Cross-chain Policy Agent; EVMLiSA; Personal Financial AI Agent; Academic Guarantee Optimization; Quantum Portfolio Optimization; Deep Neural Network Library; My-gpt4; Tracking messages on Bitcoin blockchain.
+- Nessun lavoro richiesto rimasto. Report e screenshot di verifica in `/private/tmp/projects-*`, esclusi dal repository.
+- Vincoli: branch `feat/refresh-projects-2026`; commit e push autorizzati dall'utente dopo il completamento, il 2026-10-03. Nessun merge o PR autorizzato. Non modificare Head of AI, Experience, Education o Publications; usare il pinning esistente senza card duplicate, conservare contenuto storico, design e stack.
+- [ ] Registrare l'aggiornamento Projects in un commit e pubblicare il branch su `origin/feat/refresh-projects-2026`, verificando il riferimento remoto.
 
 ### Correzione richiesta: push su master e rimozione main
 
