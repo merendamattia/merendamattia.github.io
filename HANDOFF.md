@@ -17,6 +17,13 @@ Current follow-up: align the professional profile and home résumé with the upd
 
 ## Todo list
 
+### Correzione richiesta: push su master e rimozione main
+
+- L'utente ha corretto il branch di destinazione: pubblicare tutti i commit su `origin/master` e rimuovere `main` remoto e locale.
+- [x] Worktree iniziale pulito; `origin/master` verificato a `bc47aed`, `origin/main` a `64b79e5`. Trasferiti i tre commit su `master` con fast-forward, senza riscrivere la cronologia.
+- [x] Push su `origin/master` verificato a `64b79e5`, comprensivo di tutti i commit di `main`. Rimossi `main` remoto e locale dopo la verifica di inclusione; `git ls-remote` conferma che resta solo `master` tra i due branch. Branch corrente `master`, nessun force push.
+- [x] Build e `git diff --check` superati; audit delle 62 pagine con zero problemi. Resa e sorgenti del sito invariati rispetto alle verifiche responsive già completate. Registro finale incluso in un commit di documentazione su `master`.
+
 ### Richiesta attuale: miglioramenti da Lighthouse
 
 - [x] Nuova richiesta: assegnati a Promoservice Parma gli stessi quattro tag di Keplero AI, riutilizzando la palette esistente.
