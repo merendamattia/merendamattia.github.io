@@ -1,7 +1,19 @@
-/* Broadsheet behaviors: scroll reveal and notes live search.
+/* Broadsheet behaviors: mobile navigation, cookie notice and notes live search.
    Content is fully usable with JS off — everything here is progressive. */
 document.addEventListener('DOMContentLoaded', function () {
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // A local notice avoids loading a third-party banner library and stylesheet.
+  var cookieNotice = document.querySelector('.cookie-notice');
+  var cookieDismiss = document.querySelector('[data-dismiss-cookies]');
+  if (cookieNotice && cookieDismiss) {
+    var dismissed = false;
+    try { dismissed = localStorage.getItem('analytics-notice-dismissed') === 'true'; } catch (_) {}
+    cookieNotice.hidden = dismissed;
+    cookieDismiss.addEventListener('click', function () {
+      cookieNotice.hidden = true;
+      try { localStorage.setItem('analytics-notice-dismissed', 'true'); } catch (_) {}
+    });
+  }
 
 	// Mobile navigation remains visible as a no-JavaScript fallback.
 	var masthead = document.querySelector('.masthead');
@@ -29,21 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 	}
-
-  // ── scroll reveal (DESIGN.md 3.5) ──
-  if (!reduce && 'IntersectionObserver' in window && document.querySelector('.reveal')) {
-    document.body.setAttribute('data-anim', '');
-    var io = new IntersectionObserver(function (ents) {
-      ents.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    document.querySelectorAll('.reveal').forEach(function (n) { io.observe(n); });
-    // safety: reveal anything still hidden after 2.5s
-    setTimeout(function () {
-      document.querySelectorAll('.reveal').forEach(function (n) { n.classList.add('in'); });
-    }, 2500);
-  }
 
 	// ── notes live search ──
   var input = document.getElementById('course-search');

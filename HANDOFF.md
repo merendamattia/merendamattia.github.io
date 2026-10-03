@@ -17,7 +17,21 @@ Current follow-up: align the professional profile and home résumé with the upd
 
 ## Todo list
 
-### Richiesta attuale: commit e push
+### Richiesta attuale: miglioramenti da Lighthouse
+
+- [x] Nuova richiesta: assegnati a Promoservice Parma gli stessi quattro tag di Keplero AI, riutilizzando la palette esistente.
+- [x] Preferenza esplicita: rimossi Rybbit e AdSense; mantenuto solo Google Analytics GA4 `G-LNQ45S8LE2` già osservato nelle richieste del sito, con caricamento diretto senza container GTM e comandi legacy.
+- [x] Keplero AI nel résumé della home collegata a `https://keplero.ai/`.
+- [x] Foto responsive 200/400/800px, CSS compresso tramite Sass/Jekyll già disponibile, contrasto di link/pulsanti/testi secondari e banner cookie corretto; link CV e cookie descrittivi e rimossa la richiesta cookie con redirect.
+- [x] Rimossi libreria cookie remota, scroll reveal, varianti CSS inutilizzate e meta IE legacy. Avviso locale con chiusura persistente verificata; CLS mobile corretto (0,220 → 0).
+- [x] Applicate seo, seo-page, seo-technical e seo-performance. Metriche in `SUMMARY.json` e cache SEO esclusa da Git. Rimosso il report Markdown su richiesta dell'utente; eliminata anche la sua voce nella configurazione Jekyll.
+- [x] Lighthouse 13.4.1 finale senza estensioni e senza blocco richieste: Performance/Accessibilità/Best Practices/SEO 100/100/100/100 sia desktop sia mobile. Agentic Browsing 100. Baseline desktop pulita già a Performance 100: il 70 originale era contaminato dalle estensioni. Richieste desktop 34 → 11, byte circa 789 KB → 297 KB. GA4 page_view verificato.
+- [x] Build, sintassi JS, git diff --check e audit di 62 pagine passano, con zero problemi SEO/link/asset; sitemap 81 URL univoci. University Notes 100 in Accessibilità/Best Practices/SEO. 20 controlli responsive con zero overflow a 320/400/768/1440; verificati Escape, fallback senza JS, banner persistente e foto Retina. Screenshot ispezionati.
+- [x] Limiti documentati: solo misure lab, nessun INP reale. Gzip già attivo su GitHub Pages; cache/bfcache locali non riflettono produzione. Resta da attivare Enforce HTTPS nelle impostazioni Pages (HTTP pubblico osservato 200); header HSTS/CSP/COOP richiedono hosting/proxy. Nessuna modifica remota o pubblicazione eseguita.
+- L'utente ha autorizzato commit e push delle modifiche su `main`. Verificata l'assenza di `main` sul remoto e creato il branch locale dalla versione corrente di `master`, preservando `master`. Aggiornamenti del profilo registrati in un commit separato; ottimizzazioni e documentazione costituiscono il secondo commit. Il push è destinato a `origin/main`; esito definitivo nella cronologia Git e nel riferimento remoto. Nessuna modifica al branch predefinito o alla configurazione Pages.
+- [x] Dopo la rimozione del report: build e git diff --check superati; audit delle 62 pagine con zero problemi. Nessuna modifica alla resa responsive.
+
+### Completato: commit e push
 
 - [x] L'utente ha autorizzato esplicitamente commit e push di tutti gli aggiornamenti al CV e al profilo su `master` il 2026-10-03.
 - [x] Revisionati i sette file della modifica: nuovo PDF, esperienza Promoservice, date Keplero, home sintetica con link aziendale, SEO e documentazione. Controlli di build, link/asset e SEO superati; verifiche responsive precedenti valide.
@@ -152,10 +166,10 @@ Current follow-up: align the professional profile and home résumé with the upd
 
 ## Current implementation notes
 
-- Primary stylesheet: `assets/css/broadsheet.css`.
+- Primary stylesheet source: `assets/css/broadsheet.scss`, compiled to compressed `assets/css/broadsheet.css`.
 - Tag renderer and unique hue map: `_includes/tag.html` and `_data/tag_colors.yml`.
 - Local fonts: Source Serif 4 in `assets/fonts/`; 21-glyph Phosphor subset in `assets/vendor/phosphor/`.
-- Client behavior: `assets/js/broadsheet.js`; mobile navigation, scroll reveal, and University Notes search.
+- Client behavior: `assets/js/broadsheet.js`; mobile navigation, local cookie notice, and University Notes search. Scroll reveal removed to display content immediately.
 - Profile asset: `/assets/images/profile.webp` (800 by 800 WebP).
 - Home profile presentation: 200 by 200 pixels, circular, no halftone overlay.
 - Favicon: `/assets/images/favicon.webp` (64 by 64 WebP, complete-photo composition).

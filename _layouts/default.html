@@ -4,24 +4,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<meta name="format-detection" content="telephone=no">
+	<script>document.documentElement.classList.add('js');</script>
 	{% if page.sitemap == false %}<meta name="robots" content="noindex,follow">{% endif %}
-
-	<!-- AdSense -->
-	<meta name="google-adsense-account" content="ca-pub-4879151575586815">
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4879151575586815"
-		crossorigin="anonymous"></script>
-
-	<!-- Rybbit tracking -->
-	<script src="https://app.rybbit.io/api/script.js" data-site-id="607" defer></script>
 
 	{% seo %}
 
 	<link rel="icon" type="image/webp" sizes="64x64" href="{{ '/assets/images/favicon.webp' | relative_url }}">
 	<link rel="preload" href="{{ '/assets/fonts/source-serif-4-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="{{ '/assets/fonts/source-serif-4-latin-italic.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{{ '/assets/vendor/phosphor/Phosphor.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
 	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/broadsheet.css">
 	<link rel="stylesheet" href="{{ '/assets/vendor/phosphor/style.css' | relative_url }}">
@@ -50,21 +43,18 @@
 
 	{{ content }}
 
-	<script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer></script>
-	<script>window.addEventListener("load", function () { window.wpcc.init({ "corners": "small", "colors": { "popup": { "background": "#ffffff", "text": "#545454", "border": "#5e5e5e" }, "button": { "background": "#1297d1", "text": "#ffffff" } }, "position": "bottom", "border": "thin", "content": { "href": "https://www.cookiesandyou.com/", "message": "This website uses analytics cookies to ensure you get the best experience on our website." } }) });</script>
+	<div class="cookie-notice" role="region" aria-label="Analytics cookies" hidden>
+		<p>This website uses analytics cookies to understand how visitors use the site. <a href="https://www.cookiesandyou.com/">About analytics cookies</a></p>
+		<button class="btn btn-primary" type="button" data-dismiss-cookies>Got it!</button>
+	</div>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=GTM-T4BG5FL"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
 		gtag('js', new Date());
 
-		gtag('config', 'GTM-T4BG5FL');
-		gtag('set', 'anonymizeIp', true);
-		gtag('require', 'eventTracker');
-		gtag('require', 'outboundLinkTracker');
-		gtag('require', 'urlChangeTracker');
-		gtag('send', 'pageview');
+		gtag('config', '{{ site.google_analytics }}', { 'allow_google_signals': false, 'allow_ad_personalization_signals': false });
 	</script>
 </body>
 

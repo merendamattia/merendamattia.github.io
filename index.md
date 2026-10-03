@@ -21,7 +21,7 @@ seo:
 	<!-- ══ IDENTITY RAIL ══ -->
 	<aside class="rail">
 		<div class="rail-inner">
-			<figure class="rail-photo"><img src="{{ '/assets/images/profile.webp' | relative_url }}" alt="Portrait of Saverio Mattia Merenda" width="800" height="800" fetchpriority="high" decoding="async" /></figure>
+			<figure class="rail-photo"><img src="{{ '/assets/images/profile-200.webp' | relative_url }}" srcset="{{ '/assets/images/profile-200.webp' | relative_url }} 200w, {{ '/assets/images/profile-400.webp' | relative_url }} 400w, {{ '/assets/images/profile.webp' | relative_url }} 800w" sizes="200px" alt="Portrait of Saverio Mattia Merenda" width="200" height="200" fetchpriority="high" decoding="async" /></figure>
 			<div>
 					<h1>Saverio Mattia <strong>Merenda</strong></h1>
 					<p class="role">Head of AI · Promoservice Parma</p>
@@ -41,7 +41,7 @@ seo:
 
 	<!-- ══ MAIN CONTENT ══ -->
 	<main>
-		<section class="reveal" style="margin-bottom:52px">
+		<section style="margin-bottom:52px">
 			<span class="kicker">Hi, I'm Mattia!</span>
 			<p class="lede">I’m Saverio Mattia Merenda, Head of AI at <a href="https://promoserviceparma.it/" target="_blank" rel="noopener">Promoservice Parma</a>, with a Master’s Degree in Computer Science (110/110 cum laude) from the University of Parma, Italy.</p>
 			<p class="body-p">My work combines artificial intelligence, software engineering, and software security. With a Master’s focused on Artificial Intelligence and Software Verification, I design advanced AI systems that bring research methods into production.</p>
@@ -50,10 +50,10 @@ seo:
 			<p class="body-p">In parallel, I contribute to academic research and software development. I helped develop <a href="https://github.com/lisa-analyzer/evm-lisa" target="_blank" rel="noopener">EVMLiSA</a>, a static analyzer for EVM bytecode based on abstract interpretation. For my Master’s thesis, I extended it to cross-chain ecosystems and implemented a static checker for Access Control Incompleteness in cross-chain bridges. My research covers software security, smart-contract access control, and combining large language models with static analysis to improve the quality and reliability of AI-generated code. This work has led to peer-reviewed publications and participation in international research projects.</p>
 			<p class="body-p">As a Teaching Assistant at the University of Parma, I delivered lectures and supported undergraduate computer science education, strengthening my skills in practical system design, communication, and mentorship alongside theoretical rigor.</p>
 			<p class="body-p">I aim to build scalable, verifiable, and architecturally sound AI systems. My focus is on infrastructures that combine automation, learning, and formal methods to support reliable, autonomous, and secure systems.</p>
-			<p class="body-p">You can find my full CV <a href="{{ site.baseurl }}/files/cv.pdf">here</a>.</p>
+			<p class="body-p">You can download my <a href="{{ site.baseurl }}/files/cv.pdf">full CV (PDF)</a>.</p>
 		</section>
 
-		<section class="reveal" style="margin-bottom:52px">
+		<section style="margin-bottom:52px">
 			<span class="kicker" style="margin-bottom:14px">Interests</span>
 			<div class="tagrow">
 				{% include tag.html label="AI Agents & Autonomous Systems" %}
@@ -65,7 +65,7 @@ seo:
 		</section>
 
 		<!-- EDUCATION -->
-		<section class="rec reveal">
+		<section class="rec">
 			<div class="sec-head"><h2>Education</h2><a class="seeall" href="{{ site.baseurl }}/education/">See all ({{ site.categories.education.size }}) →</a></div>
 			{% for post in site.categories.education limit: 2 %}
 			<a class="row-link" href="{{ post.url }}">
@@ -78,7 +78,7 @@ seo:
 		</section>
 
 		<!-- EXPERIENCE -->
-		<section class="rec reveal">
+		<section class="rec">
 			<div class="sec-head"><h2>Experience</h2><a class="seeall" href="{{ site.baseurl }}/experience/">See all ({{ site.categories.experience.size }}) →</a></div>
 			{% for post in site.categories.experience limit: 2 %}
 			<a class="row-link" href="{{ post.url }}">
@@ -90,7 +90,7 @@ seo:
 		</section>
 
 		<!-- PUBLICATIONS -->
-		<section class="rec reveal">
+		<section class="rec">
 			<div class="sec-head"><h2>Publications</h2><a class="seeall" href="{{ site.baseurl }}/publications/">All ({{ site.categories.publications.size }}) →</a></div>
 			{% for post in site.categories.publications limit: 2 %}
 			<a class="row-link" href="{{ post.url }}">
@@ -103,7 +103,7 @@ seo:
 		</section>
 
 		<!-- TALKS -->
-		<section class="rec reveal">
+		<section class="rec">
 			<div class="sec-head"><h2>Talks</h2><a class="seeall" href="{{ site.baseurl }}/talks/">All ({{ site.categories.talks.size }}) →</a></div>
 			{% for post in site.categories.talks limit: 2 %}
 			<a class="row-link" href="{{ post.url }}">
@@ -116,7 +116,7 @@ seo:
 		</section>
 
 		<!-- RESEARCH -->
-		<section class="rec reveal">
+		<section class="rec">
 			<div class="sec-head"><h2>Research Projects</h2><a class="seeall" href="{{ site.baseurl }}/research/">All ({{ site.categories.research.size }}) →</a></div>
 			{% for post in site.categories.research limit: 2 %}
 			<a class="row-link" href="{{ post.url }}">
@@ -128,7 +128,7 @@ seo:
 		</section>
 
 		<!-- EVENTS -->
-		<section class="rec reveal">
+		<section class="rec">
 			<div class="sec-head"><h2>Events</h2><a class="seeall" href="{{ site.baseurl }}/events/">All ({{ site.categories.events.size }}) →</a></div>
 			{% for post in site.categories.events limit: 2 %}
 			<a class="row-link" href="{{ post.url }}">
@@ -141,7 +141,7 @@ seo:
 		</section>
 
 		<!-- PROJECTS -->
-		<section class="rec reveal" style="margin-bottom:12px">
+		<section class="rec" style="margin-bottom:12px">
 			{% assign pinned_prjs = site.pages | where: "project", true | where: "pinned", true %}
 			{% assign unpinned_prjs = site.pages | where: "project", true | where: "pinned", false %}
 			{% assign projectlist = pinned_prjs | concat: unpinned_prjs %}

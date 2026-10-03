@@ -7,3 +7,4 @@ _site
 /about.md
 .DS_Store
 mockup/
+.seo-cache/

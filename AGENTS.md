@@ -26,7 +26,7 @@ Update `HANDOFF.md` immediately when the user adds or changes a requirement. Kee
 - Static site: Jekyll and GitHub Pages.
 - Build: `bundle exec jekyll build`.
 - Local preview: `bundle exec jekyll serve --host 127.0.0.1 --port 4000`.
-- Primary stylesheet: `assets/css/broadsheet.css`.
+- Primary stylesheet source: `assets/css/broadsheet.scss`, compiled by Jekyll to compressed `assets/css/broadsheet.css`.
 - Source Serif 4 Latin WOFF2 assets are local in `assets/fonts/`; do not restore Google Fonts runtime requests.
 - Phosphor Icons 2.1.1 is reduced to the live icon set in `assets/vendor/phosphor/`. When adding or removing a `ph ph-*` class, update both its CSS mapping and the font subset; do not restore the all-variant loader or a runtime CDN dependency.
 - Client behavior: `assets/js/broadsheet.js`.

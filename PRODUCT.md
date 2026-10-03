@@ -14,6 +14,7 @@ The site is Jekyll-based and Markdown-driven. Visual changes must not rewrite or
 - Optimize every workflow for smartphone use as well as desktop.
 - Prefer a small shared component set over one-off markup.
 - Keep metadata complete and indexable without duplicating SEO tags.
+- Use only Google Analytics GA4 for tracking, as requested on 2026-10-03; do not restore Rybbit, AdSense, or the legacy Google Tag Manager container. Keep the analytics cookie notice accessible and its link descriptive.
 
 ## Global navigation
 
@@ -36,7 +37,7 @@ Desktop uses a two-column shell: identity rail on the left and CV content on the
 
 Identity rail:
 
-- Circular 200 by 200 portrait from `/assets/images/profile.webp`, without halftone or decorative overlays.
+- Circular 200 by 200 portrait with responsive WebP variants derived from `/assets/images/profile.webp`, without halftone or decorative overlays. Preserve the original image for social metadata.
 - Full name, role, degree, institution, contact links, CV download, and location.
 - Contact links come from `_config.yml`.
 - GitLab and DBLP are intentionally excluded from the contact list and profile metadata.

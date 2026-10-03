@@ -4,17 +4,19 @@
 
 An editorial academic site inspired by printed broadsheets: paper-tinted ground, dark serif type, restrained cyan interaction color, and rare magenta warnings. Hierarchy comes from typography and space rather than nested cards or decorative effects.
 
-The live source of truth is `assets/css/broadsheet.css`. Reuse its variables and existing component classes.
+The live source of truth is `assets/css/broadsheet.scss`. Jekyll compiles it to compressed `assets/css/broadsheet.css`; reuse its variables and existing component classes.
 
 ## Foundations
 
 - Typeface: Source Serif 4 for headings, body, and interface chrome.
 - Ground: `--color-bg`; text: `--color-text`; primary interaction: `--color-accent` and its accessible darker ramp values.
+- Primary links and buttons use the darker cyan `#006786`; muted small text uses at least 65% of the text color for readable contrast. Button hover must remain as dark or darker.
 - Keep reading content left-aligned and bounded near 65 to 75 characters; the smartphone identity block is the deliberate centered exception.
 - Use the spacing variables for rhythm; keep radii small except the circular portrait.
 - Focus uses a visible 2px accent outline.
 - Touch targets on smartphone layouts are at least 44px high.
 - Respect `prefers-reduced-motion`.
+- Mobile navigation starts collapsed before the first paint when JavaScript is enabled; without JavaScript the links remain visible. The local fixed cookie notice uses these same tokens and a 44px dismiss button.
 
 ## Masthead
 
@@ -35,6 +37,7 @@ At 700px and below:
 
 - Desktop shell: 300px identity rail plus flexible content column, 64px gap.
 - Portrait: 200 by 200, circular, `object-fit: cover`, clean bitmap presentation.
+- Home uses responsive 200/400/800px WebP sources; keep the complete 800px original for social/profile metadata.
 - Never apply halftone, dot screens, generated overlays, or coin/grid effects to the portrait.
 - Name repeats the brand weight distinction: `Saverio Mattia` regular, `Merenda` bold, no italics.
 - Center the complete identity rail on desktop and mobile.

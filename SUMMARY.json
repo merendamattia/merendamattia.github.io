@@ -1,0 +1,56 @@
+{
+  "before_desktop": {
+    "scores": {
+      "performance": 100,
+      "accessibility": 95,
+      "best-practices": 100,
+      "seo": 92,
+      "agentic-browsing": 100
+    },
+    "fcp_ms": 327.48395,
+    "lcp_ms": 444.98929999999996,
+    "tbt_ms": 0,
+    "cls": 3.603566529492456e-05,
+    "requests": 34,
+    "transfer_bytes": 788997
+  },
+  "after_desktop": {
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "agentic-browsing": 100
+    },
+    "fcp_ms": 289.6827,
+    "lcp_ms": 409.6827,
+    "tbt_ms": 0,
+    "cls": 0,
+    "requests": 11,
+    "transfer_bytes": 295655
+  },
+  "after_mobile": {
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "agentic-browsing": 100
+    },
+    "fcp_ms": 1056.938,
+    "lcp_ms": 1806.938,
+    "tbt_ms": 21,
+    "cls": 0,
+    "requests": 11,
+    "transfer_bytes": 301044
+  },
+  "analyzed_at": "2026-10-03T11:45:04.720450+00:00",
+  "url": "http://127.0.0.1:4000/",
+  "method": "Lighthouse 13.4.1, isolated Chrome, extensions disabled, GA active, mobile simulated throttling",
+  "inp": null,
+  "limitations": [
+    "Lab measurements only, no CrUX/INP data",
+    "Not deployed",
+    "HTTP-to-HTTPS redirect and response security headers require hosting configuration"
+  ]
+}

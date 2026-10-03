@@ -7,6 +7,7 @@ lang: en
 locale: en_US
 url: "https://www.merendamattia.com"
 logo: /assets/images/profile.webp
+google_analytics: G-LNQ45S8LE2
 
 mail-work: info@merendamattia.com
 linkedin: https://www.linkedin.com/in/merendamattia/
@@ -25,8 +26,11 @@ social:
     - https://orcid.org/0009-0000-4137-9852
     - https://scholar.google.com/citations?user=EXZavkQAAAAJ
 
-exclude: [README.md, HANDOFF.md, PRODUCT.md, DESIGN.md, mockup, about.md]
+exclude: [README.md, HANDOFF.md, PRODUCT.md, DESIGN.md, SUMMARY.json, mockup, about.md]
 future: true
+
+sass:
+  style: compressed
 
 defaults:
   - scope:
