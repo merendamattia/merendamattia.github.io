@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Personal academic website for Saverio Mattia Merenda, AI Solution Architect and Computer Science researcher. It serves as a search-friendly professional profile, a complete CV archive, and a practical hub for university notes.
+Personal academic website for Saverio Mattia Merenda, Head of AI at Promoservice Parma and Computer Science researcher. It serves as a search-friendly professional profile, a complete CV archive, and a practical hub for university notes.
 
 The site is Jekyll-based and Markdown-driven. Visual changes must not rewrite or simplify the original content model.
 
@@ -47,6 +47,8 @@ At widths up to 860px the identity rail becomes a true single column in this ord
 
 Home content preserves the original biography and renders Education, Experience, Publications, Talks, Research, Events, and Projects from existing Markdown sources. Records remain clickable and link to their detail pages. The home tag filter has been removed because it was unused and consumed excessive space.
 
+The home biography follows the current CV; at the user's request on 2026-10-03, its wording was shortened by about 20% while retaining professional and academic facts and links.
+
 Visible content tags use a shared pastel color system. Every distinct label has its own color, and the same label keeps that color throughout home, listing, project, and detail views; color is presentational and never changes filtering or content semantics.
 
 ## Listing and detail pages
@@ -85,7 +87,7 @@ Individual course pages preserve the original course content and resource links.
 
 - Profile: `/assets/images/profile.webp`, 800 by 800 WebP source.
 - Favicon: `/assets/images/favicon.webp`, 64 by 64 WebP using the complete photo composition.
-- CV: `/files/cv.pdf`, unchanged.
+- CV: `/files/cv.pdf`, updated by the user on 2026-10-03; professional updates on the site follow this document.
 - Other images and PDFs remain in their existing directories.
 
 ## SEO

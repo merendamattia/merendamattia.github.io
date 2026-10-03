@@ -1,10 +1,12 @@
 # HANDOFF: Broadsheet redesign
 
-Last updated: 2026-07-17
+Last updated: 2026-10-03
 
 ## Goal
 
 Polish the Jekyll redesign without changing the original CV and site content. Keep the visual language sober and editorial, make every route responsive, preserve the Markdown content workflow, and improve technical/on-page SEO.
+
+Current follow-up: align the professional profile and home résumé with the updated CV supplied by the user on 2026-10-03, preserving historical content and the established design.
 
 ## Non-negotiable constraints
 
@@ -14,6 +16,31 @@ Polish the Jekyll redesign without changing the original CV and site content. Ke
 - Keep this file updated while work is in progress, including new requests and unfinished verification.
 
 ## Todo list
+
+### Richiesta attuale: commit e push
+
+- [x] L'utente ha autorizzato esplicitamente commit e push di tutti gli aggiornamenti al CV e al profilo su `master` il 2026-10-03.
+- [x] Revisionati i sette file della modifica: nuovo PDF, esperienza Promoservice, date Keplero, home sintetica con link aziendale, SEO e documentazione. Controlli di build, link/asset e SEO superati; verifiche responsive precedenti valide.
+- Commit e push vengono eseguiti su `origin/master`; il risultato definitivo è verificabile nella cronologia Git e nel riferimento remoto. Nessun intervento sui file generati.
+
+### Completato: link Promoservice Parma
+
+- [x] Nome Promoservice Parma nel paragrafo introduttivo collegato a `https://promoserviceparma.it/`, con apertura in nuova scheda e `rel="noopener"`, come gli altri link esterni della biografia. Testo visibile invariato.
+- [x] `git diff --check` e `bundle exec jekyll build` passano; link confermato nell'HTML generato, audit delle 62 pagine con 0 problemi. Le larghezze responsive già verificate restano applicabili: nessuna modifica a testo, componenti o CSS. Nessun lavoro rimasto, nessun commit creato.
+
+### Completato: résumé home più sintetico
+
+- [x] Testo di presentazione in home abbreviato preservando fatti, nuovo ruolo, attività professionali e accademiche e link. Testo visibile (spazi inclusi, markup escluso, paragrafi separati da uno spazio): 2.739 → 2.189 caratteri, riduzione del 20,08%.
+- [x] `bundle exec jekyll build` e `git diff --check` passano; audit di 62 pagine HTML con 0 problemi di SEO/link/asset. Ripetuti i 20 controlli browser a 320/400/768/1440 px con 0 overflow, incluso il menu mobile. Preview Jekyll disponibile su `http://127.0.0.1:4000`. Nessun lavoro rimasto e nessun commit creato.
+
+### Completato: nuovo CV e cambio lavoro
+
+- [x] Individuato il nuovo CV caricato in `files/cv.pdf`; la sostituzione del PDF è una modifica dell'utente da preservare.
+- [x] Confrontato il nuovo CV con quello precedente: nuovo ruolo Head of AI in Promoservice Parma da settembre 2026; Keplero AI conclusa ad agosto 2026. Le altre sezioni non hanno novità di contenuto.
+- [x] Aggiornati ruolo attuale, biografia e mini résumé della home, inclusi i metadati pertinenti. Aggiunta la nuova esperienza e aggiornata al passato quella in Keplero, preservando i dettagli storici e il suo URL.
+- [x] `bundle exec jekyll build` e `git diff --check` passano. Audit delle 62 pagine HTML: 0 problemi per link/asset locali, title/description/canonical/H1, lingua, JSON-LD e alt delle immagini; confermati Person in home, ordine delle nuove esperienze e copia esatta del nuovo PDF nel sito generato.
+- [x] Chrome: 20 verifiche su home, listing Experience, dettagli Promoservice/Keplero e University Notes a 320/400/768/1440 px, con 0 overflow e un H1 per pagina. Menu mobile verificato con apertura e chiusura tramite Escape a 320/400 px. Screenshot home a 320/1440 px ispezionati. Analytics e AdSense bloccati durante il test locale.
+- [x] Risultati registrati: nessun lavoro richiesto rimasto, nessuna dipendenza aggiunta e nessun commit creato. L'autorizzazione del luglio 2026 riguardava il redesign già completato.
 
 ### Follow-up completato: allineamento home e nome
 
@@ -132,7 +159,7 @@ Polish the Jekyll redesign without changing the original CV and site content. Ke
 - Profile asset: `/assets/images/profile.webp` (800 by 800 WebP).
 - Home profile presentation: 200 by 200 pixels, circular, no halftone overlay.
 - Favicon: `/assets/images/favicon.webp` (64 by 64 WebP, complete-photo composition).
-- CV remains `/files/cv.pdf` and has not been replaced.
+- CV remains `/files/cv.pdf`; the user supplied the updated PDF on 2026-10-03, now reflecting Head of AI at Promoservice Parma.
 - University course data remains in `uni/_posts/*.md`; no additional exam-date note was invented because the year grouping already supplies that context.
 - Jekyll development command: `bundle exec jekyll serve --host 127.0.0.1 --port 4000`.
 - Persistent agent context: `AGENTS.md`; always read it, `HANDOFF.md`, `PRODUCT.md`, and `DESIGN.md` before changing the site.

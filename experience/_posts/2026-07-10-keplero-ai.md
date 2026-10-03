@@ -9,11 +9,11 @@ tags:
   - AI Systems Engineering
 venue: "Keplero AI"
 location: "Milan, Italy"
-when: "From Nov. 2025"
+when: "Nov. 2025 ‑ Aug. 2026"
 ---
 
-I design, develop, and deploy custom AI agents and AI solutions for client-specific use cases and internal business-process optimization.
+I designed, developed, and deployed custom AI agents and AI solutions for client-specific use cases and internal business-process optimization.
 
-My work includes autonomous agent ecosystems and meta-agents that configure and deploy other agents for customers, as well as continuous-learning customer-support agents backed by automated knowledge-update and learning pipelines.
+My work included autonomous agent ecosystems and meta-agents that configured and deployed other agents for customers, as well as continuous-learning customer-support agents backed by automated knowledge-update and learning pipelines.
 
-I also engineer ad-hoc MCP tools and internal platforms for scalable agent configuration, orchestration, and lifecycle management. These systems are integrated into operational workflows through automation platforms such as n8n, with a focus on reliable, production-ready deployments.
+I also engineered ad-hoc MCP tools and internal platforms for scalable agent configuration, orchestration, and lifecycle management. These systems were integrated into operational workflows through automation platforms such as n8n, with a focus on reliable, production-ready deployments.

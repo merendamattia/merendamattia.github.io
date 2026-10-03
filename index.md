@@ -1,6 +1,6 @@
 ---
 layout: default
-description: Saverio Mattia Merenda is an AI Solution Architect and researcher focused on AI agents, software verification, static analysis, and blockchain.
+description: Saverio Mattia Merenda is Head of AI at Promoservice Parma and a researcher focused on AI agents, software verification, static analysis, and blockchain.
 image:
   path: /assets/images/profile.webp
   width: 800
@@ -24,7 +24,7 @@ seo:
 			<figure class="rail-photo"><img src="{{ '/assets/images/profile.webp' | relative_url }}" alt="Portrait of Saverio Mattia Merenda" width="800" height="800" fetchpriority="high" decoding="async" /></figure>
 			<div>
 					<h1>Saverio Mattia <strong>Merenda</strong></h1>
-					<p class="role">AI Solution Architect</p>
+					<p class="role">Head of AI · Promoservice Parma</p>
 					<p class="degree">M.Sc. · <em>University of Parma, Italy</em></p>
 					<p class="place"><i class="ph ph-map-pin"></i>Parma, Italy</p>
 					<div class="links">
@@ -43,12 +43,13 @@ seo:
 	<main>
 		<section class="reveal" style="margin-bottom:52px">
 			<span class="kicker">Hi, I'm Mattia!</span>
-			<p class="lede">I’m Saverio Mattia Merenda, an AI Solution Architect who holds a Master’s Degree in Computer Science (110/110 cum laude) from the University of Parma, Italy.</p>
-			<p class="body-p">My academic and professional path sits at the intersection of artificial intelligence, software engineering, and software security. Building on a Master’s focused on Artificial Intelligence and Software Verification, I actively design and engineer advanced AI systems, combining research-driven methodologies with production-grade architectures.</p>
-			<p class="body-p">Currently, I work as an AI Solution Architect, where I design, develop, and deploy custom AI agents and AI-driven systems for both client-specific solutions and internal optimization projects. My work includes the development of autonomous agent ecosystems, continuous-learning AI agents for customer support, and meta-agent architectures capable of automatically configuring and generating other AI agents. I also engineer ad-hoc MCP tools and internal AI tooling platforms to support agent orchestration, lifecycle management, and scalable deployment, integrating these systems into enterprise workflows through modern automation and orchestration platforms.</p>
-			<p class="body-p">In parallel, I am deeply involved in academic research and advanced software development. I contributed to the development of <a href="https://github.com/lisa-analyzer/evm-lisa" target="_blank" rel="noopener">EVMLiSA</a>, a static analyzer for EVM bytecode based on abstract interpretation, which I extended to cross-chain ecosystems and equipped with a static checker for Access Control Incompleteness in cross-chain bridges, the subject of my Master's thesis. My research activities include software security, access control analysis in smart contracts, and the integration of large language models with static analysis to improve the quality and reliability of AI-generated code. These activities have led to peer-reviewed publications and participation in international research projects.</p>
-			<p class="body-p">Alongside research and industry work, I have served as a Teaching Assistant at the University of Parma, delivering academic lectures and supporting undergraduate education in computer science. This role strengthened my ability to combine theoretical rigor with practical system design, communication, and mentorship.</p>
-			<p class="body-p">I am driven by the construction of intelligent systems that are not only functional, but also scalable, verifiable, and architecturally sound. My focus is on building AI infrastructures that merge automation, learning, and formal methods, with a long-term vision toward reliable, autonomous, and secure AI-driven systems.</p>
+			<p class="lede">I’m Saverio Mattia Merenda, Head of AI at <a href="https://promoserviceparma.it/" target="_blank" rel="noopener">Promoservice Parma</a>, with a Master’s Degree in Computer Science (110/110 cum laude) from the University of Parma, Italy.</p>
+			<p class="body-p">My work combines artificial intelligence, software engineering, and software security. With a Master’s focused on Artificial Intelligence and Software Verification, I design advanced AI systems that bring research methods into production.</p>
+			<p class="body-p">Since September 2026, I have been responsible for new AI projects at Promoservice Parma.</p>
+			<p class="body-p">Previously, as an AI Solution Architect at Keplero AI (November 2025–August 2026), I designed, developed, and deployed custom AI agents for clients and internal process optimization. I built autonomous agent ecosystems, continuous-learning customer-support agents backed by automated knowledge-update and learning pipelines, and meta-agents that configured and generated other agents. I also developed ad-hoc MCP tools and internal platforms for agent orchestration, lifecycle management, and scalable deployment, integrating them into enterprise workflows through automation and orchestration platforms.</p>
+			<p class="body-p">In parallel, I contribute to academic research and software development. I helped develop <a href="https://github.com/lisa-analyzer/evm-lisa" target="_blank" rel="noopener">EVMLiSA</a>, a static analyzer for EVM bytecode based on abstract interpretation. For my Master’s thesis, I extended it to cross-chain ecosystems and implemented a static checker for Access Control Incompleteness in cross-chain bridges. My research covers software security, smart-contract access control, and combining large language models with static analysis to improve the quality and reliability of AI-generated code. This work has led to peer-reviewed publications and participation in international research projects.</p>
+			<p class="body-p">As a Teaching Assistant at the University of Parma, I delivered lectures and supported undergraduate computer science education, strengthening my skills in practical system design, communication, and mentorship alongside theoretical rigor.</p>
+			<p class="body-p">I aim to build scalable, verifiable, and architecturally sound AI systems. My focus is on infrastructures that combine automation, learning, and formal methods to support reliable, autonomous, and secure systems.</p>
 			<p class="body-p">You can find my full CV <a href="{{ site.baseurl }}/files/cv.pdf">here</a>.</p>
 		</section>
 
